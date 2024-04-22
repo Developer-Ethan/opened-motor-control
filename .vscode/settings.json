@@ -1,0 +1,33 @@
+{
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "main.h": "c",
+        "n32g031.h": "c",
+        "log.h": "c",
+        "n32g430_rcc.h": "c",
+        "n32g430_adc.h": "c",
+        "arm_math.h": "c",
+        "__config": "cpp",
+        "arm_const_structs.h": "c",
+        "fast_math_functions.h": "c",
+        "arm_math_types.h": "c",
+        "datacalc.h": "c",
+        "headfile.h": "c",
+        "datatype.h": "c",
+        "pi.h": "c",
+        "table.h": "c",
+        "stdint.h": "c",
+        "timer.h": "c",
+        "statemachine.h": "c",
+        "loopcontrol.h": "c",
+        "foc.h": "c",
+        "lpf.h": "c",
+        "parameter.h": "c",
+        "cmath": "c",
+        "*.tcc": "c",
+        "cstdlib": "c",
+        "svm.h": "c"
+    }
+}

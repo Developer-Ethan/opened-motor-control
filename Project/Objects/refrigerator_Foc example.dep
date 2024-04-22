@@ -1,0 +1,1427 @@
+Dependencies for Project 'refrigerator', Target 'Foc example': (DO NOT MODIFY !)
+F (..\User\n32g430_it.c)(0x662256A6)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_it.o --omf_browse .\objects\n32g430_it.crf --depend .\objects\n32g430_it.d)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\n32g430_it.h)(0x66189C9A)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+F (..\User\main.c)(0x661FA4EE)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\User\main.h)(0x635B9403)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\BSP\bsp_config.h)(0x64E2B976)
+I (..\BSP\i2c_eeprom.h)(0x640AA13B)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\User\Svm.h)(0x6622563D)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\Foc.c)(0x66225145)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\foc.o --omf_browse .\objects\foc.crf --depend .\objects\foc.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\DataCalc.c)(0x660CC5E4)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\datacalc.o --omf_browse .\objects\datacalc.crf --depend .\objects\datacalc.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\LPF.c)(0x66067CB1)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\lpf.o --omf_browse .\objects\lpf.crf --depend .\objects\lpf.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\Table.c)(0x662222DC)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\table.o --omf_browse .\objects\table.crf --depend .\objects\table.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\Timer.c)(0x66124523)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\PI.c)(0x660F808B)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\pi.o --omf_browse .\objects\pi.crf --depend .\objects\pi.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\Svm.c)(0x6622563D)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\svm.o --omf_browse .\objects\svm.crf --depend .\objects\svm.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\StateMachine.c)(0x661E2B34)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\statemachine.o --omf_browse .\objects\statemachine.crf --depend .\objects\statemachine.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\LoopControl.c)(0x661E3877)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\loopcontrol.o --omf_browse .\objects\loopcontrol.crf --depend .\objects\loopcontrol.d)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\User\HeadFile.h)(0x66189CD6)()
+F (..\User\Parameter.h)(0x66222749)()
+F (..\firmware\CMSIS\device\system_n32g430.c)(0x647C828C)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\system_n32g430.o --omf_browse .\objects\system_n32g430.crf --depend .\objects\system_n32g430.d)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\CMSIS\device\startup\startup_n32g430.s)(0x660291FF)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 526" --pd "N32G430 SETA 1" --pd "USE_STDPERIPH_DRIVER SETA 1"--list .\listings\startup_n32g430.lst --xref -o .\objects\startup_n32g430.o --depend .\objects\startup_n32g430.d)
+F (..\Doc\ReadMe.txt)(0x64A3A1ED)()
+F (..\firmware\n32g430_std_periph_driver\src\misc.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_adc.c)(0x65FA4685)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_adc.o --omf_browse .\objects\n32g430_adc.crf --depend .\objects\n32g430_adc.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_beeper.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_beeper.o --omf_browse .\objects\n32g430_beeper.crf --depend .\objects\n32g430_beeper.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_can.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_can.o --omf_browse .\objects\n32g430_can.crf --depend .\objects\n32g430_can.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_comp.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_comp.o --omf_browse .\objects\n32g430_comp.crf --depend .\objects\n32g430_comp.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_crc.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_crc.o --omf_browse .\objects\n32g430_crc.crf --depend .\objects\n32g430_crc.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_dbg.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_dbg.o --omf_browse .\objects\n32g430_dbg.crf --depend .\objects\n32g430_dbg.d)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_dma.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_dma.o --omf_browse .\objects\n32g430_dma.crf --depend .\objects\n32g430_dma.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_exti.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_exti.o --omf_browse .\objects\n32g430_exti.crf --depend .\objects\n32g430_exti.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_flash.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_flash.o --omf_browse .\objects\n32g430_flash.crf --depend .\objects\n32g430_flash.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_gpio.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_gpio.o --omf_browse .\objects\n32g430_gpio.crf --depend .\objects\n32g430_gpio.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_i2c.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_i2c.o --omf_browse .\objects\n32g430_i2c.crf --depend .\objects\n32g430_i2c.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_iwdg.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_iwdg.o --omf_browse .\objects\n32g430_iwdg.crf --depend .\objects\n32g430_iwdg.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_lptim.c)(0x65FA7F58)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_lptim.o --omf_browse .\objects\n32g430_lptim.crf --depend .\objects\n32g430_lptim.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_lptim.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_pwr.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_pwr.o --omf_browse .\objects\n32g430_pwr.crf --depend .\objects\n32g430_pwr.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_rcc.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_rcc.o --omf_browse .\objects\n32g430_rcc.crf --depend .\objects\n32g430_rcc.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_rtc.c)(0x65FA7F48)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_rtc.o --omf_browse .\objects\n32g430_rtc.crf --depend .\objects\n32g430_rtc.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_spi.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_spi.o --omf_browse .\objects\n32g430_spi.crf --depend .\objects\n32g430_spi.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_tim.c)(0x652CAAD2)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_tim.o --omf_browse .\objects\n32g430_tim.crf --depend .\objects\n32g430_tim.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_usart.c)(0x64780ED7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_usart.o --omf_browse .\objects\n32g430_usart.crf --depend .\objects\n32g430_usart.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\firmware\n32g430_std_periph_driver\src\n32g430_wwdg.c)(0x64789247)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\n32g430_wwdg.o --omf_browse .\objects\n32g430_wwdg.crf --depend .\objects\n32g430_wwdg.d)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\DSP\arm_atan2_f32.c)(0x65FA7DED)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\arm_atan2_f32.o --omf_browse .\objects\arm_atan2_f32.crf --depend .\objects\arm_atan2_f32.d)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+F (..\DSP\arm_common_tables.c)(0x648C32D7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\arm_common_tables.o --omf_browse .\objects\arm_common_tables.crf --depend .\objects\arm_common_tables.d)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+I (..\DSP\arm_common_tables.h)(0x65FA7E30)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+F (..\DSP\arm_cos_f32.c)(0x648C3202)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\arm_cos_f32.o --omf_browse .\objects\arm_cos_f32.crf --depend .\objects\arm_cos_f32.d)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+I (..\DSP\arm_common_tables.h)(0x65FA7E30)
+F (..\DSP\arm_sin_cos_f32.c)(0x64A3F65E)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\arm_sin_cos_f32.o --omf_browse .\objects\arm_sin_cos_f32.crf --depend .\objects\arm_sin_cos_f32.d)
+I (..\DSP\arm_common_tables.h)(0x65FA7E30)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+F (..\DSP\arm_sin_f32.c)(0x648C32F4)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\arm_sin_f32.o --omf_browse .\objects\arm_sin_f32.crf --depend .\objects\arm_sin_f32.d)
+I (..\DSP\fast_math_functions.h)(0x64A3F2FF)
+I (..\DSP\arm_math_types.h)(0x648C34E2)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x599EDB3E)
+I (D:\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\limits.h)(0x599EDB3A)
+I (..\DSP\arm_common_tables.h)(0x65FA7E30)
+F (..\BSP\bsp_adc.c)(0x66053AD4)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\bsp_adc.o --omf_browse .\objects\bsp_adc.crf --depend .\objects\bsp_adc.d)
+I (..\BSP\bsp_adc.h)(0x64009E7B)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\BSP\bsp_config.c)(0x66123AF2)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\bsp_config.o --omf_browse .\objects\bsp_config.crf --depend .\objects\bsp_config.d)
+I (..\BSP\bsp_config.h)(0x64E2B976)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\BSP\bsp_led.h)(0x639148DA)
+I (..\BSP\bsp_adc.h)(0x64009E7B)
+I (..\BSP\i2c_eeprom.h)(0x640AA13B)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+F (..\BSP\bsp_led.c)(0x639148C1)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\bsp_led.o --omf_browse .\objects\bsp_led.crf --depend .\objects\bsp_led.d)
+I (..\BSP\bsp_led.h)(0x639148DA)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+F (..\BSP\bsp_tim.c)(0x6620F60A)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\bsp_tim.o --omf_browse .\objects\bsp_tim.crf --depend .\objects\bsp_tim.d)
+I (..\BSP\bsp_tim.h)(0x6620F063)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\User\HeadFile.h)(0x66189CD6)
+I (..\User\Foc.h)(0x661F9C37)
+I (..\User\LPF.h)(0x660BBE2F)
+I (..\User\LoopControl.h)(0x661E387F)
+I (..\User\PI.h)(0x660F8065)
+I (..\User\StateMachine.h)(0x661E2ABD)
+I (..\User\Timer.h)(0x661244E9)
+I (..\User\Table.h)(0x661F85AE)
+I (..\User\Parameter.h)(0x66222749)
+I (..\User\DataCalc.h)(0x661F7588)
+I (..\User\Svm.h)(0x6622563D)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (..\User\n32g430_it.h)(0x66189C9A)
+F (..\BSP\i2c_eeprom.c)(0x640AA3E5)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\i2c_eeprom.o --omf_browse .\objects\i2c_eeprom.crf --depend .\objects\i2c_eeprom.d)
+I (..\firmware\CMSIS\device\n32g430.h)(0x65FD5AF8)
+I (..\firmware\CMSIS\core\core_cm4.h)(0x6602AA02)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\firmware\CMSIS\core\cmsis_version.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_compiler.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\cmsis_armcc.h)(0x64780ED9)
+I (..\firmware\CMSIS\core\mpu_armv7.h)(0x64780ED9)
+I (..\firmware\CMSIS\device\system_n32g430.h)(0x64789247)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599EDB3E)
+I (..\firmware\CMSIS\device\n32g430_conf.h)(0x64780ED9)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_adc.h)(0x647DD4B5)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_can.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_comp.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_crc.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dbg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_dma.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_exti.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_flash.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_gpio.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_i2c.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_iwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_pwr.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rcc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_rtc.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_spi.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_tim.h)(0x65FD1F83)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x64780ED8)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x64789247)
+I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x64780ED8)
+I (..\BSP\i2c_eeprom.h)(0x640AA13B)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)

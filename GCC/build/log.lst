@@ -1,0 +1,802 @@
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 6
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"log.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "../User/BSP/log.c"
+  20              		.section	.text.log_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	log_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	log_init:
+  28              	.LFB133:
+   1:../User/BSP/log.c **** /*****************************************************************************
+   2:../User/BSP/log.c ****  * Copyright (c) 2019, Nations Technologies Inc.
+   3:../User/BSP/log.c ****  *
+   4:../User/BSP/log.c ****  * All rights reserved.
+   5:../User/BSP/log.c ****  * ****************************************************************************
+   6:../User/BSP/log.c ****  *
+   7:../User/BSP/log.c ****  * Redistribution and use in source and binary forms, with or without
+   8:../User/BSP/log.c ****  * modification, are permitted provided that the following conditions are met:
+   9:../User/BSP/log.c ****  *
+  10:../User/BSP/log.c ****  * - Redistributions of source code must retain the above copyright notice,
+  11:../User/BSP/log.c ****  * this list of conditions and the disclaimer below.
+  12:../User/BSP/log.c ****  *
+  13:../User/BSP/log.c ****  * Nations' name may not be used to endorse or promote products derived from
+  14:../User/BSP/log.c ****  * this software without specific prior written permission.
+  15:../User/BSP/log.c ****  *
+  16:../User/BSP/log.c ****  * DISCLAIMER: THIS SOFTWARE IS PROVIDED BY NATIONS "AS IS" AND ANY EXPRESS OR
+  17:../User/BSP/log.c ****  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  18:../User/BSP/log.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  19:../User/BSP/log.c ****  * DISCLAIMED. IN NO EVENT SHALL NATIONS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  20:../User/BSP/log.c ****  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  21:../User/BSP/log.c ****  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+  22:../User/BSP/log.c ****  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  23:../User/BSP/log.c ****  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  24:../User/BSP/log.c ****  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  25:../User/BSP/log.c ****  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  26:../User/BSP/log.c ****  * ****************************************************************************/
+  27:../User/BSP/log.c **** 
+  28:../User/BSP/log.c **** /**
+  29:../User/BSP/log.c **** *\*\file log.c
+  30:../User/BSP/log.c **** *\*\author Nations
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 2
+
+
+  31:../User/BSP/log.c **** *\*\version v1.0.0
+  32:../User/BSP/log.c **** *\*\copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
+  33:../User/BSP/log.c **** **/
+  34:../User/BSP/log.c **** #include "log.h"
+  35:../User/BSP/log.c **** 
+  36:../User/BSP/log.c **** #if LOG_ENABLE
+  37:../User/BSP/log.c **** 
+  38:../User/BSP/log.c **** #include "n32g430.h"
+  39:../User/BSP/log.c **** 
+  40:../User/BSP/log.c **** #define LOG_USARTx      USART1
+  41:../User/BSP/log.c **** #define LOG_PERIPH      RCC_APB2_PERIPH_USART1
+  42:../User/BSP/log.c **** #define LOG_GPIO        GPIOA
+  43:../User/BSP/log.c **** #define LOG_PERIPH_GPIO RCC_AHB_PERIPH_GPIOA
+  44:../User/BSP/log.c **** #define LOG_TX_PIN      GPIO_PIN_9
+  45:../User/BSP/log.c **** #define LOG_RX_PIN      GPIO_PIN_10
+  46:../User/BSP/log.c **** 
+  47:../User/BSP/log.c **** void log_init(void)
+  48:../User/BSP/log.c **** {
+  29              		.loc 1 48 1
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 8AB0     		sub	sp, sp, #40
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 48
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  49:../User/BSP/log.c ****     GPIO_InitType GPIO_InitStructure;
+  50:../User/BSP/log.c ****     USART_InitType USART_InitStructure;
+  51:../User/BSP/log.c **** 
+  52:../User/BSP/log.c ****     RCC_AHB_Peripheral_Clock_Enable(LOG_PERIPH_GPIO);
+  44              		.loc 1 52 5
+  45 0006 8020     		movs	r0, #128
+  46 0008 FFF7FEFF 		bl	RCC_AHB_Peripheral_Clock_Enable
+  53:../User/BSP/log.c ****     RCC_APB2_Peripheral_Clock_Enable(RCC_APB2_PERIPH_AFIO | LOG_PERIPH);
+  47              		.loc 1 53 5
+  48 000c 44F20100 		movw	r0, #16385
+  49 0010 FFF7FEFF 		bl	RCC_APB2_Peripheral_Clock_Enable
+  54:../User/BSP/log.c **** 
+  55:../User/BSP/log.c ****     GPIO_Structure_Initialize(&GPIO_InitStructure);
+  50              		.loc 1 55 5
+  51 0014 07F11003 		add	r3, r7, #16
+  52 0018 1846     		mov	r0, r3
+  53 001a FFF7FEFF 		bl	GPIO_Structure_Initialize
+  56:../User/BSP/log.c ****     GPIO_InitStructure.Pin            = LOG_TX_PIN;
+  54              		.loc 1 56 39
+  55 001e 4FF40073 		mov	r3, #512
+  56 0022 3B61     		str	r3, [r7, #16]
+  57:../User/BSP/log.c ****     GPIO_InitStructure.GPIO_Mode      = GPIO_MODE_AF_PP;
+  57              		.loc 1 57 39
+  58 0024 0223     		movs	r3, #2
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 3
+
+
+  59 0026 7B61     		str	r3, [r7, #20]
+  58:../User/BSP/log.c ****     GPIO_InitStructure.GPIO_Alternate = GPIO_AF5_USART1;
+  60              		.loc 1 58 39
+  61 0028 0523     		movs	r3, #5
+  62 002a 7B62     		str	r3, [r7, #36]
+  59:../User/BSP/log.c ****     GPIO_Peripheral_Initialize(LOG_GPIO, &GPIO_InitStructure);
+  63              		.loc 1 59 5
+  64 002c 07F11003 		add	r3, r7, #16
+  65 0030 1946     		mov	r1, r3
+  66 0032 0E48     		ldr	r0, .L2
+  67 0034 FFF7FEFF 		bl	GPIO_Peripheral_Initialize
+  60:../User/BSP/log.c **** 
+  61:../User/BSP/log.c **** //    GPIO_InitStructure.Pin             = LOG_RX_PIN;
+  62:../User/BSP/log.c **** //    GPIO_InitStructure.GPIO_Alternate  = GPIO_AF5_USART1;
+  63:../User/BSP/log.c **** //    GPIO_Peripheral_Initialize(GPIOA, &GPIO_InitStructure);
+  64:../User/BSP/log.c **** 
+  65:../User/BSP/log.c ****     USART_InitStructure.BaudRate            = 115200;
+  68              		.loc 1 65 45
+  69 0038 4FF4E133 		mov	r3, #115200
+  70 003c 3B60     		str	r3, [r7]
+  66:../User/BSP/log.c ****     USART_InitStructure.WordLength          = USART_WL_8B;
+  71              		.loc 1 66 45
+  72 003e 0023     		movs	r3, #0
+  73 0040 BB80     		strh	r3, [r7, #4]	@ movhi
+  67:../User/BSP/log.c ****     USART_InitStructure.StopBits            = USART_STPB_1;
+  74              		.loc 1 67 45
+  75 0042 0023     		movs	r3, #0
+  76 0044 FB80     		strh	r3, [r7, #6]	@ movhi
+  68:../User/BSP/log.c ****     USART_InitStructure.Parity              = USART_PE_NO;
+  77              		.loc 1 68 45
+  78 0046 0023     		movs	r3, #0
+  79 0048 3B81     		strh	r3, [r7, #8]	@ movhi
+  69:../User/BSP/log.c ****     USART_InitStructure.HardwareFlowControl = USART_HFCTRL_NONE;
+  80              		.loc 1 69 45
+  81 004a 0023     		movs	r3, #0
+  82 004c BB81     		strh	r3, [r7, #12]	@ movhi
+  70:../User/BSP/log.c ****     USART_InitStructure.Mode                = USART_MODE_TX;
+  83              		.loc 1 70 45
+  84 004e 0823     		movs	r3, #8
+  85 0050 7B81     		strh	r3, [r7, #10]	@ movhi
+  71:../User/BSP/log.c **** 
+  72:../User/BSP/log.c ****     /* init uart */
+  73:../User/BSP/log.c ****     USART_Initializes(LOG_USARTx, &USART_InitStructure);
+  86              		.loc 1 73 5
+  87 0052 3B46     		mov	r3, r7
+  88 0054 1946     		mov	r1, r3
+  89 0056 0648     		ldr	r0, .L2+4
+  90 0058 FFF7FEFF 		bl	USART_Initializes
+  74:../User/BSP/log.c **** 
+  75:../User/BSP/log.c ****     /* enable uart */
+  76:../User/BSP/log.c ****     USART_Enable(LOG_USARTx);
+  91              		.loc 1 76 5
+  92 005c 0448     		ldr	r0, .L2+4
+  93 005e FFF7FEFF 		bl	USART_Enable
+  77:../User/BSP/log.c **** }
+  94              		.loc 1 77 1
+  95 0062 00BF     		nop
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 4
+
+
+  96 0064 2837     		adds	r7, r7, #40
+  97              	.LCFI3:
+  98              		.cfi_def_cfa_offset 8
+  99 0066 BD46     		mov	sp, r7
+ 100              	.LCFI4:
+ 101              		.cfi_def_cfa_register 13
+ 102              		@ sp needed
+ 103 0068 80BD     		pop	{r7, pc}
+ 104              	.L3:
+ 105 006a 00BF     		.align	2
+ 106              	.L2:
+ 107 006c 00340240 		.word	1073886208
+ 108 0070 00380140 		.word	1073821696
+ 109              		.cfi_endproc
+ 110              	.LFE133:
+ 112              		.section	.bss.is_lr_sent,"aw",%nobits
+ 113              		.align	2
+ 116              	is_lr_sent:
+ 117 0000 00000000 		.space	4
+ 118              		.section	.text.fputc,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	fputc
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	fputc:
+ 126              	.LFB134:
+  78:../User/BSP/log.c **** 
+  79:../User/BSP/log.c **** static int is_lr_sent = 0;
+  80:../User/BSP/log.c **** 
+  81:../User/BSP/log.c **** int fputc(int ch, FILE* f)
+  82:../User/BSP/log.c **** {
+ 127              		.loc 1 82 1
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 8
+ 130              		@ frame_needed = 1, uses_anonymous_args = 0
+ 131 0000 80B5     		push	{r7, lr}
+ 132              	.LCFI5:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 7, -8
+ 135              		.cfi_offset 14, -4
+ 136 0002 82B0     		sub	sp, sp, #8
+ 137              	.LCFI6:
+ 138              		.cfi_def_cfa_offset 16
+ 139 0004 00AF     		add	r7, sp, #0
+ 140              	.LCFI7:
+ 141              		.cfi_def_cfa_register 7
+ 142 0006 7860     		str	r0, [r7, #4]
+ 143 0008 3960     		str	r1, [r7]
+  83:../User/BSP/log.c ****     if (ch == '\r')
+ 144              		.loc 1 83 8
+ 145 000a 7B68     		ldr	r3, [r7, #4]
+ 146 000c 0D2B     		cmp	r3, #13
+ 147 000e 03D1     		bne	.L5
+  84:../User/BSP/log.c ****     {
+  85:../User/BSP/log.c ****         is_lr_sent = 1;
+ 148              		.loc 1 85 20
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 5
+
+
+ 149 0010 184B     		ldr	r3, .L12
+ 150 0012 0122     		movs	r2, #1
+ 151 0014 1A60     		str	r2, [r3]
+ 152 0016 19E0     		b	.L6
+ 153              	.L5:
+  86:../User/BSP/log.c ****     }
+  87:../User/BSP/log.c ****     else if (ch == '\n')
+ 154              		.loc 1 87 13
+ 155 0018 7B68     		ldr	r3, [r7, #4]
+ 156 001a 0A2B     		cmp	r3, #10
+ 157 001c 13D1     		bne	.L7
+  88:../User/BSP/log.c ****     {
+  89:../User/BSP/log.c ****         if (!is_lr_sent)
+ 158              		.loc 1 89 13
+ 159 001e 154B     		ldr	r3, .L12
+ 160 0020 1B68     		ldr	r3, [r3]
+ 161              		.loc 1 89 12
+ 162 0022 002B     		cmp	r3, #0
+ 163 0024 0BD1     		bne	.L8
+  90:../User/BSP/log.c ****         {
+  91:../User/BSP/log.c ****             USART_Data_Send(LOG_USARTx, (uint8_t)'\r');
+ 164              		.loc 1 91 13
+ 165 0026 0D21     		movs	r1, #13
+ 166 0028 1348     		ldr	r0, .L12+4
+ 167 002a FFF7FEFF 		bl	USART_Data_Send
+  92:../User/BSP/log.c ****             /* Loop until the end of transmission */
+  93:../User/BSP/log.c ****             while (USART_Flag_Status_Get(LOG_USARTx, USART_FLAG_TXC) == RESET)
+ 168              		.loc 1 93 19
+ 169 002e 00BF     		nop
+ 170              	.L9:
+ 171              		.loc 1 93 20 discriminator 1
+ 172 0030 4021     		movs	r1, #64
+ 173 0032 1148     		ldr	r0, .L12+4
+ 174 0034 FFF7FEFF 		bl	USART_Flag_Status_Get
+ 175 0038 0346     		mov	r3, r0
+ 176              		.loc 1 93 70 discriminator 1
+ 177 003a 002B     		cmp	r3, #0
+ 178 003c F8D0     		beq	.L9
+ 179              	.L8:
+  94:../User/BSP/log.c ****             {
+  95:../User/BSP/log.c ****             }
+  96:../User/BSP/log.c ****         }
+  97:../User/BSP/log.c ****         is_lr_sent = 0;
+ 180              		.loc 1 97 20
+ 181 003e 0D4B     		ldr	r3, .L12
+ 182 0040 0022     		movs	r2, #0
+ 183 0042 1A60     		str	r2, [r3]
+ 184 0044 02E0     		b	.L6
+ 185              	.L7:
+  98:../User/BSP/log.c ****     }
+  99:../User/BSP/log.c ****     else
+ 100:../User/BSP/log.c ****     {
+ 101:../User/BSP/log.c ****         is_lr_sent = 0;
+ 186              		.loc 1 101 20
+ 187 0046 0B4B     		ldr	r3, .L12
+ 188 0048 0022     		movs	r2, #0
+ 189 004a 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 6
+
+
+ 190              	.L6:
+ 102:../User/BSP/log.c ****     }
+ 103:../User/BSP/log.c ****     USART_Data_Send(LOG_USARTx, (uint8_t)ch);
+ 191              		.loc 1 103 33
+ 192 004c 7B68     		ldr	r3, [r7, #4]
+ 193 004e DBB2     		uxtb	r3, r3
+ 194              		.loc 1 103 5
+ 195 0050 1946     		mov	r1, r3
+ 196 0052 0948     		ldr	r0, .L12+4
+ 197 0054 FFF7FEFF 		bl	USART_Data_Send
+ 104:../User/BSP/log.c ****     /* Loop until the end of transmission */
+ 105:../User/BSP/log.c ****     while (USART_Flag_Status_Get(LOG_USARTx, USART_FLAG_TXDE) == RESET)
+ 198              		.loc 1 105 11
+ 199 0058 00BF     		nop
+ 200              	.L10:
+ 201              		.loc 1 105 12 discriminator 1
+ 202 005a 8021     		movs	r1, #128
+ 203 005c 0648     		ldr	r0, .L12+4
+ 204 005e FFF7FEFF 		bl	USART_Flag_Status_Get
+ 205 0062 0346     		mov	r3, r0
+ 206              		.loc 1 105 63 discriminator 1
+ 207 0064 002B     		cmp	r3, #0
+ 208 0066 F8D0     		beq	.L10
+ 106:../User/BSP/log.c ****     {
+ 107:../User/BSP/log.c ****     }
+ 108:../User/BSP/log.c ****     return ch;
+ 209              		.loc 1 108 12
+ 210 0068 7B68     		ldr	r3, [r7, #4]
+ 109:../User/BSP/log.c **** }
+ 211              		.loc 1 109 1
+ 212 006a 1846     		mov	r0, r3
+ 213 006c 0837     		adds	r7, r7, #8
+ 214              	.LCFI8:
+ 215              		.cfi_def_cfa_offset 8
+ 216 006e BD46     		mov	sp, r7
+ 217              	.LCFI9:
+ 218              		.cfi_def_cfa_register 13
+ 219              		@ sp needed
+ 220 0070 80BD     		pop	{r7, pc}
+ 221              	.L13:
+ 222 0072 00BF     		.align	2
+ 223              	.L12:
+ 224 0074 00000000 		.word	is_lr_sent
+ 225 0078 00380140 		.word	1073821696
+ 226              		.cfi_endproc
+ 227              	.LFE134:
+ 229              		.section	.text._isatty,"ax",%progbits
+ 230              		.align	1
+ 231              		.weak	_isatty
+ 232              		.syntax unified
+ 233              		.thumb
+ 234              		.thumb_func
+ 236              	_isatty:
+ 237              	.LFB135:
+ 110:../User/BSP/log.c **** 
+ 111:../User/BSP/log.c **** #if defined ( __GNUC__ )
+ 112:../User/BSP/log.c **** int _isatty(int fd);
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 7
+
+
+ 113:../User/BSP/log.c **** int _write(int fd, char* ptr, int len);
+ 114:../User/BSP/log.c **** int _close(int fd);
+ 115:../User/BSP/log.c **** int _lseek(int fd, int ptr, int dir);
+ 116:../User/BSP/log.c **** int _read(int fd, char* ptr, int len);
+ 117:../User/BSP/log.c **** int _fstat(int fd, struct stat* st);
+ 118:../User/BSP/log.c **** 
+ 119:../User/BSP/log.c **** #include <sys/stat.h>
+ 120:../User/BSP/log.c **** #include <unistd.h>
+ 121:../User/BSP/log.c **** #include <errno.h>
+ 122:../User/BSP/log.c **** 
+ 123:../User/BSP/log.c ****  
+ 124:../User/BSP/log.c **** __attribute__((weak)) int _isatty(int fd)
+ 125:../User/BSP/log.c **** {
+ 238              		.loc 1 125 1
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 8
+ 241              		@ frame_needed = 1, uses_anonymous_args = 0
+ 242 0000 80B5     		push	{r7, lr}
+ 243              	.LCFI10:
+ 244              		.cfi_def_cfa_offset 8
+ 245              		.cfi_offset 7, -8
+ 246              		.cfi_offset 14, -4
+ 247 0002 82B0     		sub	sp, sp, #8
+ 248              	.LCFI11:
+ 249              		.cfi_def_cfa_offset 16
+ 250 0004 00AF     		add	r7, sp, #0
+ 251              	.LCFI12:
+ 252              		.cfi_def_cfa_register 7
+ 253 0006 7860     		str	r0, [r7, #4]
+ 126:../User/BSP/log.c ****     if (fd >= STDIN_FILENO && fd <= STDERR_FILENO)
+ 254              		.loc 1 126 8
+ 255 0008 7B68     		ldr	r3, [r7, #4]
+ 256 000a 002B     		cmp	r3, #0
+ 257 000c 04DB     		blt	.L15
+ 258              		.loc 1 126 28 discriminator 1
+ 259 000e 7B68     		ldr	r3, [r7, #4]
+ 260 0010 022B     		cmp	r3, #2
+ 261 0012 01DC     		bgt	.L15
+ 127:../User/BSP/log.c ****         return 1;
+ 262              		.loc 1 127 16
+ 263 0014 0123     		movs	r3, #1
+ 264 0016 05E0     		b	.L16
+ 265              	.L15:
+ 128:../User/BSP/log.c ****  
+ 129:../User/BSP/log.c ****     errno = EBADF;
+ 266              		.loc 1 129 5
+ 267 0018 FFF7FEFF 		bl	__errno
+ 268 001c 0346     		mov	r3, r0
+ 269              		.loc 1 129 11
+ 270 001e 0922     		movs	r2, #9
+ 271 0020 1A60     		str	r2, [r3]
+ 130:../User/BSP/log.c ****     return 0;
+ 272              		.loc 1 130 12
+ 273 0022 0023     		movs	r3, #0
+ 274              	.L16:
+ 131:../User/BSP/log.c **** }
+ 275              		.loc 1 131 1
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 8
+
+
+ 276 0024 1846     		mov	r0, r3
+ 277 0026 0837     		adds	r7, r7, #8
+ 278              	.LCFI13:
+ 279              		.cfi_def_cfa_offset 8
+ 280 0028 BD46     		mov	sp, r7
+ 281              	.LCFI14:
+ 282              		.cfi_def_cfa_register 13
+ 283              		@ sp needed
+ 284 002a 80BD     		pop	{r7, pc}
+ 285              		.cfi_endproc
+ 286              	.LFE135:
+ 288              		.section	.text._close,"ax",%progbits
+ 289              		.align	1
+ 290              		.weak	_close
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 295              	_close:
+ 296              	.LFB136:
+ 132:../User/BSP/log.c ****  
+ 133:../User/BSP/log.c **** __attribute__((weak)) int _close(int fd)
+ 134:../User/BSP/log.c **** {
+ 297              		.loc 1 134 1
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 8
+ 300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 301 0000 80B5     		push	{r7, lr}
+ 302              	.LCFI15:
+ 303              		.cfi_def_cfa_offset 8
+ 304              		.cfi_offset 7, -8
+ 305              		.cfi_offset 14, -4
+ 306 0002 82B0     		sub	sp, sp, #8
+ 307              	.LCFI16:
+ 308              		.cfi_def_cfa_offset 16
+ 309 0004 00AF     		add	r7, sp, #0
+ 310              	.LCFI17:
+ 311              		.cfi_def_cfa_register 7
+ 312 0006 7860     		str	r0, [r7, #4]
+ 135:../User/BSP/log.c ****     if (fd >= STDIN_FILENO && fd <= STDERR_FILENO)
+ 313              		.loc 1 135 8
+ 314 0008 7B68     		ldr	r3, [r7, #4]
+ 315 000a 002B     		cmp	r3, #0
+ 316 000c 04DB     		blt	.L18
+ 317              		.loc 1 135 28 discriminator 1
+ 318 000e 7B68     		ldr	r3, [r7, #4]
+ 319 0010 022B     		cmp	r3, #2
+ 320 0012 01DC     		bgt	.L18
+ 136:../User/BSP/log.c ****         return 0;
+ 321              		.loc 1 136 16
+ 322 0014 0023     		movs	r3, #0
+ 323 0016 06E0     		b	.L19
+ 324              	.L18:
+ 137:../User/BSP/log.c ****  
+ 138:../User/BSP/log.c ****     errno = EBADF;
+ 325              		.loc 1 138 5
+ 326 0018 FFF7FEFF 		bl	__errno
+ 327 001c 0346     		mov	r3, r0
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 9
+
+
+ 328              		.loc 1 138 11
+ 329 001e 0922     		movs	r2, #9
+ 330 0020 1A60     		str	r2, [r3]
+ 139:../User/BSP/log.c ****     return -1;
+ 331              		.loc 1 139 12
+ 332 0022 4FF0FF33 		mov	r3, #-1
+ 333              	.L19:
+ 140:../User/BSP/log.c **** }
+ 334              		.loc 1 140 1
+ 335 0026 1846     		mov	r0, r3
+ 336 0028 0837     		adds	r7, r7, #8
+ 337              	.LCFI18:
+ 338              		.cfi_def_cfa_offset 8
+ 339 002a BD46     		mov	sp, r7
+ 340              	.LCFI19:
+ 341              		.cfi_def_cfa_register 13
+ 342              		@ sp needed
+ 343 002c 80BD     		pop	{r7, pc}
+ 344              		.cfi_endproc
+ 345              	.LFE136:
+ 347              		.section	.text._lseek,"ax",%progbits
+ 348              		.align	1
+ 349              		.weak	_lseek
+ 350              		.syntax unified
+ 351              		.thumb
+ 352              		.thumb_func
+ 354              	_lseek:
+ 355              	.LFB137:
+ 141:../User/BSP/log.c ****  
+ 142:../User/BSP/log.c **** __attribute__((weak)) int _lseek(int fd, int ptr, int dir)
+ 143:../User/BSP/log.c **** {
+ 356              		.loc 1 143 1
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 16
+ 359              		@ frame_needed = 1, uses_anonymous_args = 0
+ 360 0000 80B5     		push	{r7, lr}
+ 361              	.LCFI20:
+ 362              		.cfi_def_cfa_offset 8
+ 363              		.cfi_offset 7, -8
+ 364              		.cfi_offset 14, -4
+ 365 0002 84B0     		sub	sp, sp, #16
+ 366              	.LCFI21:
+ 367              		.cfi_def_cfa_offset 24
+ 368 0004 00AF     		add	r7, sp, #0
+ 369              	.LCFI22:
+ 370              		.cfi_def_cfa_register 7
+ 371 0006 F860     		str	r0, [r7, #12]
+ 372 0008 B960     		str	r1, [r7, #8]
+ 373 000a 7A60     		str	r2, [r7, #4]
+ 144:../User/BSP/log.c ****     (void)fd;
+ 145:../User/BSP/log.c ****     (void)ptr;
+ 146:../User/BSP/log.c ****     (void)dir;
+ 147:../User/BSP/log.c ****  
+ 148:../User/BSP/log.c ****     errno = EBADF;
+ 374              		.loc 1 148 5
+ 375 000c FFF7FEFF 		bl	__errno
+ 376 0010 0346     		mov	r3, r0
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 10
+
+
+ 377              		.loc 1 148 11
+ 378 0012 0922     		movs	r2, #9
+ 379 0014 1A60     		str	r2, [r3]
+ 149:../User/BSP/log.c ****     return -1;
+ 380              		.loc 1 149 12
+ 381 0016 4FF0FF33 		mov	r3, #-1
+ 150:../User/BSP/log.c **** }
+ 382              		.loc 1 150 1
+ 383 001a 1846     		mov	r0, r3
+ 384 001c 1037     		adds	r7, r7, #16
+ 385              	.LCFI23:
+ 386              		.cfi_def_cfa_offset 8
+ 387 001e BD46     		mov	sp, r7
+ 388              	.LCFI24:
+ 389              		.cfi_def_cfa_register 13
+ 390              		@ sp needed
+ 391 0020 80BD     		pop	{r7, pc}
+ 392              		.cfi_endproc
+ 393              	.LFE137:
+ 395              		.section	.text._read,"ax",%progbits
+ 396              		.align	1
+ 397              		.weak	_read
+ 398              		.syntax unified
+ 399              		.thumb
+ 400              		.thumb_func
+ 402              	_read:
+ 403              	.LFB138:
+ 151:../User/BSP/log.c ****  
+ 152:../User/BSP/log.c **** // __attribute__((weak)) int _fstat(int fd, struct stat *st)
+ 153:../User/BSP/log.c **** // {
+ 154:../User/BSP/log.c **** //     if (fd >= STDIN_FILENO && fd <= STDERR_FILENO)
+ 155:../User/BSP/log.c **** //     {
+ 156:../User/BSP/log.c **** //         st->st_mode = S_IFCHR;
+ 157:../User/BSP/log.c **** //         return 0;
+ 158:../User/BSP/log.c **** //     }
+ 159:../User/BSP/log.c ****  
+ 160:../User/BSP/log.c **** //     errno = EBADF;
+ 161:../User/BSP/log.c **** //     return 0;
+ 162:../User/BSP/log.c **** // }
+ 163:../User/BSP/log.c **** 
+ 164:../User/BSP/log.c ****  
+ 165:../User/BSP/log.c **** __attribute__((weak)) int _read(int file, char *ptr, int len)
+ 166:../User/BSP/log.c **** {
+ 404              		.loc 1 166 1
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 24
+ 407              		@ frame_needed = 1, uses_anonymous_args = 0
+ 408              		@ link register save eliminated.
+ 409 0000 80B4     		push	{r7}
+ 410              	.LCFI25:
+ 411              		.cfi_def_cfa_offset 4
+ 412              		.cfi_offset 7, -4
+ 413 0002 87B0     		sub	sp, sp, #28
+ 414              	.LCFI26:
+ 415              		.cfi_def_cfa_offset 32
+ 416 0004 00AF     		add	r7, sp, #0
+ 417              	.LCFI27:
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 11
+
+
+ 418              		.cfi_def_cfa_register 7
+ 419 0006 F860     		str	r0, [r7, #12]
+ 420 0008 B960     		str	r1, [r7, #8]
+ 421 000a 7A60     		str	r2, [r7, #4]
+ 167:../User/BSP/log.c ****     (void)file;
+ 168:../User/BSP/log.c ****     int DataIdx;
+ 169:../User/BSP/log.c ****     for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 422              		.loc 1 169 18
+ 423 000c 0023     		movs	r3, #0
+ 424 000e 7B61     		str	r3, [r7, #20]
+ 425              		.loc 1 169 5
+ 426 0010 02E0     		b	.L23
+ 427              	.L24:
+ 428              		.loc 1 169 45 discriminator 3
+ 429 0012 7B69     		ldr	r3, [r7, #20]
+ 430 0014 0133     		adds	r3, r3, #1
+ 431 0016 7B61     		str	r3, [r7, #20]
+ 432              	.L23:
+ 433              		.loc 1 169 31 discriminator 1
+ 434 0018 7A69     		ldr	r2, [r7, #20]
+ 435 001a 7B68     		ldr	r3, [r7, #4]
+ 436 001c 9A42     		cmp	r2, r3
+ 437 001e F8DB     		blt	.L24
+ 170:../User/BSP/log.c ****     {
+ 171:../User/BSP/log.c ****         // *ptr++ = __io_getchar();
+ 172:../User/BSP/log.c ****     }
+ 173:../User/BSP/log.c ****     return len;
+ 438              		.loc 1 173 12
+ 439 0020 7B68     		ldr	r3, [r7, #4]
+ 174:../User/BSP/log.c **** }
+ 440              		.loc 1 174 1
+ 441 0022 1846     		mov	r0, r3
+ 442 0024 1C37     		adds	r7, r7, #28
+ 443              	.LCFI28:
+ 444              		.cfi_def_cfa_offset 4
+ 445 0026 BD46     		mov	sp, r7
+ 446              	.LCFI29:
+ 447              		.cfi_def_cfa_register 13
+ 448              		@ sp needed
+ 449 0028 5DF8047B 		ldr	r7, [sp], #4
+ 450              	.LCFI30:
+ 451              		.cfi_restore 7
+ 452              		.cfi_def_cfa_offset 0
+ 453 002c 7047     		bx	lr
+ 454              		.cfi_endproc
+ 455              	.LFE138:
+ 457              		.section	.text._write,"ax",%progbits
+ 458              		.align	1
+ 459              		.weak	_write
+ 460              		.syntax unified
+ 461              		.thumb
+ 462              		.thumb_func
+ 464              	_write:
+ 465              	.LFB139:
+ 175:../User/BSP/log.c ****  
+ 176:../User/BSP/log.c **** __attribute__((weak)) int _write(int file, char *ptr, int len)
+ 177:../User/BSP/log.c **** {
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 12
+
+
+ 466              		.loc 1 177 1
+ 467              		.cfi_startproc
+ 468              		@ args = 0, pretend = 0, frame = 24
+ 469              		@ frame_needed = 1, uses_anonymous_args = 0
+ 470 0000 80B5     		push	{r7, lr}
+ 471              	.LCFI31:
+ 472              		.cfi_def_cfa_offset 8
+ 473              		.cfi_offset 7, -8
+ 474              		.cfi_offset 14, -4
+ 475 0002 86B0     		sub	sp, sp, #24
+ 476              	.LCFI32:
+ 477              		.cfi_def_cfa_offset 32
+ 478 0004 00AF     		add	r7, sp, #0
+ 479              	.LCFI33:
+ 480              		.cfi_def_cfa_register 7
+ 481 0006 F860     		str	r0, [r7, #12]
+ 482 0008 B960     		str	r1, [r7, #8]
+ 483 000a 7A60     		str	r2, [r7, #4]
+ 178:../User/BSP/log.c ****     (void)file;
+ 179:../User/BSP/log.c ****     int DataIdx;
+ 180:../User/BSP/log.c ****     for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 484              		.loc 1 180 18
+ 485 000c 0023     		movs	r3, #0
+ 486 000e 7B61     		str	r3, [r7, #20]
+ 487              		.loc 1 180 5
+ 488 0010 12E0     		b	.L27
+ 489              	.L29:
+ 181:../User/BSP/log.c ****     {
+ 182:../User/BSP/log.c ****         USART_Data_Send(LOG_USARTx, (uint8_t)(*ptr++));
+ 490              		.loc 1 182 51
+ 491 0012 BB68     		ldr	r3, [r7, #8]
+ 492 0014 5A1C     		adds	r2, r3, #1
+ 493 0016 BA60     		str	r2, [r7, #8]
+ 494              		.loc 1 182 47
+ 495 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 496              		.loc 1 182 9
+ 497 001a 1946     		mov	r1, r3
+ 498 001c 0B48     		ldr	r0, .L31
+ 499 001e FFF7FEFF 		bl	USART_Data_Send
+ 183:../User/BSP/log.c ****         /* Loop until the end of transmission */
+ 184:../User/BSP/log.c ****         while (USART_Flag_Status_Get(LOG_USARTx, USART_FLAG_TXC) == RESET)
+ 500              		.loc 1 184 15
+ 501 0022 00BF     		nop
+ 502              	.L28:
+ 503              		.loc 1 184 16 discriminator 1
+ 504 0024 4021     		movs	r1, #64
+ 505 0026 0948     		ldr	r0, .L31
+ 506 0028 FFF7FEFF 		bl	USART_Flag_Status_Get
+ 507 002c 0346     		mov	r3, r0
+ 508              		.loc 1 184 66 discriminator 1
+ 509 002e 002B     		cmp	r3, #0
+ 510 0030 F8D0     		beq	.L28
+ 180:../User/BSP/log.c ****     {
+ 511              		.loc 1 180 45 discriminator 2
+ 512 0032 7B69     		ldr	r3, [r7, #20]
+ 513 0034 0133     		adds	r3, r3, #1
+ 514 0036 7B61     		str	r3, [r7, #20]
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 13
+
+
+ 515              	.L27:
+ 180:../User/BSP/log.c ****     {
+ 516              		.loc 1 180 31 discriminator 1
+ 517 0038 7A69     		ldr	r2, [r7, #20]
+ 518 003a 7B68     		ldr	r3, [r7, #4]
+ 519 003c 9A42     		cmp	r2, r3
+ 520 003e E8DB     		blt	.L29
+ 185:../User/BSP/log.c ****         {
+ 186:../User/BSP/log.c ****         }
+ 187:../User/BSP/log.c ****     }
+ 188:../User/BSP/log.c ****     return len;
+ 521              		.loc 1 188 12
+ 522 0040 7B68     		ldr	r3, [r7, #4]
+ 189:../User/BSP/log.c **** }
+ 523              		.loc 1 189 1
+ 524 0042 1846     		mov	r0, r3
+ 525 0044 1837     		adds	r7, r7, #24
+ 526              	.LCFI34:
+ 527              		.cfi_def_cfa_offset 8
+ 528 0046 BD46     		mov	sp, r7
+ 529              	.LCFI35:
+ 530              		.cfi_def_cfa_register 13
+ 531              		@ sp needed
+ 532 0048 80BD     		pop	{r7, pc}
+ 533              	.L32:
+ 534 004a 00BF     		.align	2
+ 535              	.L31:
+ 536 004c 00380140 		.word	1073821696
+ 537              		.cfi_endproc
+ 538              	.LFE139:
+ 540              		.text
+ 541              	.Letext0:
+ 542              		.file 2 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 543              		.file 3 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\lib\\gcc\\arm-none-e
+ 544              		.file 4 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 545              		.file 5 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 546              		.file 6 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 547              		.file 7 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 548              		.file 8 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 549              		.file 9 "../firmware/CMSIS/device/n32g430.h"
+ 550              		.file 10 "../firmware/n32g430_std_periph_driver/inc/n32g430_gpio.h"
+ 551              		.file 11 "../firmware/n32g430_std_periph_driver/inc/n32g430_usart.h"
+ 552              		.file 12 "../firmware/n32g430_std_periph_driver/inc/n32g430_rcc.h"
+ 553              		.file 13 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\incl
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 log.c
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:21     .text.log_init:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:27     .text.log_init:00000000 log_init
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:107    .text.log_init:0000006c $d
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:113    .bss.is_lr_sent:00000000 $d
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:116    .bss.is_lr_sent:00000000 is_lr_sent
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:119    .text.fputc:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:125    .text.fputc:00000000 fputc
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:224    .text.fputc:00000074 $d
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:230    .text._isatty:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:236    .text._isatty:00000000 _isatty
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:289    .text._close:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:295    .text._close:00000000 _close
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:348    .text._lseek:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:354    .text._lseek:00000000 _lseek
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:396    .text._read:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:402    .text._read:00000000 _read
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:458    .text._write:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:464    .text._write:00000000 _write
+C:\Users\ZShuai\AppData\Local\Temp\cc8qhIQK.s:536    .text._write:0000004c $d
+
+UNDEFINED SYMBOLS
+RCC_AHB_Peripheral_Clock_Enable
+RCC_APB2_Peripheral_Clock_Enable
+GPIO_Structure_Initialize
+GPIO_Peripheral_Initialize
+USART_Initializes
+USART_Enable
+USART_Data_Send
+USART_Flag_Status_Get
+__errno

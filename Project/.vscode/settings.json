@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "n32g430.h": "c",
+        "bsp_tim.h": "c",
+        "headfile.h": "c",
+        "bsp_adc.h": "c"
+    }
+}

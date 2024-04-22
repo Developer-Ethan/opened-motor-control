@@ -1,0 +1,549 @@
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 6
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"arm_sin_cos_f32.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "../User/DSP/arm_sin_cos_f32.c"
+  20              		.section	.text.arm_sin_cos_f32,"ax",%progbits
+  21              		.align	1
+  22              		.global	arm_sin_cos_f32
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	arm_sin_cos_f32:
+  28              	.LFB103:
+   1:../User/DSP/arm_sin_cos_f32.c **** /* ----------------------------------------------------------------------
+   2:../User/DSP/arm_sin_cos_f32.c ****  * Project:      CMSIS DSP Library
+   3:../User/DSP/arm_sin_cos_f32.c ****  * Title:        arm_sin_cos_f32.c
+   4:../User/DSP/arm_sin_cos_f32.c ****  * Description:  Sine and Cosine calculation for floating-point values
+   5:../User/DSP/arm_sin_cos_f32.c ****  *
+   6:../User/DSP/arm_sin_cos_f32.c ****  * $Date:        23 April 2021
+   7:../User/DSP/arm_sin_cos_f32.c ****  * $Revision:    V1.9.0
+   8:../User/DSP/arm_sin_cos_f32.c ****  *
+   9:../User/DSP/arm_sin_cos_f32.c ****  * Target Processor: Cortex-M and Cortex-A cores
+  10:../User/DSP/arm_sin_cos_f32.c ****  * -------------------------------------------------------------------- */
+  11:../User/DSP/arm_sin_cos_f32.c **** /*
+  12:../User/DSP/arm_sin_cos_f32.c ****  * Copyright (C) 2010-2021 ARM Limited or its affiliates. All rights reserved.
+  13:../User/DSP/arm_sin_cos_f32.c ****  *
+  14:../User/DSP/arm_sin_cos_f32.c ****  * SPDX-License-Identifier: Apache-2.0
+  15:../User/DSP/arm_sin_cos_f32.c ****  *
+  16:../User/DSP/arm_sin_cos_f32.c ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  17:../User/DSP/arm_sin_cos_f32.c ****  * not use this file except in compliance with the License.
+  18:../User/DSP/arm_sin_cos_f32.c ****  * You may obtain a copy of the License at
+  19:../User/DSP/arm_sin_cos_f32.c ****  *
+  20:../User/DSP/arm_sin_cos_f32.c ****  * www.apache.org/licenses/LICENSE-2.0
+  21:../User/DSP/arm_sin_cos_f32.c ****  *
+  22:../User/DSP/arm_sin_cos_f32.c ****  * Unless required by applicable law or agreed to in writing, software
+  23:../User/DSP/arm_sin_cos_f32.c ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  24:../User/DSP/arm_sin_cos_f32.c ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  25:../User/DSP/arm_sin_cos_f32.c ****  * See the License for the specific language governing permissions and
+  26:../User/DSP/arm_sin_cos_f32.c ****  * limitations under the License.
+  27:../User/DSP/arm_sin_cos_f32.c ****  */
+  28:../User/DSP/arm_sin_cos_f32.c **** 
+  29:../User/DSP/arm_sin_cos_f32.c **** #include "arm_common_tables.h"
+  30:../User/DSP/arm_sin_cos_f32.c **** 
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 2
+
+
+  31:../User/DSP/arm_sin_cos_f32.c **** /**
+  32:../User/DSP/arm_sin_cos_f32.c ****   @ingroup groupController
+  33:../User/DSP/arm_sin_cos_f32.c ****  */
+  34:../User/DSP/arm_sin_cos_f32.c **** 
+  35:../User/DSP/arm_sin_cos_f32.c **** /**
+  36:../User/DSP/arm_sin_cos_f32.c ****   @defgroup SinCos Sine Cosine
+  37:../User/DSP/arm_sin_cos_f32.c **** 
+  38:../User/DSP/arm_sin_cos_f32.c ****   Computes the trigonometric sine and cosine values using a combination of table lookup
+  39:../User/DSP/arm_sin_cos_f32.c ****   and linear interpolation.
+  40:../User/DSP/arm_sin_cos_f32.c ****   There are separate functions for Q31 and floating-point data types.
+  41:../User/DSP/arm_sin_cos_f32.c ****   The input to the floating-point version is in degrees while the
+  42:../User/DSP/arm_sin_cos_f32.c ****   fixed-point Q31 have a scaled input with the range
+  43:../User/DSP/arm_sin_cos_f32.c ****   [-1 0.9999] mapping to [-180 +180] degrees.
+  44:../User/DSP/arm_sin_cos_f32.c **** 
+  45:../User/DSP/arm_sin_cos_f32.c ****   The floating point function also allows values that are out of the usual range. When this happens
+  46:../User/DSP/arm_sin_cos_f32.c ****   take extra time to adjust the input value to the range of [-180 180].
+  47:../User/DSP/arm_sin_cos_f32.c **** 
+  48:../User/DSP/arm_sin_cos_f32.c ****   The result is accurate to 5 digits after the decimal point.
+  49:../User/DSP/arm_sin_cos_f32.c **** 
+  50:../User/DSP/arm_sin_cos_f32.c ****   The implementation is based on table lookup using 360 values together with linear interpolation.
+  51:../User/DSP/arm_sin_cos_f32.c ****   The steps used are:
+  52:../User/DSP/arm_sin_cos_f32.c ****    -# Calculation of the nearest integer table index.
+  53:../User/DSP/arm_sin_cos_f32.c ****    -# Compute the fractional portion (fract) of the input.
+  54:../User/DSP/arm_sin_cos_f32.c ****    -# Fetch the value corresponding to \c index from sine table to \c y0 and also value from \c ind
+  55:../User/DSP/arm_sin_cos_f32.c ****    -# Sine value is computed as <code> *psinVal = y0 + (fract * (y1 - y0))</code>.
+  56:../User/DSP/arm_sin_cos_f32.c ****    -# Fetch the value corresponding to \c index from cosine table to \c y0 and also value from \c i
+  57:../User/DSP/arm_sin_cos_f32.c ****    -# Cosine value is computed as <code> *pcosVal = y0 + (fract * (y1 - y0))</code>.
+  58:../User/DSP/arm_sin_cos_f32.c ****  */
+  59:../User/DSP/arm_sin_cos_f32.c **** 
+  60:../User/DSP/arm_sin_cos_f32.c **** /**
+  61:../User/DSP/arm_sin_cos_f32.c ****   @addtogroup SinCos
+  62:../User/DSP/arm_sin_cos_f32.c ****   @{
+  63:../User/DSP/arm_sin_cos_f32.c ****  */
+  64:../User/DSP/arm_sin_cos_f32.c **** 
+  65:../User/DSP/arm_sin_cos_f32.c **** /**
+  66:../User/DSP/arm_sin_cos_f32.c ****   @brief         Floating-point sin_cos function.
+  67:../User/DSP/arm_sin_cos_f32.c ****   @param[in]     theta    input value in degrees
+  68:../User/DSP/arm_sin_cos_f32.c ****   @param[out]    pSinVal  points to processed sine output
+  69:../User/DSP/arm_sin_cos_f32.c ****   @param[out]    pCosVal  points to processed cosine output
+  70:../User/DSP/arm_sin_cos_f32.c ****   @return        none
+  71:../User/DSP/arm_sin_cos_f32.c ****  */
+  72:../User/DSP/arm_sin_cos_f32.c **** 
+  73:../User/DSP/arm_sin_cos_f32.c **** void arm_sin_cos_f32(
+  74:../User/DSP/arm_sin_cos_f32.c ****     float32_t theta,
+  75:../User/DSP/arm_sin_cos_f32.c ****     float32_t *pSinVal,
+  76:../User/DSP/arm_sin_cos_f32.c ****     float32_t *pCosVal)
+  77:../User/DSP/arm_sin_cos_f32.c **** {
+  29              		.loc 1 77 1
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 64
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 91B0     		sub	sp, sp, #68
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 3
+
+
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 72
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 87ED030A 		vstr.32	s0, [r7, #12]
+  45 000a B860     		str	r0, [r7, #8]
+  46 000c 7960     		str	r1, [r7, #4]
+  78:../User/DSP/arm_sin_cos_f32.c ****   float32_t fract, in;      /* Temporary input, output variables */
+  79:../User/DSP/arm_sin_cos_f32.c ****   uint16_t indexS, indexC;  /* Index variable */
+  80:../User/DSP/arm_sin_cos_f32.c ****   float32_t f1, f2, d1, d2; /* Two nearest output values */
+  81:../User/DSP/arm_sin_cos_f32.c ****   float32_t Dn, Df;
+  82:../User/DSP/arm_sin_cos_f32.c ****   float32_t temp, findex;
+  83:../User/DSP/arm_sin_cos_f32.c **** 
+  84:../User/DSP/arm_sin_cos_f32.c ****   /* input x is in degrees */
+  85:../User/DSP/arm_sin_cos_f32.c ****   /* Scale input, divide input by 360, for cosine add 0.25 (pi/2) to read sine table */
+  86:../User/DSP/arm_sin_cos_f32.c ****   in = theta * 0.00277777777778f;
+  47              		.loc 1 86 6
+  48 000e D7ED037A 		vldr.32	s15, [r7, #12]
+  49 0012 9FEDB47A 		vldr.32	s14, .L9
+  50 0016 67EE877A 		vmul.f32	s15, s15, s14
+  51 001a C7ED0F7A 		vstr.32	s15, [r7, #60]
+  87:../User/DSP/arm_sin_cos_f32.c **** 
+  88:../User/DSP/arm_sin_cos_f32.c ****   if (in < 0.0f)
+  52              		.loc 1 88 6
+  53 001e D7ED0F7A 		vldr.32	s15, [r7, #60]
+  54 0022 F5EEC07A 		vcmpe.f32	s15, #0
+  55 0026 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  56 002a 05D5     		bpl	.L2
+  89:../User/DSP/arm_sin_cos_f32.c ****   {
+  90:../User/DSP/arm_sin_cos_f32.c ****     in = -in;
+  57              		.loc 1 90 8
+  58 002c D7ED0F7A 		vldr.32	s15, [r7, #60]
+  59 0030 F1EE677A 		vneg.f32	s15, s15
+  60 0034 C7ED0F7A 		vstr.32	s15, [r7, #60]
+  61              	.L2:
+  91:../User/DSP/arm_sin_cos_f32.c ****   }
+  92:../User/DSP/arm_sin_cos_f32.c **** 
+  93:../User/DSP/arm_sin_cos_f32.c ****   in = in - (int32_t)in;
+  62              		.loc 1 93 13
+  63 0038 D7ED0F7A 		vldr.32	s15, [r7, #60]
+  64 003c FDEEE77A 		vcvt.s32.f32	s15, s15
+  65              		.loc 1 93 11
+  66 0040 F8EEE77A 		vcvt.f32.s32	s15, s15
+  67              		.loc 1 93 6
+  68 0044 97ED0F7A 		vldr.32	s14, [r7, #60]
+  69 0048 77EE677A 		vsub.f32	s15, s14, s15
+  70 004c C7ED0F7A 		vstr.32	s15, [r7, #60]
+  94:../User/DSP/arm_sin_cos_f32.c **** 
+  95:../User/DSP/arm_sin_cos_f32.c ****   /* Calculate the nearest index */
+  96:../User/DSP/arm_sin_cos_f32.c ****   findex = (float32_t)FAST_MATH_TABLE_SIZE * in;
+  71              		.loc 1 96 10
+  72 0050 D7ED0F7A 		vldr.32	s15, [r7, #60]
+  73 0054 9FEDA47A 		vldr.32	s14, .L9+4
+  74 0058 67EE877A 		vmul.f32	s15, s15, s14
+  75 005c C7ED0E7A 		vstr.32	s15, [r7, #56]
+  97:../User/DSP/arm_sin_cos_f32.c ****   indexS = ((uint16_t)findex) & 0x1ff;
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 4
+
+
+  76              		.loc 1 97 13
+  77 0060 D7ED0E7A 		vldr.32	s15, [r7, #56]
+  78 0064 FCEEE77A 		vcvt.u32.f32	s15, s15
+  79 0068 17EE903A 		vmov	r3, s15	@ int
+  80 006c 9BB2     		uxth	r3, r3
+  81              		.loc 1 97 10
+  82 006e C3F30803 		ubfx	r3, r3, #0, #9
+  83 0072 FB86     		strh	r3, [r7, #54]	@ movhi
+  98:../User/DSP/arm_sin_cos_f32.c ****   indexC = (indexS + (FAST_MATH_TABLE_SIZE / 4)) & 0x1ff;
+  84              		.loc 1 98 20
+  85 0074 FB8E     		ldrh	r3, [r7, #54]	@ movhi
+  86 0076 8033     		adds	r3, r3, #128
+  87 0078 9BB2     		uxth	r3, r3
+  88              		.loc 1 98 10
+  89 007a C3F30803 		ubfx	r3, r3, #0, #9
+  90 007e BB86     		strh	r3, [r7, #52]	@ movhi
+  99:../User/DSP/arm_sin_cos_f32.c **** 
+ 100:../User/DSP/arm_sin_cos_f32.c ****   /* Calculation of fractional value */
+ 101:../User/DSP/arm_sin_cos_f32.c ****   fract = findex - (float32_t)indexS;
+  91              		.loc 1 101 20
+  92 0080 FB8E     		ldrh	r3, [r7, #54]
+  93 0082 07EE903A 		vmov	s15, r3	@ int
+  94 0086 F8EE677A 		vcvt.f32.u32	s15, s15
+  95              		.loc 1 101 9
+  96 008a 97ED0E7A 		vldr.32	s14, [r7, #56]
+  97 008e 77EE677A 		vsub.f32	s15, s14, s15
+  98 0092 C7ED0C7A 		vstr.32	s15, [r7, #48]
+ 102:../User/DSP/arm_sin_cos_f32.c **** 
+ 103:../User/DSP/arm_sin_cos_f32.c ****   /* Read two nearest values of input value from the cos & sin tables */
+ 104:../User/DSP/arm_sin_cos_f32.c ****   f1 = sinTable_f32[indexC];
+  99              		.loc 1 104 20
+ 100 0096 BB8E     		ldrh	r3, [r7, #52]
+ 101              		.loc 1 104 6
+ 102 0098 944A     		ldr	r2, .L9+8
+ 103 009a 9B00     		lsls	r3, r3, #2
+ 104 009c 1344     		add	r3, r3, r2
+ 105 009e 1B68     		ldr	r3, [r3]	@ float
+ 106 00a0 FB62     		str	r3, [r7, #44]	@ float
+ 105:../User/DSP/arm_sin_cos_f32.c ****   f2 = sinTable_f32[indexC + 1];
+ 107              		.loc 1 105 28
+ 108 00a2 BB8E     		ldrh	r3, [r7, #52]
+ 109 00a4 0133     		adds	r3, r3, #1
+ 110              		.loc 1 105 6
+ 111 00a6 914A     		ldr	r2, .L9+8
+ 112 00a8 9B00     		lsls	r3, r3, #2
+ 113 00aa 1344     		add	r3, r3, r2
+ 114 00ac 1B68     		ldr	r3, [r3]	@ float
+ 115 00ae BB62     		str	r3, [r7, #40]	@ float
+ 106:../User/DSP/arm_sin_cos_f32.c ****   d1 = -sinTable_f32[indexS];
+ 116              		.loc 1 106 21
+ 117 00b0 FB8E     		ldrh	r3, [r7, #54]
+ 118 00b2 8E4A     		ldr	r2, .L9+8
+ 119 00b4 9B00     		lsls	r3, r3, #2
+ 120 00b6 1344     		add	r3, r3, r2
+ 121 00b8 D3ED007A 		vldr.32	s15, [r3]
+ 122              		.loc 1 106 6
+ 123 00bc F1EE677A 		vneg.f32	s15, s15
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 5
+
+
+ 124 00c0 C7ED097A 		vstr.32	s15, [r7, #36]
+ 107:../User/DSP/arm_sin_cos_f32.c ****   d2 = -sinTable_f32[indexS + 1];
+ 125              		.loc 1 107 29
+ 126 00c4 FB8E     		ldrh	r3, [r7, #54]
+ 127 00c6 0133     		adds	r3, r3, #1
+ 128              		.loc 1 107 21
+ 129 00c8 884A     		ldr	r2, .L9+8
+ 130 00ca 9B00     		lsls	r3, r3, #2
+ 131 00cc 1344     		add	r3, r3, r2
+ 132 00ce D3ED007A 		vldr.32	s15, [r3]
+ 133              		.loc 1 107 6
+ 134 00d2 F1EE677A 		vneg.f32	s15, s15
+ 135 00d6 C7ED087A 		vstr.32	s15, [r7, #32]
+ 108:../User/DSP/arm_sin_cos_f32.c **** 
+ 109:../User/DSP/arm_sin_cos_f32.c ****   temp = (1.0f - fract) * f1 + fract * f2;
+ 136              		.loc 1 109 16
+ 137 00da B7EE007A 		vmov.f32	s14, #1.0e+0
+ 138 00de D7ED0C7A 		vldr.32	s15, [r7, #48]
+ 139 00e2 37EE677A 		vsub.f32	s14, s14, s15
+ 140              		.loc 1 109 25
+ 141 00e6 D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 142 00ea 27EE277A 		vmul.f32	s14, s14, s15
+ 143              		.loc 1 109 38
+ 144 00ee D7ED0C6A 		vldr.32	s13, [r7, #48]
+ 145 00f2 D7ED0A7A 		vldr.32	s15, [r7, #40]
+ 146 00f6 66EEA77A 		vmul.f32	s15, s13, s15
+ 147              		.loc 1 109 8
+ 148 00fa 77EE277A 		vadd.f32	s15, s14, s15
+ 149 00fe C7ED077A 		vstr.32	s15, [r7, #28]
+ 110:../User/DSP/arm_sin_cos_f32.c **** 
+ 111:../User/DSP/arm_sin_cos_f32.c ****   Dn = 0.0122718463030f; /* delta between the two points (fixed), in this case 2*pi/FAST_MATH_TABLE
+ 150              		.loc 1 111 6
+ 151 0102 7B4B     		ldr	r3, .L9+12
+ 152 0104 BB61     		str	r3, [r7, #24]	@ float
+ 112:../User/DSP/arm_sin_cos_f32.c ****   Df = f2 - f1;          /* delta between the values of the functions */
+ 153              		.loc 1 112 6
+ 154 0106 97ED0A7A 		vldr.32	s14, [r7, #40]
+ 155 010a D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 156 010e 77EE677A 		vsub.f32	s15, s14, s15
+ 157 0112 C7ED057A 		vstr.32	s15, [r7, #20]
+ 113:../User/DSP/arm_sin_cos_f32.c **** 
+ 114:../User/DSP/arm_sin_cos_f32.c ****   temp = Dn * (d1 + d2) - 2 * Df;
+ 158              		.loc 1 114 19
+ 159 0116 97ED097A 		vldr.32	s14, [r7, #36]
+ 160 011a D7ED087A 		vldr.32	s15, [r7, #32]
+ 161 011e 37EE277A 		vadd.f32	s14, s14, s15
+ 162              		.loc 1 114 13
+ 163 0122 D7ED067A 		vldr.32	s15, [r7, #24]
+ 164 0126 27EE277A 		vmul.f32	s14, s14, s15
+ 165              		.loc 1 114 29
+ 166 012a D7ED057A 		vldr.32	s15, [r7, #20]
+ 167 012e 77EEA77A 		vadd.f32	s15, s15, s15
+ 168              		.loc 1 114 8
+ 169 0132 77EE677A 		vsub.f32	s15, s14, s15
+ 170 0136 C7ED077A 		vstr.32	s15, [r7, #28]
+ 115:../User/DSP/arm_sin_cos_f32.c ****   temp = fract * temp + (3 * Df - (d2 + 2 * d1) * Dn);
+ 171              		.loc 1 115 16
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 6
+
+
+ 172 013a 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 173 013e D7ED077A 		vldr.32	s15, [r7, #28]
+ 174 0142 27EE277A 		vmul.f32	s14, s14, s15
+ 175              		.loc 1 115 28
+ 176 0146 D7ED057A 		vldr.32	s15, [r7, #20]
+ 177 014a F0EE086A 		vmov.f32	s13, #3.0e+0
+ 178 014e 67EEA66A 		vmul.f32	s13, s15, s13
+ 179              		.loc 1 115 43
+ 180 0152 D7ED097A 		vldr.32	s15, [r7, #36]
+ 181 0156 37EEA76A 		vadd.f32	s12, s15, s15
+ 182              		.loc 1 115 39
+ 183 015a D7ED087A 		vldr.32	s15, [r7, #32]
+ 184 015e 36EE276A 		vadd.f32	s12, s12, s15
+ 185              		.loc 1 115 49
+ 186 0162 D7ED067A 		vldr.32	s15, [r7, #24]
+ 187 0166 66EE277A 		vmul.f32	s15, s12, s15
+ 188              		.loc 1 115 33
+ 189 016a 76EEE77A 		vsub.f32	s15, s13, s15
+ 190              		.loc 1 115 8
+ 191 016e 77EE277A 		vadd.f32	s15, s14, s15
+ 192 0172 C7ED077A 		vstr.32	s15, [r7, #28]
+ 116:../User/DSP/arm_sin_cos_f32.c ****   temp = fract * temp + d1 * Dn;
+ 193              		.loc 1 116 16
+ 194 0176 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 195 017a D7ED077A 		vldr.32	s15, [r7, #28]
+ 196 017e 27EE277A 		vmul.f32	s14, s14, s15
+ 197              		.loc 1 116 28
+ 198 0182 D7ED096A 		vldr.32	s13, [r7, #36]
+ 199 0186 D7ED067A 		vldr.32	s15, [r7, #24]
+ 200 018a 66EEA77A 		vmul.f32	s15, s13, s15
+ 201              		.loc 1 116 8
+ 202 018e 77EE277A 		vadd.f32	s15, s14, s15
+ 203 0192 C7ED077A 		vstr.32	s15, [r7, #28]
+ 117:../User/DSP/arm_sin_cos_f32.c **** 
+ 118:../User/DSP/arm_sin_cos_f32.c ****   /* Calculation of cosine value */
+ 119:../User/DSP/arm_sin_cos_f32.c ****   *pCosVal = fract * temp + f1;
+ 204              		.loc 1 119 20
+ 205 0196 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 206 019a D7ED077A 		vldr.32	s15, [r7, #28]
+ 207 019e 27EE277A 		vmul.f32	s14, s14, s15
+ 208              		.loc 1 119 27
+ 209 01a2 D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 210 01a6 77EE277A 		vadd.f32	s15, s14, s15
+ 211              		.loc 1 119 12
+ 212 01aa 7B68     		ldr	r3, [r7, #4]
+ 213 01ac C3ED007A 		vstr.32	s15, [r3]
+ 120:../User/DSP/arm_sin_cos_f32.c **** 
+ 121:../User/DSP/arm_sin_cos_f32.c ****   /* Read two nearest values of input value from the cos & sin tables */
+ 122:../User/DSP/arm_sin_cos_f32.c ****   f1 = sinTable_f32[indexS];
+ 214              		.loc 1 122 20
+ 215 01b0 FB8E     		ldrh	r3, [r7, #54]
+ 216              		.loc 1 122 6
+ 217 01b2 4E4A     		ldr	r2, .L9+8
+ 218 01b4 9B00     		lsls	r3, r3, #2
+ 219 01b6 1344     		add	r3, r3, r2
+ 220 01b8 1B68     		ldr	r3, [r3]	@ float
+ 221 01ba FB62     		str	r3, [r7, #44]	@ float
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 7
+
+
+ 123:../User/DSP/arm_sin_cos_f32.c ****   f2 = sinTable_f32[indexS + 1];
+ 222              		.loc 1 123 28
+ 223 01bc FB8E     		ldrh	r3, [r7, #54]
+ 224 01be 0133     		adds	r3, r3, #1
+ 225              		.loc 1 123 6
+ 226 01c0 4A4A     		ldr	r2, .L9+8
+ 227 01c2 9B00     		lsls	r3, r3, #2
+ 228 01c4 1344     		add	r3, r3, r2
+ 229 01c6 1B68     		ldr	r3, [r3]	@ float
+ 230 01c8 BB62     		str	r3, [r7, #40]	@ float
+ 124:../User/DSP/arm_sin_cos_f32.c ****   d1 = sinTable_f32[indexC];
+ 231              		.loc 1 124 20
+ 232 01ca BB8E     		ldrh	r3, [r7, #52]
+ 233              		.loc 1 124 6
+ 234 01cc 474A     		ldr	r2, .L9+8
+ 235 01ce 9B00     		lsls	r3, r3, #2
+ 236 01d0 1344     		add	r3, r3, r2
+ 237 01d2 1B68     		ldr	r3, [r3]	@ float
+ 238 01d4 7B62     		str	r3, [r7, #36]	@ float
+ 125:../User/DSP/arm_sin_cos_f32.c ****   d2 = sinTable_f32[indexC + 1];
+ 239              		.loc 1 125 28
+ 240 01d6 BB8E     		ldrh	r3, [r7, #52]
+ 241 01d8 0133     		adds	r3, r3, #1
+ 242              		.loc 1 125 6
+ 243 01da 444A     		ldr	r2, .L9+8
+ 244 01dc 9B00     		lsls	r3, r3, #2
+ 245 01de 1344     		add	r3, r3, r2
+ 246 01e0 1B68     		ldr	r3, [r3]	@ float
+ 247 01e2 3B62     		str	r3, [r7, #32]	@ float
+ 126:../User/DSP/arm_sin_cos_f32.c **** 
+ 127:../User/DSP/arm_sin_cos_f32.c ****   temp = (1.0f - fract) * f1 + fract * f2;
+ 248              		.loc 1 127 16
+ 249 01e4 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 250 01e8 D7ED0C7A 		vldr.32	s15, [r7, #48]
+ 251 01ec 37EE677A 		vsub.f32	s14, s14, s15
+ 252              		.loc 1 127 25
+ 253 01f0 D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 254 01f4 27EE277A 		vmul.f32	s14, s14, s15
+ 255              		.loc 1 127 38
+ 256 01f8 D7ED0C6A 		vldr.32	s13, [r7, #48]
+ 257 01fc D7ED0A7A 		vldr.32	s15, [r7, #40]
+ 258 0200 66EEA77A 		vmul.f32	s15, s13, s15
+ 259              		.loc 1 127 8
+ 260 0204 77EE277A 		vadd.f32	s15, s14, s15
+ 261 0208 C7ED077A 		vstr.32	s15, [r7, #28]
+ 128:../User/DSP/arm_sin_cos_f32.c **** 
+ 129:../User/DSP/arm_sin_cos_f32.c ****   Df = f2 - f1; // delta between the values of the functions
+ 262              		.loc 1 129 6
+ 263 020c 97ED0A7A 		vldr.32	s14, [r7, #40]
+ 264 0210 D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 265 0214 77EE677A 		vsub.f32	s15, s14, s15
+ 266 0218 C7ED057A 		vstr.32	s15, [r7, #20]
+ 130:../User/DSP/arm_sin_cos_f32.c ****   temp = Dn * (d1 + d2) - 2 * Df;
+ 267              		.loc 1 130 19
+ 268 021c 97ED097A 		vldr.32	s14, [r7, #36]
+ 269 0220 D7ED087A 		vldr.32	s15, [r7, #32]
+ 270 0224 37EE277A 		vadd.f32	s14, s14, s15
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 8
+
+
+ 271              		.loc 1 130 13
+ 272 0228 D7ED067A 		vldr.32	s15, [r7, #24]
+ 273 022c 27EE277A 		vmul.f32	s14, s14, s15
+ 274              		.loc 1 130 29
+ 275 0230 D7ED057A 		vldr.32	s15, [r7, #20]
+ 276 0234 77EEA77A 		vadd.f32	s15, s15, s15
+ 277              		.loc 1 130 8
+ 278 0238 77EE677A 		vsub.f32	s15, s14, s15
+ 279 023c C7ED077A 		vstr.32	s15, [r7, #28]
+ 131:../User/DSP/arm_sin_cos_f32.c ****   temp = fract * temp + (3 * Df - (d2 + 2 * d1) * Dn);
+ 280              		.loc 1 131 16
+ 281 0240 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 282 0244 D7ED077A 		vldr.32	s15, [r7, #28]
+ 283 0248 27EE277A 		vmul.f32	s14, s14, s15
+ 284              		.loc 1 131 28
+ 285 024c D7ED057A 		vldr.32	s15, [r7, #20]
+ 286 0250 F0EE086A 		vmov.f32	s13, #3.0e+0
+ 287 0254 67EEA66A 		vmul.f32	s13, s15, s13
+ 288              		.loc 1 131 43
+ 289 0258 D7ED097A 		vldr.32	s15, [r7, #36]
+ 290 025c 37EEA76A 		vadd.f32	s12, s15, s15
+ 291              		.loc 1 131 39
+ 292 0260 D7ED087A 		vldr.32	s15, [r7, #32]
+ 293 0264 36EE276A 		vadd.f32	s12, s12, s15
+ 294              		.loc 1 131 49
+ 295 0268 D7ED067A 		vldr.32	s15, [r7, #24]
+ 296 026c 66EE277A 		vmul.f32	s15, s12, s15
+ 297              		.loc 1 131 33
+ 298 0270 76EEE77A 		vsub.f32	s15, s13, s15
+ 299              		.loc 1 131 8
+ 300 0274 77EE277A 		vadd.f32	s15, s14, s15
+ 301 0278 C7ED077A 		vstr.32	s15, [r7, #28]
+ 132:../User/DSP/arm_sin_cos_f32.c ****   temp = fract * temp + d1 * Dn;
+ 302              		.loc 1 132 16
+ 303 027c 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 304 0280 D7ED077A 		vldr.32	s15, [r7, #28]
+ 305 0284 27EE277A 		vmul.f32	s14, s14, s15
+ 306              		.loc 1 132 28
+ 307 0288 D7ED096A 		vldr.32	s13, [r7, #36]
+ 308 028c D7ED067A 		vldr.32	s15, [r7, #24]
+ 309 0290 66EEA77A 		vmul.f32	s15, s13, s15
+ 310              		.loc 1 132 8
+ 311 0294 77EE277A 		vadd.f32	s15, s14, s15
+ 312 0298 C7ED077A 		vstr.32	s15, [r7, #28]
+ 133:../User/DSP/arm_sin_cos_f32.c **** 
+ 134:../User/DSP/arm_sin_cos_f32.c ****   /* Calculation of sine value */
+ 135:../User/DSP/arm_sin_cos_f32.c ****   *pSinVal = fract * temp + f1;
+ 313              		.loc 1 135 20
+ 314 029c 97ED0C7A 		vldr.32	s14, [r7, #48]
+ 315 02a0 D7ED077A 		vldr.32	s15, [r7, #28]
+ 316 02a4 27EE277A 		vmul.f32	s14, s14, s15
+ 317              		.loc 1 135 27
+ 318 02a8 D7ED0B7A 		vldr.32	s15, [r7, #44]
+ 319 02ac 77EE277A 		vadd.f32	s15, s14, s15
+ 320              		.loc 1 135 12
+ 321 02b0 BB68     		ldr	r3, [r7, #8]
+ 322 02b2 C3ED007A 		vstr.32	s15, [r3]
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 9
+
+
+ 136:../User/DSP/arm_sin_cos_f32.c **** 
+ 137:../User/DSP/arm_sin_cos_f32.c ****   if (theta < 0.0f)
+ 323              		.loc 1 137 6
+ 324 02b6 D7ED037A 		vldr.32	s15, [r7, #12]
+ 325 02ba F5EEC07A 		vcmpe.f32	s15, #0
+ 326 02be F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 327 02c2 00D4     		bmi	.L7
+ 138:../User/DSP/arm_sin_cos_f32.c ****   {
+ 139:../User/DSP/arm_sin_cos_f32.c ****     *pSinVal = -*pSinVal;
+ 140:../User/DSP/arm_sin_cos_f32.c ****   }
+ 141:../User/DSP/arm_sin_cos_f32.c **** }
+ 328              		.loc 1 141 1
+ 329 02c4 07E0     		b	.L8
+ 330              	.L7:
+ 139:../User/DSP/arm_sin_cos_f32.c ****   }
+ 331              		.loc 1 139 17
+ 332 02c6 BB68     		ldr	r3, [r7, #8]
+ 333 02c8 D3ED007A 		vldr.32	s15, [r3]
+ 139:../User/DSP/arm_sin_cos_f32.c ****   }
+ 334              		.loc 1 139 16
+ 335 02cc F1EE677A 		vneg.f32	s15, s15
+ 139:../User/DSP/arm_sin_cos_f32.c ****   }
+ 336              		.loc 1 139 14
+ 337 02d0 BB68     		ldr	r3, [r7, #8]
+ 338 02d2 C3ED007A 		vstr.32	s15, [r3]
+ 339              	.L8:
+ 340              		.loc 1 141 1
+ 341 02d6 00BF     		nop
+ 342 02d8 4437     		adds	r7, r7, #68
+ 343              	.LCFI3:
+ 344              		.cfi_def_cfa_offset 4
+ 345 02da BD46     		mov	sp, r7
+ 346              	.LCFI4:
+ 347              		.cfi_def_cfa_register 13
+ 348              		@ sp needed
+ 349 02dc 5DF8047B 		ldr	r7, [sp], #4
+ 350              	.LCFI5:
+ 351              		.cfi_restore 7
+ 352              		.cfi_def_cfa_offset 0
+ 353 02e0 7047     		bx	lr
+ 354              	.L10:
+ 355 02e2 00BF     		.align	2
+ 356              	.L9:
+ 357 02e4 610B363B 		.word	993397601
+ 358 02e8 00000044 		.word	1140850688
+ 359 02ec 00000000 		.word	sinTable_f32
+ 360 02f0 DB0F493C 		.word	1011421147
+ 361              		.cfi_endproc
+ 362              	.LFE103:
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 367              		.file 3 "d:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.3 rel1\\arm-none-eabi\\inclu
+ 368              		.file 4 "../User/DSP/arm_math_types.h"
+ 369              		.file 5 "../User/DSP/arm_common_tables.h"
+ARM GAS  C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_sin_cos_f32.c
+C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s:21     .text.arm_sin_cos_f32:00000000 $t
+C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s:27     .text.arm_sin_cos_f32:00000000 arm_sin_cos_f32
+C:\Users\ZShuai\AppData\Local\Temp\ccGiOESa.s:357    .text.arm_sin_cos_f32:000002e4 $d
+
+UNDEFINED SYMBOLS
+sinTable_f32
