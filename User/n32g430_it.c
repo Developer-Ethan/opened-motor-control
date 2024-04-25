@@ -213,7 +213,6 @@ void ADC_IRQHandler(void)
 	uint8_t Channel_First = 4 - Jlen_JSEQ;
 	uint8_t Channel_JSEQ;
 	PHASE_CURR_DEF Phase_Curr_Temp;
-	uint16_t ComposedVectorVoltAmp;
 
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDC) == SET)
 	{
@@ -272,10 +271,7 @@ void ADC_IRQHandler(void)
 
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 			EstFlux_Ctr();
-			Svm.Angle_D = AngleAmp_Get(Foc.RotaVolt, &ComposedVectorVoltAmp);
-			Svm.Amp = ComposedVectorVoltAmp;
-			Svm.Angle = Svm.Angle_D + Foc.Angle;
-			Svm_Ctr(&Svm,&Foc.StatVolt);
+			Svm_Ctr(&Svm, &Foc.StatVolt);
 
 			switch_pwm(INV_ALL_ON);
 		}

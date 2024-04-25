@@ -17,21 +17,19 @@
 /*foc parameters*/
 #define PWM_FREQ (16000u)
 #define PWM_PERIOD (1.0f / PWM_FREQ) // 50us
-#define DEADTIME (1.125f)//us
-#define MINWINDOW (2.0f)//us
-#define ADC_CONV_TIME (0.8f)//us;f = 128m/4;time = f*(12.5+13.5)
-#define STABLE_SCALE (int16_t)((MINWINDOW + DEADTIME + ADC_CONV_TIME)*(128 / (TIMER_CLOCK_PRESCALER_SET + 1)))
-#define SHIFT_SCALE (int16_t)((MINWINDOW + DEADTIME)*(128 / (TIMER_CLOCK_PRESCALER_SET + 1)))
+#define DEADTIME (1.125f)            // us
+#define MINWINDOW (2.0f)             // us
+#define ADC_CONV_TIME (0.8f)         // us;f = 128m/4;time = f*(12.5+13.5)
+#define STABLE_SCALE (int16_t)((MINWINDOW + DEADTIME + ADC_CONV_TIME) * (128 / (TIMER_CLOCK_PRESCALER_SET + 1)))
+#define SHIFT_SCALE (int16_t)((MINWINDOW + DEADTIME) * (128 / (TIMER_CLOCK_PRESCALER_SET + 1)))
 
-
-
-#define RS_PHASE (0.2f)
-#define LD_PHASE (0.306f)
-#define LQ_PHASE (0.306f)
+#define RS_PHASE (0.74f)
+#define LD_PHASE (0.44f)
+#define LQ_PHASE (0.44f)
 #define IND_PHASE (LQ_PHASE)
-#define POLE_PAIRS (2u)
-#define VOLT_RATE (30.0f)
-#define CURR_RATE (10.0f)
+#define POLE_PAIRS (6u)
+#define VOLT_RATE (22.0f)
+#define CURR_RATE (14.5f)
 #define EFREQ_RATE (300.0f)
 
 #define VOLT_BASE (float)((VOLT_RATE * 1.414f) / 1.732f)
@@ -67,9 +65,9 @@
 #define IOUT_MAX_SPDLOOP (int32_t)(1.2f * 32767)
 #define IOUT_MIN_SPDLOOP (-IOUT_MAX_SPDLOOP)
 
-#define SPEED_TARGET_OPENLOOP (500.0f)
-#define SPEED_SWITCH_OPENLOOP (200.0f)
-#define SPEED_SLOPE (2.0f)
+#define SPEED_TARGET_OPENLOOP (94.0f)
+#define SPEED_SWITCH_OPENLOOP (80.0f)
+#define SPEED_SLOPE (1.0f)
 #define ALIGN_CURR_OPENLOOP (2.0f)
 #define ALIGN_CURR_SLOPE (0.2f)
 #define ALIGN_ANGLE Q16(0.0f)
