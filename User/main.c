@@ -42,6 +42,7 @@
 /**
  * @brief  Main program.
  */
+uint8_t OcFlag = 0;
 int main(void)
 {
   System_Init();
@@ -50,11 +51,11 @@ int main(void)
   while (1)
   {
     MotorStateMachine(&MotorCtrl, &Timer_State);
-		if((Foc.PhaseCurr.PhaseU > 2000) ||\
-			(Foc.PhaseCurr.PhaseV > 2000) ||\
-		  (Foc.PhaseCurr.PhaseW > 2000))
+		
+		if((ABS(Foc.PhaseCurr.PhaseU) > 8000) || (ABS(Foc.PhaseCurr.PhaseV) > 8000) || (ABS(Foc.PhaseCurr.PhaseW) > 8000))
 		{
-				switch_pwm(INV_ALL_OFF);
+//				switch_pwm(INV_ALL_OFF);
+//				OcFlag = 1;
 		}
   }
   // FLASH_Read_Out_Protection();

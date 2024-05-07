@@ -22,8 +22,8 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         {
             pLoopCtrl->OpenLoopCtrl.AlignCurr = pLoopCtrl->OpenLoopCtrl.AlignCurr_Target;
         }
-        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.AlignCurr;
-				pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
+        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = 0;//pLoopCtrl->OpenLoopCtrl.AlignCurr;
+				pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = pLoopCtrl->OpenLoopCtrl.AlignCurr;
         /* code */
         break;
 

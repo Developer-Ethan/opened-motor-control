@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Foc example.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Foc example.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Apr 25 13:49:20 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 07 14:38:09 2024
 <BR><P>
 <H3>Maximum Stack Usage =        188 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -70,7 +70,7 @@ Function Pointers
  <LI><a href="#[21]">TIM1_BRK_IRQHandler</a> from n32g430_it.o(i.TIM1_BRK_IRQHandler) referenced from startup_n32g430.o(RESET)
  <LI><a href="#[24]">TIM1_CC_IRQHandler</a> from n32g430_it.o(i.TIM1_CC_IRQHandler) referenced from startup_n32g430.o(RESET)
  <LI><a href="#[23]">TIM1_TRG_COM_IRQHandler</a> from startup_n32g430.o(.text) referenced from startup_n32g430.o(RESET)
- <LI><a href="#[22]">TIM1_UP_IRQHandler</a> from startup_n32g430.o(.text) referenced from startup_n32g430.o(RESET)
+ <LI><a href="#[22]">TIM1_UP_IRQHandler</a> from n32g430_it.o(i.TIM1_UP_IRQHandler) referenced from startup_n32g430.o(RESET)
  <LI><a href="#[25]">TIM2_IRQHandler</a> from n32g430_it.o(i.TIM2_IRQHandler) referenced from startup_n32g430.o(RESET)
  <LI><a href="#[26]">TIM3_IRQHandler</a> from startup_n32g430.o(.text) referenced from startup_n32g430.o(RESET)
  <LI><a href="#[27]">TIM4_IRQHandler</a> from n32g430_it.o(i.TIM4_IRQHandler) referenced from startup_n32g430.o(RESET)
@@ -96,7 +96,7 @@ Global Symbols
 <P><STRONG><a name="[41]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(.text)
 </UL>
-<P><STRONG><a name="[10d]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[10c]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[42]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -106,15 +106,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[10e]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[10d]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[10f]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[10e]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[110]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[10f]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[111]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[110]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[112]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[111]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[44]"></a>switch_pwm</STRONG> (Thumb, 294 bytes, Stack size 16 bytes, bsp_tim.o(.RamFunc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = switch_pwm
@@ -124,21 +124,20 @@ Global Symbols
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWM_Output_Disable
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 <LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
 <P><STRONG><a name="[49]"></a>pwm_duty_set</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, bsp_tim.o(.RamFunc), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_Set
+<BR><BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare8_Set
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare7_Set
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_Set
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_D_Set
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare2_Set
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare2_D_Set
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare1_Set
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare1_D_Set
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare9_Set
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare8_Set
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare7_Set
 </UL>
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_n32g430.o(.text))
@@ -254,9 +253,6 @@ Global Symbols
 <P><STRONG><a name="[23]"></a>TIM1_TRG_COM_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_n32g430.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[22]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_n32g430.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
-</UL>
 <P><STRONG><a name="[26]"></a>TIM3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_n32g430.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
@@ -295,19 +291,19 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[113]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[112]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[114]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[113]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[53]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[98]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
+<P><STRONG><a name="[95]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
 </UL>
 
-<P><STRONG><a name="[115]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[114]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[55]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -319,20 +315,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[116]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[115]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[5d]"></a>ADC_AHB_Clock_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_AHB_Clock_Mode_Config))
 <BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Clock_Mode_Config
 </UL>
 
-<P><STRONG><a name="[84]"></a>ADC_Calibration_Operation</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Calibration_Operation))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[81]"></a>ADC_Calibration_Operation</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Calibration_Operation))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[7d]"></a>ADC_Channel_Sample_Time_Config</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Channel_Sample_Time_Config))
+<P><STRONG><a name="[7a]"></a>ADC_Channel_Sample_Time_Config</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Channel_Sample_Time_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_Channel_Sample_Time_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
 <P><STRONG><a name="[57]"></a>ADC_Clock_Mode_Config</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, n32g430_adc.o(i.ADC_Clock_Mode_Config))
@@ -345,40 +341,40 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PLL_Clock_Mode_Config
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_AHB_Clock_Mode_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[75]"></a>ADC_Continue_Conversion_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Continue_Conversion_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[72]"></a>ADC_Continue_Conversion_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Continue_Conversion_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[74]"></a>ADC_Continue_Conversion_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Continue_Conversion_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[71]"></a>ADC_Continue_Conversion_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Continue_Conversion_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[87]"></a>ADC_DMA_Transfer_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_DMA_Transfer_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[84]"></a>ADC_DMA_Transfer_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_DMA_Transfer_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[77]"></a>ADC_Data_Alignment_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Data_Alignment_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[74]"></a>ADC_Data_Alignment_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Data_Alignment_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[82]"></a>ADC_Discontinuous_Mode_Config</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Discontinuous_Mode_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[7f]"></a>ADC_Discontinuous_Mode_Config</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Discontinuous_Mode_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[88]"></a>ADC_External_Trigger_Conversion_Config</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_External_Trigger_Conversion_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[85]"></a>ADC_External_Trigger_Conversion_Config</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_External_Trigger_Conversion_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[63]"></a>ADC_Flag_Status_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Flag_Status_Clear))
+<P><STRONG><a name="[62]"></a>ADC_Flag_Status_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Flag_Status_Clear))
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[62]"></a>ADC_Flag_Status_Get</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Flag_Status_Get))
+<P><STRONG><a name="[61]"></a>ADC_Flag_Status_Get</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Flag_Status_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
 <P><STRONG><a name="[5f]"></a>ADC_INTFlag_Status_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_INTFlag_Status_Clear))
@@ -389,153 +385,152 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[1d]"></a>ADC_IRQHandler</STRONG> (Thumb, 556 bytes, Stack size 64 bytes, n32g430_it.o(i.ADC_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = ADC_IRQHandler &rArr; EstFlux_Ctr &rArr; AngleAmp_Get
+<P><STRONG><a name="[1d]"></a>ADC_IRQHandler</STRONG> (Thumb, 552 bytes, Stack size 48 bytes, n32g430_it.o(i.ADC_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = ADC_IRQHandler &rArr; EstFlux_Ctr &rArr; AngleAmp_Get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_pwm
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iParkTransform
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PhaseCurr_Get
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParkTransform
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LimitedCircle_Voltage
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pins_Set
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pins_Reset
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClarkeTransform
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iParkTransform
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PhaseCurr_Get
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParkTransform
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClarkeTransform
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BiasDetect
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_Given
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Group_Conversion_Data_Get
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Channels_Software_Conversion_Operation
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_Conversion_Data_Get
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Angle_Given
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Group_Conversion_Data_Get
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Channels_Software_Conversion_Operation
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_Conversion_Data_Get
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_INTFlag_Status_Get
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_INTFlag_Status_Clear
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Get
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Clear
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Get
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Clear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[71]"></a>ADC_Initializes</STRONG> (Thumb, 66 bytes, Stack size 4 bytes, n32g430_adc.o(i.ADC_Initializes))
+<P><STRONG><a name="[6e]"></a>ADC_Initializes</STRONG> (Thumb, 66 bytes, Stack size 4 bytes, n32g430_adc.o(i.ADC_Initializes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = ADC_Initializes
 </UL>
-<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Group_External_Trigger_Source_Config
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Channels_Number_Config
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Multichannels_Enable
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Multichannels_Disable
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Data_Alignment_Config
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Continue_Conversion_Enable
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Continue_Conversion_Disable
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Group_External_Trigger_Source_Config
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Channels_Number_Config
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Multichannels_Enable
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Multichannels_Disable
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Data_Alignment_Config
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Continue_Conversion_Enable
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Continue_Conversion_Disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
-</UL>
-
-<P><STRONG><a name="[7e]"></a>ADC_Injected_Channels_Number_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Channels_Number_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[81]"></a>ADC_Injected_Group_Autoconversion_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[7b]"></a>ADC_Injected_Channels_Number_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Channels_Number_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[66]"></a>ADC_Injected_Group_Conversion_Data_Get</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get))
+<P><STRONG><a name="[7e]"></a>ADC_Injected_Group_Autoconversion_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+</UL>
+
+<P><STRONG><a name="[64]"></a>ADC_Injected_Group_Conversion_Data_Get</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_Injected_Group_Conversion_Data_Get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[80]"></a>ADC_Injected_Group_External_Trigger_Source_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[7d]"></a>ADC_Injected_Group_External_Trigger_Source_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[7f]"></a>ADC_Injected_Sequence_Conversion_Number_Config</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config))
+<P><STRONG><a name="[7c]"></a>ADC_Injected_Sequence_Conversion_Number_Config</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_Injected_Sequence_Conversion_Number_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[86]"></a>ADC_Interrupts_Enable</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Interrupts_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[83]"></a>ADC_Interrupts_Enable</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Interrupts_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[73]"></a>ADC_Multichannels_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Multichannels_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[70]"></a>ADC_Multichannels_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Multichannels_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[72]"></a>ADC_Multichannels_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Multichannels_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[6f]"></a>ADC_Multichannels_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Multichannels_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[83]"></a>ADC_ON</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_ON))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<P><STRONG><a name="[80]"></a>ADC_ON</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_ON))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
 <P><STRONG><a name="[5a]"></a>ADC_PLL_Clock_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_PLL_Clock_Mode_Config))
 <BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Clock_Mode_Config
 </UL>
 
-<P><STRONG><a name="[78]"></a>ADC_Regular_Channels_Number_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Channels_Number_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[75]"></a>ADC_Regular_Channels_Number_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Channels_Number_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[61]"></a>ADC_Regular_Channels_Software_Conversion_Operation</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Channels_Software_Conversion_Operation))
+<P><STRONG><a name="[60]"></a>ADC_Regular_Channels_Software_Conversion_Operation</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Channels_Software_Conversion_Operation))
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[64]"></a>ADC_Regular_Group_Conversion_Data_Get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get))
+<P><STRONG><a name="[63]"></a>ADC_Regular_Group_Conversion_Data_Get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[76]"></a>ADC_Regular_Group_External_Trigger_Source_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<P><STRONG><a name="[73]"></a>ADC_Regular_Group_External_Trigger_Source_Config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
 </UL>
 
-<P><STRONG><a name="[7c]"></a>ADC_Regular_Sequence_Conversion_Number_Config</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config))
+<P><STRONG><a name="[79]"></a>ADC_Regular_Sequence_Conversion_Number_Config</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_Regular_Sequence_Conversion_Number_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[79]"></a>ADC_Reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Reset))
-<BR><BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB_Peripheral_Reset
+<P><STRONG><a name="[76]"></a>ADC_Reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_adc.o(i.ADC_Reset))
+<BR><BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB_Peripheral_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[7b]"></a>Adc_Init</STRONG> (Thumb, 186 bytes, Stack size 40 bytes, bsp_adc.o(i.Adc_Init))
+<P><STRONG><a name="[78]"></a>Adc_Init</STRONG> (Thumb, 194 bytes, Stack size 40 bytes, bsp_adc.o(i.Adc_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Adc_Init &rArr; NVIC_Initializes
 </UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Get
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Reset
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Sequence_Conversion_Number_Config
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ON
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Interrupts_Enable
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Sequence_Conversion_Number_Config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_External_Trigger_Source_Config
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_Autoconversion_Disable
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Channels_Number_Config
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_External_Trigger_Conversion_Config
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Discontinuous_Mode_Config
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMA_Transfer_Disable
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Channel_Sample_Time_Config
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Calibration_Operation
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Initializes
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Reset
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Regular_Sequence_Conversion_Number_Config
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ON
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Interrupts_Enable
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Sequence_Conversion_Number_Config
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_External_Trigger_Source_Config
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Group_Autoconversion_Disable
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Injected_Channels_Number_Config
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Initializes
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_External_Trigger_Conversion_Config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Discontinuous_Mode_Config
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMA_Transfer_Disable
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Channel_Sample_Time_Config
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Calibration_Operation
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Initializes
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Flag_Status_Get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>AngleAmp_Get</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, datacalc.o(i.AngleAmp_Get))
+<P><STRONG><a name="[93]"></a>AngleAmp_Get</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, datacalc.o(i.AngleAmp_Get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = AngleAmp_Get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
 </UL>
 
-<P><STRONG><a name="[68]"></a>Angle_Given</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, foc.o(i.Angle_Given))
+<P><STRONG><a name="[66]"></a>Angle_Given</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, foc.o(i.Angle_Given))
 <BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[65]"></a>BiasDetect</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, datacalc.o(i.BiasDetect))
-<BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
+<P><STRONG><a name="[65]"></a>BiasDetect</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, datacalc.o(i.BiasDetect))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BiasDetect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.BusFault_Handler))
@@ -545,195 +540,190 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[6b]"></a>ClarkeTransform</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, foc.o(i.ClarkeTransform))
+<P><STRONG><a name="[69]"></a>ClarkeTransform</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, foc.o(i.ClarkeTransform))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ClarkeTransform
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[8d]"></a>DMA_Buffer_Size_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Buffer_Size_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[8a]"></a>DMA_Buffer_Size_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Buffer_Size_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[e6]"></a>DMA_Channel_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Channel_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[e5]"></a>DMA_Channel_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Channel_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[e5]"></a>DMA_Channel_Request_Remap</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Channel_Request_Remap))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[e4]"></a>DMA_Channel_Request_Remap</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Channel_Request_Remap))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[92]"></a>DMA_Circular_Mode_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Circular_Mode_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[8f]"></a>DMA_Circular_Mode_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Circular_Mode_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[8c]"></a>DMA_Destination_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Destination_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[89]"></a>DMA_Destination_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Destination_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[89]"></a>DMA_Initializes</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, n32g430_dma.o(i.DMA_Initializes))
+<P><STRONG><a name="[86]"></a>DMA_Initializes</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, n32g430_dma.o(i.DMA_Initializes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DMA_Initializes
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Priority_Config
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Data_Width_Config
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Address_Config
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Addr_Increment_Config
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Data_Width_Config
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Address_Config
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Addr_Increment_Config
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Destination_Config
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Circular_Mode_Config
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Buffer_Size_Config
+<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Priority_Config
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Data_Width_Config
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Address_Config
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Peripheral_Addr_Increment_Config
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Data_Width_Config
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Address_Config
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Memory_Addr_Increment_Config
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Destination_Config
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Circular_Mode_Config
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Buffer_Size_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-</UL>
-
-<P><STRONG><a name="[117]"></a>DMA_Memory_2_Memory_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_2_Memory_Config), UNUSED)
-
-<P><STRONG><a name="[8f]"></a>DMA_Memory_Addr_Increment_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[8b]"></a>DMA_Memory_Address_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Address_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[116]"></a>DMA_Memory_2_Memory_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_2_Memory_Config), UNUSED)
+
+<P><STRONG><a name="[8c]"></a>DMA_Memory_Addr_Increment_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[91]"></a>DMA_Memory_Data_Width_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Data_Width_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[88]"></a>DMA_Memory_Address_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Address_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[8e]"></a>DMA_Peripheral_Addr_Increment_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[8e]"></a>DMA_Memory_Data_Width_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Memory_Data_Width_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[8a]"></a>DMA_Peripheral_Address_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Address_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[8b]"></a>DMA_Peripheral_Addr_Increment_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[90]"></a>DMA_Peripheral_Data_Width_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[87]"></a>DMA_Peripheral_Address_Config</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Address_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[93]"></a>DMA_Priority_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Priority_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<P><STRONG><a name="[8d]"></a>DMA_Peripheral_Data_Width_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[e3]"></a>DMA_Reset</STRONG> (Thumb, 164 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[90]"></a>DMA_Priority_Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Priority_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
 </UL>
 
-<P><STRONG><a name="[e4]"></a>DMA_Structure_Initializes</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Structure_Initializes))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[e2]"></a>DMA_Reset</STRONG> (Thumb, 164 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[94]"></a>Data_Limit</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, datacalc.o(i.Data_Limit))
-<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF_Ctr
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iParkTransform
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParkTransform
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
+<P><STRONG><a name="[e3]"></a>DMA_Structure_Initializes</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, n32g430_dma.o(i.DMA_Structure_Initializes))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+</UL>
+
+<P><STRONG><a name="[91]"></a>Data_Limit</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, datacalc.o(i.Data_Limit))
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF_Ctr
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iParkTransform
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParkTransform
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[b9]"></a>Delay_us</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, i2c_eeprom.o(i.Delay_us))
-<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<P><STRONG><a name="[b7]"></a>Delay_us</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, i2c_eeprom.o(i.Delay_us))
+<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
 </UL>
 
-<P><STRONG><a name="[6f]"></a>EstFlux_Ctr</STRONG> (Thumb, 268 bytes, Stack size 48 bytes, foc.o(i.EstFlux_Ctr))
+<P><STRONG><a name="[6c]"></a>EstFlux_Ctr</STRONG> (Thumb, 268 bytes, Stack size 48 bytes, foc.o(i.EstFlux_Ctr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = EstFlux_Ctr &rArr; AngleAmp_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF_Ctr
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleAmp_Get
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF_Ctr
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleAmp_Get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[97]"></a>Foc_Init</STRONG> (Thumb, 244 bytes, Stack size 16 bytes, foc.o(i.Foc_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Foc_Init
+<P><STRONG><a name="[94]"></a>Foc_Init</STRONG> (Thumb, 346 bytes, Stack size 24 bytes, foc.o(i.Foc_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Foc_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>GPIO_Alternate_Set</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Alternate_Set))
+<P><STRONG><a name="[99]"></a>GPIO_Alternate_Set</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Alternate_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_Alternate_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
 
-<P><STRONG><a name="[99]"></a>GPIO_Config</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, bsp_config.o(i.GPIO_Config))
+<P><STRONG><a name="[96]"></a>GPIO_Config</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, bsp_config.o(i.GPIO_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = GPIO_Config &rArr; GPIO_Peripheral_Initialize &rArr; GPIO_Mode_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
-<P><STRONG><a name="[a0]"></a>GPIO_Driver_Set</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Driver_Set))
+<P><STRONG><a name="[9d]"></a>GPIO_Driver_Set</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Driver_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_Driver_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
 
-<P><STRONG><a name="[9d]"></a>GPIO_Mode_Set</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, n32g430_gpio.o(i.GPIO_Mode_Set))
+<P><STRONG><a name="[9a]"></a>GPIO_Mode_Set</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, n32g430_gpio.o(i.GPIO_Mode_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GPIO_Mode_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
 
-<P><STRONG><a name="[ba]"></a>GPIO_PBC_Pins_Reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_PBC_Pins_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<P><STRONG><a name="[b8]"></a>GPIO_PBC_Pins_Reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_PBC_Pins_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
 </UL>
 
-<P><STRONG><a name="[9b]"></a>GPIO_Peripheral_Initialize</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, n32g430_gpio.o(i.GPIO_Peripheral_Initialize))
+<P><STRONG><a name="[98]"></a>GPIO_Peripheral_Initialize</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, n32g430_gpio.o(i.GPIO_Peripheral_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GPIO_Peripheral_Initialize &rArr; GPIO_Mode_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SlewRate_Set
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pull_Set
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Mode_Set
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Driver_Set
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Alternate_Set
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SlewRate_Set
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pull_Set
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Mode_Set
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Driver_Set
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Alternate_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
-</UL>
-
-<P><STRONG><a name="[67]"></a>GPIO_Pins_Reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_Pins_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
 </UL>
 
-<P><STRONG><a name="[60]"></a>GPIO_Pins_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_Pins_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<P><STRONG><a name="[b6]"></a>GPIO_Pins_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_Pins_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
 </UL>
 
-<P><STRONG><a name="[9e]"></a>GPIO_Pull_Set</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Pull_Set))
+<P><STRONG><a name="[9b]"></a>GPIO_Pull_Set</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_Pull_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_Pull_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
 
-<P><STRONG><a name="[9f]"></a>GPIO_SlewRate_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_SlewRate_Set))
+<P><STRONG><a name="[9c]"></a>GPIO_SlewRate_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_gpio.o(i.GPIO_SlewRate_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_SlewRate_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
 
-<P><STRONG><a name="[9a]"></a>GPIO_Structure_Initialize</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_Structure_Initialize))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
+<P><STRONG><a name="[97]"></a>GPIO_Structure_Initialize</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_gpio.o(i.GPIO_Structure_Initialize))
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.HardFault_Handler))
@@ -746,197 +736,191 @@ Global Symbols
 <P><STRONG><a name="[29]"></a>I2C1_ER_IRQHandler</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, i2c_eeprom.o(i.I2C1_ER_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = I2C1_ER_IRQHandler &rArr; I2C_Flag_Status_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Stop_Enable
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Start_Enable
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Get
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Clear
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Stop_Enable
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Start_Enable
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Get
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Clear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
 <P><STRONG><a name="[28]"></a>I2C1_EV_IRQHandler</STRONG> (Thumb, 324 bytes, Stack size 24 bytes, i2c_eeprom.o(i.I2C1_EV_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = I2C1_EV_IRQHandler &rArr; sEE_TIMEOUT_UserCallback &rArr; IIC_SWReset &rArr; IIC_RCCReset &rArr; I2C_EE_Init &rArr; I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Last_Event_Get
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Interrupts_Disable
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Stop_Enable
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Start_Enable
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Get
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Data_Send
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Data_Recv
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Acknowledg_Disable
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_7bit_Addr_Send
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sEE_TIMEOUT_UserCallback
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Last_Event_Get
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Interrupts_Disable
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Stop_Enable
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Generate_Start_Enable
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Flag_Status_Get
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Data_Send
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Data_Recv
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Acknowledg_Disable
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_7bit_Addr_Send
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sEE_TIMEOUT_UserCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[a8]"></a>I2C_7bit_Addr_Send</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_7bit_Addr_Send))
+<P><STRONG><a name="[a5]"></a>I2C_7bit_Addr_Send</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_7bit_Addr_Send))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a9]"></a>I2C_Acknowledg_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Acknowledg_Disable))
+<P><STRONG><a name="[a6]"></a>I2C_Acknowledg_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Acknowledg_Disable))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[b2]"></a>I2C_Acknowledgement_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Acknowledgement_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<P><STRONG><a name="[af]"></a>I2C_Acknowledgement_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Acknowledgement_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
 </UL>
 
-<P><STRONG><a name="[b3]"></a>I2C_Addressing_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Addressing_Mode_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<P><STRONG><a name="[b0]"></a>I2C_Addressing_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Addressing_Mode_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
 </UL>
 
-<P><STRONG><a name="[b1]"></a>I2C_Bus_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Bus_Mode_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<P><STRONG><a name="[ae]"></a>I2C_Bus_Mode_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Bus_Mode_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
 </UL>
 
-<P><STRONG><a name="[ac]"></a>I2C_Clock_Speed_Config</STRONG> (Thumb, 198 bytes, Stack size 40 bytes, n32g430_i2c.o(i.I2C_Clock_Speed_Config))
+<P><STRONG><a name="[a9]"></a>I2C_Clock_Speed_Config</STRONG> (Thumb, 198 bytes, Stack size 40 bytes, n32g430_i2c.o(i.I2C_Clock_Speed_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
 </UL>
 
-<P><STRONG><a name="[a6]"></a>I2C_Data_Recv</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Data_Recv))
+<P><STRONG><a name="[a3]"></a>I2C_Data_Recv</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Data_Recv))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a7]"></a>I2C_Data_Send</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Data_Send))
+<P><STRONG><a name="[a4]"></a>I2C_Data_Send</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Data_Send))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ae]"></a>I2C_EE_Init</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, i2c_eeprom.o(i.I2C_EE_Init))
+<P><STRONG><a name="[ab]"></a>I2C_EE_Init</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, i2c_eeprom.o(i.I2C_EE_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = I2C_EE_Init &rArr; I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Reset
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Reset
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
 </UL>
 
-<P><STRONG><a name="[a4]"></a>I2C_Flag_Status_Clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Flag_Status_Clear))
+<P><STRONG><a name="[a1]"></a>I2C_Flag_Status_Clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Flag_Status_Clear))
 <BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_ER_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a1]"></a>I2C_Flag_Status_Get</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, n32g430_i2c.o(i.I2C_Flag_Status_Get))
+<P><STRONG><a name="[9e]"></a>I2C_Flag_Status_Get</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, n32g430_i2c.o(i.I2C_Flag_Status_Get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = I2C_Flag_Status_Get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_ER_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a2]"></a>I2C_Generate_Start_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Generate_Start_Enable))
+<P><STRONG><a name="[9f]"></a>I2C_Generate_Start_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Generate_Start_Enable))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_ER_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a3]"></a>I2C_Generate_Stop_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Generate_Stop_Enable))
+<P><STRONG><a name="[a0]"></a>I2C_Generate_Stop_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Generate_Stop_Enable))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_ER_IRQHandler
 </UL>
 
-<P><STRONG><a name="[b0]"></a>I2C_Initializes</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, n32g430_i2c.o(i.I2C_Initializes))
+<P><STRONG><a name="[ad]"></a>I2C_Initializes</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, n32g430_i2c.o(i.I2C_Initializes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Own_Addr1_Config
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Clock_Speed_Config
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Bus_Mode_Config
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Addressing_Mode_Config
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Acknowledgement_Config
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Own_Addr1_Config
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Clock_Speed_Config
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Bus_Mode_Config
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Addressing_Mode_Config
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Acknowledgement_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
 </UL>
 
-<P><STRONG><a name="[aa]"></a>I2C_Interrupts_Disable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Interrupts_Disable))
+<P><STRONG><a name="[a7]"></a>I2C_Interrupts_Disable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Interrupts_Disable))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a5]"></a>I2C_Last_Event_Get</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Last_Event_Get))
+<P><STRONG><a name="[a2]"></a>I2C_Last_Event_Get</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Last_Event_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
 
-<P><STRONG><a name="[b4]"></a>I2C_Own_Addr1_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Own_Addr1_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
+<P><STRONG><a name="[b1]"></a>I2C_Own_Addr1_Config</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Own_Addr1_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Initializes
 </UL>
 
-<P><STRONG><a name="[af]"></a>I2C_Reset</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Reset))
-<BR><BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
+<P><STRONG><a name="[ac]"></a>I2C_Reset</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_i2c.o(i.I2C_Reset))
+<BR><BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
 </UL>
 
-<P><STRONG><a name="[b6]"></a>IIC_RCCReset</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, i2c_eeprom.o(i.IIC_RCCReset))
+<P><STRONG><a name="[b3]"></a>IIC_RCCReset</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, i2c_eeprom.o(i.IIC_RCCReset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = IIC_RCCReset &rArr; I2C_EE_Init &rArr; I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Clock_Disable
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Clock_Disable
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RestoreSlaveByClock
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
 </UL>
 
-<P><STRONG><a name="[b8]"></a>IIC_RestoreSlaveByClock</STRONG> (Thumb, 74 bytes, Stack size 40 bytes, i2c_eeprom.o(i.IIC_RestoreSlaveByClock))
+<P><STRONG><a name="[b5]"></a>IIC_RestoreSlaveByClock</STRONG> (Thumb, 74 bytes, Stack size 40 bytes, i2c_eeprom.o(i.IIC_RestoreSlaveByClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = IIC_RestoreSlaveByClock &rArr; GPIO_Peripheral_Initialize &rArr; GPIO_Mode_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pins_Set
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PBC_Pins_Reset
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Pins_Set
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PBC_Pins_Reset
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
 </UL>
 
-<P><STRONG><a name="[bb]"></a>IIC_SWReset</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, i2c_eeprom.o(i.IIC_SWReset))
+<P><STRONG><a name="[b9]"></a>IIC_SWReset</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, i2c_eeprom.o(i.IIC_SWReset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = IIC_SWReset &rArr; IIC_RCCReset &rArr; I2C_EE_Init &rArr; I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sEE_TIMEOUT_UserCallback
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sEE_TIMEOUT_UserCallback
 </UL>
 
-<P><STRONG><a name="[fd]"></a>Input_Channel1_Config</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, n32g430_tim.o(i.Input_Channel1_Config))
+<P><STRONG><a name="[fc]"></a>Input_Channel1_Config</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, n32g430_tim.o(i.Input_Channel1_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Input_Channel1_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[ff]"></a>Input_Channel2_Config</STRONG> (Thumb, 100 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel2_Config))
+<P><STRONG><a name="[fe]"></a>Input_Channel2_Config</STRONG> (Thumb, 100 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel2_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Input_Channel2_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[101]"></a>Input_Channel3_Config</STRONG> (Thumb, 98 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel3_Config))
+<P><STRONG><a name="[100]"></a>Input_Channel3_Config</STRONG> (Thumb, 98 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel3_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Input_Channel3_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[fb]"></a>Input_Channel4_Config</STRONG> (Thumb, 102 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel4_Config))
+<P><STRONG><a name="[fa]"></a>Input_Channel4_Config</STRONG> (Thumb, 102 bytes, Stack size 20 bytes, n32g430_tim.o(i.Input_Channel4_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Input_Channel4_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[95]"></a>LPF_Ctr</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, lpf.o(i.LPF_Ctr))
+<P><STRONG><a name="[92]"></a>LPF_Ctr</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, lpf.o(i.LPF_Ctr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LPF_Ctr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
-</UL>
-
-<P><STRONG><a name="[6d]"></a>LimitedCircle_Voltage</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, foc.o(i.LimitedCircle_Voltage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = LimitedCircle_Voltage
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EstFlux_Ctr
 </UL>
 
 <P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.MemManage_Handler))
@@ -946,12 +930,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[bc]"></a>MotorStateMachine</STRONG> (Thumb, 206 bytes, Stack size 40 bytes, statemachine.o(i.MotorStateMachine))
+<P><STRONG><a name="[ba]"></a>MotorStateMachine</STRONG> (Thumb, 200 bytes, Stack size 32 bytes, statemachine.o(i.MotorStateMachine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = MotorStateMachine &rArr; Foc_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Timeout
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Start
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Timeout
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Start
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OpenLoop_Init
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -959,48 +944,52 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[85]"></a>NVIC_Initializes</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, misc.o(i.NVIC_Initializes))
+<P><STRONG><a name="[82]"></a>NVIC_Initializes</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, misc.o(i.NVIC_Initializes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Initializes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 
-<P><STRONG><a name="[c0]"></a>NVIC_Priority_Group_Set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_Priority_Group_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[bf]"></a>NVIC_Priority_Group_Set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_Priority_Group_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[69]"></a>PID_Ctr</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, pi.o(i.PID_Ctr))
+<P><STRONG><a name="[bd]"></a>OpenLoop_Init</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, foc.o(i.OpenLoop_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
+</UL>
+
+<P><STRONG><a name="[67]"></a>PID_Ctr</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, pi.o(i.PID_Ctr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PID_Ctr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpdLoop_Control
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpdLoop_Control
 <LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c9]"></a>PLL_TrimValueLoad</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, system_n32g430.o(i.PLL_TrimValueLoad))
+<P><STRONG><a name="[c8]"></a>PLL_TrimValueLoad</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, system_n32g430.o(i.PLL_TrimValueLoad))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PLL_TrimValueLoad
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Set
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Set
 </UL>
 
-<P><STRONG><a name="[6c]"></a>ParkTransform</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, foc.o(i.ParkTransform))
+<P><STRONG><a name="[6a]"></a>ParkTransform</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, foc.o(i.ParkTransform))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ParkTransform
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[6a]"></a>PhaseCurr_Get</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, foc.o(i.PhaseCurr_Get))
+<P><STRONG><a name="[68]"></a>PhaseCurr_Get</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, foc.o(i.PhaseCurr_Get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = PhaseCurr_Get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c5]"></a>RCC_ADC_1M_Clock_Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[c4]"></a>RCC_ADC_1M_Clock_Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
 <P><STRONG><a name="[5c]"></a>RCC_ADC_Hclk_Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_ADC_Hclk_Config))
@@ -1019,77 +1008,79 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Clock_Mode_Config
 </UL>
 
-<P><STRONG><a name="[c4]"></a>RCC_AHB_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[c3]"></a>RCC_AHB_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[7a]"></a>RCC_AHB_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Reset
+<P><STRONG><a name="[77]"></a>RCC_AHB_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Reset
 </UL>
 
-<P><STRONG><a name="[b7]"></a>RCC_APB1_Peripheral_Clock_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
+<P><STRONG><a name="[b4]"></a>RCC_APB1_Peripheral_Clock_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
 </UL>
 
-<P><STRONG><a name="[c3]"></a>RCC_APB1_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[c2]"></a>RCC_APB1_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[b5]"></a>RCC_APB1_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Reset
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
+<P><STRONG><a name="[b2]"></a>RCC_APB1_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Reset
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_RCCReset
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
 </UL>
 
-<P><STRONG><a name="[c2]"></a>RCC_APB2_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[c1]"></a>RCC_APB2_Peripheral_Clock_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
-<P><STRONG><a name="[109]"></a>RCC_APB2_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
+<P><STRONG><a name="[108]"></a>RCC_APB2_Peripheral_Reset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
 </UL>
 
-<P><STRONG><a name="[ad]"></a>RCC_Clocks_Frequencies_Value_Get</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get))
+<P><STRONG><a name="[aa]"></a>RCC_Clocks_Frequencies_Value_Get</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Clock_Speed_Config
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Clock_Speed_Config
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[bf]"></a>RCC_Configuration</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, bsp_config.o(i.RCC_Configuration))
+<P><STRONG><a name="[be]"></a>RCC_Configuration</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, bsp_config.o(i.RCC_Configuration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = RCC_Configuration &rArr; ADC_Clock_Mode_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Clock_Mode_Config
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Priority_Group_Set
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2_Peripheral_Clock_Enable
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Clock_Enable
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB_Peripheral_Clock_Enable
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_ADC_1M_Clock_Config
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Pclk1_Config
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Priority_Group_Set
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Clock_Enable
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB_Peripheral_Clock_Enable
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_ADC_1M_Clock_Config
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Pclk1_Config
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2_Peripheral_Clock_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
-<P><STRONG><a name="[c1]"></a>RCC_Pclk1_Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_Pclk1_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<P><STRONG><a name="[c0]"></a>RCC_Pclk1_Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_rcc.o(i.RCC_Pclk1_Config))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, n32g430_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[c6]"></a>SpdLoop_Control</STRONG> (Thumb, 192 bytes, Stack size 16 bytes, loopcontrol.o(i.SpdLoop_Control))
+<P><STRONG><a name="[c5]"></a>SpdLoop_Control</STRONG> (Thumb, 192 bytes, Stack size 16 bytes, loopcontrol.o(i.SpdLoop_Control))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SpdLoop_Control &rArr; PID_Ctr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 </UL>
 
-<P><STRONG><a name="[70]"></a>Svm_Ctr</STRONG> (Thumb, 428 bytes, Stack size 32 bytes, svm.o(i.Svm_Ctr))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Svm_Ctr
+<P><STRONG><a name="[6d]"></a>Svm_Ctr</STRONG> (Thumb, 1672 bytes, Stack size 40 bytes, svm.o(i.Svm_Ctr))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Svm_Ctr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_Set
+<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare8_Set
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare7_Set
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_Set
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_D_Set
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare2_Set
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare2_D_Set
@@ -1100,21 +1091,21 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_it.o(i.SysTick_Handler))
-<BR><BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimingDelay_Decrement
+<BR><BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimingDelay_Decrement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[ca]"></a>System_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, bsp_config.o(i.System_Init))
+<P><STRONG><a name="[c9]"></a>System_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, bsp_config.o(i.System_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = System_Init &rArr; TIM4_Capture_Config &rArr; TIM_Input_Channel_Initialize &rArr; Input_Channel4_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_pwm
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_EE_Init
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Config
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1122,16 +1113,16 @@ Global Symbols
 <P><STRONG><a name="[40]"></a>System_Initializes</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, system_n32g430.o(i.System_Initializes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = System_Initializes &rArr; System_Clock_Set &rArr; PLL_TrimValueLoad
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Set
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Set
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(.text)
 </UL>
 <P><STRONG><a name="[21]"></a>TIM1_BRK_IRQHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, n32g430_it.o(i.TIM1_BRK_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM1_BRK_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Disable
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Disable
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
@@ -1139,320 +1130,331 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM1_CC_IRQHandler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Flag_Status_Get
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Flag_Status_Get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[cb]"></a>TIM1_PWM_Init</STRONG> (Thumb, 378 bytes, Stack size 72 bytes, bsp_tim.o(i.TIM1_PWM_Init))
+<P><STRONG><a name="[ca]"></a>TIM1_PWM_Init</STRONG> (Thumb, 378 bytes, Stack size 72 bytes, bsp_tim.o(i.TIM1_PWM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = TIM1_PWM_Init &rArr; TIM_Output_Channel3_Initialize &rArr; TIM_Output_Channel_Polarity_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_D_Set
+<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare8_Set
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare7_Set
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare3_D_Set
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare2_D_Set
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare1_D_Set
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare8_Set
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Compare7_Set
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Asymmetric_Enable
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Trigger_Select
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel8_Preload_Set
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel7_Preload_Set
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Preload_Set
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Preload_Set
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Preload_Set
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC8REF_Trigger_To_ADC_Enable
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC7REF_Trigger_To_ADC_Enable
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Asymmetric_Enable
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Reset
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Trigger_Select
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel8_Preload_Set
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel7_Preload_Set
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Preload_Set
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Preload_Set
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Preload_Set
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC8REF_Trigger_To_ADC_Enable
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC7REF_Trigger_To_ADC_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
+<P><STRONG><a name="[22]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, n32g430_it.o(i.TIM1_UP_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM1_UP_IRQHandler
+</UL>
+<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Flag_Status_Get
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
+</UL>
 <P><STRONG><a name="[25]"></a>TIM2_IRQHandler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, n32g430_it.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM2_IRQHandler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Flag_Status_Get
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Flag_Status_Get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[cd]"></a>TIM4_Capture_Config</STRONG> (Thumb, 242 bytes, Stack size 144 bytes, bsp_tim.o(i.TIM4_Capture_Config))
+<P><STRONG><a name="[cc]"></a>TIM4_Capture_Config</STRONG> (Thumb, 242 bytes, Stack size 144 bytes, bsp_tim.o(i.TIM4_Capture_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 180<LI>Call Chain = TIM4_Capture_Config &rArr; TIM_Input_Channel_Initialize &rArr; Input_Channel4_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Structure_Initializes
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Reset
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel_Request_Remap
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel_Enable
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Dma_Enable
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Struct_Initialize
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Structure_Initializes
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Reset
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Initializes
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel_Request_Remap
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel_Enable
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Structure_Initialize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Peripheral_Initialize
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Struct_Initialize
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Dma_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
 <P><STRONG><a name="[27]"></a>TIM4_IRQHandler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, n32g430_it.o(i.TIM4_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM4_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[cc]"></a>TIM6_1Khz_Init</STRONG> (Thumb, 122 bytes, Stack size 56 bytes, bsp_tim.o(i.TIM6_1Khz_Init))
+<P><STRONG><a name="[cb]"></a>TIM6_1Khz_Init</STRONG> (Thumb, 122 bytes, Stack size 56 bytes, bsp_tim.o(i.TIM6_1Khz_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM6_1Khz_Init &rArr; NVIC_Initializes
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Initializes
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Initializes
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Clocks_Frequencies_Value_Get
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Struct_Initialize
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_On
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
 <P><STRONG><a name="[3a]"></a>TIM6_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, n32g430_it.o(i.TIM6_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = TIM6_IRQHandler &rArr; SpdLoop_Control &rArr; PID_Ctr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerTick_State
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
+<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerTick_State
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Get
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Interrupt_Status_Clear
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpdLoop_Control
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpdLoop_Control
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[e0]"></a>TIM_Asymmetric_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Asymmetric_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[df]"></a>TIM_Asymmetric_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Asymmetric_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[ee]"></a>TIM_Base_Auto_Reload_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Auto_Reload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[ed]"></a>TIM_Base_Auto_Reload_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Auto_Reload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[df]"></a>TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[de]"></a>TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[f1]"></a>TIM_Base_Channel1</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel1))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[f0]"></a>TIM_Base_Channel1</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel1))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[f3]"></a>TIM_Base_Channel2</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel2))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[f2]"></a>TIM_Base_Channel2</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel2))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[f4]"></a>TIM_Base_Channel3</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel3))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[f3]"></a>TIM_Base_Channel3</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel3))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[f5]"></a>TIM_Base_Channel4</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel4))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[f4]"></a>TIM_Base_Channel4</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Channel4))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[ec]"></a>TIM_Base_Count_Mode_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Count_Mode_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[eb]"></a>TIM_Base_Count_Mode_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Count_Mode_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[d3]"></a>TIM_Base_Initialize</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, n32g430_tim.o(i.TIM_Base_Initialize))
+<P><STRONG><a name="[d2]"></a>TIM_Base_Initialize</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, n32g430_tim.o(i.TIM_Base_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_Base_Initialize
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Clock_Division_Set
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Repeat_Count_Set
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Prescaler_Set
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_OCrefClear
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Count_Mode_Set
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel4
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel3
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel2
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel1
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Auto_Reload_Set
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Clock_Division_Set
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Repeat_Count_Set
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Reload_Mode_Set
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Prescaler_Set
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_OCrefClear
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Count_Mode_Set
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel4
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel3
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel2
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Channel1
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Auto_Reload_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-</UL>
-
-<P><STRONG><a name="[f2]"></a>TIM_Base_OCrefClear</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_OCrefClear))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[ef]"></a>TIM_Base_Prescaler_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Prescaler_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[f1]"></a>TIM_Base_OCrefClear</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_OCrefClear))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[e7]"></a>TIM_Base_Reload_Mode_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Reload_Mode_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[ee]"></a>TIM_Base_Prescaler_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Prescaler_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[f0]"></a>TIM_Base_Repeat_Count_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Repeat_Count_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[e6]"></a>TIM_Base_Reload_Mode_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Reload_Mode_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[d2]"></a>TIM_Base_Struct_Initialize</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Struct_Initialize))
-<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[ef]"></a>TIM_Base_Repeat_Count_Set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Repeat_Count_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
-<P><STRONG><a name="[e1]"></a>TIM_Break_And_Dead_Time_Set</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set))
+<P><STRONG><a name="[d1]"></a>TIM_Base_Struct_Initialize</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Base_Struct_Initialize))
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+</UL>
+
+<P><STRONG><a name="[e0]"></a>TIM_Break_And_Dead_Time_Set</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_Break_And_Dead_Time_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Pvd_Break_Enable
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Pvd_Break_Disable
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Lock_Up_Break_Enable
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Lock_Up_Break_Disable
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_IOM_Comp_Break
+<BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Pvd_Break_Enable
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Pvd_Break_Disable
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Lock_Up_Break_Enable
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Lock_Up_Break_Disable
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_IOM_Comp_Break
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-</UL>
-
-<P><STRONG><a name="[103]"></a>TIM_Capture_Compare_Ch_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[105]"></a>TIM_Capture_Compare_Ch_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<P><STRONG><a name="[102]"></a>TIM_Capture_Compare_Ch_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
 </UL>
 
-<P><STRONG><a name="[108]"></a>TIM_Capture_Compare_Ch_N_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<P><STRONG><a name="[104]"></a>TIM_Capture_Compare_Ch_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
 </UL>
 
-<P><STRONG><a name="[107]"></a>TIM_Capture_Compare_Ch_N_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<P><STRONG><a name="[107]"></a>TIM_Capture_Compare_Ch_N_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
 </UL>
 
-<P><STRONG><a name="[ed]"></a>TIM_Clock_Division_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Clock_Division_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
+<P><STRONG><a name="[106]"></a>TIM_Capture_Compare_Ch_N_Enable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+</UL>
+
+<P><STRONG><a name="[ec]"></a>TIM_Clock_Division_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Clock_Division_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_Initialize
 </UL>
 
 <P><STRONG><a name="[50]"></a>TIM_Compare1_D_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare1_D_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[4a]"></a>TIM_Compare1_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare1_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
 </UL>
 
 <P><STRONG><a name="[51]"></a>TIM_Compare2_D_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare2_D_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[4b]"></a>TIM_Compare2_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare2_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
 </UL>
 
 <P><STRONG><a name="[52]"></a>TIM_Compare3_D_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare3_D_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[4c]"></a>TIM_Compare3_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare3_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
 </UL>
 
 <P><STRONG><a name="[4d]"></a>TIM_Compare7_Set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare7_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[4e]"></a>TIM_Compare8_Set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare8_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Svm_Ctr
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[4f]"></a>TIM_Compare9_Set</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Compare9_Set), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty_set
 </UL>
 
-<P><STRONG><a name="[ea]"></a>TIM_Dma_Enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Dma_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<P><STRONG><a name="[e9]"></a>TIM_Dma_Enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Dma_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[d0]"></a>TIM_Flag_Status_Get</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Flag_Status_Get))
+<P><STRONG><a name="[cf]"></a>TIM_Flag_Status_Get</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Flag_Status_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_CC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[f6]"></a>TIM_IOM_Comp_Break</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_IOM_Comp_Break))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<P><STRONG><a name="[f5]"></a>TIM_IOM_Comp_Break</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_IOM_Comp_Break))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
 </UL>
 
-<P><STRONG><a name="[fe]"></a>TIM_Input_Capture1_Prescaler_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<P><STRONG><a name="[fd]"></a>TIM_Input_Capture1_Prescaler_Set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[100]"></a>TIM_Input_Capture2_Prescaler_Set</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<P><STRONG><a name="[ff]"></a>TIM_Input_Capture2_Prescaler_Set</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[102]"></a>TIM_Input_Capture3_Prescaler_Set</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<P><STRONG><a name="[101]"></a>TIM_Input_Capture3_Prescaler_Set</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[fc]"></a>TIM_Input_Capture4_Prescaler_Set</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
+<P><STRONG><a name="[fb]"></a>TIM_Input_Capture4_Prescaler_Set</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Channel_Initialize
 </UL>
 
-<P><STRONG><a name="[e9]"></a>TIM_Input_Channel_Initialize</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, n32g430_tim.o(i.TIM_Input_Channel_Initialize))
+<P><STRONG><a name="[e8]"></a>TIM_Input_Channel_Initialize</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, n32g430_tim.o(i.TIM_Input_Channel_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = TIM_Input_Channel_Initialize &rArr; Input_Channel4_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel4_Config
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel3_Config
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel2_Config
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel1_Config
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture4_Prescaler_Set
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture3_Prescaler_Set
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture2_Prescaler_Set
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture1_Prescaler_Set
+<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel4_Config
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel3_Config
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel2_Config
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Channel1_Config
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture4_Prescaler_Set
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture3_Prescaler_Set
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture2_Prescaler_Set
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Input_Capture1_Prescaler_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-</UL>
-
-<P><STRONG><a name="[e8]"></a>TIM_Input_Struct_Initialize</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Struct_Initialize))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
 </UL>
 
-<P><STRONG><a name="[cf]"></a>TIM_Interrupt_Disable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Disable))
+<P><STRONG><a name="[e7]"></a>TIM_Input_Struct_Initialize</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Input_Struct_Initialize))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+</UL>
+
+<P><STRONG><a name="[ce]"></a>TIM_Interrupt_Disable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Disable))
 <BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_BRK_IRQHandler
 </UL>
 
 <P><STRONG><a name="[47]"></a>TIM_Interrupt_Enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Enable))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_pwm
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
 </UL>
 
 <P><STRONG><a name="[46]"></a>TIM_Interrupt_Status_Clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Status_Clear))
@@ -1460,115 +1462,116 @@ Global Symbols
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_CC_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_BRK_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ce]"></a>TIM_Interrupt_Status_Get</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Status_Get))
+<P><STRONG><a name="[cd]"></a>TIM_Interrupt_Status_Get</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Interrupt_Status_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_BRK_IRQHandler
 </UL>
 
-<P><STRONG><a name="[f8]"></a>TIM_Lock_Up_Break_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Lock_Up_Break_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<P><STRONG><a name="[f7]"></a>TIM_Lock_Up_Break_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Lock_Up_Break_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
 </UL>
 
-<P><STRONG><a name="[f7]"></a>TIM_Lock_Up_Break_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Lock_Up_Break_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<P><STRONG><a name="[f6]"></a>TIM_Lock_Up_Break_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Lock_Up_Break_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
 </UL>
 
-<P><STRONG><a name="[dc]"></a>TIM_OC7REF_Trigger_To_ADC_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[db]"></a>TIM_OC7REF_Trigger_To_ADC_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[dd]"></a>TIM_OC8REF_Trigger_To_ADC_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[dc]"></a>TIM_OC8REF_Trigger_To_ADC_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e2]"></a>TIM_On</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_On))
-<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[e1]"></a>TIM_On</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_On))
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_1Khz_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Capture_Config
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[d4]"></a>TIM_Output_Channel1_Initialize</STRONG> (Thumb, 132 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel1_Initialize))
+<P><STRONG><a name="[d3]"></a>TIM_Output_Channel1_Initialize</STRONG> (Thumb, 132 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel1_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TIM_Output_Channel1_Initialize &rArr; TIM_Output_Channel_Polarity_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
+<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-</UL>
-
-<P><STRONG><a name="[d7]"></a>TIM_Output_Channel1_Preload_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[d5]"></a>TIM_Output_Channel2_Initialize</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel2_Initialize))
+<P><STRONG><a name="[d6]"></a>TIM_Output_Channel1_Preload_Set</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+</UL>
+
+<P><STRONG><a name="[d4]"></a>TIM_Output_Channel2_Initialize</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel2_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TIM_Output_Channel2_Initialize &rArr; TIM_Output_Channel_Polarity_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
+<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-</UL>
-
-<P><STRONG><a name="[d8]"></a>TIM_Output_Channel2_Preload_Set</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[d6]"></a>TIM_Output_Channel3_Initialize</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel3_Initialize))
+<P><STRONG><a name="[d7]"></a>TIM_Output_Channel2_Preload_Set</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+</UL>
+
+<P><STRONG><a name="[d5]"></a>TIM_Output_Channel3_Initialize</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, n32g430_tim.o(i.TIM_Output_Channel3_Initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TIM_Output_Channel3_Initialize &rArr; TIM_Output_Channel_Polarity_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
+<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Enable
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_N_Disable
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Enable
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Capture_Compare_Ch_Disable
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_Polarity_Set
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel_N_Polarity_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
-</UL>
-
-<P><STRONG><a name="[d9]"></a>TIM_Output_Channel3_Preload_Set</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[da]"></a>TIM_Output_Channel7_Preload_Set</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[d8]"></a>TIM_Output_Channel3_Preload_Set</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[db]"></a>TIM_Output_Channel8_Preload_Set</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[d9]"></a>TIM_Output_Channel7_Preload_Set</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[106]"></a>TIM_Output_Channel_N_Polarity_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set))
+<P><STRONG><a name="[da]"></a>TIM_Output_Channel8_Preload_Set</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+</UL>
+
+<P><STRONG><a name="[105]"></a>TIM_Output_Channel_N_Polarity_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_Output_Channel_N_Polarity_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
 </UL>
 
-<P><STRONG><a name="[104]"></a>TIM_Output_Channel_Polarity_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set))
+<P><STRONG><a name="[103]"></a>TIM_Output_Channel_Polarity_Set</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_Output_Channel_Polarity_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
+<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel3_Initialize
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel2_Initialize
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Output_Channel1_Initialize
 </UL>
 
-<P><STRONG><a name="[de]"></a>TIM_Output_Trigger_Select</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Trigger_Select))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<P><STRONG><a name="[dd]"></a>TIM_Output_Trigger_Select</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Output_Trigger_Select))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
 <P><STRONG><a name="[45]"></a>TIM_PWM_Output_Disable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_PWM_Output_Disable))
@@ -1579,54 +1582,54 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_pwm
 </UL>
 
-<P><STRONG><a name="[fa]"></a>TIM_Pvd_Break_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Pvd_Break_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<P><STRONG><a name="[f9]"></a>TIM_Pvd_Break_Disable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Pvd_Break_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
 </UL>
 
-<P><STRONG><a name="[f9]"></a>TIM_Pvd_Break_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Pvd_Break_Enable))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
+<P><STRONG><a name="[f8]"></a>TIM_Pvd_Break_Enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Pvd_Break_Enable))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Break_And_Dead_Time_Set
 </UL>
 
-<P><STRONG><a name="[d1]"></a>TIM_Reset</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Reset))
-<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2_Peripheral_Reset
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
+<P><STRONG><a name="[d0]"></a>TIM_Reset</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, n32g430_tim.o(i.TIM_Reset))
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2_Peripheral_Reset
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1_Peripheral_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_PWM_Init
 </UL>
 
-<P><STRONG><a name="[eb]"></a>TimerTick_State</STRONG> (Thumb, 56 bytes, Stack size 4 bytes, timer.o(i.TimerTick_State))
+<P><STRONG><a name="[ea]"></a>TimerTick_State</STRONG> (Thumb, 56 bytes, Stack size 4 bytes, timer.o(i.TimerTick_State))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = TimerTick_State
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Tick
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Tick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10c]"></a>Timer_Init</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, timer.o(i.Timer_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_State_Init
+<P><STRONG><a name="[10b]"></a>Timer_Init</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, timer.o(i.Timer_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_State_Init
 </UL>
 
-<P><STRONG><a name="[bd]"></a>Timer_Start</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, timer.o(i.Timer_Start))
-<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
+<P><STRONG><a name="[bb]"></a>Timer_Start</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, timer.o(i.Timer_Start))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
 </UL>
 
-<P><STRONG><a name="[10b]"></a>Timer_State_Init</STRONG> (Thumb, 58 bytes, Stack size 4 bytes, timer.o(i.Timer_State_Init))
+<P><STRONG><a name="[10a]"></a>Timer_State_Init</STRONG> (Thumb, 60 bytes, Stack size 4 bytes, timer.o(i.Timer_State_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Timer_State_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[10a]"></a>Timer_Tick</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, timer.o(i.Timer_Tick))
-<BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerTick_State
+<P><STRONG><a name="[109]"></a>Timer_Tick</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, timer.o(i.Timer_Tick))
+<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerTick_State
 </UL>
 
-<P><STRONG><a name="[be]"></a>Timer_Timeout</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, timer.o(i.Timer_Timeout))
-<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
+<P><STRONG><a name="[bc]"></a>Timer_Timeout</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, timer.o(i.Timer_Timeout))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
 </UL>
 
-<P><STRONG><a name="[c7]"></a>TimingDelay_Decrement</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_config.o(i.TimingDelay_Decrement))
+<P><STRONG><a name="[c6]"></a>TimingDelay_Decrement</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_config.o(i.TimingDelay_Decrement))
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
@@ -1637,35 +1640,34 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g430.o(RESET)
 </UL>
-<P><STRONG><a name="[118]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[117]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[119]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[118]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[11a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[119]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[6e]"></a>iParkTransform</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, foc.o(i.iParkTransform))
+<P><STRONG><a name="[6b]"></a>iParkTransform</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, foc.o(i.iParkTransform))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = iParkTransform
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Limit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[3f]"></a>main</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[3f]"></a>main</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = main &rArr; System_Init &rArr; TIM4_Capture_Config &rArr; TIM_Input_Channel_Initialize &rArr; Input_Channel4_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_State_Init
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_pwm
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_State_Init
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorStateMachine
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Foc_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[ab]"></a>sEE_TIMEOUT_UserCallback</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback))
+<P><STRONG><a name="[a8]"></a>sEE_TIMEOUT_UserCallback</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = sEE_TIMEOUT_UserCallback &rArr; IIC_SWReset &rArr; IIC_RCCReset &rArr; I2C_EE_Init &rArr; I2C_Initializes &rArr; I2C_Clock_Speed_Config &rArr; RCC_Clocks_Frequencies_Value_Get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SWReset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_EV_IRQHandler
 </UL>
@@ -1673,10 +1675,10 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[c8]"></a>System_Clock_Set</STRONG> (Thumb, 228 bytes, Stack size 24 bytes, system_n32g430.o(i.System_Clock_Set))
+<P><STRONG><a name="[c7]"></a>System_Clock_Set</STRONG> (Thumb, 228 bytes, Stack size 24 bytes, system_n32g430.o(i.System_Clock_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = System_Clock_Set &rArr; PLL_TrimValueLoad
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_TrimValueLoad
+<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_TrimValueLoad
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Initializes
 </UL>

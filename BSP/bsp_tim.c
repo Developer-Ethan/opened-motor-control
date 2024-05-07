@@ -14,7 +14,8 @@ void TIM1_PWM_Init(uint8_t polarity)
   TIM_TimeBaseInitType TIM1_TimeBaseStructure;
   OCInitType TIM1_OCInitStructure;
   TIM_BDTRInitType TIM1_BDTRInitStructure;
-
+	//NVIC_InitType NVIC_InitStructure;
+	
   TimerPeriod = (SystemClockFrequency / (PWM_FREQ * 2) / (TIMER_CLOCK_PRESCALER_SET + 1));
 
   TIM_Reset(TIM1);
@@ -81,13 +82,20 @@ void TIM1_PWM_Init(uint8_t polarity)
   TIM1_BDTRInitStructure.OssrState = TIM_OSSR_STATE_ENABLE;
   TIM1_BDTRInitStructure.OssiState = TIM_OSSI_STATE_ENABLE;
   TIM1_BDTRInitStructure.LockLevel = TIM_LOCK_LEVEL_OFF;
-  TIM1_BDTRInitStructure.DeadTime = 9;
+  TIM1_BDTRInitStructure.DeadTime = 28;//1us 28
   TIM1_BDTRInitStructure.Break = TIM_BREAK_IN_ENABLE;
   TIM1_BDTRInitStructure.BreakPolarity = TIM_BREAK_POLARITY_HIGH;
   TIM1_BDTRInitStructure.AutomaticOutput = TIM_AUTO_OUTPUT_DISABLE; // TIM_AUTO_OUTPUT_ENABLE;		//关闭自动输出
   TIM1_BDTRInitStructure.IomBreakEn = false;
   TIM_Break_And_Dead_Time_Set(TIM1, &TIM1_BDTRInitStructure);
 
+//  TIM_Interrupt_Enable(TIM1, TIM_INT_UPDATE);
+
+//  NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Initializes(&NVIC_InitStructure);
   TIM_On(TIM1);
 }
 

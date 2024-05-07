@@ -11,8 +11,8 @@ SVM_DEF Svm;
  */
 void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
 {
-    int32_t T1; // the first simple width
-    int32_t T2; // the second simple width
+
+    int16_t T0, T1, T2;
     uint16_t Period;
     uint16_t Diff;
     uint16_t CompareValue_SimplePoint1;
@@ -26,12 +26,12 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
 
     pSvm->ModulCoeff = (int16_t)(((2 * Period * SQRT_3 >> SHIFT_15BITS) << SHIFT_15BITS) / Foc.Sample_Volt);
     X = (pSvm->ModulCoeff * pAxis->Imag) >> SHIFT_15BITS;
-    Y = (pSvm->ModulCoeff * (((28376 * pAxis->Real) >> SHIFT_15BITS) + ((16384 * pAxis->Imag) >> SHIFT_15BITS))) >> SHIFT_15BITS;
-    Z = (pSvm->ModulCoeff * (((16384 * pAxis->Imag) >> SHIFT_15BITS) - ((28376 * pAxis->Real) >> SHIFT_15BITS))) >> SHIFT_15BITS;
+    Y = (pSvm->ModulCoeff * ((28378 * pAxis->Real + 16384 * pAxis->Imag) >> SHIFT_15BITS)) >> SHIFT_15BITS;
+    Z = (pSvm->ModulCoeff * ((16384 * pAxis->Imag - 28378 * pAxis->Real) >> SHIFT_15BITS)) >> SHIFT_15BITS;
 
     Vref1 = pAxis->Imag;
-    Vref2 = ((28376 * pAxis->Real) >> SHIFT_15BITS) - ((16384 * pAxis->Imag) >> SHIFT_15BITS);
-    Vref3 = -((28376 * pAxis->Real) >> SHIFT_15BITS) - ((16384 * pAxis->Imag) >> SHIFT_15BITS);
+    Vref2 = (28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
+    Vref3 = -(28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
 
     if (Vref1 > 0)
     {
@@ -102,9 +102,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
 
     T1 = T1 >> 1;
     T2 = T2 >> 1;
+    T0 = Period - T1 - T2;
     pSvm->T1 = T1;
     pSvm->T2 = T2;
-    Ta = (int32_t)(Period) / 2 - (pSvm->T1 >> 1) - (pSvm->T2 >> 1);
+    pSvm->T0 = T0 >> 1;
+    Ta = pSvm->T0;
     Tb = Ta + pSvm->T1;
     Tc = Tb + pSvm->T2;
 
@@ -120,25 +122,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
-            if (pSvm->ComparePoint_1st_Up < 0)
-            {
-                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up_Last;
-            }
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
-            if (pSvm->ComparePoint_3th_Up > Period)
-            {
-                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up_Last;
-            }
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_1st_Up = 0;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
+                    pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_3th_Up = Period;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
+                    pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_1st_Up + pSvm->ShiftScale;
@@ -155,25 +195,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
-            if (pSvm->ComparePoint_2nd_Up < 0)
-            {
-                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up_Last;
-            }
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
-            if (pSvm->ComparePoint_3th_Up > Period)
-            {
-                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up_Last;
-            }
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_2nd_Up = 0;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
+                    pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_3th_Up = Period;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
+                    pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_2nd_Up + pSvm->ShiftScale;
@@ -190,25 +268,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
-            if (pSvm->ComparePoint_2nd_Up < 0)
-            {
-                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up_Last;
-            }
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
-            if (pSvm->ComparePoint_1st_Up > Period)
-            {
-                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up_Last;
-            }
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_2nd_Up = 0;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
+                    pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_1st_Up = Period;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
+                    pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_2nd_Up + pSvm->ShiftScale;
@@ -225,25 +341,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
-            if (pSvm->ComparePoint_3th_Up < 0)
-            {
-                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up_Last;
-            }
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
-            if (pSvm->ComparePoint_1st_Up > Period)
-            {
-                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up_Last;
-            }
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_3th_Up = 0;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
+                    pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_1st_Up = Period;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
+                    pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_3th_Up + pSvm->ShiftScale;
@@ -260,25 +414,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
-            if (pSvm->ComparePoint_3th_Up < 0)
-            {
-                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up_Last;
-            }
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
-            if (pSvm->ComparePoint_2nd_Up > Period)
-            {
-                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up_Last;
-            }
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_3th_Up = 0;
+                pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
+                    pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_2nd_Up = Period;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
+                    pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_3th_Up + pSvm->ShiftScale;
@@ -295,25 +487,63 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Up;
 
 #if SHIFT_PHASE_EN
-        if (pSvm->T1 < pSvm->StableScale)
+        if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale)) // belongs to the first Non-observation area
         {
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
-            if (pSvm->ComparePoint_1st_Up < 0)
-            {
-                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up_Last;
-            }
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
-        }
-        if (pSvm->T2 < pSvm->StableScale)
-        {
+
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
-            if (pSvm->ComparePoint_2nd_Up > Period)
-            {
-                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up_Last;
-            }
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+        }
+        else if ((pSvm->T1 < pSvm->StableScale) && (pSvm->T2 > pSvm->StableScale))
+        {
+            if ((pSvm->T1 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T1;
+                pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_1st_Up = 0;
+                pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
+                    pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
+                    pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
+                }
+                else
+                {
+                }
+            }
+        }
+        else if ((pSvm->T1 > pSvm->StableScale) && (pSvm->T2 < pSvm->StableScale))
+        {
+            if ((pSvm->T2 + pSvm->T0) > pSvm->StableScale) // sector transitin belongs to the second  Non-observation area
+            {
+                Diff = pSvm->StableScale - pSvm->T2;
+                pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+            }
+            else
+            {
+                Diff = pSvm->T0;
+                pSvm->ComparePoint_2nd_Up = Period;
+                pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                {
+                    Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
+                    pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
+                    pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
+                }
+                else
+                {
+                }
+            }
         }
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_1st_Up + pSvm->ShiftScale;
@@ -327,10 +557,6 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
     TIM_Compare1_D_Set(TIM1, pSvm->ComparePoint_1st_Down);
     TIM_Compare2_D_Set(TIM1, pSvm->ComparePoint_2nd_Down);
     TIM_Compare3_D_Set(TIM1, pSvm->ComparePoint_3th_Down);
-    // TIM_Compare7_Set(TIM1, CompareValue_SimplePoint1);
-    // TIM_Compare8_Set(TIM1, CompareValue_SimplePoint2);
-
-    pSvm->ComparePoint_1st_Up_Last = pSvm->ComparePoint_1st_Up;
-    pSvm->ComparePoint_2nd_Up_Last = pSvm->ComparePoint_2nd_Up;
-    pSvm->ComparePoint_3th_Up_Last = pSvm->ComparePoint_3th_Up;
+    TIM_Compare7_Set(TIM1, CompareValue_SimplePoint1);
+    TIM_Compare8_Set(TIM1, CompareValue_SimplePoint2);
 }

@@ -132,19 +132,19 @@ void BiasDetect(FOC_DEF *pFoc)
 {
     static uint16_t DetectCnt = 0;
     uint16_t DetectTime = 64;
-    static uint32_t SampleCurrSum_1st;
-    static uint32_t SampleCurrSum_2nd;
 
     if (DetectCnt < DetectTime)
     {
         DetectCnt++;
-        SampleCurrSum_1st += SampleCurr_1st;
-        SampleCurrSum_2nd += SampleCurr_2nd;
+        pFoc->Sample_Curr.SampleCurrSum_1st += SampleCurr_1st;
+        pFoc->Sample_Curr.SampleCurrSum_2nd += SampleCurr_2nd;
     }
     else
     {
         DetectCnt = 0;
-        pFoc->Sample_Curr.Offset_1st = SampleCurrSum_1st >> 6;
-        pFoc->Sample_Curr.Offset_2nd = SampleCurrSum_1st >> 6;
+        pFoc->Sample_Curr.Offset_1st = pFoc->Sample_Curr.SampleCurrSum_1st >> 6;
+        pFoc->Sample_Curr.Offset_2nd = pFoc->Sample_Curr.SampleCurrSum_2nd >> 6;
+				pFoc->Sample_Curr.SampleCurrSum_1st = 0;
+				pFoc->Sample_Curr.SampleCurrSum_2nd = 0;		
     }
 }

@@ -7,8 +7,8 @@ typedef struct
     int32_t I_Out;
     int32_t Iout_Min;
     int32_t Iout_Max;
-    int16_t Pid_Kp;
-    int16_t Pid_Ki;
+    int32_t Pid_Kp;
+    int32_t Pid_Ki;
     int32_t Out_Min;
     int32_t Out_Max;
     int16_t InputRef;

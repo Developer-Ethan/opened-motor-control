@@ -34,12 +34,11 @@ void MotorStateMachine(MOTORCTRL_DEF *pMotorCtrl, TIMER_STATE_DEF *pTimer_State)
 						pMotorCtrl->CalibrateOverFlag = 1;
             Timer_Start(&pTimer_State->Timer_Idle, pTimer_State->Time_Idle);
             pMotorCtrl->State = MotorIdle;
-						Foc_Init();
         }
         /* code */
         break;
     case MotorIdle:
-        if (Timer_Timeout(&pTimer_State->Timer_Idle) && (pMotorCtrl->StartFlag == 1))
+        if (pMotorCtrl->StartFlag == 1)
         {
 						//GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
             Timer_Start(&pTimer_State->Timer_Align, pTimer_State->Time_Align);
@@ -52,6 +51,7 @@ void MotorStateMachine(MOTORCTRL_DEF *pMotorCtrl, TIMER_STATE_DEF *pTimer_State)
         {
             Timer_Start(&pTimer_State->Timer_OpenLoop, pTimer_State->Time_OpenLoop);
             pMotorCtrl->State = MotorOpenLoop;
+						OpenLoop_Init();
         }
         /* code */
         break;
@@ -71,6 +71,7 @@ void MotorStateMachine(MOTORCTRL_DEF *pMotorCtrl, TIMER_STATE_DEF *pTimer_State)
         break;
     case MotorShutdown:
         pMotorCtrl->State = MotorIdle;
+				Foc_Init();
         break;
     case MotorFault:
         pMotorCtrl->State = MotorIdle;

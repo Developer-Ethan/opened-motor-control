@@ -17,6 +17,8 @@ typedef struct
   int16_t Offset_1st;
   int16_t Offset_2nd;
   uint16_t SampleCurr[5];
+	uint32_t SampleCurrSum_1st;
+	uint32_t SampleCurrSum_2nd;
   /* data */
 } SAMPLE_CURR_DEF;
 
@@ -38,12 +40,15 @@ typedef struct
   float VoltRated;
   float CurrRated;
   float EfreqRated;
+	float Emf_Coeff;
+	float FluxRated;
 
   float PhaseRes_Base;
   float PhaseInd_Base;
   float Volt_Base;
   float Curr_Base;
   int16_t Speed_Base;
+	float OmageBase;
 
   /* data */
 } MOTOR_PARAMETER_DEF;
@@ -64,12 +69,14 @@ typedef struct
   uint16_t FluxAngle;
   uint16_t AnglePLL;
   uint16_t Angle;
+	uint16_t Angle_Align;
   int16_t IdRef;
   int16_t IqRef;
   int16_t Is;
   int16_t SpeedEst;
   int16_t TsPu;
   PHASE_CURR_DEF PhaseCurr;
+	float BandWidthPu_CurrLoop;
   /* data */
 } FOC_DEF;
 
@@ -96,6 +103,7 @@ AXIS_DEF ClarkeTransform(PHASE_CURR_DEF *pPhaseCurr);
 AXIS_DEF ParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle);
 AXIS_DEF iParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle);
 uint16_t Angle_Given(OPENLOOP_DEF *pOpenLoop);
+extern void OpenLoop_Init(void);
 void LimitedCircle_Voltage(AXIS_DEF *pAxis);
 void EstFlux_Ctr(void);
 

@@ -151,7 +151,21 @@ void TIM1_BRK_IRQHandler(void)
 		TIM_Interrupt_Status_Clear(TIM1, TIM_STS_BITF);
 	}
 }
-
+/*************************************************************
+ * 定时器1
+ *************************************************************/
+uint32_t *POD;
+void TIM1_UP_IRQHandler(void)
+{
+	if (TIM_Flag_Status_Get(TIM1, TIM_FLAG_UPDATE))
+	{
+		//GPIO_Pin_Toggle(GPIOB,GPIO_PIN_3);
+//		POD = (uint32_t*)(0x40023814);
+//		*POD = *POD ^ (1<<3);
+		/* Clear TIM1 COM pending bit */
+		TIM_Interrupt_Status_Clear(TIM1, TIM_FLAG_UPDATE);
+	}
+}
 /*************************************************************
  * 定时器1 CC4比较中断，在最高值-20处触发
  *************************************************************/
@@ -214,10 +228,18 @@ void ADC_IRQHandler(void)
 	uint8_t Channel_JSEQ;
 	PHASE_CURR_DEF Phase_Curr_Temp;
 
+	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
+	{
+		POD = (uint32_t*)(0x40023814);
+		*POD = *POD ^ (1<<3);
+		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDCA);
+	}
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDC) == SET)
 	{
-		// GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
-		GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
+//		POD = (uint32_t*)(0x40023814);
+//		*POD = *POD ^ (1<<3);
+		//GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
+		//GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
 		ADC_Regular_Channels_Software_Conversion_Operation(ADC_EXTRTRIG_SWSTRRCH_ENABLE);
 		while (ADC_Flag_Status_Get(ADC_RUN_FLAG, ADC_FLAG_ENDC, ADC_FLAG_RDY) == 0)
 		{
@@ -225,29 +247,34 @@ void ADC_IRQHandler(void)
 		ADC_Flag_Status_Clear(ADC_FLAG_ENDC);
 		ADC_Flag_Status_Clear(ADC_FLAG_STR);
 		VoltValue_ADCReg = ADC_Regular_Group_Conversion_Data_Get();
-		Foc.Sample_Volt = Q15((VoltValue_ADCReg << 3) * COEFF_VOLT);
+		Foc.Sample_Volt = Q13((VoltValue_ADCReg << 3) * COEFF_VOLT);
 
-		if (MotorCtrl.OffsetFlag)
-		{
-			BiasDetect(&Foc);
-		}
 		for (Channel_JSEQ = Channel_First; Channel_JSEQ < Channel_First + Num_JSEQ; Channel_JSEQ++)
 		{
 			Foc.Sample_Curr.SampleCurr[Channel_JSEQ] = ADC_Injected_Group_Conversion_Data_Get(ADC_INJECTED_DATA_REG_1 + 4 * (Channel_JSEQ - Channel_First));
 		}
+		
 		SampleCurr_1st = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First];
-		SampleCurr_1st -= Foc.Sample_Curr.Offset_1st;
 		SampleCurr_2nd = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First + 1];
-		SampleCurr_2nd -= Foc.Sample_Curr.Offset_2nd;
-		Foc.Sample_Curr.Curr_SamplePoint_1st = Q15((SampleCurr_1st << 3) * COEFF_CURR);
-		Foc.Sample_Curr.Curr_SamplePoint_2nd = Q15((SampleCurr_2nd << 3) * COEFF_CURR);
+		
+		if (MotorCtrl.OffsetFlag)
+		{
+			BiasDetect(&Foc);
+		}
+		else
+		{
+			SampleCurr_1st -= Foc.Sample_Curr.Offset_1st;
+			SampleCurr_2nd -= Foc.Sample_Curr.Offset_2nd;
+			Foc.Sample_Curr.Curr_SamplePoint_1st = Q14((SampleCurr_1st << 3) * COEFF_CURR);
+			Foc.Sample_Curr.Curr_SamplePoint_2nd = Q14((SampleCurr_2nd << 3) * COEFF_CURR);
+		}
 
 		if ((MotorCtrl.CalibrateOverFlag == 1) && (MotorCtrl.StartFlag == 1))
 		{
 			switch (MotorCtrl.State)
 			{
 			case MotorAlign:
-				Foc.Angle = ALIGN_ANGLE;
+				Foc.Angle = Foc.Angle_Align;
 				break;
 			case MotorOpenLoop:
 				Foc.Angle = Angle_Given(&LoopCtrl.OpenLoopCtrl);
@@ -265,14 +292,15 @@ void ADC_IRQHandler(void)
 			Foc.IqRef = LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef;
 			Foc.RotaVolt.Imag = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q, Foc.IqRef - Foc.RotaCurr.Imag);
 			Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, Foc.IdRef - Foc.RotaCurr.Real);
-			LimitedCircle_Voltage(&Foc.RotaVolt);
-			Foc.RotaVolt.Imag = Q15(0.3);
-			Foc.RotaVolt.Real = Q15(0.0);
+			//LimitedCircle_Voltage(&Foc.RotaVolt);
+//			Foc.RotaVolt.Imag = Q15(0.0);
+//			Foc.RotaVolt.Real = Q15(0.4);
 
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 			EstFlux_Ctr();
+			//GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
 			Svm_Ctr(&Svm, &Foc.StatVolt);
-
+			//GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
 			switch_pwm(INV_ALL_ON);
 		}
 		else
@@ -281,7 +309,7 @@ void ADC_IRQHandler(void)
 		}
 
 		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDC);
-		GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
+		//GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
 	}
 	else
 	{

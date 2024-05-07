@@ -12,40 +12,37 @@ inline int16_t PID_Ctr(PI_DEF *pPi, int16_t error)
 {
     int32_t I_Out;
     int32_t Pi_Out;
-    int32_t Temp;
-    int32_t Min;
-    int32_t Max;
+		int32_t Integral;
+		int32_t Proportion;
 
-    I_Out = pPi->I_Out + ((int32_t)error * (int32_t)pPi->Pid_Ki);
+		error = Data_Limit(error,16);
+		Integral = (error * pPi->Pid_Ki) >> SHIFT_15BITS;
+		Integral = Data_Limit(Integral,16);
+    I_Out = pPi->I_Out + Integral;
 
-    Min = ((int32_t)(pPi->Iout_Min)) << 15u;
-    Max = ((int32_t)(pPi->Iout_Max)) << 15u;
-
-    if (I_Out < Min)
+    if (I_Out < pPi->Iout_Min)
     {
-        I_Out = Min;
+        I_Out = pPi->Iout_Min;
     }
-    else if (I_Out > Max)
+    else if (I_Out > pPi->Iout_Max)
     {
-        I_Out = Max;
+        I_Out = pPi->Iout_Max;
     }
 
     pPi->I_Out = I_Out;
 
-    Temp = Data_Limit((int32_t)error * (int32_t)pPi->Pid_Kp, 31u - 6u);
+		Proportion = (error * pPi->Pid_Kp) >> SHIFT_15BITS;
+		Proportion = Data_Limit(Proportion,16);
+		
+    Pi_Out = pPi->I_Out + Proportion;
 
-    Pi_Out = (I_Out + (Temp << 6u)) >> 15u;
-
-    Min = (int32_t)pPi->Out_Min;
-    Max = (int32_t)pPi->Out_Max;
-
-    if (Pi_Out < Min)
+    if (Pi_Out < pPi->Out_Min)
     {
-        Pi_Out = Min;
+        Pi_Out = pPi->Out_Min;
     }
-    else if (Pi_Out > Max)
+    else if (Pi_Out > pPi->Out_Max)
     {
-        Pi_Out = Max;
+        Pi_Out = pPi->Out_Max;
     }
     pPi->Pid_Output = (int16_t)(Pi_Out);
     return (pPi->Pid_Output);
