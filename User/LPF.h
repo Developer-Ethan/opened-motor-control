@@ -3,13 +3,11 @@
 #include "stdint.h"
 typedef struct
 {
-    int16_t CoefA;
-    int16_t CoefB;
+    int16_t Coeff;
     int32_t Out;
+    float BandWidthPu;
     /* data */
-}LPF_DEF;
+} LPF_DEF;
 
-
-
-int16_t LPF_Ctr(LPF_DEF *pLPF,int16_t Input);
+int16_t LPF_Ctr(LPF_DEF *pLPF, int16_t Input);
 #endif

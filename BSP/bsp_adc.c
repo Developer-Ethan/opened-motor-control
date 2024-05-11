@@ -29,8 +29,8 @@ void Adc_Init(void)
 
   ADC_Reset();
   /* ADC regular sequencer */
-  ADC_InitStructure.MultiChEn = ENABLE;                                // 开启扫描模式
-  ADC_InitStructure.ContinueConvEn = DISABLE;                          // 关闭连续转换模式
+  ADC_InitStructure.MultiChEn = ENABLE;                               // 开启扫描模式
+  ADC_InitStructure.ContinueConvEn = ENABLE;                          // 关闭连续转换模式
   ADC_InitStructure.ExtTrigSelect = ADC_EXT_TRIGCONV_REGULAR_SWSTRRCH; // 软件触发规则通道转换
   ADC_InitStructure.DatAlign = ADC_DAT_ALIGN_R;                        // 右对齐
   ADC_InitStructure.ChsNumber = ADC_REGULAR_LEN_1;                     // 一个转换
@@ -71,15 +71,15 @@ void Adc_Init(void)
   NVIC_Initializes(&NVIC_InitStructure);
   /* Enable JEOC interrupt */
   ADC_Interrupts_Enable(ADC_INT_JENDC); // 所有注入通道中断使能
-	ADC_Interrupts_Enable(ADC_INT_JENDCA); // 所有注入通道中断使能
+	//ADC_Interrupts_Enable(ADC_INT_JENDCA); // 所有注入通道中断使能
 
   /* Enable ADC DMA */
   // ADC_DMA_Transfer_Enable();
   ADC_DMA_Transfer_Disable(); // 失能DMA
   /* Enable ADC external trigger */
-  ADC_External_Trigger_Conversion_Config(ADC_EXTTRIGCONV_REGULAR_ENABLE);
+  //ADC_External_Trigger_Conversion_Config(ADC_EXTTRIGCONV_REGULAR_ENABLE);
   /* Enable ADC inj external trigger */
   ADC_External_Trigger_Conversion_Config(ADC_EXTTRIGCONV_INJECTED_ENABLE);
-
+	ADC_ON(); // 0->1:唤醒ADC;1->1:使能ADC转换
   // DMA_AdcSequenceIntiall();
 }

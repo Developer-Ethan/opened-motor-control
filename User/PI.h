@@ -11,6 +11,7 @@ typedef struct
     int32_t Pid_Ki;
     int32_t Out_Min;
     int32_t Out_Max;
+    int32_t Error;
     int16_t InputRef;
     int16_t Pid_Output;
 } PI_DEF;

@@ -37,7 +37,7 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
             pLoopCtrl->OpenLoopCtrl.OpenLoopSpd = pLoopCtrl->OpenLoopCtrl.OpenLoopSpdTarget;
         }
 
-        pLoopCtrl->OpenLoopCtrl.AngleSlope = DataMult_Q15(pLoopCtrl->OpenLoopCtrl.OpenLoopSpd, Foc.TsPu);
+        pLoopCtrl->OpenLoopCtrl.AngleSlope = DataMult_Q15(pLoopCtrl->OpenLoopCtrl.OpenLoopSpd, Foc.Ts);
 
         if (pLoopCtrl->OpenLoopCtrl.OpenLoopSpd < pLoopCtrl->OpenLoopCtrl.SwitchSpd)
         {
@@ -59,7 +59,7 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         }
 				break;
     case MotorClosedLoop:
-        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEst);
+        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr;//PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEst);
 				pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
         break;
 

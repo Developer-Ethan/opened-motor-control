@@ -33,7 +33,7 @@ void TIM1_PWM_Init(uint8_t polarity)
   TIM1_OCInitStructure.OcMode = TIM_OCMODE_PWM2; // Pos logic(ocref:when '<' is negative,when '>' is active)
   TIM1_OCInitStructure.OutputState = TIM_OUTPUT_STATE_DISABLE;
   TIM1_OCInitStructure.OutputNState = TIM_OUTPUT_NSTATE_DISABLE;
-  TIM1_OCInitStructure.Pulse = (TimerPeriod >> 2);
+  TIM1_OCInitStructure.Pulse = (TimerPeriod >> 1);
   TIM1_OCInitStructure.OcPolarity = TIM_OC_POLARITY_HIGH;
   TIM1_OCInitStructure.OcNPolarity = TIM_OCN_POLARITY_HIGH;
   TIM1_OCInitStructure.OcIdleState = TIM_OC_IDLE_STATE_RESET;
@@ -59,12 +59,12 @@ void TIM1_PWM_Init(uint8_t polarity)
   TIM_Output_Channel2_Initialize(TIM1, &TIM1_OCInitStructure);
   TIM_Output_Channel3_Initialize(TIM1, &TIM1_OCInitStructure);
 
-  TIM_Compare1_D_Set(TIM1, (TimerPeriod >> 2)); // the second compare point under Asymmetric mode
-  TIM_Compare2_D_Set(TIM1, (TimerPeriod >> 2));
-  TIM_Compare3_D_Set(TIM1, (TimerPeriod >> 2));
+  TIM_Compare1_D_Set(TIM1, (TimerPeriod >> 1)); // the second compare point under Asymmetric mode
+  TIM_Compare2_D_Set(TIM1, (TimerPeriod >> 1));
+  TIM_Compare3_D_Set(TIM1, (TimerPeriod >> 1));
 
-  TIM_Compare7_Set(TIM1, TimerPeriod >> 2);
-  TIM_Compare8_Set(TIM1, TimerPeriod >> 1);
+  TIM_Compare7_Set(TIM1, 30);
+  TIM_Compare8_Set(TIM1, 600);
   // Enables the TIM1 Preload on CC1,CC2,CC3,CC4 Register
   TIM_Output_Channel1_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE); // 使能CCDAT1寄存器的预加载功能
   TIM_Output_Channel2_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE);

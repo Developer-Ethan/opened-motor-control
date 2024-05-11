@@ -159,9 +159,9 @@ void TIM1_UP_IRQHandler(void)
 {
 	if (TIM_Flag_Status_Get(TIM1, TIM_FLAG_UPDATE))
 	{
-		//GPIO_Pin_Toggle(GPIOB,GPIO_PIN_3);
-//		POD = (uint32_t*)(0x40023814);
-//		*POD = *POD ^ (1<<3);
+		// GPIO_Pin_Toggle(GPIOB,GPIO_PIN_3);
+		//		POD = (uint32_t*)(0x40023814);
+		//		*POD = *POD ^ (1<<3);
 		/* Clear TIM1 COM pending bit */
 		TIM_Interrupt_Status_Clear(TIM1, TIM_FLAG_UPDATE);
 	}
@@ -222,30 +222,21 @@ void TIM6_IRQHandler(void)
  *************************************************************/
 void ADC_IRQHandler(void)
 {
+	GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
 	uint8_t Jlen_JSEQ = ((ADC->JSEQ & ADC_JSEQ_JLEN) >> 20);
 	uint8_t Num_JSEQ = 1 + Jlen_JSEQ;
 	uint8_t Channel_First = 4 - Jlen_JSEQ;
 	uint8_t Channel_JSEQ;
 	PHASE_CURR_DEF Phase_Curr_Temp;
-
-	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
-	{
-		POD = (uint32_t*)(0x40023814);
-		*POD = *POD ^ (1<<3);
-		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDCA);
-	}
+//	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
+//	{
+//		GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
+//		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDCA);
+//	}
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDC) == SET)
 	{
-//		POD = (uint32_t*)(0x40023814);
-//		*POD = *POD ^ (1<<3);
 		//GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
-		//GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
-		ADC_Regular_Channels_Software_Conversion_Operation(ADC_EXTRTRIG_SWSTRRCH_ENABLE);
-		while (ADC_Flag_Status_Get(ADC_RUN_FLAG, ADC_FLAG_ENDC, ADC_FLAG_RDY) == 0)
-		{
-		}
-		ADC_Flag_Status_Clear(ADC_FLAG_ENDC);
-		ADC_Flag_Status_Clear(ADC_FLAG_STR);
+
 		VoltValue_ADCReg = ADC_Regular_Group_Conversion_Data_Get();
 		Foc.Sample_Volt = Q13((VoltValue_ADCReg << 3) * COEFF_VOLT);
 
@@ -253,10 +244,10 @@ void ADC_IRQHandler(void)
 		{
 			Foc.Sample_Curr.SampleCurr[Channel_JSEQ] = ADC_Injected_Group_Conversion_Data_Get(ADC_INJECTED_DATA_REG_1 + 4 * (Channel_JSEQ - Channel_First));
 		}
-		
+
 		SampleCurr_1st = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First];
 		SampleCurr_2nd = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First + 1];
-		
+
 		if (MotorCtrl.OffsetFlag)
 		{
 			BiasDetect(&Foc);
@@ -280,9 +271,7 @@ void ADC_IRQHandler(void)
 				Foc.Angle = Angle_Given(&LoopCtrl.OpenLoopCtrl);
 				break;
 			case MotorClosedLoop:
-				Foc.Angle = Foc.FluxAngle;
-				Foc.SpeedEst = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.PLLLoop, Foc.Angle - Foc.AnglePLL);
-				Foc.AnglePLL += DataMult_Q15(Foc.SpeedEst, Foc.TsPu);
+				Foc.Angle = Foc.AnglePLL;
 				break;
 			}
 			Phase_Curr_Temp = PhaseCurr_Get(&Foc);
@@ -292,15 +281,13 @@ void ADC_IRQHandler(void)
 			Foc.IqRef = LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef;
 			Foc.RotaVolt.Imag = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q, Foc.IqRef - Foc.RotaCurr.Imag);
 			Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, Foc.IdRef - Foc.RotaCurr.Real);
-			//LimitedCircle_Voltage(&Foc.RotaVolt);
-//			Foc.RotaVolt.Imag = Q15(0.0);
-//			Foc.RotaVolt.Real = Q15(0.4);
+			// LimitedCircle_Voltage(&Foc.RotaVolt);
+//			Foc.RotaVolt.Imag = Q13(0.05);
+//			Foc.RotaVolt.Real = Q13(0.0);
 
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
-			EstFlux_Ctr();
-			//GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
+			EstSmo_Ctr();
 			Svm_Ctr(&Svm, &Foc.StatVolt);
-			//GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
 			switch_pwm(INV_ALL_ON);
 		}
 		else
@@ -309,7 +296,7 @@ void ADC_IRQHandler(void)
 		}
 
 		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDC);
-		//GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
+		GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
 	}
 	else
 	{

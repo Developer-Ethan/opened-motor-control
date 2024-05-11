@@ -34,37 +34,45 @@ void Foc_Init(void)
     memset(&LoopCtrl, 0, sizeof(LOOP_CONTROL_DEF));
     memset(&Foc, 0, sizeof(FOC_DEF));
 
-    Foc.RealFluxLPF.CoefA = 1000;
-    Foc.RealFluxLPF.CoefB = 1000;
-    Foc.ImagFluxLPF.CoefA = 1000;
-    Foc.ImagFluxLPF.CoefB = 1000;
-    Foc.FluxAmpLPF.CoefA = 1000;
-    Foc.FluxAmpLPF.CoefB = 1000;
-
-    Foc.PhaseRes_Pu = Q15(Motor_Param.PhaseRes / Motor_Param.PhaseRes_Base);
-    Foc.PhaseInd_Pu = Q15(Motor_Param.PhaseInd / Motor_Param.PhaseInd_Base);
-    Foc.TsPu = Q15(PWM_PERIOD / T_BASE);
+    Foc.PhaseRes_Pu = Motor_Param.PhaseRes / Motor_Param.PhaseRes_Base;
+    Foc.PhaseInd_Pu = Motor_Param.PhaseInd / Motor_Param.PhaseInd_Base;
+    Foc.PhaseRes = Q15(Foc.PhaseRes_Pu);
+    Foc.PhaseInd = Q15(Foc.PhaseInd_Pu);
+    Foc.TsPu = PWM_PERIOD / T_BASE;
+    Foc.Ts = Q15(Foc.TsPu);
     Foc.Angle_Align = ALIGN_ANGLE;
     Foc.BandWidthPu_CurrLoop = BANDWIDTH_CURRLOOP / Motor_Param.EfreqRated;
 
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = KI_PLLLOOP;
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = KP_PLLLOOP;
+    Foc.Lpf_EmfEstReal.BandWidthPu = BANDWIDTH_EMFLPF / Motor_Param.EfreqRated;
+    Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstReal.BandWidthPu * Foc.TsPu));
+    Foc.Lpf_EmfEstImag.BandWidthPu = BANDWIDTH_EMFLPF / Motor_Param.EfreqRated;
+    Foc.Lpf_EmfEstImag.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstImag.BandWidthPu * Foc.TsPu));
+    Foc.BandWidthPu_PllLoop = BANDWIDTH_PLLLOOP / Motor_Param.EfreqRated;
+
+    Foc.Smo_Ctrl.Factor1 = Q15(PWM_PERIOD * Motor_Param.PhaseRes_Base / Motor_Param.PhaseInd);
+    Foc.Smo_Ctrl.Factor2 = Q15(PWM_PERIOD * Motor_Param.PhaseRes / Motor_Param.PhaseInd);
+    Foc.Smo_Ctrl.SmoGain = Q14(SMO_GAIN);
+    Foc.Smo_Ctrl.SmoErrWidth = Q14(SMO_ERRWIDTH);
+    Foc.Smo_Ctrl.SmoSlope = (SMO_GAIN / SMO_ERRWIDTH);
+
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = Q15(Foc.BandWidthPu_PllLoop * Foc.BandWidthPu_PllLoop);
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = Q15(2 * Foc.BandWidthPu_PllLoop);
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Iout_Max = IOUT_MAX_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Iout_Min = IOUT_MIN_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Out_Max = PIOUT_MAX_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Out_Min = PIOUT_MIN_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = 0;
 
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes_Pu); // KI_CURRLOOP;
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd_Pu); // KP_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes); // KI_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd); // KP_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Iout_Max = IOUT_MAX_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Iout_Min = IOUT_MIN_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Out_Max = PIOUT_MAX_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Out_Min = PIOUT_MIN_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.I_Out = 0;
 
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes_Pu);
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd_Pu);
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes);
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd);
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Iout_Max = IOUT_MAX_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Iout_Min = IOUT_MIN_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Out_Max = PIOUT_MAX_CURRLOOP;
@@ -89,11 +97,8 @@ void Foc_Init(void)
     LoopCtrl.OpenLoopCtrl.OpenLoopSpdTarget = Q15(SPEED_TARGET_OPENLOOP / SPEED_BASE);
     LoopCtrl.OpenLoopCtrl.SpeedSlope = Q15(SPEED_SLOPE / SPEED_BASE);
 
-    // LoopCtrl.OpenLoopCtrl.SpeedToOmega = LoopCtrl.OpenLoopCtrl.IntegralPeriod * 65535 * POLE_PAIRS / 60; // omega = IntegralPeriod*2*pi*(n*p/60) in pwmINT
-    // Svm.ModulCoeff = (2 * TimerPeriod * SQRT_3 >> SHIFT_15BITS); //= n*(IntegralPeriod*65535*p/60)
     Svm.ShiftScale = SHIFT_SCALE;
     Svm.StableScale = STABLE_SCALE;
-    // MotorCtrl.State = MotorPowerOn;
 }
 
 /**
@@ -326,6 +331,7 @@ inline void LimitedCircle_Voltage(AXIS_DEF *pAxis)
         }
     }
 }
+
 /**
  * @brief      EstFlux_Ctr function.
  *
@@ -385,4 +391,81 @@ inline void EstFlux_Ctr(void)
             Flux_Corr.Imag = 0;
         }
     }
+}
+
+/**
+ * @brief      EstFlux_Ctr function.
+ *
+ * @param[in]  None.
+ *
+ * @return     None.
+ *
+ */
+inline void EstSmo_Ctr(void)
+{
+    int16_t temp1, temp2, temp3, temp4;
+    int32_t error;
+    int32_t Cos;
+    int32_t Sin;
+    uint32_t Angle_Temp;
+
+    temp1 = Foc.Smo_Ctrl.LastCurrEst_Real;
+    temp2 = ((Foc.StatVolt.Real * Foc.Smo_Ctrl.Factor1) - (temp1 * Foc.Smo_Ctrl.Factor2) - (Foc.Smo_Ctrl.EmfEst_Real * Foc.Smo_Ctrl.Factor1)) >> SHIFT_15BITS;
+    temp2 = temp2 + temp1;
+    Foc.Smo_Ctrl.LastCurrEst_Real = temp2;
+    temp2 = temp2 - Foc.StatCurr.Real;
+
+    if (temp2 > Foc.Smo_Ctrl.SmoErrWidth)
+    {
+        temp2 = Foc.Smo_Ctrl.SmoGain;
+    }
+    else
+    {
+        if (temp2 < -Foc.Smo_Ctrl.SmoErrWidth)
+        {
+            temp2 = -Foc.Smo_Ctrl.SmoGain;
+        }
+        else
+        {
+            temp2 = (temp2 * Foc.Smo_Ctrl.SmoSlope);
+        }
+    }
+    Foc.Smo_Ctrl.EmfEst_Real = temp2;
+    temp2 = LPF_Ctr(&Foc.Lpf_EmfEstReal, temp2);
+    Foc.Smo_Ctrl.EmfEstLpf_Real = temp2;
+    temp3 = -temp2;
+
+    temp1 = Foc.Smo_Ctrl.LastCurrEst_Imag;
+    temp2 = ((Foc.StatVolt.Imag * Foc.Smo_Ctrl.Factor1) - (temp1 * Foc.Smo_Ctrl.Factor2) - (Foc.Smo_Ctrl.EmfEst_Imag * Foc.Smo_Ctrl.Factor1)) >> SHIFT_15BITS;
+    temp2 = temp2 + temp1;
+    Foc.Smo_Ctrl.LastCurrEst_Imag = temp2;
+    temp2 = temp2 - Foc.StatCurr.Imag;
+
+    if (temp2 > Foc.Smo_Ctrl.SmoErrWidth)
+    {
+        temp2 = Foc.Smo_Ctrl.SmoGain;
+    }
+    else
+    {
+        if (temp2 < -Foc.Smo_Ctrl.SmoErrWidth)
+        {
+            temp2 = -Foc.Smo_Ctrl.SmoGain;
+        }
+        else
+        {
+            temp2 = (temp2 * Foc.Smo_Ctrl.SmoSlope);
+        }
+    }
+    Foc.Smo_Ctrl.EmfEst_Imag = temp2;
+    temp2 = LPF_Ctr(&Foc.Lpf_EmfEstImag, temp2);
+    Foc.Smo_Ctrl.EmfEstLpf_Imag = temp2;
+    temp4 = temp2;
+
+    Angle_Temp = Foc.AnglePLL >> 6u;
+
+    Cos = pTable_Cos[Angle_Temp];
+    Sin = Table_Sin[Angle_Temp];
+    error = (temp3 * Cos - temp4 * Sin) >> SHIFT_15BITS;
+    Foc.SpeedEst = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.PLLLoop, error);
+    Foc.AnglePLL += (Foc.SpeedEst * Foc.Ts) >> 14u;
 }

@@ -12,6 +12,8 @@
 #define DataMult_Q16(DATA1, DATA2) (uint16_t)(((int32_t)(DATA1) * (int32_t)(DATA2)) >> (SHIFT_16BITS))
 
 #define ABS(dat) ((dat) < 0) ? -(dat) : (dat)
+#define SATURATE(input, min, max) ((input) > (max) ? max : ((input) < (min)) ? min \
+                                                                             : input)
 int32_t Data_Limit(int32_t data, uint8_t bit);
 uint16_t AngleAmp_Get(AXIS_DEF Axis, uint16_t *pAmp);
 void BiasDetect(FOC_DEF *pFoc);

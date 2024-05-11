@@ -7,20 +7,20 @@
 #define TIME_STABLE (40u)
 #define TIME_CALIBRATE (20u)
 #define TIME_IDLE (20u)
-#define TIME_ALIGN (20u)
-#define TIME_OPENLOOP (20u)
+#define TIME_ALIGN (200u)
+#define TIME_OPENLOOP (400u)
 /*hardware parameters*/
 #define R_SHUNT (0.005f)
 #define GAIN_AMP (8.0f)
 #define ADC_VREF (3.3f)
 #define RES_PULL (51.0f) // kohm
 #define RES_DOWN (3.0f)
-#define VOLTAGE_MAX_ADCSAMPLE	(ADC_VREF * (RES_PULL + RES_DOWN) / RES_DOWN)
-#define CURRENT_MAX_ADCSAMPLE	(ADC_VREF / R_SHUNT / GAIN_AMP)
+#define VOLTAGE_MAX_ADCSAMPLE (ADC_VREF * (RES_PULL + RES_DOWN) / RES_DOWN)
+#define CURRENT_MAX_ADCSAMPLE (ADC_VREF / R_SHUNT / GAIN_AMP)
 /*foc parameters*/
 #define PWM_FREQ (16000u)
 #define PWM_PERIOD (1.0f / PWM_FREQ) // 50us
-#define DEADTIME (1.0f)            // us
+#define DEADTIME (1.0f)              // us
 #define MINWINDOW (2.5f)             // us
 #define ADC_CONV_TIME (0.8f)         // us;f = 128m/4;time = f*(12.5+13.5)
 #define STABLE_SCALE (int16_t)((MINWINDOW + DEADTIME + ADC_CONV_TIME) * (128 / (TIMER_CLOCK_PRESCALER_SET + 1)))
@@ -29,18 +29,18 @@
 #define RS_PHASE (0.08f)
 #define LD_PHASE (0.00025f)
 #define LQ_PHASE (0.00025f)
-#define EMF_VPP	 (2.466f)
-#define EMF_PERIOD (95.99f)//ms
+#define EMF_VPP (2.466f)
+#define EMF_PERIOD (95.99f) // ms
 #define EMF_COEFF (float)((EMF_VPP * POLE_PAIRS * EMF_PERIOD) / (2 * 1.732f * 60))
-#define FLUX_RATE	(float)((3 * EMF_COEFF)/(100 * _PI * POLE_PAIRS))
+#define FLUX_RATE (float)((3 * EMF_COEFF) / (100 * _PI * POLE_PAIRS))
 #define IND_PHASE (LQ_PHASE)
 #define POLE_PAIRS (5u)
-#define VOLT_RATE (36.0f)//36v/sqrt(3)
-#define CURR_RATE (16.0f)//14.5a
+#define VOLT_RATE (36.0f) // 36v/sqrt(3)
+#define CURR_RATE (16.0f) // 14.5a
 #define EFREQ_RATE (500.0f)
 
-#define VOLT_BASE (float)(VOLT_RATE / 1.732f)//17.96
-#define CURR_BASE (CURR_RATE)// 14.14
+#define VOLT_BASE (float)(VOLT_RATE / 1.732f)    // 17.96
+#define CURR_BASE (CURR_RATE)                    // 14.14
 #define OMEGA_BASE (float)(2 * _PI * EFREQ_RATE) // 1884
 #define T_BASE (float)(1 / OMEGA_BASE)
 #define RS_BASE (float)(VOLT_BASE / CURR_BASE)
@@ -52,10 +52,10 @@
 #define BANDWIDTH_PLLLOOP (50u)
 #define KP_PLLLOOP (100u)
 #define KI_PLLLOOP (100u)
-#define PIOUT_MAX_PLLLOOP (65535u)
-#define PIOUT_MIN_PLLLOOP (0u)
-#define IOUT_MAX_PLLLOOP (65535u)
-#define IOUT_MIN_PLLLOOP (0u)
+#define PIOUT_MAX_PLLLOOP (65535)
+#define PIOUT_MIN_PLLLOOP (0)
+#define IOUT_MAX_PLLLOOP (65535)
+#define IOUT_MIN_PLLLOOP (0)
 
 #define BANDWIDTH_CURRLOOP (300u)
 #define KP_CURRLOOP (1000u)
@@ -79,10 +79,14 @@
 #define ALIGN_CURR_SLOPE (0.02f)
 #define ALIGN_ANGLE Q16(0.25f)
 #define START_CURR_OPENLOOP (2.0f)
-#define IFCURR_TARGET (1.5f)
+#define IFCURR_TARGET (1.6f)
 #define IFCURR_SLOPE (0.05f)
 
 #define UQ_LIMIT Q15(0.9f)
 #define UD_LIMIT Q15(0.43f)
 #define MODULE_COEFF Q15(0.577)
+
+#define SMO_GAIN (0.85f)
+#define SMO_ERRWIDTH (0.05f)
+#define BANDWIDTH_EMFLPF (100.0f)
 #endif
