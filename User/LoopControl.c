@@ -42,6 +42,7 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         if (pLoopCtrl->OpenLoopCtrl.OpenLoopSpd < pLoopCtrl->OpenLoopCtrl.SwitchSpd)
         {
             pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.StartCurr;
+						pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
         }
         else
         {
@@ -53,9 +54,8 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
             {
                 pLoopCtrl->OpenLoopCtrl.IFCurr = pLoopCtrl->OpenLoopCtrl.IFCurr_Target;
             }
-            pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr;
+						pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr;
 						pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
-            pLoopCtrl->ClosedLoopCtrl.SpdLoop.I_Out = pLoopCtrl->OpenLoopCtrl.IFCurr;
         }
 				break;
     case MotorClosedLoop:

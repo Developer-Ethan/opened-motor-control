@@ -7,6 +7,8 @@
 .\objects\table.o: ..\User\PI.h
 .\objects\table.o: ..\User\StateMachine.h
 .\objects\table.o: ..\User\Timer.h
+.\objects\table.o: ..\User\AxisTransform.h
+.\objects\table.o: ..\User\CurrSample.h
 .\objects\table.o: ..\User\Table.h
 .\objects\table.o: ..\User\Parameter.h
 .\objects\table.o: ..\User\DataCalc.h
@@ -44,3 +46,4 @@
 .\objects\table.o: ..\User\Svm.h
 .\objects\table.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\table.o: ..\User\n32g430_it.h
+.\objects\table.o: ..\User\Observer.h

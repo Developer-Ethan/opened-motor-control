@@ -7,6 +7,8 @@
 .\objects\lpf.o: ..\User\PI.h
 .\objects\lpf.o: ..\User\StateMachine.h
 .\objects\lpf.o: ..\User\Timer.h
+.\objects\lpf.o: ..\User\AxisTransform.h
+.\objects\lpf.o: ..\User\CurrSample.h
 .\objects\lpf.o: ..\User\Table.h
 .\objects\lpf.o: ..\User\Parameter.h
 .\objects\lpf.o: ..\User\DataCalc.h
@@ -44,3 +46,4 @@
 .\objects\lpf.o: ..\User\Svm.h
 .\objects\lpf.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\lpf.o: ..\User\n32g430_it.h
+.\objects\lpf.o: ..\User\Observer.h

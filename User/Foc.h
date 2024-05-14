@@ -3,33 +3,7 @@
 #include "stdint.h"
 #include "LPF.h"
 #include "LoopControl.h"
-typedef struct
-{
-  int16_t Real;
-  int16_t Imag;
-  /* data */
-} AXIS_DEF;
-
-typedef struct
-{
-  int16_t Curr_SamplePoint_1st;
-  int16_t Curr_SamplePoint_2nd;
-  int16_t Offset_1st;
-  int16_t Offset_2nd;
-  uint16_t SampleCurr[5];
-  uint32_t SampleCurrSum_1st;
-  uint32_t SampleCurrSum_2nd;
-  /* data */
-} SAMPLE_CURR_DEF;
-
-typedef struct
-{
-  int16_t PhaseU;
-  int16_t PhaseV;
-  int16_t PhaseW;
-  /* data */
-} PHASE_CURR_DEF;
-
+#include "AxisTransform.h" 
 typedef struct
 {
   float PhaseRes;
@@ -59,10 +33,10 @@ typedef struct
   int16_t Factor2;
   int16_t SmoGain;
   int16_t SmoErrWidth;
-	int16_t SmoSlope;
+  int16_t SmoSlope;
   int16_t EmfEst_Real;
   int16_t EmfEst_Imag;
-	int16_t EmfEstLpf_Real;
+  int16_t EmfEstLpf_Real;
   int16_t EmfEstLpf_Imag;
   int16_t LastCurrEst_Real;
   int16_t LastCurrEst_Imag;
@@ -75,7 +49,6 @@ typedef struct
   AXIS_DEF StatVolt;
   AXIS_DEF RotaCurr;
   AXIS_DEF RotaVolt;
-  SAMPLE_CURR_DEF Sample_Curr;
   uint16_t Sample_Volt;
   uint16_t PhaseInd;
   uint16_t PhaseRes;
@@ -85,10 +58,10 @@ typedef struct
   LPF_DEF ImagFluxLPF;
   LPF_DEF FluxAmpLPF;
   LPF_DEF Lpf_EmfEstReal;
-	LPF_DEF Lpf_EmfEstImag;
+  LPF_DEF Lpf_EmfEstImag;
   uint16_t FluxAngle;
   uint16_t AnglePLL;
-	uint16_t AngleOpen;
+  uint16_t AngleOpen;
   uint16_t Angle;
   uint16_t Angle_Align;
   int16_t IdRef;
@@ -97,9 +70,8 @@ typedef struct
   int16_t SpeedEst;
   float TsPu;
   int16_t Ts;
-  PHASE_CURR_DEF PhaseCurr;
   float BandWidthPu_CurrLoop;
-	float BandWidthPu_PllLoop;
+  float BandWidthPu_PllLoop;
   SMO_CTRL_DEF Smo_Ctrl;
   /* data */
 } FOC_DEF;
@@ -122,15 +94,9 @@ typedef enum
 #define BIT_MAX (16u)
 
 void Foc_Init(void);
-PHASE_CURR_DEF PhaseCurr_Get(FOC_DEF *pFoc);
-AXIS_DEF ClarkeTransform(PHASE_CURR_DEF *pPhaseCurr);
-AXIS_DEF ParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle);
-AXIS_DEF iParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle);
+void ClosedLoop_Init(void);
+void OpenLoop_Init(void);
 uint16_t Angle_Given(OPENLOOP_DEF *pOpenLoop);
-extern void OpenLoop_Init(void);
 void LimitedCircle_Voltage(AXIS_DEF *pAxis);
-void EstFlux_Ctr(void);
-void EstSmo_Ctr(void);
 extern FOC_DEF Foc;
-
 #endif

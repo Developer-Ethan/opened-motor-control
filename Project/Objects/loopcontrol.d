@@ -7,6 +7,8 @@
 .\objects\loopcontrol.o: ..\User\PI.h
 .\objects\loopcontrol.o: ..\User\StateMachine.h
 .\objects\loopcontrol.o: ..\User\Timer.h
+.\objects\loopcontrol.o: ..\User\AxisTransform.h
+.\objects\loopcontrol.o: ..\User\CurrSample.h
 .\objects\loopcontrol.o: ..\User\Table.h
 .\objects\loopcontrol.o: ..\User\Parameter.h
 .\objects\loopcontrol.o: ..\User\DataCalc.h
@@ -44,3 +46,4 @@
 .\objects\loopcontrol.o: ..\User\Svm.h
 .\objects\loopcontrol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\loopcontrol.o: ..\User\n32g430_it.h
+.\objects\loopcontrol.o: ..\User\Observer.h

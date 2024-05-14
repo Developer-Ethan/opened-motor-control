@@ -38,9 +38,12 @@
 .\objects\bsp_tim.o: ..\User\PI.h
 .\objects\bsp_tim.o: ..\User\StateMachine.h
 .\objects\bsp_tim.o: ..\User\Timer.h
+.\objects\bsp_tim.o: ..\User\AxisTransform.h
+.\objects\bsp_tim.o: ..\User\CurrSample.h
 .\objects\bsp_tim.o: ..\User\Table.h
 .\objects\bsp_tim.o: ..\User\Parameter.h
 .\objects\bsp_tim.o: ..\User\DataCalc.h
 .\objects\bsp_tim.o: ..\User\Svm.h
 .\objects\bsp_tim.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\bsp_tim.o: ..\User\n32g430_it.h
+.\objects\bsp_tim.o: ..\User\Observer.h

@@ -128,7 +128,7 @@ inline uint16_t AngleAmp_Get(AXIS_DEF Axis, uint16_t *pAmp)
  * @return     None.
  *
  */
-void BiasDetect(FOC_DEF *pFoc)
+void BiasDetect(SAMPLE_CURR_DEF *pCurrSample)
 {
     static uint16_t DetectCnt = 0;
     uint16_t DetectTime = 64;
@@ -136,15 +136,15 @@ void BiasDetect(FOC_DEF *pFoc)
     if (DetectCnt < DetectTime)
     {
         DetectCnt++;
-        pFoc->Sample_Curr.SampleCurrSum_1st += SampleCurr_1st;
-        pFoc->Sample_Curr.SampleCurrSum_2nd += SampleCurr_2nd;
+        pCurrSample->SampleCurrSum_1st += SampleCurr_1st;
+        pCurrSample->SampleCurrSum_2nd += SampleCurr_2nd;
     }
     else
     {
         DetectCnt = 0;
-        pFoc->Sample_Curr.Offset_1st = pFoc->Sample_Curr.SampleCurrSum_1st >> 6;
-        pFoc->Sample_Curr.Offset_2nd = pFoc->Sample_Curr.SampleCurrSum_2nd >> 6;
-				pFoc->Sample_Curr.SampleCurrSum_1st = 0;
-				pFoc->Sample_Curr.SampleCurrSum_2nd = 0;		
+        pCurrSample->Offset_1st = pCurrSample->SampleCurrSum_1st >> 6;
+        pCurrSample->Offset_2nd = pCurrSample->SampleCurrSum_2nd >> 6;
+				pCurrSample->SampleCurrSum_1st = 0;
+				pCurrSample->SampleCurrSum_2nd = 0;		
     }
 }

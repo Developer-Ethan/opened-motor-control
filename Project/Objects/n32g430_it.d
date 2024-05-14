@@ -38,9 +38,12 @@
 .\objects\n32g430_it.o: ..\User\PI.h
 .\objects\n32g430_it.o: ..\User\StateMachine.h
 .\objects\n32g430_it.o: ..\User\Timer.h
+.\objects\n32g430_it.o: ..\User\AxisTransform.h
+.\objects\n32g430_it.o: ..\User\CurrSample.h
 .\objects\n32g430_it.o: ..\User\Table.h
 .\objects\n32g430_it.o: ..\User\Parameter.h
 .\objects\n32g430_it.o: ..\User\DataCalc.h
 .\objects\n32g430_it.o: ..\BSP\bsp_tim.h
 .\objects\n32g430_it.o: ..\User\Svm.h
 .\objects\n32g430_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\n32g430_it.o: ..\User\Observer.h

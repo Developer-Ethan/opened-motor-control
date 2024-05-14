@@ -16,5 +16,8 @@
 #include "LoopControl.h"
 #include "string.h"
 #include "n32g430_it.h"
+#include "Observer.h"
+#include "AxisTransform.h"
+#include "CurrSample.h"
 
 #endif

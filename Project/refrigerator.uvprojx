@@ -438,6 +438,21 @@
               <FilePath>..\User\LoopControl.c</FilePath>
             </File>
             <File>
+              <FileName>Observer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Observer.c</FilePath>
+            </File>
+            <File>
+              <FileName>AxisTransform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\AxisTransform.c</FilePath>
+            </File>
+            <File>
+              <FileName>CurrSample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\CurrSample.c</FilePath>
+            </File>
+            <File>
               <FileName>HeadFile.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\HeadFile.h</FilePath>

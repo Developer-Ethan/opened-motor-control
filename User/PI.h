@@ -5,12 +5,10 @@
 typedef struct
 {
     int32_t I_Out;
-    int32_t Iout_Min;
-    int32_t Iout_Max;
-    int32_t Pid_Kp;
-    int32_t Pid_Ki;
-    int32_t Out_Min;
-    int32_t Out_Max;
+    int16_t OutMin;
+    int16_t OutMax;
+    int16_t Pid_Kp;
+    int16_t Pid_Ki;
     int32_t Error;
     int16_t InputRef;
     int16_t Pid_Output;
@@ -23,5 +21,5 @@ typedef struct
     /* data */
 } PI_DQ_DEF;
 
-int16_t PID_Ctr(PI_DEF *pPi, int16_t error);
+int16_t PID_Ctr(PI_DEF *pPi, int32_t error);
 #endif // !1

@@ -13,15 +13,16 @@ Section Cross References
     n32g430_it.o(i.ADC_IRQHandler) refers to bsp_tim.o(.RamFunc) for switch_pwm
     n32g430_it.o(i.ADC_IRQHandler) refers to n32g430_gpio.o(i.GPIO_Pins_Reset) for GPIO_Pins_Reset
     n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.Angle_Given) for Angle_Given
-    n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.PhaseCurr_Get) for PhaseCurr_Get
-    n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.ClarkeTransform) for ClarkeTransform
-    n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.ParkTransform) for ParkTransform
+    n32g430_it.o(i.ADC_IRQHandler) refers to currsample.o(i.PhaseCurr_Get) for PhaseCurr_Get
+    n32g430_it.o(i.ADC_IRQHandler) refers to axistransform.o(i.ClarkeTransform) for ClarkeTransform
+    n32g430_it.o(i.ADC_IRQHandler) refers to axistransform.o(i.ParkTransform) for ParkTransform
     n32g430_it.o(i.ADC_IRQHandler) refers to pi.o(i.PID_Ctr) for PID_Ctr
-    n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.iParkTransform) for iParkTransform
-    n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(i.EstSmo_Ctr) for EstSmo_Ctr
+    n32g430_it.o(i.ADC_IRQHandler) refers to axistransform.o(i.iParkTransform) for iParkTransform
+    n32g430_it.o(i.ADC_IRQHandler) refers to observer.o(i.EstSmo_Ctr) for EstSmo_Ctr
     n32g430_it.o(i.ADC_IRQHandler) refers to svm.o(i.Svm_Ctr) for Svm_Ctr
     n32g430_it.o(i.ADC_IRQHandler) refers to n32g430_it.o(.data) for .data
     n32g430_it.o(i.ADC_IRQHandler) refers to foc.o(.bss) for Foc
+    n32g430_it.o(i.ADC_IRQHandler) refers to currsample.o(.bss) for Sample_Curr
     n32g430_it.o(i.ADC_IRQHandler) refers to statemachine.o(.data) for MotorCtrl
     n32g430_it.o(i.ADC_IRQHandler) refers to loopcontrol.o(.bss) for LoopCtrl
     n32g430_it.o(i.ADC_IRQHandler) refers to svm.o(.bss) for Svm
@@ -50,16 +51,8 @@ Section Cross References
     main.o(i.main) refers to statemachine.o(i.MotorStateMachine) for MotorStateMachine
     main.o(i.main) refers to timer.o(.bss) for Timer_State
     main.o(i.main) refers to statemachine.o(.data) for MotorCtrl
-    foc.o(i.EstFlux_Ctr) refers to datacalc.o(i.Data_Limit) for Data_Limit
-    foc.o(i.EstFlux_Ctr) refers to lpf.o(i.LPF_Ctr) for LPF_Ctr
-    foc.o(i.EstFlux_Ctr) refers to datacalc.o(i.AngleAmp_Get) for AngleAmp_Get
-    foc.o(i.EstFlux_Ctr) refers to foc.o(.bss) for .bss
-    foc.o(i.EstSmo_Ctr) refers to lpf.o(i.LPF_Ctr) for LPF_Ctr
-    foc.o(i.EstSmo_Ctr) refers to pi.o(i.PID_Ctr) for PID_Ctr
-    foc.o(i.EstSmo_Ctr) refers to foc.o(.bss) for .bss
-    foc.o(i.EstSmo_Ctr) refers to table.o(.data) for pTable_Cos
-    foc.o(i.EstSmo_Ctr) refers to table.o(.constdata) for Table_Sin
-    foc.o(i.EstSmo_Ctr) refers to loopcontrol.o(.bss) for LoopCtrl
+    foc.o(i.ClosedLoop_Init) refers to loopcontrol.o(.bss) for LoopCtrl
+    foc.o(i.ClosedLoop_Init) refers to foc.o(.bss) for .bss
     foc.o(i.Foc_Init) refers to memseta.o(.text) for __aeabi_memclr4
     foc.o(i.Foc_Init) refers to loopcontrol.o(.bss) for LoopCtrl
     foc.o(i.Foc_Init) refers to foc.o(.bss) for .bss
@@ -69,13 +62,6 @@ Section Cross References
     foc.o(i.LimitedCircle_Voltage) refers to table.o(.constdata) for Table_Sqrt
     foc.o(i.OpenLoop_Init) refers to foc.o(.bss) for .bss
     foc.o(i.OpenLoop_Init) refers to loopcontrol.o(.bss) for LoopCtrl
-    foc.o(i.ParkTransform) refers to datacalc.o(i.Data_Limit) for Data_Limit
-    foc.o(i.ParkTransform) refers to table.o(.data) for pTable_Cos
-    foc.o(i.ParkTransform) refers to table.o(.constdata) for Table_Sin
-    foc.o(i.PhaseCurr_Get) refers to svm.o(.bss) for Svm
-    foc.o(i.iParkTransform) refers to datacalc.o(i.Data_Limit) for Data_Limit
-    foc.o(i.iParkTransform) refers to table.o(.data) for pTable_Cos
-    foc.o(i.iParkTransform) refers to table.o(.constdata) for Table_Sin
     datacalc.o(i.AngleAmp_Get) refers to table.o(.constdata) for Table_Arctan
     datacalc.o(i.AngleAmp_Get) refers to table.o(.constdata) for Table_Amp
     datacalc.o(i.BiasDetect) refers to datacalc.o(.data) for .data
@@ -101,6 +87,23 @@ Section Cross References
     statemachine.o(i.MotorStateMachine) refers to foc.o(i.OpenLoop_Init) for OpenLoop_Init
     statemachine.o(i.MotorStateMachine) refers to foc.o(i.Foc_Init) for Foc_Init
     loopcontrol.o(i.SpdLoop_Control) refers to foc.o(.bss) for Foc
+    observer.o(i.EstFlux_Ctr) refers to datacalc.o(i.Data_Limit) for Data_Limit
+    observer.o(i.EstFlux_Ctr) refers to lpf.o(i.LPF_Ctr) for LPF_Ctr
+    observer.o(i.EstFlux_Ctr) refers to datacalc.o(i.AngleAmp_Get) for AngleAmp_Get
+    observer.o(i.EstFlux_Ctr) refers to foc.o(.bss) for Foc
+    observer.o(i.EstSmo_Ctr) refers to lpf.o(i.LPF_Ctr) for LPF_Ctr
+    observer.o(i.EstSmo_Ctr) refers to pi.o(i.PID_Ctr) for PID_Ctr
+    observer.o(i.EstSmo_Ctr) refers to foc.o(.bss) for Foc
+    observer.o(i.EstSmo_Ctr) refers to table.o(.data) for pTable_Cos
+    observer.o(i.EstSmo_Ctr) refers to table.o(.constdata) for Table_Sin
+    observer.o(i.EstSmo_Ctr) refers to loopcontrol.o(.bss) for LoopCtrl
+    axistransform.o(i.ParkTransform) refers to datacalc.o(i.Data_Limit) for Data_Limit
+    axistransform.o(i.ParkTransform) refers to table.o(.data) for pTable_Cos
+    axistransform.o(i.ParkTransform) refers to table.o(.constdata) for Table_Sin
+    axistransform.o(i.iParkTransform) refers to datacalc.o(i.Data_Limit) for Data_Limit
+    axistransform.o(i.iParkTransform) refers to table.o(.data) for pTable_Cos
+    axistransform.o(i.iParkTransform) refers to table.o(.constdata) for Table_Sin
+    currsample.o(i.PhaseCurr_Get) refers to svm.o(.bss) for Svm
     system_n32g430.o(i.System_Clock_Frequency_Update) refers to system_n32g430.o(.data) for .data
     system_n32g430.o(i.System_Clock_Frequency_Update) refers to system_n32g430.o(.constdata) for .constdata
     system_n32g430.o(i.System_Clock_Set) refers to system_n32g430.o(i.PLL_TrimValueLoad) for PLL_TrimValueLoad
@@ -719,7 +722,7 @@ Removing Unused input sections from the image.
     Removing foc.o(.rev16_text), (4 bytes).
     Removing foc.o(.revsh_text), (4 bytes).
     Removing foc.o(.rrx_text), (6 bytes).
-    Removing foc.o(i.EstFlux_Ctr), (312 bytes).
+    Removing foc.o(i.ClosedLoop_Init), (32 bytes).
     Removing foc.o(i.LimitedCircle_Voltage), (144 bytes).
     Removing datacalc.o(.rev16_text), (4 bytes).
     Removing datacalc.o(.revsh_text), (4 bytes).
@@ -751,6 +754,16 @@ Removing Unused input sections from the image.
     Removing loopcontrol.o(.rev16_text), (4 bytes).
     Removing loopcontrol.o(.revsh_text), (4 bytes).
     Removing loopcontrol.o(.rrx_text), (6 bytes).
+    Removing observer.o(.rev16_text), (4 bytes).
+    Removing observer.o(.revsh_text), (4 bytes).
+    Removing observer.o(.rrx_text), (6 bytes).
+    Removing observer.o(i.EstFlux_Ctr), (312 bytes).
+    Removing axistransform.o(.rev16_text), (4 bytes).
+    Removing axistransform.o(.revsh_text), (4 bytes).
+    Removing axistransform.o(.rrx_text), (6 bytes).
+    Removing currsample.o(.rev16_text), (4 bytes).
+    Removing currsample.o(.revsh_text), (4 bytes).
+    Removing currsample.o(.rrx_text), (6 bytes).
     Removing system_n32g430.o(.rev16_text), (4 bytes).
     Removing system_n32g430.o(.revsh_text), (4 bytes).
     Removing system_n32g430.o(.rrx_text), (6 bytes).
@@ -1568,7 +1581,7 @@ Removing Unused input sections from the image.
     Removing i2c_eeprom.o(i.I2C_EE_WriteOnePageCompleted), (28 bytes).
     Removing i2c_eeprom.o(i.SystemNVICReset), (36 bytes).
 
-863 unused section(s) (total 35394 bytes) removed from the image.
+873 unused section(s) (total 35468 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1578,19 +1591,19 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ..\BSP\bsp_adc.c                         0x00000000   Number         0  bsp_adc.o ABSOLUTE
     ..\BSP\bsp_config.c                      0x00000000   Number         0  bsp_config.o ABSOLUTE
@@ -1602,10 +1615,13 @@ Image Symbol Table
     ..\DSP\arm_cos_f32.c                     0x00000000   Number         0  arm_cos_f32.o ABSOLUTE
     ..\DSP\arm_sin_cos_f32.c                 0x00000000   Number         0  arm_sin_cos_f32.o ABSOLUTE
     ..\DSP\arm_sin_f32.c                     0x00000000   Number         0  arm_sin_f32.o ABSOLUTE
+    ..\User\AxisTransform.c                  0x00000000   Number         0  axistransform.o ABSOLUTE
+    ..\User\CurrSample.c                     0x00000000   Number         0  currsample.o ABSOLUTE
     ..\User\DataCalc.c                       0x00000000   Number         0  datacalc.o ABSOLUTE
     ..\User\Foc.c                            0x00000000   Number         0  foc.o ABSOLUTE
     ..\User\LPF.c                            0x00000000   Number         0  lpf.o ABSOLUTE
     ..\User\LoopControl.c                    0x00000000   Number         0  loopcontrol.o ABSOLUTE
+    ..\User\Observer.c                       0x00000000   Number         0  observer.o ABSOLUTE
     ..\User\PI.c                             0x00000000   Number         0  pi.o ABSOLUTE
     ..\User\StateMachine.c                   0x00000000   Number         0  statemachine.o ABSOLUTE
     ..\User\Svm.c                            0x00000000   Number         0  svm.o ABSOLUTE
@@ -1623,10 +1639,13 @@ Image Symbol Table
     ..\\DSP\\arm_cos_f32.c                   0x00000000   Number         0  arm_cos_f32.o ABSOLUTE
     ..\\DSP\\arm_sin_cos_f32.c               0x00000000   Number         0  arm_sin_cos_f32.o ABSOLUTE
     ..\\DSP\\arm_sin_f32.c                   0x00000000   Number         0  arm_sin_f32.o ABSOLUTE
+    ..\\User\\AxisTransform.c                0x00000000   Number         0  axistransform.o ABSOLUTE
+    ..\\User\\CurrSample.c                   0x00000000   Number         0  currsample.o ABSOLUTE
     ..\\User\\DataCalc.c                     0x00000000   Number         0  datacalc.o ABSOLUTE
     ..\\User\\Foc.c                          0x00000000   Number         0  foc.o ABSOLUTE
     ..\\User\\LPF.c                          0x00000000   Number         0  lpf.o ABSOLUTE
     ..\\User\\LoopControl.c                  0x00000000   Number         0  loopcontrol.o ABSOLUTE
+    ..\\User\\Observer.c                     0x00000000   Number         0  observer.o ABSOLUTE
     ..\\User\\PI.c                           0x00000000   Number         0  pi.o ABSOLUTE
     ..\\User\\StateMachine.c                 0x00000000   Number         0  statemachine.o ABSOLUTE
     ..\\User\\Svm.c                          0x00000000   Number         0  svm.o ABSOLUTE
@@ -1712,212 +1731,212 @@ Image Symbol Table
     i.ADC_INTFlag_Status_Clear               0x080004f0   Section        0  n32g430_adc.o(i.ADC_INTFlag_Status_Clear)
     i.ADC_INTFlag_Status_Get                 0x08000500   Section        0  n32g430_adc.o(i.ADC_INTFlag_Status_Get)
     i.ADC_IRQHandler                         0x08000514   Section        0  n32g430_it.o(i.ADC_IRQHandler)
-    i.ADC_Initializes                        0x0800071c   Section        0  n32g430_adc.o(i.ADC_Initializes)
-    i.ADC_Injected_Channels_Number_Config    0x08000764   Section        0  n32g430_adc.o(i.ADC_Injected_Channels_Number_Config)
-    i.ADC_Injected_Group_Autoconversion_Disable 0x0800077c   Section        0  n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable)
-    i.ADC_Injected_Group_Conversion_Data_Get 0x0800078c   Section        0  n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get)
-    i.ADC_Injected_Group_External_Trigger_Source_Config 0x080007a4   Section        0  n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config)
-    i.ADC_Injected_Sequence_Conversion_Number_Config 0x080007bc   Section        0  n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config)
-    i.ADC_Interrupts_Enable                  0x080007dc   Section        0  n32g430_adc.o(i.ADC_Interrupts_Enable)
-    i.ADC_Multichannels_Disable              0x080007fc   Section        0  n32g430_adc.o(i.ADC_Multichannels_Disable)
-    i.ADC_Multichannels_Enable               0x0800080c   Section        0  n32g430_adc.o(i.ADC_Multichannels_Enable)
-    i.ADC_ON                                 0x0800081c   Section        0  n32g430_adc.o(i.ADC_ON)
-    i.ADC_PLL_Clock_Mode_Config              0x0800082c   Section        0  n32g430_adc.o(i.ADC_PLL_Clock_Mode_Config)
-    i.ADC_Regular_Channels_Number_Config     0x0800083c   Section        0  n32g430_adc.o(i.ADC_Regular_Channels_Number_Config)
-    i.ADC_Regular_Group_Conversion_Data_Get  0x08000854   Section        0  n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get)
-    i.ADC_Regular_Group_External_Trigger_Source_Config 0x08000860   Section        0  n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config)
-    i.ADC_Regular_Sequence_Conversion_Number_Config 0x08000878   Section        0  n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config)
-    i.ADC_Reset                              0x080008d8   Section        0  n32g430_adc.o(i.ADC_Reset)
-    i.Adc_Init                               0x080008e0   Section        0  bsp_adc.o(i.Adc_Init)
-    i.Angle_Given                            0x08000996   Section        0  foc.o(i.Angle_Given)
-    i.BiasDetect                             0x080009b0   Section        0  datacalc.o(i.BiasDetect)
-    i.BusFault_Handler                       0x080009f4   Section        0  n32g430_it.o(i.BusFault_Handler)
-    i.ClarkeTransform                        0x080009f6   Section        0  foc.o(i.ClarkeTransform)
-    i.DMA_Buffer_Size_Config                 0x08000a1c   Section        0  n32g430_dma.o(i.DMA_Buffer_Size_Config)
-    i.DMA_Channel_Enable                     0x08000a20   Section        0  n32g430_dma.o(i.DMA_Channel_Enable)
-    i.DMA_Channel_Request_Remap              0x08000a2a   Section        0  n32g430_dma.o(i.DMA_Channel_Request_Remap)
-    i.DMA_Circular_Mode_Config               0x08000a2e   Section        0  n32g430_dma.o(i.DMA_Circular_Mode_Config)
-    i.DMA_Destination_Config                 0x08000a3e   Section        0  n32g430_dma.o(i.DMA_Destination_Config)
-    i.DMA_Initializes                        0x08000a4e   Section        0  n32g430_dma.o(i.DMA_Initializes)
-    i.DMA_Memory_2_Memory_Config             0x08000ab0   Section        0  n32g430_dma.o(i.DMA_Memory_2_Memory_Config)
-    i.DMA_Memory_Addr_Increment_Config       0x08000ac0   Section        0  n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config)
-    i.DMA_Memory_Address_Config              0x08000ad0   Section        0  n32g430_dma.o(i.DMA_Memory_Address_Config)
-    i.DMA_Memory_Data_Width_Config           0x08000ad4   Section        0  n32g430_dma.o(i.DMA_Memory_Data_Width_Config)
-    i.DMA_Peripheral_Addr_Increment_Config   0x08000ae4   Section        0  n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config)
-    i.DMA_Peripheral_Address_Config          0x08000af4   Section        0  n32g430_dma.o(i.DMA_Peripheral_Address_Config)
-    i.DMA_Peripheral_Data_Width_Config       0x08000af8   Section        0  n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config)
-    i.DMA_Priority_Config                    0x08000b08   Section        0  n32g430_dma.o(i.DMA_Priority_Config)
-    i.DMA_Reset                              0x08000b18   Section        0  n32g430_dma.o(i.DMA_Reset)
-    i.DMA_Structure_Initializes              0x08000bc0   Section        0  n32g430_dma.o(i.DMA_Structure_Initializes)
-    i.Data_Limit                             0x08000bda   Section        0  datacalc.o(i.Data_Limit)
-    i.DebugMon_Handler                       0x08000bf6   Section        0  n32g430_it.o(i.DebugMon_Handler)
-    i.Delay_us                               0x08000bf8   Section        0  i2c_eeprom.o(i.Delay_us)
-    i.EstSmo_Ctr                             0x08000c0c   Section        0  foc.o(i.EstSmo_Ctr)
-    i.Foc_Init                               0x08000d1c   Section        0  foc.o(i.Foc_Init)
-    i.GPIO_Alternate_Set                     0x08000f50   Section        0  n32g430_gpio.o(i.GPIO_Alternate_Set)
-    i.GPIO_Config                            0x08000f80   Section        0  bsp_config.o(i.GPIO_Config)
-    i.GPIO_Driver_Set                        0x08001060   Section        0  n32g430_gpio.o(i.GPIO_Driver_Set)
-    i.GPIO_Mode_Set                          0x08001074   Section        0  n32g430_gpio.o(i.GPIO_Mode_Set)
-    i.GPIO_PBC_Pins_Reset                    0x080010ae   Section        0  n32g430_gpio.o(i.GPIO_PBC_Pins_Reset)
-    i.GPIO_Peripheral_Initialize             0x080010b2   Section        0  n32g430_gpio.o(i.GPIO_Peripheral_Initialize)
-    i.GPIO_Pins_Reset                        0x08001102   Section        0  n32g430_gpio.o(i.GPIO_Pins_Reset)
-    i.GPIO_Pins_Set                          0x08001106   Section        0  n32g430_gpio.o(i.GPIO_Pins_Set)
-    i.GPIO_Pull_Set                          0x0800110a   Section        0  n32g430_gpio.o(i.GPIO_Pull_Set)
-    i.GPIO_SlewRate_Set                      0x0800111e   Section        0  n32g430_gpio.o(i.GPIO_SlewRate_Set)
-    i.GPIO_Structure_Initialize              0x08001130   Section        0  n32g430_gpio.o(i.GPIO_Structure_Initialize)
-    i.HardFault_Handler                      0x08001146   Section        0  n32g430_it.o(i.HardFault_Handler)
-    i.I2C1_ER_IRQHandler                     0x08001148   Section        0  i2c_eeprom.o(i.I2C1_ER_IRQHandler)
-    i.I2C1_EV_IRQHandler                     0x080011c4   Section        0  i2c_eeprom.o(i.I2C1_EV_IRQHandler)
-    i.I2C_7bit_Addr_Send                     0x08001314   Section        0  n32g430_i2c.o(i.I2C_7bit_Addr_Send)
-    i.I2C_Acknowledg_Disable                 0x08001326   Section        0  n32g430_i2c.o(i.I2C_Acknowledg_Disable)
-    i.I2C_Acknowledgement_Config             0x08001330   Section        0  n32g430_i2c.o(i.I2C_Acknowledgement_Config)
-    i.I2C_Addressing_Mode_Config             0x0800133c   Section        0  n32g430_i2c.o(i.I2C_Addressing_Mode_Config)
-    i.I2C_Bus_Mode_Config                    0x08001348   Section        0  n32g430_i2c.o(i.I2C_Bus_Mode_Config)
-    i.I2C_Clock_Speed_Config                 0x08001354   Section        0  n32g430_i2c.o(i.I2C_Clock_Speed_Config)
-    i.I2C_Data_Recv                          0x08001428   Section        0  n32g430_i2c.o(i.I2C_Data_Recv)
-    i.I2C_Data_Send                          0x0800142e   Section        0  n32g430_i2c.o(i.I2C_Data_Send)
-    i.I2C_EE_Init                            0x08001434   Section        0  i2c_eeprom.o(i.I2C_EE_Init)
-    i.I2C_Flag_Status_Clear                  0x080014a4   Section        0  n32g430_i2c.o(i.I2C_Flag_Status_Clear)
-    i.I2C_Flag_Status_Get                    0x080014aa   Section        0  n32g430_i2c.o(i.I2C_Flag_Status_Get)
-    i.I2C_Generate_Start_Enable              0x080014dc   Section        0  n32g430_i2c.o(i.I2C_Generate_Start_Enable)
-    i.I2C_Generate_Stop_Enable               0x080014e6   Section        0  n32g430_i2c.o(i.I2C_Generate_Stop_Enable)
-    i.I2C_Initializes                        0x080014f0   Section        0  n32g430_i2c.o(i.I2C_Initializes)
-    i.I2C_Interrupts_Disable                 0x08001524   Section        0  n32g430_i2c.o(i.I2C_Interrupts_Disable)
-    i.I2C_Last_Event_Get                     0x0800152c   Section        0  n32g430_i2c.o(i.I2C_Last_Event_Get)
-    i.I2C_Own_Addr1_Config                   0x0800153a   Section        0  n32g430_i2c.o(i.I2C_Own_Addr1_Config)
-    i.I2C_Reset                              0x08001548   Section        0  n32g430_i2c.o(i.I2C_Reset)
-    i.IIC_RCCReset                           0x08001564   Section        0  i2c_eeprom.o(i.IIC_RCCReset)
-    i.IIC_RestoreSlaveByClock                0x080015a8   Section        0  i2c_eeprom.o(i.IIC_RestoreSlaveByClock)
-    i.IIC_SWReset                            0x080015f8   Section        0  i2c_eeprom.o(i.IIC_SWReset)
-    i.Input_Channel1_Config                  0x08001668   Section        0  n32g430_tim.o(i.Input_Channel1_Config)
-    i.Input_Channel2_Config                  0x080016dc   Section        0  n32g430_tim.o(i.Input_Channel2_Config)
-    i.Input_Channel3_Config                  0x08001754   Section        0  n32g430_tim.o(i.Input_Channel3_Config)
-    i.Input_Channel4_Config                  0x080017cc   Section        0  n32g430_tim.o(i.Input_Channel4_Config)
-    i.LPF_Ctr                                0x08001848   Section        0  lpf.o(i.LPF_Ctr)
-    i.MemManage_Handler                      0x0800186c   Section        0  n32g430_it.o(i.MemManage_Handler)
-    i.MotorStateMachine                      0x0800186e   Section        0  statemachine.o(i.MotorStateMachine)
-    i.NMI_Handler                            0x08001936   Section        0  n32g430_it.o(i.NMI_Handler)
-    i.NVIC_Initializes                       0x08001938   Section        0  misc.o(i.NVIC_Initializes)
-    i.NVIC_Priority_Group_Set                0x0800199c   Section        0  misc.o(i.NVIC_Priority_Group_Set)
-    i.OpenLoop_Init                          0x080019b0   Section        0  foc.o(i.OpenLoop_Init)
-    i.PID_Ctr                                0x080019c8   Section        0  pi.o(i.PID_Ctr)
-    i.PLL_TrimValueLoad                      0x08001a24   Section        0  system_n32g430.o(i.PLL_TrimValueLoad)
-    i.ParkTransform                          0x08001a94   Section        0  foc.o(i.ParkTransform)
-    i.PhaseCurr_Get                          0x08001aec   Section        0  foc.o(i.PhaseCurr_Get)
-    i.RCC_ADC_1M_Clock_Config                0x08001b70   Section        0  n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config)
-    i.RCC_ADC_Hclk_Config                    0x08001b88   Section        0  n32g430_rcc.o(i.RCC_ADC_Hclk_Config)
-    i.RCC_ADC_Hclk_Enable                    0x08001b9c   Section        0  n32g430_rcc.o(i.RCC_ADC_Hclk_Enable)
-    i.RCC_ADC_PLL_Clock_Disable              0x08001bac   Section        0  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Disable)
-    i.RCC_ADC_PLL_Clock_Prescaler_Enable     0x08001bbc   Section        0  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Prescaler_Enable)
-    i.RCC_AHB_Peripheral_Clock_Enable        0x08001bd0   Section        0  n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable)
-    i.RCC_AHB_Peripheral_Reset               0x08001be0   Section        0  n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset)
-    i.RCC_APB1_Peripheral_Clock_Disable      0x08001bf4   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable)
-    i.RCC_APB1_Peripheral_Clock_Enable       0x08001c04   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable)
-    i.RCC_APB1_Peripheral_Reset              0x08001c14   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset)
-    i.RCC_APB2_Peripheral_Clock_Enable       0x08001c28   Section        0  n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable)
-    i.RCC_APB2_Peripheral_Reset              0x08001c38   Section        0  n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset)
-    i.RCC_Clocks_Frequencies_Value_Get       0x08001c4c   Section        0  n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get)
-    i.RCC_Configuration                      0x08001d20   Section        0  bsp_config.o(i.RCC_Configuration)
-    i.RCC_Pclk1_Config                       0x08001d8c   Section        0  n32g430_rcc.o(i.RCC_Pclk1_Config)
-    i.SVC_Handler                            0x08001da0   Section        0  n32g430_it.o(i.SVC_Handler)
-    i.SpdLoop_Control                        0x08001da4   Section        0  loopcontrol.o(i.SpdLoop_Control)
-    i.Svm_Ctr                                0x08001e58   Section        0  svm.o(i.Svm_Ctr)
-    i.SysTick_Handler                        0x080024e4   Section        0  n32g430_it.o(i.SysTick_Handler)
-    i.System_Clock_Set                       0x080024e8   Section        0  system_n32g430.o(i.System_Clock_Set)
-    System_Clock_Set                         0x080024e9   Thumb Code   228  system_n32g430.o(i.System_Clock_Set)
-    i.System_Init                            0x080025e8   Section        0  bsp_config.o(i.System_Init)
-    i.System_Initializes                     0x08002618   Section        0  system_n32g430.o(i.System_Initializes)
-    i.TIM1_BRK_IRQHandler                    0x080026b0   Section        0  n32g430_it.o(i.TIM1_BRK_IRQHandler)
-    i.TIM1_CC_IRQHandler                     0x080026dc   Section        0  n32g430_it.o(i.TIM1_CC_IRQHandler)
-    i.TIM1_PWM_Init                          0x08002700   Section        0  bsp_tim.o(i.TIM1_PWM_Init)
-    i.TIM1_UP_IRQHandler                     0x08002884   Section        0  n32g430_it.o(i.TIM1_UP_IRQHandler)
-    i.TIM2_IRQHandler                        0x080028a8   Section        0  n32g430_it.o(i.TIM2_IRQHandler)
-    i.TIM4_Capture_Config                    0x080028c8   Section        0  bsp_tim.o(i.TIM4_Capture_Config)
-    i.TIM4_IRQHandler                        0x080029d0   Section        0  n32g430_it.o(i.TIM4_IRQHandler)
-    i.TIM6_1Khz_Init                         0x080029f4   Section        0  bsp_tim.o(i.TIM6_1Khz_Init)
-    i.TIM6_IRQHandler                        0x08002a78   Section        0  n32g430_it.o(i.TIM6_IRQHandler)
-    i.TIM_Asymmetric_Enable                  0x08002ab4   Section        0  n32g430_tim.o(i.TIM_Asymmetric_Enable)
-    i.TIM_Base_Auto_Reload_Set               0x08002abe   Section        0  n32g430_tim.o(i.TIM_Base_Auto_Reload_Set)
-    i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set 0x08002ac2   Section        0  n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set)
-    i.TIM_Base_Channel1                      0x08002ace   Section        0  n32g430_tim.o(i.TIM_Base_Channel1)
-    i.TIM_Base_Channel2                      0x08002ae6   Section        0  n32g430_tim.o(i.TIM_Base_Channel2)
-    i.TIM_Base_Channel3                      0x08002afe   Section        0  n32g430_tim.o(i.TIM_Base_Channel3)
-    i.TIM_Base_Channel4                      0x08002b16   Section        0  n32g430_tim.o(i.TIM_Base_Channel4)
-    i.TIM_Base_Count_Mode_Set                0x08002b2e   Section        0  n32g430_tim.o(i.TIM_Base_Count_Mode_Set)
-    i.TIM_Base_Initialize                    0x08002b3c   Section        0  n32g430_tim.o(i.TIM_Base_Initialize)
-    i.TIM_Base_OCrefClear                    0x08002bec   Section        0  n32g430_tim.o(i.TIM_Base_OCrefClear)
-    i.TIM_Base_Prescaler_Set                 0x08002c04   Section        0  n32g430_tim.o(i.TIM_Base_Prescaler_Set)
-    i.TIM_Base_Reload_Mode_Set               0x08002c08   Section        0  n32g430_tim.o(i.TIM_Base_Reload_Mode_Set)
-    i.TIM_Base_Repeat_Count_Set              0x08002c0c   Section        0  n32g430_tim.o(i.TIM_Base_Repeat_Count_Set)
-    i.TIM_Base_Struct_Initialize             0x08002c10   Section        0  n32g430_tim.o(i.TIM_Base_Struct_Initialize)
-    i.TIM_Break_And_Dead_Time_Set            0x08002c2e   Section        0  n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set)
-    i.TIM_Capture_Compare_Ch_Disable         0x08002c94   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable)
-    i.TIM_Capture_Compare_Ch_Enable          0x08002ca0   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable)
-    i.TIM_Capture_Compare_Ch_N_Disable       0x08002cac   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable)
-    i.TIM_Capture_Compare_Ch_N_Enable        0x08002cb8   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable)
-    i.TIM_Clock_Division_Set                 0x08002cc4   Section        0  n32g430_tim.o(i.TIM_Clock_Division_Set)
-    i.TIM_Compare1_D_Set                     0x08002cd4   Section        0  n32g430_tim.o(i.TIM_Compare1_D_Set)
-    i.TIM_Compare1_Set                       0x08002ce0   Section        0  n32g430_tim.o(i.TIM_Compare1_Set)
-    i.TIM_Compare2_D_Set                     0x08002cec   Section        0  n32g430_tim.o(i.TIM_Compare2_D_Set)
-    i.TIM_Compare2_Set                       0x08002cf8   Section        0  n32g430_tim.o(i.TIM_Compare2_Set)
-    i.TIM_Compare3_D_Set                     0x08002d04   Section        0  n32g430_tim.o(i.TIM_Compare3_D_Set)
-    i.TIM_Compare3_Set                       0x08002d10   Section        0  n32g430_tim.o(i.TIM_Compare3_Set)
-    i.TIM_Compare7_Set                       0x08002d1c   Section        0  n32g430_tim.o(i.TIM_Compare7_Set)
-    i.TIM_Compare8_Set                       0x08002d22   Section        0  n32g430_tim.o(i.TIM_Compare8_Set)
-    i.TIM_Compare9_Set                       0x08002d28   Section        0  n32g430_tim.o(i.TIM_Compare9_Set)
-    i.TIM_Dma_Enable                         0x08002d2e   Section        0  n32g430_tim.o(i.TIM_Dma_Enable)
-    i.TIM_Flag_Status_Get                    0x08002d36   Section        0  n32g430_tim.o(i.TIM_Flag_Status_Get)
-    i.TIM_IOM_Comp_Break                     0x08002d44   Section        0  n32g430_tim.o(i.TIM_IOM_Comp_Break)
-    i.TIM_Input_Capture1_Prescaler_Set       0x08002d5c   Section        0  n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set)
-    i.TIM_Input_Capture2_Prescaler_Set       0x08002d6c   Section        0  n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set)
-    i.TIM_Input_Capture3_Prescaler_Set       0x08002d84   Section        0  n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set)
-    i.TIM_Input_Capture4_Prescaler_Set       0x08002d96   Section        0  n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set)
-    i.TIM_Input_Channel_Initialize           0x08002daa   Section        0  n32g430_tim.o(i.TIM_Input_Channel_Initialize)
-    i.TIM_Input_Struct_Initialize            0x08002e0c   Section        0  n32g430_tim.o(i.TIM_Input_Struct_Initialize)
-    i.TIM_Interrupt_Disable                  0x08002e1a   Section        0  n32g430_tim.o(i.TIM_Interrupt_Disable)
-    i.TIM_Interrupt_Enable                   0x08002e22   Section        0  n32g430_tim.o(i.TIM_Interrupt_Enable)
-    i.TIM_Interrupt_Status_Clear             0x08002e2a   Section        0  n32g430_tim.o(i.TIM_Interrupt_Status_Clear)
-    i.TIM_Interrupt_Status_Get               0x08002e30   Section        0  n32g430_tim.o(i.TIM_Interrupt_Status_Get)
-    i.TIM_Lock_Up_Break_Disable              0x08002e46   Section        0  n32g430_tim.o(i.TIM_Lock_Up_Break_Disable)
-    i.TIM_Lock_Up_Break_Enable               0x08002e50   Section        0  n32g430_tim.o(i.TIM_Lock_Up_Break_Enable)
-    i.TIM_OC7REF_Trigger_To_ADC_Enable       0x08002e5a   Section        0  n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable)
-    i.TIM_OC8REF_Trigger_To_ADC_Enable       0x08002e64   Section        0  n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable)
-    i.TIM_On                                 0x08002e6e   Section        0  n32g430_tim.o(i.TIM_On)
-    i.TIM_Output_Channel1_Initialize         0x08002e78   Section        0  n32g430_tim.o(i.TIM_Output_Channel1_Initialize)
-    i.TIM_Output_Channel1_Preload_Set        0x08002f04   Section        0  n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set)
-    i.TIM_Output_Channel2_Initialize         0x08002f10   Section        0  n32g430_tim.o(i.TIM_Output_Channel2_Initialize)
-    i.TIM_Output_Channel2_Preload_Set        0x08002fa8   Section        0  n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set)
-    i.TIM_Output_Channel3_Initialize         0x08002fbc   Section        0  n32g430_tim.o(i.TIM_Output_Channel3_Initialize)
-    i.TIM_Output_Channel3_Preload_Set        0x08003050   Section        0  n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set)
-    i.TIM_Output_Channel7_Preload_Set        0x0800305e   Section        0  n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set)
-    i.TIM_Output_Channel8_Preload_Set        0x0800307a   Section        0  n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set)
-    i.TIM_Output_Channel_N_Polarity_Set      0x08003096   Section        0  n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set)
-    i.TIM_Output_Channel_Polarity_Set        0x080030a8   Section        0  n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set)
-    i.TIM_Output_Trigger_Select              0x080030bc   Section        0  n32g430_tim.o(i.TIM_Output_Trigger_Select)
-    i.TIM_PWM_Output_Disable                 0x080030d0   Section        0  n32g430_tim.o(i.TIM_PWM_Output_Disable)
-    i.TIM_PWM_Output_Enable                  0x080030dc   Section        0  n32g430_tim.o(i.TIM_PWM_Output_Enable)
-    i.TIM_Pvd_Break_Disable                  0x080030e8   Section        0  n32g430_tim.o(i.TIM_Pvd_Break_Disable)
-    i.TIM_Pvd_Break_Enable                   0x080030f2   Section        0  n32g430_tim.o(i.TIM_Pvd_Break_Enable)
-    i.TIM_Reset                              0x080030fc   Section        0  n32g430_tim.o(i.TIM_Reset)
-    i.TimerTick_State                        0x0800316c   Section        0  timer.o(i.TimerTick_State)
-    i.Timer_Init                             0x080031a4   Section        0  timer.o(i.Timer_Init)
-    i.Timer_Start                            0x080031b0   Section        0  timer.o(i.Timer_Start)
-    i.Timer_State_Init                       0x080031c0   Section        0  timer.o(i.Timer_State_Init)
-    i.Timer_Tick                             0x08003204   Section        0  timer.o(i.Timer_Tick)
-    i.Timer_Timeout                          0x08003226   Section        0  timer.o(i.Timer_Timeout)
-    i.TimingDelay_Decrement                  0x0800322c   Section        0  bsp_config.o(i.TimingDelay_Decrement)
-    i.UsageFault_Handler                     0x08003240   Section        0  n32g430_it.o(i.UsageFault_Handler)
-    i.__scatterload_copy                     0x08003242   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08003250   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08003252   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.iParkTransform                         0x08003260   Section        0  foc.o(i.iParkTransform)
-    i.main                                   0x080032c4   Section        0  main.o(i.main)
-    i.sEE_TIMEOUT_UserCallback               0x080032e4   Section        0  i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback)
-    .constdata                               0x080032e8   Section     2560  table.o(.constdata)
-    .constdata                               0x08003ce8   Section       64  n32g430_rcc.o(.constdata)
-    APBAHBPresTable                          0x08003ce8   Data          16  n32g430_rcc.o(.constdata)
-    ADCHCLKPresTable                         0x08003cf8   Data          16  n32g430_rcc.o(.constdata)
-    ADCPLLCLKPresTable                       0x08003d08   Data          32  n32g430_rcc.o(.constdata)
+    i.ADC_Initializes                        0x08000734   Section        0  n32g430_adc.o(i.ADC_Initializes)
+    i.ADC_Injected_Channels_Number_Config    0x0800077c   Section        0  n32g430_adc.o(i.ADC_Injected_Channels_Number_Config)
+    i.ADC_Injected_Group_Autoconversion_Disable 0x08000794   Section        0  n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable)
+    i.ADC_Injected_Group_Conversion_Data_Get 0x080007a4   Section        0  n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get)
+    i.ADC_Injected_Group_External_Trigger_Source_Config 0x080007bc   Section        0  n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config)
+    i.ADC_Injected_Sequence_Conversion_Number_Config 0x080007d4   Section        0  n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config)
+    i.ADC_Interrupts_Enable                  0x080007f4   Section        0  n32g430_adc.o(i.ADC_Interrupts_Enable)
+    i.ADC_Multichannels_Disable              0x08000814   Section        0  n32g430_adc.o(i.ADC_Multichannels_Disable)
+    i.ADC_Multichannels_Enable               0x08000824   Section        0  n32g430_adc.o(i.ADC_Multichannels_Enable)
+    i.ADC_ON                                 0x08000834   Section        0  n32g430_adc.o(i.ADC_ON)
+    i.ADC_PLL_Clock_Mode_Config              0x08000844   Section        0  n32g430_adc.o(i.ADC_PLL_Clock_Mode_Config)
+    i.ADC_Regular_Channels_Number_Config     0x08000854   Section        0  n32g430_adc.o(i.ADC_Regular_Channels_Number_Config)
+    i.ADC_Regular_Group_Conversion_Data_Get  0x0800086c   Section        0  n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get)
+    i.ADC_Regular_Group_External_Trigger_Source_Config 0x08000878   Section        0  n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config)
+    i.ADC_Regular_Sequence_Conversion_Number_Config 0x08000890   Section        0  n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config)
+    i.ADC_Reset                              0x080008f0   Section        0  n32g430_adc.o(i.ADC_Reset)
+    i.Adc_Init                               0x080008f8   Section        0  bsp_adc.o(i.Adc_Init)
+    i.Angle_Given                            0x080009ae   Section        0  foc.o(i.Angle_Given)
+    i.BiasDetect                             0x080009c8   Section        0  datacalc.o(i.BiasDetect)
+    i.BusFault_Handler                       0x08000a0c   Section        0  n32g430_it.o(i.BusFault_Handler)
+    i.ClarkeTransform                        0x08000a0e   Section        0  axistransform.o(i.ClarkeTransform)
+    i.DMA_Buffer_Size_Config                 0x08000a34   Section        0  n32g430_dma.o(i.DMA_Buffer_Size_Config)
+    i.DMA_Channel_Enable                     0x08000a38   Section        0  n32g430_dma.o(i.DMA_Channel_Enable)
+    i.DMA_Channel_Request_Remap              0x08000a42   Section        0  n32g430_dma.o(i.DMA_Channel_Request_Remap)
+    i.DMA_Circular_Mode_Config               0x08000a46   Section        0  n32g430_dma.o(i.DMA_Circular_Mode_Config)
+    i.DMA_Destination_Config                 0x08000a56   Section        0  n32g430_dma.o(i.DMA_Destination_Config)
+    i.DMA_Initializes                        0x08000a66   Section        0  n32g430_dma.o(i.DMA_Initializes)
+    i.DMA_Memory_2_Memory_Config             0x08000ac8   Section        0  n32g430_dma.o(i.DMA_Memory_2_Memory_Config)
+    i.DMA_Memory_Addr_Increment_Config       0x08000ad8   Section        0  n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config)
+    i.DMA_Memory_Address_Config              0x08000ae8   Section        0  n32g430_dma.o(i.DMA_Memory_Address_Config)
+    i.DMA_Memory_Data_Width_Config           0x08000aec   Section        0  n32g430_dma.o(i.DMA_Memory_Data_Width_Config)
+    i.DMA_Peripheral_Addr_Increment_Config   0x08000afc   Section        0  n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config)
+    i.DMA_Peripheral_Address_Config          0x08000b0c   Section        0  n32g430_dma.o(i.DMA_Peripheral_Address_Config)
+    i.DMA_Peripheral_Data_Width_Config       0x08000b10   Section        0  n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config)
+    i.DMA_Priority_Config                    0x08000b20   Section        0  n32g430_dma.o(i.DMA_Priority_Config)
+    i.DMA_Reset                              0x08000b30   Section        0  n32g430_dma.o(i.DMA_Reset)
+    i.DMA_Structure_Initializes              0x08000bd8   Section        0  n32g430_dma.o(i.DMA_Structure_Initializes)
+    i.Data_Limit                             0x08000bf2   Section        0  datacalc.o(i.Data_Limit)
+    i.DebugMon_Handler                       0x08000c0e   Section        0  n32g430_it.o(i.DebugMon_Handler)
+    i.Delay_us                               0x08000c10   Section        0  i2c_eeprom.o(i.Delay_us)
+    i.EstSmo_Ctr                             0x08000c24   Section        0  observer.o(i.EstSmo_Ctr)
+    i.Foc_Init                               0x08000d58   Section        0  foc.o(i.Foc_Init)
+    i.GPIO_Alternate_Set                     0x08000f80   Section        0  n32g430_gpio.o(i.GPIO_Alternate_Set)
+    i.GPIO_Config                            0x08000fb0   Section        0  bsp_config.o(i.GPIO_Config)
+    i.GPIO_Driver_Set                        0x08001090   Section        0  n32g430_gpio.o(i.GPIO_Driver_Set)
+    i.GPIO_Mode_Set                          0x080010a4   Section        0  n32g430_gpio.o(i.GPIO_Mode_Set)
+    i.GPIO_PBC_Pins_Reset                    0x080010de   Section        0  n32g430_gpio.o(i.GPIO_PBC_Pins_Reset)
+    i.GPIO_Peripheral_Initialize             0x080010e2   Section        0  n32g430_gpio.o(i.GPIO_Peripheral_Initialize)
+    i.GPIO_Pins_Reset                        0x08001132   Section        0  n32g430_gpio.o(i.GPIO_Pins_Reset)
+    i.GPIO_Pins_Set                          0x08001136   Section        0  n32g430_gpio.o(i.GPIO_Pins_Set)
+    i.GPIO_Pull_Set                          0x0800113a   Section        0  n32g430_gpio.o(i.GPIO_Pull_Set)
+    i.GPIO_SlewRate_Set                      0x0800114e   Section        0  n32g430_gpio.o(i.GPIO_SlewRate_Set)
+    i.GPIO_Structure_Initialize              0x08001160   Section        0  n32g430_gpio.o(i.GPIO_Structure_Initialize)
+    i.HardFault_Handler                      0x08001176   Section        0  n32g430_it.o(i.HardFault_Handler)
+    i.I2C1_ER_IRQHandler                     0x08001178   Section        0  i2c_eeprom.o(i.I2C1_ER_IRQHandler)
+    i.I2C1_EV_IRQHandler                     0x080011f4   Section        0  i2c_eeprom.o(i.I2C1_EV_IRQHandler)
+    i.I2C_7bit_Addr_Send                     0x08001344   Section        0  n32g430_i2c.o(i.I2C_7bit_Addr_Send)
+    i.I2C_Acknowledg_Disable                 0x08001356   Section        0  n32g430_i2c.o(i.I2C_Acknowledg_Disable)
+    i.I2C_Acknowledgement_Config             0x08001360   Section        0  n32g430_i2c.o(i.I2C_Acknowledgement_Config)
+    i.I2C_Addressing_Mode_Config             0x0800136c   Section        0  n32g430_i2c.o(i.I2C_Addressing_Mode_Config)
+    i.I2C_Bus_Mode_Config                    0x08001378   Section        0  n32g430_i2c.o(i.I2C_Bus_Mode_Config)
+    i.I2C_Clock_Speed_Config                 0x08001384   Section        0  n32g430_i2c.o(i.I2C_Clock_Speed_Config)
+    i.I2C_Data_Recv                          0x08001458   Section        0  n32g430_i2c.o(i.I2C_Data_Recv)
+    i.I2C_Data_Send                          0x0800145e   Section        0  n32g430_i2c.o(i.I2C_Data_Send)
+    i.I2C_EE_Init                            0x08001464   Section        0  i2c_eeprom.o(i.I2C_EE_Init)
+    i.I2C_Flag_Status_Clear                  0x080014d4   Section        0  n32g430_i2c.o(i.I2C_Flag_Status_Clear)
+    i.I2C_Flag_Status_Get                    0x080014da   Section        0  n32g430_i2c.o(i.I2C_Flag_Status_Get)
+    i.I2C_Generate_Start_Enable              0x0800150c   Section        0  n32g430_i2c.o(i.I2C_Generate_Start_Enable)
+    i.I2C_Generate_Stop_Enable               0x08001516   Section        0  n32g430_i2c.o(i.I2C_Generate_Stop_Enable)
+    i.I2C_Initializes                        0x08001520   Section        0  n32g430_i2c.o(i.I2C_Initializes)
+    i.I2C_Interrupts_Disable                 0x08001554   Section        0  n32g430_i2c.o(i.I2C_Interrupts_Disable)
+    i.I2C_Last_Event_Get                     0x0800155c   Section        0  n32g430_i2c.o(i.I2C_Last_Event_Get)
+    i.I2C_Own_Addr1_Config                   0x0800156a   Section        0  n32g430_i2c.o(i.I2C_Own_Addr1_Config)
+    i.I2C_Reset                              0x08001578   Section        0  n32g430_i2c.o(i.I2C_Reset)
+    i.IIC_RCCReset                           0x08001594   Section        0  i2c_eeprom.o(i.IIC_RCCReset)
+    i.IIC_RestoreSlaveByClock                0x080015d8   Section        0  i2c_eeprom.o(i.IIC_RestoreSlaveByClock)
+    i.IIC_SWReset                            0x08001628   Section        0  i2c_eeprom.o(i.IIC_SWReset)
+    i.Input_Channel1_Config                  0x08001698   Section        0  n32g430_tim.o(i.Input_Channel1_Config)
+    i.Input_Channel2_Config                  0x0800170c   Section        0  n32g430_tim.o(i.Input_Channel2_Config)
+    i.Input_Channel3_Config                  0x08001784   Section        0  n32g430_tim.o(i.Input_Channel3_Config)
+    i.Input_Channel4_Config                  0x080017fc   Section        0  n32g430_tim.o(i.Input_Channel4_Config)
+    i.LPF_Ctr                                0x08001878   Section        0  lpf.o(i.LPF_Ctr)
+    i.MemManage_Handler                      0x0800189c   Section        0  n32g430_it.o(i.MemManage_Handler)
+    i.MotorStateMachine                      0x0800189e   Section        0  statemachine.o(i.MotorStateMachine)
+    i.NMI_Handler                            0x0800195c   Section        0  n32g430_it.o(i.NMI_Handler)
+    i.NVIC_Initializes                       0x08001960   Section        0  misc.o(i.NVIC_Initializes)
+    i.NVIC_Priority_Group_Set                0x080019c4   Section        0  misc.o(i.NVIC_Priority_Group_Set)
+    i.OpenLoop_Init                          0x080019d8   Section        0  foc.o(i.OpenLoop_Init)
+    i.PID_Ctr                                0x080019f0   Section        0  pi.o(i.PID_Ctr)
+    i.PLL_TrimValueLoad                      0x08001a58   Section        0  system_n32g430.o(i.PLL_TrimValueLoad)
+    i.ParkTransform                          0x08001ac8   Section        0  axistransform.o(i.ParkTransform)
+    i.PhaseCurr_Get                          0x08001b20   Section        0  currsample.o(i.PhaseCurr_Get)
+    i.RCC_ADC_1M_Clock_Config                0x08001b90   Section        0  n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config)
+    i.RCC_ADC_Hclk_Config                    0x08001ba8   Section        0  n32g430_rcc.o(i.RCC_ADC_Hclk_Config)
+    i.RCC_ADC_Hclk_Enable                    0x08001bbc   Section        0  n32g430_rcc.o(i.RCC_ADC_Hclk_Enable)
+    i.RCC_ADC_PLL_Clock_Disable              0x08001bcc   Section        0  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Disable)
+    i.RCC_ADC_PLL_Clock_Prescaler_Enable     0x08001bdc   Section        0  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Prescaler_Enable)
+    i.RCC_AHB_Peripheral_Clock_Enable        0x08001bf0   Section        0  n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable)
+    i.RCC_AHB_Peripheral_Reset               0x08001c00   Section        0  n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset)
+    i.RCC_APB1_Peripheral_Clock_Disable      0x08001c14   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable)
+    i.RCC_APB1_Peripheral_Clock_Enable       0x08001c24   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable)
+    i.RCC_APB1_Peripheral_Reset              0x08001c34   Section        0  n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset)
+    i.RCC_APB2_Peripheral_Clock_Enable       0x08001c48   Section        0  n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable)
+    i.RCC_APB2_Peripheral_Reset              0x08001c58   Section        0  n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset)
+    i.RCC_Clocks_Frequencies_Value_Get       0x08001c6c   Section        0  n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get)
+    i.RCC_Configuration                      0x08001d40   Section        0  bsp_config.o(i.RCC_Configuration)
+    i.RCC_Pclk1_Config                       0x08001dac   Section        0  n32g430_rcc.o(i.RCC_Pclk1_Config)
+    i.SVC_Handler                            0x08001dc0   Section        0  n32g430_it.o(i.SVC_Handler)
+    i.SpdLoop_Control                        0x08001dc4   Section        0  loopcontrol.o(i.SpdLoop_Control)
+    i.Svm_Ctr                                0x08001e70   Section        0  svm.o(i.Svm_Ctr)
+    i.SysTick_Handler                        0x080024fc   Section        0  n32g430_it.o(i.SysTick_Handler)
+    i.System_Clock_Set                       0x08002500   Section        0  system_n32g430.o(i.System_Clock_Set)
+    System_Clock_Set                         0x08002501   Thumb Code   228  system_n32g430.o(i.System_Clock_Set)
+    i.System_Init                            0x08002600   Section        0  bsp_config.o(i.System_Init)
+    i.System_Initializes                     0x08002630   Section        0  system_n32g430.o(i.System_Initializes)
+    i.TIM1_BRK_IRQHandler                    0x080026c8   Section        0  n32g430_it.o(i.TIM1_BRK_IRQHandler)
+    i.TIM1_CC_IRQHandler                     0x080026f4   Section        0  n32g430_it.o(i.TIM1_CC_IRQHandler)
+    i.TIM1_PWM_Init                          0x08002718   Section        0  bsp_tim.o(i.TIM1_PWM_Init)
+    i.TIM1_UP_IRQHandler                     0x0800289c   Section        0  n32g430_it.o(i.TIM1_UP_IRQHandler)
+    i.TIM2_IRQHandler                        0x080028c0   Section        0  n32g430_it.o(i.TIM2_IRQHandler)
+    i.TIM4_Capture_Config                    0x080028e0   Section        0  bsp_tim.o(i.TIM4_Capture_Config)
+    i.TIM4_IRQHandler                        0x080029e8   Section        0  n32g430_it.o(i.TIM4_IRQHandler)
+    i.TIM6_1Khz_Init                         0x08002a0c   Section        0  bsp_tim.o(i.TIM6_1Khz_Init)
+    i.TIM6_IRQHandler                        0x08002a90   Section        0  n32g430_it.o(i.TIM6_IRQHandler)
+    i.TIM_Asymmetric_Enable                  0x08002acc   Section        0  n32g430_tim.o(i.TIM_Asymmetric_Enable)
+    i.TIM_Base_Auto_Reload_Set               0x08002ad6   Section        0  n32g430_tim.o(i.TIM_Base_Auto_Reload_Set)
+    i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set 0x08002ada   Section        0  n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set)
+    i.TIM_Base_Channel1                      0x08002ae6   Section        0  n32g430_tim.o(i.TIM_Base_Channel1)
+    i.TIM_Base_Channel2                      0x08002afe   Section        0  n32g430_tim.o(i.TIM_Base_Channel2)
+    i.TIM_Base_Channel3                      0x08002b16   Section        0  n32g430_tim.o(i.TIM_Base_Channel3)
+    i.TIM_Base_Channel4                      0x08002b2e   Section        0  n32g430_tim.o(i.TIM_Base_Channel4)
+    i.TIM_Base_Count_Mode_Set                0x08002b46   Section        0  n32g430_tim.o(i.TIM_Base_Count_Mode_Set)
+    i.TIM_Base_Initialize                    0x08002b54   Section        0  n32g430_tim.o(i.TIM_Base_Initialize)
+    i.TIM_Base_OCrefClear                    0x08002c04   Section        0  n32g430_tim.o(i.TIM_Base_OCrefClear)
+    i.TIM_Base_Prescaler_Set                 0x08002c1c   Section        0  n32g430_tim.o(i.TIM_Base_Prescaler_Set)
+    i.TIM_Base_Reload_Mode_Set               0x08002c20   Section        0  n32g430_tim.o(i.TIM_Base_Reload_Mode_Set)
+    i.TIM_Base_Repeat_Count_Set              0x08002c24   Section        0  n32g430_tim.o(i.TIM_Base_Repeat_Count_Set)
+    i.TIM_Base_Struct_Initialize             0x08002c28   Section        0  n32g430_tim.o(i.TIM_Base_Struct_Initialize)
+    i.TIM_Break_And_Dead_Time_Set            0x08002c46   Section        0  n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set)
+    i.TIM_Capture_Compare_Ch_Disable         0x08002cac   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable)
+    i.TIM_Capture_Compare_Ch_Enable          0x08002cb8   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable)
+    i.TIM_Capture_Compare_Ch_N_Disable       0x08002cc4   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable)
+    i.TIM_Capture_Compare_Ch_N_Enable        0x08002cd0   Section        0  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable)
+    i.TIM_Clock_Division_Set                 0x08002cdc   Section        0  n32g430_tim.o(i.TIM_Clock_Division_Set)
+    i.TIM_Compare1_D_Set                     0x08002cec   Section        0  n32g430_tim.o(i.TIM_Compare1_D_Set)
+    i.TIM_Compare1_Set                       0x08002cf8   Section        0  n32g430_tim.o(i.TIM_Compare1_Set)
+    i.TIM_Compare2_D_Set                     0x08002d04   Section        0  n32g430_tim.o(i.TIM_Compare2_D_Set)
+    i.TIM_Compare2_Set                       0x08002d10   Section        0  n32g430_tim.o(i.TIM_Compare2_Set)
+    i.TIM_Compare3_D_Set                     0x08002d1c   Section        0  n32g430_tim.o(i.TIM_Compare3_D_Set)
+    i.TIM_Compare3_Set                       0x08002d28   Section        0  n32g430_tim.o(i.TIM_Compare3_Set)
+    i.TIM_Compare7_Set                       0x08002d34   Section        0  n32g430_tim.o(i.TIM_Compare7_Set)
+    i.TIM_Compare8_Set                       0x08002d3a   Section        0  n32g430_tim.o(i.TIM_Compare8_Set)
+    i.TIM_Compare9_Set                       0x08002d40   Section        0  n32g430_tim.o(i.TIM_Compare9_Set)
+    i.TIM_Dma_Enable                         0x08002d46   Section        0  n32g430_tim.o(i.TIM_Dma_Enable)
+    i.TIM_Flag_Status_Get                    0x08002d4e   Section        0  n32g430_tim.o(i.TIM_Flag_Status_Get)
+    i.TIM_IOM_Comp_Break                     0x08002d5c   Section        0  n32g430_tim.o(i.TIM_IOM_Comp_Break)
+    i.TIM_Input_Capture1_Prescaler_Set       0x08002d74   Section        0  n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set)
+    i.TIM_Input_Capture2_Prescaler_Set       0x08002d84   Section        0  n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set)
+    i.TIM_Input_Capture3_Prescaler_Set       0x08002d9c   Section        0  n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set)
+    i.TIM_Input_Capture4_Prescaler_Set       0x08002dae   Section        0  n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set)
+    i.TIM_Input_Channel_Initialize           0x08002dc2   Section        0  n32g430_tim.o(i.TIM_Input_Channel_Initialize)
+    i.TIM_Input_Struct_Initialize            0x08002e24   Section        0  n32g430_tim.o(i.TIM_Input_Struct_Initialize)
+    i.TIM_Interrupt_Disable                  0x08002e32   Section        0  n32g430_tim.o(i.TIM_Interrupt_Disable)
+    i.TIM_Interrupt_Enable                   0x08002e3a   Section        0  n32g430_tim.o(i.TIM_Interrupt_Enable)
+    i.TIM_Interrupt_Status_Clear             0x08002e42   Section        0  n32g430_tim.o(i.TIM_Interrupt_Status_Clear)
+    i.TIM_Interrupt_Status_Get               0x08002e48   Section        0  n32g430_tim.o(i.TIM_Interrupt_Status_Get)
+    i.TIM_Lock_Up_Break_Disable              0x08002e5e   Section        0  n32g430_tim.o(i.TIM_Lock_Up_Break_Disable)
+    i.TIM_Lock_Up_Break_Enable               0x08002e68   Section        0  n32g430_tim.o(i.TIM_Lock_Up_Break_Enable)
+    i.TIM_OC7REF_Trigger_To_ADC_Enable       0x08002e72   Section        0  n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable)
+    i.TIM_OC8REF_Trigger_To_ADC_Enable       0x08002e7c   Section        0  n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable)
+    i.TIM_On                                 0x08002e86   Section        0  n32g430_tim.o(i.TIM_On)
+    i.TIM_Output_Channel1_Initialize         0x08002e90   Section        0  n32g430_tim.o(i.TIM_Output_Channel1_Initialize)
+    i.TIM_Output_Channel1_Preload_Set        0x08002f1c   Section        0  n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set)
+    i.TIM_Output_Channel2_Initialize         0x08002f28   Section        0  n32g430_tim.o(i.TIM_Output_Channel2_Initialize)
+    i.TIM_Output_Channel2_Preload_Set        0x08002fc0   Section        0  n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set)
+    i.TIM_Output_Channel3_Initialize         0x08002fd4   Section        0  n32g430_tim.o(i.TIM_Output_Channel3_Initialize)
+    i.TIM_Output_Channel3_Preload_Set        0x08003068   Section        0  n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set)
+    i.TIM_Output_Channel7_Preload_Set        0x08003076   Section        0  n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set)
+    i.TIM_Output_Channel8_Preload_Set        0x08003092   Section        0  n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set)
+    i.TIM_Output_Channel_N_Polarity_Set      0x080030ae   Section        0  n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set)
+    i.TIM_Output_Channel_Polarity_Set        0x080030c0   Section        0  n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set)
+    i.TIM_Output_Trigger_Select              0x080030d4   Section        0  n32g430_tim.o(i.TIM_Output_Trigger_Select)
+    i.TIM_PWM_Output_Disable                 0x080030e8   Section        0  n32g430_tim.o(i.TIM_PWM_Output_Disable)
+    i.TIM_PWM_Output_Enable                  0x080030f4   Section        0  n32g430_tim.o(i.TIM_PWM_Output_Enable)
+    i.TIM_Pvd_Break_Disable                  0x08003100   Section        0  n32g430_tim.o(i.TIM_Pvd_Break_Disable)
+    i.TIM_Pvd_Break_Enable                   0x0800310a   Section        0  n32g430_tim.o(i.TIM_Pvd_Break_Enable)
+    i.TIM_Reset                              0x08003114   Section        0  n32g430_tim.o(i.TIM_Reset)
+    i.TimerTick_State                        0x08003184   Section        0  timer.o(i.TimerTick_State)
+    i.Timer_Init                             0x080031bc   Section        0  timer.o(i.Timer_Init)
+    i.Timer_Start                            0x080031c8   Section        0  timer.o(i.Timer_Start)
+    i.Timer_State_Init                       0x080031d8   Section        0  timer.o(i.Timer_State_Init)
+    i.Timer_Tick                             0x08003220   Section        0  timer.o(i.Timer_Tick)
+    i.Timer_Timeout                          0x08003242   Section        0  timer.o(i.Timer_Timeout)
+    i.TimingDelay_Decrement                  0x08003248   Section        0  bsp_config.o(i.TimingDelay_Decrement)
+    i.UsageFault_Handler                     0x0800325c   Section        0  n32g430_it.o(i.UsageFault_Handler)
+    i.__scatterload_copy                     0x0800325e   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800326c   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800326e   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.iParkTransform                         0x0800327c   Section        0  axistransform.o(i.iParkTransform)
+    i.main                                   0x080032e0   Section        0  main.o(i.main)
+    i.sEE_TIMEOUT_UserCallback               0x08003300   Section        0  i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback)
+    .constdata                               0x08003304   Section     2560  table.o(.constdata)
+    .constdata                               0x08003d04   Section       64  n32g430_rcc.o(.constdata)
+    APBAHBPresTable                          0x08003d04   Data          16  n32g430_rcc.o(.constdata)
+    ADCHCLKPresTable                         0x08003d14   Data          16  n32g430_rcc.o(.constdata)
+    ADCPLLCLKPresTable                       0x08003d24   Data          32  n32g430_rcc.o(.constdata)
     .data                                    0x20000000   Section        6  n32g430_it.o(.data)
     .data                                    0x20000008   Section       64  foc.o(.data)
     .data                                    0x20000048   Section        2  datacalc.o(.data)
@@ -1938,12 +1957,13 @@ Image Symbol Table
     Int_NumByteToRead                        0x20000074   Data           2  i2c_eeprom.o(.data)
     SlaveADDR                                0x20000076   Data           2  i2c_eeprom.o(.data)
     SendBuf                                  0x20000080   Data           8  i2c_eeprom.o(.data)
-    .bss                                     0x20000088   Section      184  foc.o(.bss)
-    .bss                                     0x20000140   Section       84  timer.o(.bss)
-    .bss                                     0x20000194   Section       26  svm.o(.bss)
-    .bss                                     0x200001b0   Section      172  loopcontrol.o(.bss)
-    .bss                                     0x2000025c   Section       12  bsp_tim.o(.bss)
-    STACK                                    0x20000268   Section     5120  startup_n32g430.o(STACK)
+    .bss                                     0x20000088   Section      152  foc.o(.bss)
+    .bss                                     0x20000120   Section       84  timer.o(.bss)
+    .bss                                     0x20000174   Section       26  svm.o(.bss)
+    .bss                                     0x20000190   Section      108  loopcontrol.o(.bss)
+    .bss                                     0x200001fc   Section       32  currsample.o(.bss)
+    .bss                                     0x2000021c   Section       12  bsp_tim.o(.bss)
+    STACK                                    0x20000228   Section     5120  startup_n32g430.o(STACK)
 
     Global Symbols
 
@@ -2038,209 +2058,209 @@ Image Symbol Table
     ADC_Flag_Status_Get                      0x080004c5   Thumb Code    38  n32g430_adc.o(i.ADC_Flag_Status_Get)
     ADC_INTFlag_Status_Clear                 0x080004f1   Thumb Code    10  n32g430_adc.o(i.ADC_INTFlag_Status_Clear)
     ADC_INTFlag_Status_Get                   0x08000501   Thumb Code    16  n32g430_adc.o(i.ADC_INTFlag_Status_Get)
-    ADC_IRQHandler                           0x08000515   Thumb Code   476  n32g430_it.o(i.ADC_IRQHandler)
-    ADC_Initializes                          0x0800071d   Thumb Code    66  n32g430_adc.o(i.ADC_Initializes)
-    ADC_Injected_Channels_Number_Config      0x08000765   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Channels_Number_Config)
-    ADC_Injected_Group_Autoconversion_Disable 0x0800077d   Thumb Code    12  n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable)
-    ADC_Injected_Group_Conversion_Data_Get   0x0800078d   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get)
-    ADC_Injected_Group_External_Trigger_Source_Config 0x080007a5   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config)
-    ADC_Injected_Sequence_Conversion_Number_Config 0x080007bd   Thumb Code    28  n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config)
-    ADC_Interrupts_Enable                    0x080007dd   Thumb Code    26  n32g430_adc.o(i.ADC_Interrupts_Enable)
-    ADC_Multichannels_Disable                0x080007fd   Thumb Code    12  n32g430_adc.o(i.ADC_Multichannels_Disable)
-    ADC_Multichannels_Enable                 0x0800080d   Thumb Code    12  n32g430_adc.o(i.ADC_Multichannels_Enable)
-    ADC_ON                                   0x0800081d   Thumb Code    12  n32g430_adc.o(i.ADC_ON)
-    ADC_PLL_Clock_Mode_Config                0x0800082d   Thumb Code    12  n32g430_adc.o(i.ADC_PLL_Clock_Mode_Config)
-    ADC_Regular_Channels_Number_Config       0x0800083d   Thumb Code    18  n32g430_adc.o(i.ADC_Regular_Channels_Number_Config)
-    ADC_Regular_Group_Conversion_Data_Get    0x08000855   Thumb Code     8  n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get)
-    ADC_Regular_Group_External_Trigger_Source_Config 0x08000861   Thumb Code    18  n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config)
-    ADC_Regular_Sequence_Conversion_Number_Config 0x08000879   Thumb Code    92  n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config)
-    ADC_Reset                                0x080008d9   Thumb Code     8  n32g430_adc.o(i.ADC_Reset)
-    Adc_Init                                 0x080008e1   Thumb Code   182  bsp_adc.o(i.Adc_Init)
-    Angle_Given                              0x08000997   Thumb Code    24  foc.o(i.Angle_Given)
-    BiasDetect                               0x080009b1   Thumb Code    54  datacalc.o(i.BiasDetect)
-    BusFault_Handler                         0x080009f5   Thumb Code     2  n32g430_it.o(i.BusFault_Handler)
-    ClarkeTransform                          0x080009f7   Thumb Code    38  foc.o(i.ClarkeTransform)
-    DMA_Buffer_Size_Config                   0x08000a1d   Thumb Code     4  n32g430_dma.o(i.DMA_Buffer_Size_Config)
-    DMA_Channel_Enable                       0x08000a21   Thumb Code    10  n32g430_dma.o(i.DMA_Channel_Enable)
-    DMA_Channel_Request_Remap                0x08000a2b   Thumb Code     4  n32g430_dma.o(i.DMA_Channel_Request_Remap)
-    DMA_Circular_Mode_Config                 0x08000a2f   Thumb Code    16  n32g430_dma.o(i.DMA_Circular_Mode_Config)
-    DMA_Destination_Config                   0x08000a3f   Thumb Code    16  n32g430_dma.o(i.DMA_Destination_Config)
-    DMA_Initializes                          0x08000a4f   Thumb Code    98  n32g430_dma.o(i.DMA_Initializes)
-    DMA_Memory_2_Memory_Config               0x08000ab1   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_2_Memory_Config)
-    DMA_Memory_Addr_Increment_Config         0x08000ac1   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config)
-    DMA_Memory_Address_Config                0x08000ad1   Thumb Code     4  n32g430_dma.o(i.DMA_Memory_Address_Config)
-    DMA_Memory_Data_Width_Config             0x08000ad5   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_Data_Width_Config)
-    DMA_Peripheral_Addr_Increment_Config     0x08000ae5   Thumb Code    16  n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config)
-    DMA_Peripheral_Address_Config            0x08000af5   Thumb Code     4  n32g430_dma.o(i.DMA_Peripheral_Address_Config)
-    DMA_Peripheral_Data_Width_Config         0x08000af9   Thumb Code    16  n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config)
-    DMA_Priority_Config                      0x08000b09   Thumb Code    16  n32g430_dma.o(i.DMA_Priority_Config)
-    DMA_Reset                                0x08000b19   Thumb Code   164  n32g430_dma.o(i.DMA_Reset)
-    DMA_Structure_Initializes                0x08000bc1   Thumb Code    26  n32g430_dma.o(i.DMA_Structure_Initializes)
-    Data_Limit                               0x08000bdb   Thumb Code    28  datacalc.o(i.Data_Limit)
-    DebugMon_Handler                         0x08000bf7   Thumb Code     2  n32g430_it.o(i.DebugMon_Handler)
-    Delay_us                                 0x08000bf9   Thumb Code    18  i2c_eeprom.o(i.Delay_us)
-    EstSmo_Ctr                               0x08000c0d   Thumb Code   256  foc.o(i.EstSmo_Ctr)
-    Foc_Init                                 0x08000d1d   Thumb Code   524  foc.o(i.Foc_Init)
-    GPIO_Alternate_Set                       0x08000f51   Thumb Code    46  n32g430_gpio.o(i.GPIO_Alternate_Set)
-    GPIO_Config                              0x08000f81   Thumb Code   214  bsp_config.o(i.GPIO_Config)
-    GPIO_Driver_Set                          0x08001061   Thumb Code    20  n32g430_gpio.o(i.GPIO_Driver_Set)
-    GPIO_Mode_Set                            0x08001075   Thumb Code    58  n32g430_gpio.o(i.GPIO_Mode_Set)
-    GPIO_PBC_Pins_Reset                      0x080010af   Thumb Code     4  n32g430_gpio.o(i.GPIO_PBC_Pins_Reset)
-    GPIO_Peripheral_Initialize               0x080010b3   Thumb Code    80  n32g430_gpio.o(i.GPIO_Peripheral_Initialize)
-    GPIO_Pins_Reset                          0x08001103   Thumb Code     4  n32g430_gpio.o(i.GPIO_Pins_Reset)
-    GPIO_Pins_Set                            0x08001107   Thumb Code     4  n32g430_gpio.o(i.GPIO_Pins_Set)
-    GPIO_Pull_Set                            0x0800110b   Thumb Code    20  n32g430_gpio.o(i.GPIO_Pull_Set)
-    GPIO_SlewRate_Set                        0x0800111f   Thumb Code    18  n32g430_gpio.o(i.GPIO_SlewRate_Set)
-    GPIO_Structure_Initialize                0x08001131   Thumb Code    22  n32g430_gpio.o(i.GPIO_Structure_Initialize)
-    HardFault_Handler                        0x08001147   Thumb Code     2  n32g430_it.o(i.HardFault_Handler)
-    I2C1_ER_IRQHandler                       0x08001149   Thumb Code   108  i2c_eeprom.o(i.I2C1_ER_IRQHandler)
-    I2C1_EV_IRQHandler                       0x080011c5   Thumb Code   324  i2c_eeprom.o(i.I2C1_EV_IRQHandler)
-    I2C_7bit_Addr_Send                       0x08001315   Thumb Code    18  n32g430_i2c.o(i.I2C_7bit_Addr_Send)
-    I2C_Acknowledg_Disable                   0x08001327   Thumb Code    10  n32g430_i2c.o(i.I2C_Acknowledg_Disable)
-    I2C_Acknowledgement_Config               0x08001331   Thumb Code    12  n32g430_i2c.o(i.I2C_Acknowledgement_Config)
-    I2C_Addressing_Mode_Config               0x0800133d   Thumb Code    12  n32g430_i2c.o(i.I2C_Addressing_Mode_Config)
-    I2C_Bus_Mode_Config                      0x08001349   Thumb Code    12  n32g430_i2c.o(i.I2C_Bus_Mode_Config)
-    I2C_Clock_Speed_Config                   0x08001355   Thumb Code   198  n32g430_i2c.o(i.I2C_Clock_Speed_Config)
-    I2C_Data_Recv                            0x08001429   Thumb Code     6  n32g430_i2c.o(i.I2C_Data_Recv)
-    I2C_Data_Send                            0x0800142f   Thumb Code     4  n32g430_i2c.o(i.I2C_Data_Send)
-    I2C_EE_Init                              0x08001435   Thumb Code    98  i2c_eeprom.o(i.I2C_EE_Init)
-    I2C_Flag_Status_Clear                    0x080014a5   Thumb Code     6  n32g430_i2c.o(i.I2C_Flag_Status_Clear)
-    I2C_Flag_Status_Get                      0x080014ab   Thumb Code    50  n32g430_i2c.o(i.I2C_Flag_Status_Get)
-    I2C_Generate_Start_Enable                0x080014dd   Thumb Code    10  n32g430_i2c.o(i.I2C_Generate_Start_Enable)
-    I2C_Generate_Stop_Enable                 0x080014e7   Thumb Code    10  n32g430_i2c.o(i.I2C_Generate_Stop_Enable)
-    I2C_Initializes                          0x080014f1   Thumb Code    52  n32g430_i2c.o(i.I2C_Initializes)
-    I2C_Interrupts_Disable                   0x08001525   Thumb Code     8  n32g430_i2c.o(i.I2C_Interrupts_Disable)
-    I2C_Last_Event_Get                       0x0800152d   Thumb Code    14  n32g430_i2c.o(i.I2C_Last_Event_Get)
-    I2C_Own_Addr1_Config                     0x0800153b   Thumb Code    12  n32g430_i2c.o(i.I2C_Own_Addr1_Config)
-    I2C_Reset                                0x08001549   Thumb Code    22  n32g430_i2c.o(i.I2C_Reset)
-    IIC_RCCReset                             0x08001565   Thumb Code    60  i2c_eeprom.o(i.IIC_RCCReset)
-    IIC_RestoreSlaveByClock                  0x080015a9   Thumb Code    74  i2c_eeprom.o(i.IIC_RestoreSlaveByClock)
-    IIC_SWReset                              0x080015f9   Thumb Code    98  i2c_eeprom.o(i.IIC_SWReset)
-    Input_Channel1_Config                    0x08001669   Thumb Code    94  n32g430_tim.o(i.Input_Channel1_Config)
-    Input_Channel2_Config                    0x080016dd   Thumb Code   100  n32g430_tim.o(i.Input_Channel2_Config)
-    Input_Channel3_Config                    0x08001755   Thumb Code    98  n32g430_tim.o(i.Input_Channel3_Config)
-    Input_Channel4_Config                    0x080017cd   Thumb Code   102  n32g430_tim.o(i.Input_Channel4_Config)
-    LPF_Ctr                                  0x08001849   Thumb Code    36  lpf.o(i.LPF_Ctr)
-    MemManage_Handler                        0x0800186d   Thumb Code     2  n32g430_it.o(i.MemManage_Handler)
-    MotorStateMachine                        0x0800186f   Thumb Code   200  statemachine.o(i.MotorStateMachine)
-    NMI_Handler                              0x08001937   Thumb Code     2  n32g430_it.o(i.NMI_Handler)
-    NVIC_Initializes                         0x08001939   Thumb Code    96  misc.o(i.NVIC_Initializes)
-    NVIC_Priority_Group_Set                  0x0800199d   Thumb Code    10  misc.o(i.NVIC_Priority_Group_Set)
-    OpenLoop_Init                            0x080019b1   Thumb Code    14  foc.o(i.OpenLoop_Init)
-    PID_Ctr                                  0x080019c9   Thumb Code    90  pi.o(i.PID_Ctr)
-    PLL_TrimValueLoad                        0x08001a25   Thumb Code    90  system_n32g430.o(i.PLL_TrimValueLoad)
-    ParkTransform                            0x08001a95   Thumb Code    78  foc.o(i.ParkTransform)
-    PhaseCurr_Get                            0x08001aed   Thumb Code   128  foc.o(i.PhaseCurr_Get)
-    RCC_ADC_1M_Clock_Config                  0x08001b71   Thumb Code    20  n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config)
-    RCC_ADC_Hclk_Config                      0x08001b89   Thumb Code    14  n32g430_rcc.o(i.RCC_ADC_Hclk_Config)
-    RCC_ADC_Hclk_Enable                      0x08001b9d   Thumb Code    12  n32g430_rcc.o(i.RCC_ADC_Hclk_Enable)
-    RCC_ADC_PLL_Clock_Disable                0x08001bad   Thumb Code    12  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Disable)
-    RCC_ADC_PLL_Clock_Prescaler_Enable       0x08001bbd   Thumb Code    14  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Prescaler_Enable)
-    RCC_AHB_Peripheral_Clock_Enable          0x08001bd1   Thumb Code    10  n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable)
-    RCC_AHB_Peripheral_Reset                 0x08001be1   Thumb Code    16  n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset)
-    RCC_APB1_Peripheral_Clock_Disable        0x08001bf5   Thumb Code    10  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable)
-    RCC_APB1_Peripheral_Clock_Enable         0x08001c05   Thumb Code    10  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable)
-    RCC_APB1_Peripheral_Reset                0x08001c15   Thumb Code    16  n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset)
-    RCC_APB2_Peripheral_Clock_Enable         0x08001c29   Thumb Code    10  n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable)
-    RCC_APB2_Peripheral_Reset                0x08001c39   Thumb Code    16  n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset)
-    RCC_Clocks_Frequencies_Value_Get         0x08001c4d   Thumb Code   192  n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get)
-    RCC_Configuration                        0x08001d21   Thumb Code   108  bsp_config.o(i.RCC_Configuration)
-    RCC_Pclk1_Config                         0x08001d8d   Thumb Code    14  n32g430_rcc.o(i.RCC_Pclk1_Config)
-    SVC_Handler                              0x08001da1   Thumb Code     2  n32g430_it.o(i.SVC_Handler)
-    SpdLoop_Control                          0x08001da5   Thumb Code   174  loopcontrol.o(i.SpdLoop_Control)
-    Svm_Ctr                                  0x08001e59   Thumb Code  1672  svm.o(i.Svm_Ctr)
-    SysTick_Handler                          0x080024e5   Thumb Code     4  n32g430_it.o(i.SysTick_Handler)
-    System_Init                              0x080025e9   Thumb Code    46  bsp_config.o(i.System_Init)
-    System_Initializes                       0x08002619   Thumb Code   122  system_n32g430.o(i.System_Initializes)
-    TIM1_BRK_IRQHandler                      0x080026b1   Thumb Code    38  n32g430_it.o(i.TIM1_BRK_IRQHandler)
-    TIM1_CC_IRQHandler                       0x080026dd   Thumb Code    30  n32g430_it.o(i.TIM1_CC_IRQHandler)
-    TIM1_PWM_Init                            0x08002701   Thumb Code   376  bsp_tim.o(i.TIM1_PWM_Init)
-    TIM1_UP_IRQHandler                       0x08002885   Thumb Code    30  n32g430_it.o(i.TIM1_UP_IRQHandler)
-    TIM2_IRQHandler                          0x080028a9   Thumb Code    30  n32g430_it.o(i.TIM2_IRQHandler)
-    TIM4_Capture_Config                      0x080028c9   Thumb Code   242  bsp_tim.o(i.TIM4_Capture_Config)
-    TIM4_IRQHandler                          0x080029d1   Thumb Code    30  n32g430_it.o(i.TIM4_IRQHandler)
-    TIM6_1Khz_Init                           0x080029f5   Thumb Code   122  bsp_tim.o(i.TIM6_1Khz_Init)
-    TIM6_IRQHandler                          0x08002a79   Thumb Code    44  n32g430_it.o(i.TIM6_IRQHandler)
-    TIM_Asymmetric_Enable                    0x08002ab5   Thumb Code    10  n32g430_tim.o(i.TIM_Asymmetric_Enable)
-    TIM_Base_Auto_Reload_Set                 0x08002abf   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Auto_Reload_Set)
-    TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set 0x08002ac3   Thumb Code    12  n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set)
-    TIM_Base_Channel1                        0x08002acf   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel1)
-    TIM_Base_Channel2                        0x08002ae7   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel2)
-    TIM_Base_Channel3                        0x08002aff   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel3)
-    TIM_Base_Channel4                        0x08002b17   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel4)
-    TIM_Base_Count_Mode_Set                  0x08002b2f   Thumb Code    12  n32g430_tim.o(i.TIM_Base_Count_Mode_Set)
-    TIM_Base_Initialize                      0x08002b3d   Thumb Code   154  n32g430_tim.o(i.TIM_Base_Initialize)
-    TIM_Base_OCrefClear                      0x08002bed   Thumb Code    24  n32g430_tim.o(i.TIM_Base_OCrefClear)
-    TIM_Base_Prescaler_Set                   0x08002c05   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Prescaler_Set)
-    TIM_Base_Reload_Mode_Set                 0x08002c09   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Reload_Mode_Set)
-    TIM_Base_Repeat_Count_Set                0x08002c0d   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Repeat_Count_Set)
-    TIM_Base_Struct_Initialize               0x08002c11   Thumb Code    30  n32g430_tim.o(i.TIM_Base_Struct_Initialize)
-    TIM_Break_And_Dead_Time_Set              0x08002c2f   Thumb Code   102  n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set)
-    TIM_Capture_Compare_Ch_Disable           0x08002c95   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable)
-    TIM_Capture_Compare_Ch_Enable            0x08002ca1   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable)
-    TIM_Capture_Compare_Ch_N_Disable         0x08002cad   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable)
-    TIM_Capture_Compare_Ch_N_Enable          0x08002cb9   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable)
-    TIM_Clock_Division_Set                   0x08002cc5   Thumb Code    16  n32g430_tim.o(i.TIM_Clock_Division_Set)
-    TIM_Compare1_D_Set                       0x08002cd5   Thumb Code    12  n32g430_tim.o(i.TIM_Compare1_D_Set)
-    TIM_Compare1_Set                         0x08002ce1   Thumb Code    12  n32g430_tim.o(i.TIM_Compare1_Set)
-    TIM_Compare2_D_Set                       0x08002ced   Thumb Code    12  n32g430_tim.o(i.TIM_Compare2_D_Set)
-    TIM_Compare2_Set                         0x08002cf9   Thumb Code    12  n32g430_tim.o(i.TIM_Compare2_Set)
-    TIM_Compare3_D_Set                       0x08002d05   Thumb Code    12  n32g430_tim.o(i.TIM_Compare3_D_Set)
-    TIM_Compare3_Set                         0x08002d11   Thumb Code    12  n32g430_tim.o(i.TIM_Compare3_Set)
-    TIM_Compare7_Set                         0x08002d1d   Thumb Code     6  n32g430_tim.o(i.TIM_Compare7_Set)
-    TIM_Compare8_Set                         0x08002d23   Thumb Code     6  n32g430_tim.o(i.TIM_Compare8_Set)
-    TIM_Compare9_Set                         0x08002d29   Thumb Code     6  n32g430_tim.o(i.TIM_Compare9_Set)
-    TIM_Dma_Enable                           0x08002d2f   Thumb Code     8  n32g430_tim.o(i.TIM_Dma_Enable)
-    TIM_Flag_Status_Get                      0x08002d37   Thumb Code    14  n32g430_tim.o(i.TIM_Flag_Status_Get)
-    TIM_IOM_Comp_Break                       0x08002d45   Thumb Code    24  n32g430_tim.o(i.TIM_IOM_Comp_Break)
-    TIM_Input_Capture1_Prescaler_Set         0x08002d5d   Thumb Code    16  n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set)
-    TIM_Input_Capture2_Prescaler_Set         0x08002d6d   Thumb Code    24  n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set)
-    TIM_Input_Capture3_Prescaler_Set         0x08002d85   Thumb Code    18  n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set)
-    TIM_Input_Capture4_Prescaler_Set         0x08002d97   Thumb Code    20  n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set)
-    TIM_Input_Channel_Initialize             0x08002dab   Thumb Code    98  n32g430_tim.o(i.TIM_Input_Channel_Initialize)
-    TIM_Input_Struct_Initialize              0x08002e0d   Thumb Code    14  n32g430_tim.o(i.TIM_Input_Struct_Initialize)
-    TIM_Interrupt_Disable                    0x08002e1b   Thumb Code     8  n32g430_tim.o(i.TIM_Interrupt_Disable)
-    TIM_Interrupt_Enable                     0x08002e23   Thumb Code     8  n32g430_tim.o(i.TIM_Interrupt_Enable)
-    TIM_Interrupt_Status_Clear               0x08002e2b   Thumb Code     6  n32g430_tim.o(i.TIM_Interrupt_Status_Clear)
-    TIM_Interrupt_Status_Get                 0x08002e31   Thumb Code    22  n32g430_tim.o(i.TIM_Interrupt_Status_Get)
-    TIM_Lock_Up_Break_Disable                0x08002e47   Thumb Code    10  n32g430_tim.o(i.TIM_Lock_Up_Break_Disable)
-    TIM_Lock_Up_Break_Enable                 0x08002e51   Thumb Code    10  n32g430_tim.o(i.TIM_Lock_Up_Break_Enable)
-    TIM_OC7REF_Trigger_To_ADC_Enable         0x08002e5b   Thumb Code    10  n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable)
-    TIM_OC8REF_Trigger_To_ADC_Enable         0x08002e65   Thumb Code    10  n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable)
-    TIM_On                                   0x08002e6f   Thumb Code    10  n32g430_tim.o(i.TIM_On)
-    TIM_Output_Channel1_Initialize           0x08002e79   Thumb Code   132  n32g430_tim.o(i.TIM_Output_Channel1_Initialize)
-    TIM_Output_Channel1_Preload_Set          0x08002f05   Thumb Code    12  n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set)
-    TIM_Output_Channel2_Initialize           0x08002f11   Thumb Code   144  n32g430_tim.o(i.TIM_Output_Channel2_Initialize)
-    TIM_Output_Channel2_Preload_Set          0x08002fa9   Thumb Code    20  n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set)
-    TIM_Output_Channel3_Initialize           0x08002fbd   Thumb Code   138  n32g430_tim.o(i.TIM_Output_Channel3_Initialize)
-    TIM_Output_Channel3_Preload_Set          0x08003051   Thumb Code    14  n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set)
-    TIM_Output_Channel7_Preload_Set          0x0800305f   Thumb Code    28  n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set)
-    TIM_Output_Channel8_Preload_Set          0x0800307b   Thumb Code    28  n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set)
-    TIM_Output_Channel_N_Polarity_Set        0x08003097   Thumb Code    18  n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set)
-    TIM_Output_Channel_Polarity_Set          0x080030a9   Thumb Code    18  n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set)
-    TIM_Output_Trigger_Select                0x080030bd   Thumb Code    16  n32g430_tim.o(i.TIM_Output_Trigger_Select)
-    TIM_PWM_Output_Disable                   0x080030d1   Thumb Code    12  n32g430_tim.o(i.TIM_PWM_Output_Disable)
-    TIM_PWM_Output_Enable                    0x080030dd   Thumb Code    12  n32g430_tim.o(i.TIM_PWM_Output_Enable)
-    TIM_Pvd_Break_Disable                    0x080030e9   Thumb Code    10  n32g430_tim.o(i.TIM_Pvd_Break_Disable)
-    TIM_Pvd_Break_Enable                     0x080030f3   Thumb Code    10  n32g430_tim.o(i.TIM_Pvd_Break_Enable)
-    TIM_Reset                                0x080030fd   Thumb Code    86  n32g430_tim.o(i.TIM_Reset)
-    TimerTick_State                          0x0800316d   Thumb Code    56  timer.o(i.TimerTick_State)
-    Timer_Init                               0x080031a5   Thumb Code    12  timer.o(i.Timer_Init)
-    Timer_Start                              0x080031b1   Thumb Code    14  timer.o(i.Timer_Start)
-    Timer_State_Init                         0x080031c1   Thumb Code    64  timer.o(i.Timer_State_Init)
-    Timer_Tick                               0x08003205   Thumb Code    34  timer.o(i.Timer_Tick)
-    Timer_Timeout                            0x08003227   Thumb Code     4  timer.o(i.Timer_Timeout)
-    TimingDelay_Decrement                    0x0800322d   Thumb Code    16  bsp_config.o(i.TimingDelay_Decrement)
-    UsageFault_Handler                       0x08003241   Thumb Code     2  n32g430_it.o(i.UsageFault_Handler)
-    __scatterload_copy                       0x08003243   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08003251   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08003253   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    iParkTransform                           0x08003261   Thumb Code    92  foc.o(i.iParkTransform)
-    main                                     0x080032c5   Thumb Code    22  main.o(i.main)
-    sEE_TIMEOUT_UserCallback                 0x080032e5   Thumb Code     4  i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback)
-    Table_Sin                                0x080032e8   Data        2560  table.o(.constdata)
-    Region$$Table$$Base                      0x08003d28   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003d48   Number         0  anon$$obj.o(Region$$Table)
+    ADC_IRQHandler                           0x08000515   Thumb Code   498  n32g430_it.o(i.ADC_IRQHandler)
+    ADC_Initializes                          0x08000735   Thumb Code    66  n32g430_adc.o(i.ADC_Initializes)
+    ADC_Injected_Channels_Number_Config      0x0800077d   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Channels_Number_Config)
+    ADC_Injected_Group_Autoconversion_Disable 0x08000795   Thumb Code    12  n32g430_adc.o(i.ADC_Injected_Group_Autoconversion_Disable)
+    ADC_Injected_Group_Conversion_Data_Get   0x080007a5   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Group_Conversion_Data_Get)
+    ADC_Injected_Group_External_Trigger_Source_Config 0x080007bd   Thumb Code    18  n32g430_adc.o(i.ADC_Injected_Group_External_Trigger_Source_Config)
+    ADC_Injected_Sequence_Conversion_Number_Config 0x080007d5   Thumb Code    28  n32g430_adc.o(i.ADC_Injected_Sequence_Conversion_Number_Config)
+    ADC_Interrupts_Enable                    0x080007f5   Thumb Code    26  n32g430_adc.o(i.ADC_Interrupts_Enable)
+    ADC_Multichannels_Disable                0x08000815   Thumb Code    12  n32g430_adc.o(i.ADC_Multichannels_Disable)
+    ADC_Multichannels_Enable                 0x08000825   Thumb Code    12  n32g430_adc.o(i.ADC_Multichannels_Enable)
+    ADC_ON                                   0x08000835   Thumb Code    12  n32g430_adc.o(i.ADC_ON)
+    ADC_PLL_Clock_Mode_Config                0x08000845   Thumb Code    12  n32g430_adc.o(i.ADC_PLL_Clock_Mode_Config)
+    ADC_Regular_Channels_Number_Config       0x08000855   Thumb Code    18  n32g430_adc.o(i.ADC_Regular_Channels_Number_Config)
+    ADC_Regular_Group_Conversion_Data_Get    0x0800086d   Thumb Code     8  n32g430_adc.o(i.ADC_Regular_Group_Conversion_Data_Get)
+    ADC_Regular_Group_External_Trigger_Source_Config 0x08000879   Thumb Code    18  n32g430_adc.o(i.ADC_Regular_Group_External_Trigger_Source_Config)
+    ADC_Regular_Sequence_Conversion_Number_Config 0x08000891   Thumb Code    92  n32g430_adc.o(i.ADC_Regular_Sequence_Conversion_Number_Config)
+    ADC_Reset                                0x080008f1   Thumb Code     8  n32g430_adc.o(i.ADC_Reset)
+    Adc_Init                                 0x080008f9   Thumb Code   182  bsp_adc.o(i.Adc_Init)
+    Angle_Given                              0x080009af   Thumb Code    24  foc.o(i.Angle_Given)
+    BiasDetect                               0x080009c9   Thumb Code    54  datacalc.o(i.BiasDetect)
+    BusFault_Handler                         0x08000a0d   Thumb Code     2  n32g430_it.o(i.BusFault_Handler)
+    ClarkeTransform                          0x08000a0f   Thumb Code    38  axistransform.o(i.ClarkeTransform)
+    DMA_Buffer_Size_Config                   0x08000a35   Thumb Code     4  n32g430_dma.o(i.DMA_Buffer_Size_Config)
+    DMA_Channel_Enable                       0x08000a39   Thumb Code    10  n32g430_dma.o(i.DMA_Channel_Enable)
+    DMA_Channel_Request_Remap                0x08000a43   Thumb Code     4  n32g430_dma.o(i.DMA_Channel_Request_Remap)
+    DMA_Circular_Mode_Config                 0x08000a47   Thumb Code    16  n32g430_dma.o(i.DMA_Circular_Mode_Config)
+    DMA_Destination_Config                   0x08000a57   Thumb Code    16  n32g430_dma.o(i.DMA_Destination_Config)
+    DMA_Initializes                          0x08000a67   Thumb Code    98  n32g430_dma.o(i.DMA_Initializes)
+    DMA_Memory_2_Memory_Config               0x08000ac9   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_2_Memory_Config)
+    DMA_Memory_Addr_Increment_Config         0x08000ad9   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_Addr_Increment_Config)
+    DMA_Memory_Address_Config                0x08000ae9   Thumb Code     4  n32g430_dma.o(i.DMA_Memory_Address_Config)
+    DMA_Memory_Data_Width_Config             0x08000aed   Thumb Code    16  n32g430_dma.o(i.DMA_Memory_Data_Width_Config)
+    DMA_Peripheral_Addr_Increment_Config     0x08000afd   Thumb Code    16  n32g430_dma.o(i.DMA_Peripheral_Addr_Increment_Config)
+    DMA_Peripheral_Address_Config            0x08000b0d   Thumb Code     4  n32g430_dma.o(i.DMA_Peripheral_Address_Config)
+    DMA_Peripheral_Data_Width_Config         0x08000b11   Thumb Code    16  n32g430_dma.o(i.DMA_Peripheral_Data_Width_Config)
+    DMA_Priority_Config                      0x08000b21   Thumb Code    16  n32g430_dma.o(i.DMA_Priority_Config)
+    DMA_Reset                                0x08000b31   Thumb Code   164  n32g430_dma.o(i.DMA_Reset)
+    DMA_Structure_Initializes                0x08000bd9   Thumb Code    26  n32g430_dma.o(i.DMA_Structure_Initializes)
+    Data_Limit                               0x08000bf3   Thumb Code    28  datacalc.o(i.Data_Limit)
+    DebugMon_Handler                         0x08000c0f   Thumb Code     2  n32g430_it.o(i.DebugMon_Handler)
+    Delay_us                                 0x08000c11   Thumb Code    18  i2c_eeprom.o(i.Delay_us)
+    EstSmo_Ctr                               0x08000c25   Thumb Code   292  observer.o(i.EstSmo_Ctr)
+    Foc_Init                                 0x08000d59   Thumb Code   510  foc.o(i.Foc_Init)
+    GPIO_Alternate_Set                       0x08000f81   Thumb Code    46  n32g430_gpio.o(i.GPIO_Alternate_Set)
+    GPIO_Config                              0x08000fb1   Thumb Code   214  bsp_config.o(i.GPIO_Config)
+    GPIO_Driver_Set                          0x08001091   Thumb Code    20  n32g430_gpio.o(i.GPIO_Driver_Set)
+    GPIO_Mode_Set                            0x080010a5   Thumb Code    58  n32g430_gpio.o(i.GPIO_Mode_Set)
+    GPIO_PBC_Pins_Reset                      0x080010df   Thumb Code     4  n32g430_gpio.o(i.GPIO_PBC_Pins_Reset)
+    GPIO_Peripheral_Initialize               0x080010e3   Thumb Code    80  n32g430_gpio.o(i.GPIO_Peripheral_Initialize)
+    GPIO_Pins_Reset                          0x08001133   Thumb Code     4  n32g430_gpio.o(i.GPIO_Pins_Reset)
+    GPIO_Pins_Set                            0x08001137   Thumb Code     4  n32g430_gpio.o(i.GPIO_Pins_Set)
+    GPIO_Pull_Set                            0x0800113b   Thumb Code    20  n32g430_gpio.o(i.GPIO_Pull_Set)
+    GPIO_SlewRate_Set                        0x0800114f   Thumb Code    18  n32g430_gpio.o(i.GPIO_SlewRate_Set)
+    GPIO_Structure_Initialize                0x08001161   Thumb Code    22  n32g430_gpio.o(i.GPIO_Structure_Initialize)
+    HardFault_Handler                        0x08001177   Thumb Code     2  n32g430_it.o(i.HardFault_Handler)
+    I2C1_ER_IRQHandler                       0x08001179   Thumb Code   108  i2c_eeprom.o(i.I2C1_ER_IRQHandler)
+    I2C1_EV_IRQHandler                       0x080011f5   Thumb Code   324  i2c_eeprom.o(i.I2C1_EV_IRQHandler)
+    I2C_7bit_Addr_Send                       0x08001345   Thumb Code    18  n32g430_i2c.o(i.I2C_7bit_Addr_Send)
+    I2C_Acknowledg_Disable                   0x08001357   Thumb Code    10  n32g430_i2c.o(i.I2C_Acknowledg_Disable)
+    I2C_Acknowledgement_Config               0x08001361   Thumb Code    12  n32g430_i2c.o(i.I2C_Acknowledgement_Config)
+    I2C_Addressing_Mode_Config               0x0800136d   Thumb Code    12  n32g430_i2c.o(i.I2C_Addressing_Mode_Config)
+    I2C_Bus_Mode_Config                      0x08001379   Thumb Code    12  n32g430_i2c.o(i.I2C_Bus_Mode_Config)
+    I2C_Clock_Speed_Config                   0x08001385   Thumb Code   198  n32g430_i2c.o(i.I2C_Clock_Speed_Config)
+    I2C_Data_Recv                            0x08001459   Thumb Code     6  n32g430_i2c.o(i.I2C_Data_Recv)
+    I2C_Data_Send                            0x0800145f   Thumb Code     4  n32g430_i2c.o(i.I2C_Data_Send)
+    I2C_EE_Init                              0x08001465   Thumb Code    98  i2c_eeprom.o(i.I2C_EE_Init)
+    I2C_Flag_Status_Clear                    0x080014d5   Thumb Code     6  n32g430_i2c.o(i.I2C_Flag_Status_Clear)
+    I2C_Flag_Status_Get                      0x080014db   Thumb Code    50  n32g430_i2c.o(i.I2C_Flag_Status_Get)
+    I2C_Generate_Start_Enable                0x0800150d   Thumb Code    10  n32g430_i2c.o(i.I2C_Generate_Start_Enable)
+    I2C_Generate_Stop_Enable                 0x08001517   Thumb Code    10  n32g430_i2c.o(i.I2C_Generate_Stop_Enable)
+    I2C_Initializes                          0x08001521   Thumb Code    52  n32g430_i2c.o(i.I2C_Initializes)
+    I2C_Interrupts_Disable                   0x08001555   Thumb Code     8  n32g430_i2c.o(i.I2C_Interrupts_Disable)
+    I2C_Last_Event_Get                       0x0800155d   Thumb Code    14  n32g430_i2c.o(i.I2C_Last_Event_Get)
+    I2C_Own_Addr1_Config                     0x0800156b   Thumb Code    12  n32g430_i2c.o(i.I2C_Own_Addr1_Config)
+    I2C_Reset                                0x08001579   Thumb Code    22  n32g430_i2c.o(i.I2C_Reset)
+    IIC_RCCReset                             0x08001595   Thumb Code    60  i2c_eeprom.o(i.IIC_RCCReset)
+    IIC_RestoreSlaveByClock                  0x080015d9   Thumb Code    74  i2c_eeprom.o(i.IIC_RestoreSlaveByClock)
+    IIC_SWReset                              0x08001629   Thumb Code    98  i2c_eeprom.o(i.IIC_SWReset)
+    Input_Channel1_Config                    0x08001699   Thumb Code    94  n32g430_tim.o(i.Input_Channel1_Config)
+    Input_Channel2_Config                    0x0800170d   Thumb Code   100  n32g430_tim.o(i.Input_Channel2_Config)
+    Input_Channel3_Config                    0x08001785   Thumb Code    98  n32g430_tim.o(i.Input_Channel3_Config)
+    Input_Channel4_Config                    0x080017fd   Thumb Code   102  n32g430_tim.o(i.Input_Channel4_Config)
+    LPF_Ctr                                  0x08001879   Thumb Code    36  lpf.o(i.LPF_Ctr)
+    MemManage_Handler                        0x0800189d   Thumb Code     2  n32g430_it.o(i.MemManage_Handler)
+    MotorStateMachine                        0x0800189f   Thumb Code   190  statemachine.o(i.MotorStateMachine)
+    NMI_Handler                              0x0800195d   Thumb Code     2  n32g430_it.o(i.NMI_Handler)
+    NVIC_Initializes                         0x08001961   Thumb Code    96  misc.o(i.NVIC_Initializes)
+    NVIC_Priority_Group_Set                  0x080019c5   Thumb Code    10  misc.o(i.NVIC_Priority_Group_Set)
+    OpenLoop_Init                            0x080019d9   Thumb Code    14  foc.o(i.OpenLoop_Init)
+    PID_Ctr                                  0x080019f1   Thumb Code   104  pi.o(i.PID_Ctr)
+    PLL_TrimValueLoad                        0x08001a59   Thumb Code    90  system_n32g430.o(i.PLL_TrimValueLoad)
+    ParkTransform                            0x08001ac9   Thumb Code    78  axistransform.o(i.ParkTransform)
+    PhaseCurr_Get                            0x08001b21   Thumb Code   106  currsample.o(i.PhaseCurr_Get)
+    RCC_ADC_1M_Clock_Config                  0x08001b91   Thumb Code    20  n32g430_rcc.o(i.RCC_ADC_1M_Clock_Config)
+    RCC_ADC_Hclk_Config                      0x08001ba9   Thumb Code    14  n32g430_rcc.o(i.RCC_ADC_Hclk_Config)
+    RCC_ADC_Hclk_Enable                      0x08001bbd   Thumb Code    12  n32g430_rcc.o(i.RCC_ADC_Hclk_Enable)
+    RCC_ADC_PLL_Clock_Disable                0x08001bcd   Thumb Code    12  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Disable)
+    RCC_ADC_PLL_Clock_Prescaler_Enable       0x08001bdd   Thumb Code    14  n32g430_rcc.o(i.RCC_ADC_PLL_Clock_Prescaler_Enable)
+    RCC_AHB_Peripheral_Clock_Enable          0x08001bf1   Thumb Code    10  n32g430_rcc.o(i.RCC_AHB_Peripheral_Clock_Enable)
+    RCC_AHB_Peripheral_Reset                 0x08001c01   Thumb Code    16  n32g430_rcc.o(i.RCC_AHB_Peripheral_Reset)
+    RCC_APB1_Peripheral_Clock_Disable        0x08001c15   Thumb Code    10  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Disable)
+    RCC_APB1_Peripheral_Clock_Enable         0x08001c25   Thumb Code    10  n32g430_rcc.o(i.RCC_APB1_Peripheral_Clock_Enable)
+    RCC_APB1_Peripheral_Reset                0x08001c35   Thumb Code    16  n32g430_rcc.o(i.RCC_APB1_Peripheral_Reset)
+    RCC_APB2_Peripheral_Clock_Enable         0x08001c49   Thumb Code    10  n32g430_rcc.o(i.RCC_APB2_Peripheral_Clock_Enable)
+    RCC_APB2_Peripheral_Reset                0x08001c59   Thumb Code    16  n32g430_rcc.o(i.RCC_APB2_Peripheral_Reset)
+    RCC_Clocks_Frequencies_Value_Get         0x08001c6d   Thumb Code   192  n32g430_rcc.o(i.RCC_Clocks_Frequencies_Value_Get)
+    RCC_Configuration                        0x08001d41   Thumb Code   108  bsp_config.o(i.RCC_Configuration)
+    RCC_Pclk1_Config                         0x08001dad   Thumb Code    14  n32g430_rcc.o(i.RCC_Pclk1_Config)
+    SVC_Handler                              0x08001dc1   Thumb Code     2  n32g430_it.o(i.SVC_Handler)
+    SpdLoop_Control                          0x08001dc5   Thumb Code   168  loopcontrol.o(i.SpdLoop_Control)
+    Svm_Ctr                                  0x08001e71   Thumb Code  1672  svm.o(i.Svm_Ctr)
+    SysTick_Handler                          0x080024fd   Thumb Code     4  n32g430_it.o(i.SysTick_Handler)
+    System_Init                              0x08002601   Thumb Code    46  bsp_config.o(i.System_Init)
+    System_Initializes                       0x08002631   Thumb Code   122  system_n32g430.o(i.System_Initializes)
+    TIM1_BRK_IRQHandler                      0x080026c9   Thumb Code    38  n32g430_it.o(i.TIM1_BRK_IRQHandler)
+    TIM1_CC_IRQHandler                       0x080026f5   Thumb Code    30  n32g430_it.o(i.TIM1_CC_IRQHandler)
+    TIM1_PWM_Init                            0x08002719   Thumb Code   376  bsp_tim.o(i.TIM1_PWM_Init)
+    TIM1_UP_IRQHandler                       0x0800289d   Thumb Code    30  n32g430_it.o(i.TIM1_UP_IRQHandler)
+    TIM2_IRQHandler                          0x080028c1   Thumb Code    30  n32g430_it.o(i.TIM2_IRQHandler)
+    TIM4_Capture_Config                      0x080028e1   Thumb Code   242  bsp_tim.o(i.TIM4_Capture_Config)
+    TIM4_IRQHandler                          0x080029e9   Thumb Code    30  n32g430_it.o(i.TIM4_IRQHandler)
+    TIM6_1Khz_Init                           0x08002a0d   Thumb Code   122  bsp_tim.o(i.TIM6_1Khz_Init)
+    TIM6_IRQHandler                          0x08002a91   Thumb Code    44  n32g430_it.o(i.TIM6_IRQHandler)
+    TIM_Asymmetric_Enable                    0x08002acd   Thumb Code    10  n32g430_tim.o(i.TIM_Asymmetric_Enable)
+    TIM_Base_Auto_Reload_Set                 0x08002ad7   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Auto_Reload_Set)
+    TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set 0x08002adb   Thumb Code    12  n32g430_tim.o(i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set)
+    TIM_Base_Channel1                        0x08002ae7   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel1)
+    TIM_Base_Channel2                        0x08002aff   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel2)
+    TIM_Base_Channel3                        0x08002b17   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel3)
+    TIM_Base_Channel4                        0x08002b2f   Thumb Code    24  n32g430_tim.o(i.TIM_Base_Channel4)
+    TIM_Base_Count_Mode_Set                  0x08002b47   Thumb Code    12  n32g430_tim.o(i.TIM_Base_Count_Mode_Set)
+    TIM_Base_Initialize                      0x08002b55   Thumb Code   154  n32g430_tim.o(i.TIM_Base_Initialize)
+    TIM_Base_OCrefClear                      0x08002c05   Thumb Code    24  n32g430_tim.o(i.TIM_Base_OCrefClear)
+    TIM_Base_Prescaler_Set                   0x08002c1d   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Prescaler_Set)
+    TIM_Base_Reload_Mode_Set                 0x08002c21   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Reload_Mode_Set)
+    TIM_Base_Repeat_Count_Set                0x08002c25   Thumb Code     4  n32g430_tim.o(i.TIM_Base_Repeat_Count_Set)
+    TIM_Base_Struct_Initialize               0x08002c29   Thumb Code    30  n32g430_tim.o(i.TIM_Base_Struct_Initialize)
+    TIM_Break_And_Dead_Time_Set              0x08002c47   Thumb Code   102  n32g430_tim.o(i.TIM_Break_And_Dead_Time_Set)
+    TIM_Capture_Compare_Ch_Disable           0x08002cad   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Disable)
+    TIM_Capture_Compare_Ch_Enable            0x08002cb9   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_Enable)
+    TIM_Capture_Compare_Ch_N_Disable         0x08002cc5   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Disable)
+    TIM_Capture_Compare_Ch_N_Enable          0x08002cd1   Thumb Code    12  n32g430_tim.o(i.TIM_Capture_Compare_Ch_N_Enable)
+    TIM_Clock_Division_Set                   0x08002cdd   Thumb Code    16  n32g430_tim.o(i.TIM_Clock_Division_Set)
+    TIM_Compare1_D_Set                       0x08002ced   Thumb Code    12  n32g430_tim.o(i.TIM_Compare1_D_Set)
+    TIM_Compare1_Set                         0x08002cf9   Thumb Code    12  n32g430_tim.o(i.TIM_Compare1_Set)
+    TIM_Compare2_D_Set                       0x08002d05   Thumb Code    12  n32g430_tim.o(i.TIM_Compare2_D_Set)
+    TIM_Compare2_Set                         0x08002d11   Thumb Code    12  n32g430_tim.o(i.TIM_Compare2_Set)
+    TIM_Compare3_D_Set                       0x08002d1d   Thumb Code    12  n32g430_tim.o(i.TIM_Compare3_D_Set)
+    TIM_Compare3_Set                         0x08002d29   Thumb Code    12  n32g430_tim.o(i.TIM_Compare3_Set)
+    TIM_Compare7_Set                         0x08002d35   Thumb Code     6  n32g430_tim.o(i.TIM_Compare7_Set)
+    TIM_Compare8_Set                         0x08002d3b   Thumb Code     6  n32g430_tim.o(i.TIM_Compare8_Set)
+    TIM_Compare9_Set                         0x08002d41   Thumb Code     6  n32g430_tim.o(i.TIM_Compare9_Set)
+    TIM_Dma_Enable                           0x08002d47   Thumb Code     8  n32g430_tim.o(i.TIM_Dma_Enable)
+    TIM_Flag_Status_Get                      0x08002d4f   Thumb Code    14  n32g430_tim.o(i.TIM_Flag_Status_Get)
+    TIM_IOM_Comp_Break                       0x08002d5d   Thumb Code    24  n32g430_tim.o(i.TIM_IOM_Comp_Break)
+    TIM_Input_Capture1_Prescaler_Set         0x08002d75   Thumb Code    16  n32g430_tim.o(i.TIM_Input_Capture1_Prescaler_Set)
+    TIM_Input_Capture2_Prescaler_Set         0x08002d85   Thumb Code    24  n32g430_tim.o(i.TIM_Input_Capture2_Prescaler_Set)
+    TIM_Input_Capture3_Prescaler_Set         0x08002d9d   Thumb Code    18  n32g430_tim.o(i.TIM_Input_Capture3_Prescaler_Set)
+    TIM_Input_Capture4_Prescaler_Set         0x08002daf   Thumb Code    20  n32g430_tim.o(i.TIM_Input_Capture4_Prescaler_Set)
+    TIM_Input_Channel_Initialize             0x08002dc3   Thumb Code    98  n32g430_tim.o(i.TIM_Input_Channel_Initialize)
+    TIM_Input_Struct_Initialize              0x08002e25   Thumb Code    14  n32g430_tim.o(i.TIM_Input_Struct_Initialize)
+    TIM_Interrupt_Disable                    0x08002e33   Thumb Code     8  n32g430_tim.o(i.TIM_Interrupt_Disable)
+    TIM_Interrupt_Enable                     0x08002e3b   Thumb Code     8  n32g430_tim.o(i.TIM_Interrupt_Enable)
+    TIM_Interrupt_Status_Clear               0x08002e43   Thumb Code     6  n32g430_tim.o(i.TIM_Interrupt_Status_Clear)
+    TIM_Interrupt_Status_Get                 0x08002e49   Thumb Code    22  n32g430_tim.o(i.TIM_Interrupt_Status_Get)
+    TIM_Lock_Up_Break_Disable                0x08002e5f   Thumb Code    10  n32g430_tim.o(i.TIM_Lock_Up_Break_Disable)
+    TIM_Lock_Up_Break_Enable                 0x08002e69   Thumb Code    10  n32g430_tim.o(i.TIM_Lock_Up_Break_Enable)
+    TIM_OC7REF_Trigger_To_ADC_Enable         0x08002e73   Thumb Code    10  n32g430_tim.o(i.TIM_OC7REF_Trigger_To_ADC_Enable)
+    TIM_OC8REF_Trigger_To_ADC_Enable         0x08002e7d   Thumb Code    10  n32g430_tim.o(i.TIM_OC8REF_Trigger_To_ADC_Enable)
+    TIM_On                                   0x08002e87   Thumb Code    10  n32g430_tim.o(i.TIM_On)
+    TIM_Output_Channel1_Initialize           0x08002e91   Thumb Code   132  n32g430_tim.o(i.TIM_Output_Channel1_Initialize)
+    TIM_Output_Channel1_Preload_Set          0x08002f1d   Thumb Code    12  n32g430_tim.o(i.TIM_Output_Channel1_Preload_Set)
+    TIM_Output_Channel2_Initialize           0x08002f29   Thumb Code   144  n32g430_tim.o(i.TIM_Output_Channel2_Initialize)
+    TIM_Output_Channel2_Preload_Set          0x08002fc1   Thumb Code    20  n32g430_tim.o(i.TIM_Output_Channel2_Preload_Set)
+    TIM_Output_Channel3_Initialize           0x08002fd5   Thumb Code   138  n32g430_tim.o(i.TIM_Output_Channel3_Initialize)
+    TIM_Output_Channel3_Preload_Set          0x08003069   Thumb Code    14  n32g430_tim.o(i.TIM_Output_Channel3_Preload_Set)
+    TIM_Output_Channel7_Preload_Set          0x08003077   Thumb Code    28  n32g430_tim.o(i.TIM_Output_Channel7_Preload_Set)
+    TIM_Output_Channel8_Preload_Set          0x08003093   Thumb Code    28  n32g430_tim.o(i.TIM_Output_Channel8_Preload_Set)
+    TIM_Output_Channel_N_Polarity_Set        0x080030af   Thumb Code    18  n32g430_tim.o(i.TIM_Output_Channel_N_Polarity_Set)
+    TIM_Output_Channel_Polarity_Set          0x080030c1   Thumb Code    18  n32g430_tim.o(i.TIM_Output_Channel_Polarity_Set)
+    TIM_Output_Trigger_Select                0x080030d5   Thumb Code    16  n32g430_tim.o(i.TIM_Output_Trigger_Select)
+    TIM_PWM_Output_Disable                   0x080030e9   Thumb Code    12  n32g430_tim.o(i.TIM_PWM_Output_Disable)
+    TIM_PWM_Output_Enable                    0x080030f5   Thumb Code    12  n32g430_tim.o(i.TIM_PWM_Output_Enable)
+    TIM_Pvd_Break_Disable                    0x08003101   Thumb Code    10  n32g430_tim.o(i.TIM_Pvd_Break_Disable)
+    TIM_Pvd_Break_Enable                     0x0800310b   Thumb Code    10  n32g430_tim.o(i.TIM_Pvd_Break_Enable)
+    TIM_Reset                                0x08003115   Thumb Code    86  n32g430_tim.o(i.TIM_Reset)
+    TimerTick_State                          0x08003185   Thumb Code    56  timer.o(i.TimerTick_State)
+    Timer_Init                               0x080031bd   Thumb Code    12  timer.o(i.Timer_Init)
+    Timer_Start                              0x080031c9   Thumb Code    14  timer.o(i.Timer_Start)
+    Timer_State_Init                         0x080031d9   Thumb Code    66  timer.o(i.Timer_State_Init)
+    Timer_Tick                               0x08003221   Thumb Code    34  timer.o(i.Timer_Tick)
+    Timer_Timeout                            0x08003243   Thumb Code     4  timer.o(i.Timer_Timeout)
+    TimingDelay_Decrement                    0x08003249   Thumb Code    16  bsp_config.o(i.TimingDelay_Decrement)
+    UsageFault_Handler                       0x0800325d   Thumb Code     2  n32g430_it.o(i.UsageFault_Handler)
+    __scatterload_copy                       0x0800325f   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800326d   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800326f   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    iParkTransform                           0x0800327d   Thumb Code    92  axistransform.o(i.iParkTransform)
+    main                                     0x080032e1   Thumb Code    22  main.o(i.main)
+    sEE_TIMEOUT_UserCallback                 0x08003301   Thumb Code     4  i2c_eeprom.o(i.sEE_TIMEOUT_UserCallback)
+    Table_Sin                                0x08003304   Data        2560  table.o(.constdata)
+    Region$$Table$$Base                      0x08003d44   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003d64   Number         0  anon$$obj.o(Region$$Table)
     VoltValue_ADCReg                         0x20000000   Data           2  n32g430_it.o(.data)
     SampleCurr_1st                           0x20000002   Data           2  n32g430_it.o(.data)
     SampleCurr_2nd                           0x20000004   Data           2  n32g430_it.o(.data)
@@ -2258,12 +2278,13 @@ Image Symbol Table
     I2C_WriteAddr                            0x2000006e   Data           2  i2c_eeprom.o(.data)
     sEETimeout                               0x20000078   Data           4  i2c_eeprom.o(.data)
     I2C_pBuffer                              0x2000007c   Data           4  i2c_eeprom.o(.data)
-    Foc                                      0x20000088   Data         184  foc.o(.bss)
-    Timer_State                              0x20000140   Data          84  timer.o(.bss)
-    Svm                                      0x20000194   Data          26  svm.o(.bss)
-    LoopCtrl                                 0x200001b0   Data         172  loopcontrol.o(.bss)
-    TIM_Freq_buff                            0x2000025c   Data          12  bsp_tim.o(.bss)
-    __initial_sp                             0x20001668   Data           0  startup_n32g430.o(STACK)
+    Foc                                      0x20000088   Data         152  foc.o(.bss)
+    Timer_State                              0x20000120   Data          84  timer.o(.bss)
+    Svm                                      0x20000174   Data          26  svm.o(.bss)
+    LoopCtrl                                 0x20000190   Data         108  loopcontrol.o(.bss)
+    Sample_Curr                              0x200001fc   Data          32  currsample.o(.bss)
+    TIM_Freq_buff                            0x2000021c   Data          12  bsp_tim.o(.bss)
+    __initial_sp                             0x20001628   Data           0  startup_n32g430.o(STACK)
 
 
 
@@ -2273,281 +2294,282 @@ Memory Map of the image
 
   Image Entry point : 0x08000115
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003dd0, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003dec, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003d48, Max: 0x00010000, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x08000000   0x08000000   0x00000114   Data   RO          726    RESET               startup_n32g430.o
-    0x08000114   0x08000114   0x00000000   Code   RO         6643  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000114   0x08000114   0x00000004   Code   RO         6648    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000118   0x08000118   0x00000004   Code   RO         6651    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x0800011c   0x0800011c   0x00000000   Code   RO         6653    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x0800011c   0x0800011c   0x00000000   Code   RO         6655    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x0800011c   0x0800011c   0x00000008   Code   RO         6656    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000124   0x08000124   0x00000000   Code   RO         6658    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000124   0x08000124   0x00000000   Code   RO         6660    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000124   0x08000124   0x00000004   Code   RO         6649    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000128   0x08000128   0x00000188   Code   RO         6465    .RamFunc            bsp_tim.o
-    0x080002b0   0x080002b0   0x00000024   Code   RO          727    .text               startup_n32g430.o
-    0x080002d4   0x080002d4   0x00000024   Code   RO         6646    .text               mc_w.l(memseta.o)
-    0x080002f8   0x080002f8   0x00000024   Code   RO         6662    .text               mc_w.l(init.o)
-    0x0800031c   0x0800031c   0x00000010   Code   RO          788    i.ADC_AHB_Clock_Mode_Config  n32g430_adc.o
-    0x0800032c   0x0800032c   0x0000003c   Code   RO          798    i.ADC_Calibration_Operation  n32g430_adc.o
-    0x08000368   0x08000368   0x00000058   Code   RO          799    i.ADC_Channel_Sample_Time_Config  n32g430_adc.o
-    0x080003c0   0x080003c0   0x0000002c   Code   RO          800    i.ADC_Clock_Mode_Config  n32g430_adc.o
-    0x080003ec   0x080003ec   0x00000010   Code   RO          801    i.ADC_Continue_Conversion_Disable  n32g430_adc.o
-    0x080003fc   0x080003fc   0x00000010   Code   RO          802    i.ADC_Continue_Conversion_Enable  n32g430_adc.o
-    0x0800040c   0x0800040c   0x00000010   Code   RO          803    i.ADC_DMA_Transfer_Disable  n32g430_adc.o
-    0x0800041c   0x0800041c   0x00000018   Code   RO          805    i.ADC_Data_Alignment_Config  n32g430_adc.o
-    0x08000434   0x08000434   0x00000048   Code   RO          813    i.ADC_Discontinuous_Mode_Config  n32g430_adc.o
-    0x0800047c   0x0800047c   0x00000048   Code   RO          814    i.ADC_External_Trigger_Conversion_Config  n32g430_adc.o
-    0x080004c4   0x080004c4   0x0000002c   Code   RO          816    i.ADC_Flag_Status_Get  n32g430_adc.o
-    0x080004f0   0x080004f0   0x00000010   Code   RO          817    i.ADC_INTFlag_Status_Clear  n32g430_adc.o
-    0x08000500   0x08000500   0x00000014   Code   RO          818    i.ADC_INTFlag_Status_Get  n32g430_adc.o
-    0x08000514   0x08000514   0x00000208   Code   RO            4    i.ADC_IRQHandler    n32g430_it.o
-    0x0800071c   0x0800071c   0x00000048   Code   RO          819    i.ADC_Initializes   n32g430_adc.o
-    0x08000764   0x08000764   0x00000018   Code   RO          823    i.ADC_Injected_Channels_Number_Config  n32g430_adc.o
-    0x0800077c   0x0800077c   0x00000010   Code   RO          826    i.ADC_Injected_Group_Autoconversion_Disable  n32g430_adc.o
-    0x0800078c   0x0800078c   0x00000018   Code   RO          828    i.ADC_Injected_Group_Conversion_Data_Get  n32g430_adc.o
-    0x080007a4   0x080007a4   0x00000018   Code   RO          829    i.ADC_Injected_Group_External_Trigger_Source_Config  n32g430_adc.o
-    0x080007bc   0x080007bc   0x00000020   Code   RO          830    i.ADC_Injected_Sequence_Conversion_Number_Config  n32g430_adc.o
-    0x080007dc   0x080007dc   0x00000020   Code   RO          832    i.ADC_Interrupts_Enable  n32g430_adc.o
-    0x080007fc   0x080007fc   0x00000010   Code   RO          833    i.ADC_Multichannels_Disable  n32g430_adc.o
-    0x0800080c   0x0800080c   0x00000010   Code   RO          834    i.ADC_Multichannels_Enable  n32g430_adc.o
-    0x0800081c   0x0800081c   0x00000010   Code   RO          836    i.ADC_ON            n32g430_adc.o
-    0x0800082c   0x0800082c   0x00000010   Code   RO          837    i.ADC_PLL_Clock_Mode_Config  n32g430_adc.o
-    0x0800083c   0x0800083c   0x00000018   Code   RO          838    i.ADC_Regular_Channels_Number_Config  n32g430_adc.o
-    0x08000854   0x08000854   0x0000000c   Code   RO          840    i.ADC_Regular_Group_Conversion_Data_Get  n32g430_adc.o
-    0x08000860   0x08000860   0x00000018   Code   RO          841    i.ADC_Regular_Group_External_Trigger_Source_Config  n32g430_adc.o
-    0x08000878   0x08000878   0x00000060   Code   RO          842    i.ADC_Regular_Sequence_Conversion_Number_Config  n32g430_adc.o
-    0x080008d8   0x080008d8   0x00000008   Code   RO          843    i.ADC_Reset         n32g430_adc.o
-    0x080008e0   0x080008e0   0x000000b6   Code   RO         6313    i.Adc_Init          bsp_adc.o
-    0x08000996   0x08000996   0x00000018   Code   RO          327    i.Angle_Given       foc.o
-    0x080009ae   0x080009ae   0x00000002   PAD
-    0x080009b0   0x080009b0   0x00000044   Code   RO          413    i.BiasDetect        datacalc.o
-    0x080009f4   0x080009f4   0x00000002   Code   RO            5    i.BusFault_Handler  n32g430_it.o
-    0x080009f6   0x080009f6   0x00000026   Code   RO          328    i.ClarkeTransform   foc.o
-    0x08000a1c   0x08000a1c   0x00000004   Code   RO         2042    i.DMA_Buffer_Size_Config  n32g430_dma.o
-    0x08000a20   0x08000a20   0x0000000a   Code   RO         2044    i.DMA_Channel_Enable  n32g430_dma.o
-    0x08000a2a   0x08000a2a   0x00000004   Code   RO         2045    i.DMA_Channel_Request_Remap  n32g430_dma.o
-    0x08000a2e   0x08000a2e   0x00000010   Code   RO         2046    i.DMA_Circular_Mode_Config  n32g430_dma.o
-    0x08000a3e   0x08000a3e   0x00000010   Code   RO         2049    i.DMA_Destination_Config  n32g430_dma.o
-    0x08000a4e   0x08000a4e   0x00000062   Code   RO         2052    i.DMA_Initializes   n32g430_dma.o
-    0x08000ab0   0x08000ab0   0x00000010   Code   RO         2057    i.DMA_Memory_2_Memory_Config  n32g430_dma.o
-    0x08000ac0   0x08000ac0   0x00000010   Code   RO         2058    i.DMA_Memory_Addr_Increment_Config  n32g430_dma.o
-    0x08000ad0   0x08000ad0   0x00000004   Code   RO         2059    i.DMA_Memory_Address_Config  n32g430_dma.o
-    0x08000ad4   0x08000ad4   0x00000010   Code   RO         2060    i.DMA_Memory_Data_Width_Config  n32g430_dma.o
-    0x08000ae4   0x08000ae4   0x00000010   Code   RO         2061    i.DMA_Peripheral_Addr_Increment_Config  n32g430_dma.o
-    0x08000af4   0x08000af4   0x00000004   Code   RO         2062    i.DMA_Peripheral_Address_Config  n32g430_dma.o
-    0x08000af8   0x08000af8   0x00000010   Code   RO         2063    i.DMA_Peripheral_Data_Width_Config  n32g430_dma.o
-    0x08000b08   0x08000b08   0x00000010   Code   RO         2064    i.DMA_Priority_Config  n32g430_dma.o
-    0x08000b18   0x08000b18   0x000000a8   Code   RO         2065    i.DMA_Reset         n32g430_dma.o
-    0x08000bc0   0x08000bc0   0x0000001a   Code   RO         2066    i.DMA_Structure_Initializes  n32g430_dma.o
-    0x08000bda   0x08000bda   0x0000001c   Code   RO          414    i.Data_Limit        datacalc.o
-    0x08000bf6   0x08000bf6   0x00000002   Code   RO            6    i.DebugMon_Handler  n32g430_it.o
-    0x08000bf8   0x08000bf8   0x00000012   Code   RO         6521    i.Delay_us          i2c_eeprom.o
-    0x08000c0a   0x08000c0a   0x00000002   PAD
-    0x08000c0c   0x08000c0c   0x00000110   Code   RO          330    i.EstSmo_Ctr        foc.o
-    0x08000d1c   0x08000d1c   0x00000234   Code   RO          331    i.Foc_Init          foc.o
-    0x08000f50   0x08000f50   0x0000002e   Code   RO         2592    i.GPIO_Alternate_Set  n32g430_gpio.o
-    0x08000f7e   0x08000f7e   0x00000002   PAD
-    0x08000f80   0x08000f80   0x000000e0   Code   RO         6352    i.GPIO_Config       bsp_config.o
-    0x08001060   0x08001060   0x00000014   Code   RO         2593    i.GPIO_Driver_Set   n32g430_gpio.o
-    0x08001074   0x08001074   0x0000003a   Code   RO         2597    i.GPIO_Mode_Set     n32g430_gpio.o
-    0x080010ae   0x080010ae   0x00000004   Code   RO         2600    i.GPIO_PBC_Pins_Reset  n32g430_gpio.o
-    0x080010b2   0x080010b2   0x00000050   Code   RO         2602    i.GPIO_Peripheral_Initialize  n32g430_gpio.o
-    0x08001102   0x08001102   0x00000004   Code   RO         2606    i.GPIO_Pins_Reset   n32g430_gpio.o
-    0x08001106   0x08001106   0x00000004   Code   RO         2607    i.GPIO_Pins_Set     n32g430_gpio.o
-    0x0800110a   0x0800110a   0x00000014   Code   RO         2608    i.GPIO_Pull_Set     n32g430_gpio.o
-    0x0800111e   0x0800111e   0x00000012   Code   RO         2610    i.GPIO_SlewRate_Set  n32g430_gpio.o
-    0x08001130   0x08001130   0x00000016   Code   RO         2611    i.GPIO_Structure_Initialize  n32g430_gpio.o
-    0x08001146   0x08001146   0x00000002   Code   RO            7    i.HardFault_Handler  n32g430_it.o
-    0x08001148   0x08001148   0x0000007c   Code   RO         6522    i.I2C1_ER_IRQHandler  i2c_eeprom.o
-    0x080011c4   0x080011c4   0x00000150   Code   RO         6523    i.I2C1_EV_IRQHandler  i2c_eeprom.o
-    0x08001314   0x08001314   0x00000012   Code   RO         2816    i.I2C_7bit_Addr_Send  n32g430_i2c.o
-    0x08001326   0x08001326   0x0000000a   Code   RO         2819    i.I2C_Acknowledg_Disable  n32g430_i2c.o
-    0x08001330   0x08001330   0x0000000c   Code   RO         2821    i.I2C_Acknowledgement_Config  n32g430_i2c.o
-    0x0800133c   0x0800133c   0x0000000c   Code   RO         2822    i.I2C_Addressing_Mode_Config  n32g430_i2c.o
-    0x08001348   0x08001348   0x0000000c   Code   RO         2823    i.I2C_Bus_Mode_Config  n32g430_i2c.o
-    0x08001354   0x08001354   0x000000d4   Code   RO         2824    i.I2C_Clock_Speed_Config  n32g430_i2c.o
-    0x08001428   0x08001428   0x00000006   Code   RO         2829    i.I2C_Data_Recv     n32g430_i2c.o
-    0x0800142e   0x0800142e   0x00000004   Code   RO         2830    i.I2C_Data_Send     n32g430_i2c.o
-    0x08001432   0x08001432   0x00000002   PAD
-    0x08001434   0x08001434   0x00000070   Code   RO         6524    i.I2C_EE_Init       i2c_eeprom.o
-    0x080014a4   0x080014a4   0x00000006   Code   RO         2837    i.I2C_Flag_Status_Clear  n32g430_i2c.o
-    0x080014aa   0x080014aa   0x00000032   Code   RO         2838    i.I2C_Flag_Status_Get  n32g430_i2c.o
-    0x080014dc   0x080014dc   0x0000000a   Code   RO         2842    i.I2C_Generate_Start_Enable  n32g430_i2c.o
-    0x080014e6   0x080014e6   0x0000000a   Code   RO         2844    i.I2C_Generate_Stop_Enable  n32g430_i2c.o
-    0x080014f0   0x080014f0   0x00000034   Code   RO         2845    i.I2C_Initializes   n32g430_i2c.o
-    0x08001524   0x08001524   0x00000008   Code   RO         2849    i.I2C_Interrupts_Disable  n32g430_i2c.o
-    0x0800152c   0x0800152c   0x0000000e   Code   RO         2851    i.I2C_Last_Event_Get  n32g430_i2c.o
-    0x0800153a   0x0800153a   0x0000000c   Code   RO         2855    i.I2C_Own_Addr1_Config  n32g430_i2c.o
-    0x08001546   0x08001546   0x00000002   PAD
-    0x08001548   0x08001548   0x0000001c   Code   RO         2864    i.I2C_Reset         n32g430_i2c.o
-    0x08001564   0x08001564   0x00000044   Code   RO         6532    i.IIC_RCCReset      i2c_eeprom.o
-    0x080015a8   0x080015a8   0x00000050   Code   RO         6533    i.IIC_RestoreSlaveByClock  i2c_eeprom.o
-    0x080015f8   0x080015f8   0x00000070   Code   RO         6534    i.IIC_SWReset       i2c_eeprom.o
-    0x08001668   0x08001668   0x00000074   Code   RO         4783    i.Input_Channel1_Config  n32g430_tim.o
-    0x080016dc   0x080016dc   0x00000078   Code   RO         4784    i.Input_Channel2_Config  n32g430_tim.o
-    0x08001754   0x08001754   0x00000078   Code   RO         4785    i.Input_Channel3_Config  n32g430_tim.o
-    0x080017cc   0x080017cc   0x0000007c   Code   RO         4786    i.Input_Channel4_Config  n32g430_tim.o
-    0x08001848   0x08001848   0x00000024   Code   RO          450    i.LPF_Ctr           lpf.o
-    0x0800186c   0x0800186c   0x00000002   Code   RO            8    i.MemManage_Handler  n32g430_it.o
-    0x0800186e   0x0800186e   0x000000c8   Code   RO          619    i.MotorStateMachine  statemachine.o
-    0x08001936   0x08001936   0x00000002   Code   RO            9    i.NMI_Handler       n32g430_it.o
-    0x08001938   0x08001938   0x00000064   Code   RO          734    i.NVIC_Initializes  misc.o
-    0x0800199c   0x0800199c   0x00000014   Code   RO          735    i.NVIC_Priority_Group_Set  misc.o
-    0x080019b0   0x080019b0   0x00000018   Code   RO          333    i.OpenLoop_Init     foc.o
-    0x080019c8   0x080019c8   0x0000005a   Code   RO          564    i.PID_Ctr           pi.o
-    0x08001a22   0x08001a22   0x00000002   PAD
-    0x08001a24   0x08001a24   0x00000070   Code   RO          679    i.PLL_TrimValueLoad  system_n32g430.o
-    0x08001a94   0x08001a94   0x00000058   Code   RO          334    i.ParkTransform     foc.o
-    0x08001aec   0x08001aec   0x00000084   Code   RO          335    i.PhaseCurr_Get     foc.o
-    0x08001b70   0x08001b70   0x00000018   Code   RO         3695    i.RCC_ADC_1M_Clock_Config  n32g430_rcc.o
-    0x08001b88   0x08001b88   0x00000014   Code   RO         3696    i.RCC_ADC_Hclk_Config  n32g430_rcc.o
-    0x08001b9c   0x08001b9c   0x00000010   Code   RO         3698    i.RCC_ADC_Hclk_Enable  n32g430_rcc.o
-    0x08001bac   0x08001bac   0x00000010   Code   RO         3699    i.RCC_ADC_PLL_Clock_Disable  n32g430_rcc.o
-    0x08001bbc   0x08001bbc   0x00000014   Code   RO         3700    i.RCC_ADC_PLL_Clock_Prescaler_Enable  n32g430_rcc.o
-    0x08001bd0   0x08001bd0   0x00000010   Code   RO         3702    i.RCC_AHB_Peripheral_Clock_Enable  n32g430_rcc.o
-    0x08001be0   0x08001be0   0x00000014   Code   RO         3703    i.RCC_AHB_Peripheral_Reset  n32g430_rcc.o
-    0x08001bf4   0x08001bf4   0x00000010   Code   RO         3704    i.RCC_APB1_Peripheral_Clock_Disable  n32g430_rcc.o
-    0x08001c04   0x08001c04   0x00000010   Code   RO         3705    i.RCC_APB1_Peripheral_Clock_Enable  n32g430_rcc.o
-    0x08001c14   0x08001c14   0x00000014   Code   RO         3706    i.RCC_APB1_Peripheral_Reset  n32g430_rcc.o
-    0x08001c28   0x08001c28   0x00000010   Code   RO         3708    i.RCC_APB2_Peripheral_Clock_Enable  n32g430_rcc.o
-    0x08001c38   0x08001c38   0x00000014   Code   RO         3709    i.RCC_APB2_Peripheral_Reset  n32g430_rcc.o
-    0x08001c4c   0x08001c4c   0x000000d4   Code   RO         3713    i.RCC_Clocks_Frequencies_Value_Get  n32g430_rcc.o
-    0x08001d20   0x08001d20   0x0000006c   Code   RO         6355    i.RCC_Configuration  bsp_config.o
-    0x08001d8c   0x08001d8c   0x00000014   Code   RO         3744    i.RCC_Pclk1_Config  n32g430_rcc.o
-    0x08001da0   0x08001da0   0x00000002   Code   RO           10    i.SVC_Handler       n32g430_it.o
-    0x08001da2   0x08001da2   0x00000002   PAD
-    0x08001da4   0x08001da4   0x000000b4   Code   RO          649    i.SpdLoop_Control   loopcontrol.o
-    0x08001e58   0x08001e58   0x0000068c   Code   RO          588    i.Svm_Ctr           svm.o
-    0x080024e4   0x080024e4   0x00000004   Code   RO           11    i.SysTick_Handler   n32g430_it.o
-    0x080024e8   0x080024e8   0x00000100   Code   RO          681    i.System_Clock_Set  system_n32g430.o
-    0x080025e8   0x080025e8   0x0000002e   Code   RO         6357    i.System_Init       bsp_config.o
-    0x08002616   0x08002616   0x00000002   PAD
-    0x08002618   0x08002618   0x00000098   Code   RO          682    i.System_Initializes  system_n32g430.o
-    0x080026b0   0x080026b0   0x0000002c   Code   RO           12    i.TIM1_BRK_IRQHandler  n32g430_it.o
-    0x080026dc   0x080026dc   0x00000024   Code   RO           13    i.TIM1_CC_IRQHandler  n32g430_it.o
-    0x08002700   0x08002700   0x00000184   Code   RO         6466    i.TIM1_PWM_Init     bsp_tim.o
-    0x08002884   0x08002884   0x00000024   Code   RO           14    i.TIM1_UP_IRQHandler  n32g430_it.o
-    0x080028a8   0x080028a8   0x0000001e   Code   RO           15    i.TIM2_IRQHandler   n32g430_it.o
-    0x080028c6   0x080028c6   0x00000002   PAD
-    0x080028c8   0x080028c8   0x00000108   Code   RO         6467    i.TIM4_Capture_Config  bsp_tim.o
-    0x080029d0   0x080029d0   0x00000024   Code   RO           16    i.TIM4_IRQHandler   n32g430_it.o
-    0x080029f4   0x080029f4   0x00000084   Code   RO         6469    i.TIM6_1Khz_Init    bsp_tim.o
-    0x08002a78   0x08002a78   0x0000003c   Code   RO           17    i.TIM6_IRQHandler   n32g430_it.o
-    0x08002ab4   0x08002ab4   0x0000000a   Code   RO         4788    i.TIM_Asymmetric_Enable  n32g430_tim.o
-    0x08002abe   0x08002abe   0x00000004   Code   RO         4792    i.TIM_Base_Auto_Reload_Set  n32g430_tim.o
-    0x08002ac2   0x08002ac2   0x0000000c   Code   RO         4793    i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set  n32g430_tim.o
-    0x08002ace   0x08002ace   0x00000018   Code   RO         4794    i.TIM_Base_Channel1  n32g430_tim.o
-    0x08002ae6   0x08002ae6   0x00000018   Code   RO         4795    i.TIM_Base_Channel2  n32g430_tim.o
-    0x08002afe   0x08002afe   0x00000018   Code   RO         4796    i.TIM_Base_Channel3  n32g430_tim.o
-    0x08002b16   0x08002b16   0x00000018   Code   RO         4797    i.TIM_Base_Channel4  n32g430_tim.o
-    0x08002b2e   0x08002b2e   0x0000000c   Code   RO         4799    i.TIM_Base_Count_Mode_Set  n32g430_tim.o
-    0x08002b3a   0x08002b3a   0x00000002   PAD
-    0x08002b3c   0x08002b3c   0x000000b0   Code   RO         4801    i.TIM_Base_Initialize  n32g430_tim.o
-    0x08002bec   0x08002bec   0x00000018   Code   RO         4802    i.TIM_Base_OCrefClear  n32g430_tim.o
-    0x08002c04   0x08002c04   0x00000004   Code   RO         4804    i.TIM_Base_Prescaler_Set  n32g430_tim.o
-    0x08002c08   0x08002c08   0x00000004   Code   RO         4805    i.TIM_Base_Reload_Mode_Set  n32g430_tim.o
-    0x08002c0c   0x08002c0c   0x00000004   Code   RO         4806    i.TIM_Base_Repeat_Count_Set  n32g430_tim.o
-    0x08002c10   0x08002c10   0x0000001e   Code   RO         4807    i.TIM_Base_Struct_Initialize  n32g430_tim.o
-    0x08002c2e   0x08002c2e   0x00000066   Code   RO         4808    i.TIM_Break_And_Dead_Time_Set  n32g430_tim.o
-    0x08002c94   0x08002c94   0x0000000c   Code   RO         4814    i.TIM_Capture_Compare_Ch_Disable  n32g430_tim.o
-    0x08002ca0   0x08002ca0   0x0000000c   Code   RO         4815    i.TIM_Capture_Compare_Ch_Enable  n32g430_tim.o
-    0x08002cac   0x08002cac   0x0000000c   Code   RO         4816    i.TIM_Capture_Compare_Ch_N_Disable  n32g430_tim.o
-    0x08002cb8   0x08002cb8   0x0000000c   Code   RO         4817    i.TIM_Capture_Compare_Ch_N_Enable  n32g430_tim.o
-    0x08002cc4   0x08002cc4   0x00000010   Code   RO         4832    i.TIM_Clock_Division_Set  n32g430_tim.o
-    0x08002cd4   0x08002cd4   0x0000000c   Code   RO         4835    i.TIM_Compare1_D_Set  n32g430_tim.o
-    0x08002ce0   0x08002ce0   0x0000000c   Code   RO         4836    i.TIM_Compare1_Set  n32g430_tim.o
-    0x08002cec   0x08002cec   0x0000000c   Code   RO         4837    i.TIM_Compare2_D_Set  n32g430_tim.o
-    0x08002cf8   0x08002cf8   0x0000000c   Code   RO         4838    i.TIM_Compare2_Set  n32g430_tim.o
-    0x08002d04   0x08002d04   0x0000000c   Code   RO         4839    i.TIM_Compare3_D_Set  n32g430_tim.o
-    0x08002d10   0x08002d10   0x0000000c   Code   RO         4840    i.TIM_Compare3_Set  n32g430_tim.o
-    0x08002d1c   0x08002d1c   0x00000006   Code   RO         4845    i.TIM_Compare7_Set  n32g430_tim.o
-    0x08002d22   0x08002d22   0x00000006   Code   RO         4846    i.TIM_Compare8_Set  n32g430_tim.o
-    0x08002d28   0x08002d28   0x00000006   Code   RO         4847    i.TIM_Compare9_Set  n32g430_tim.o
-    0x08002d2e   0x08002d2e   0x00000008   Code   RO         4863    i.TIM_Dma_Enable    n32g430_tim.o
-    0x08002d36   0x08002d36   0x0000000e   Code   RO         4872    i.TIM_Flag_Status_Get  n32g430_tim.o
-    0x08002d44   0x08002d44   0x00000018   Code   RO         4881    i.TIM_IOM_Comp_Break  n32g430_tim.o
-    0x08002d5c   0x08002d5c   0x00000010   Code   RO         4882    i.TIM_Input_Capture1_Prescaler_Set  n32g430_tim.o
-    0x08002d6c   0x08002d6c   0x00000018   Code   RO         4883    i.TIM_Input_Capture2_Prescaler_Set  n32g430_tim.o
-    0x08002d84   0x08002d84   0x00000012   Code   RO         4884    i.TIM_Input_Capture3_Prescaler_Set  n32g430_tim.o
-    0x08002d96   0x08002d96   0x00000014   Code   RO         4885    i.TIM_Input_Capture4_Prescaler_Set  n32g430_tim.o
-    0x08002daa   0x08002daa   0x00000062   Code   RO         4886    i.TIM_Input_Channel_Initialize  n32g430_tim.o
-    0x08002e0c   0x08002e0c   0x0000000e   Code   RO         4887    i.TIM_Input_Struct_Initialize  n32g430_tim.o
-    0x08002e1a   0x08002e1a   0x00000008   Code   RO         4890    i.TIM_Interrupt_Disable  n32g430_tim.o
-    0x08002e22   0x08002e22   0x00000008   Code   RO         4891    i.TIM_Interrupt_Enable  n32g430_tim.o
-    0x08002e2a   0x08002e2a   0x00000006   Code   RO         4892    i.TIM_Interrupt_Status_Clear  n32g430_tim.o
-    0x08002e30   0x08002e30   0x00000016   Code   RO         4893    i.TIM_Interrupt_Status_Get  n32g430_tim.o
-    0x08002e46   0x08002e46   0x0000000a   Code   RO         4894    i.TIM_Lock_Up_Break_Disable  n32g430_tim.o
-    0x08002e50   0x08002e50   0x0000000a   Code   RO         4895    i.TIM_Lock_Up_Break_Enable  n32g430_tim.o
-    0x08002e5a   0x08002e5a   0x0000000a   Code   RO         4900    i.TIM_OC7REF_Trigger_To_ADC_Enable  n32g430_tim.o
-    0x08002e64   0x08002e64   0x0000000a   Code   RO         4902    i.TIM_OC8REF_Trigger_To_ADC_Enable  n32g430_tim.o
-    0x08002e6e   0x08002e6e   0x0000000a   Code   RO         4906    i.TIM_On            n32g430_tim.o
-    0x08002e78   0x08002e78   0x0000008c   Code   RO         4909    i.TIM_Output_Channel1_Initialize  n32g430_tim.o
-    0x08002f04   0x08002f04   0x0000000c   Code   RO         4910    i.TIM_Output_Channel1_Preload_Set  n32g430_tim.o
-    0x08002f10   0x08002f10   0x00000098   Code   RO         4913    i.TIM_Output_Channel2_Initialize  n32g430_tim.o
-    0x08002fa8   0x08002fa8   0x00000014   Code   RO         4914    i.TIM_Output_Channel2_Preload_Set  n32g430_tim.o
-    0x08002fbc   0x08002fbc   0x00000094   Code   RO         4917    i.TIM_Output_Channel3_Initialize  n32g430_tim.o
-    0x08003050   0x08003050   0x0000000e   Code   RO         4918    i.TIM_Output_Channel3_Preload_Set  n32g430_tim.o
-    0x0800305e   0x0800305e   0x0000001c   Code   RO         4932    i.TIM_Output_Channel7_Preload_Set  n32g430_tim.o
-    0x0800307a   0x0800307a   0x0000001c   Code   RO         4933    i.TIM_Output_Channel8_Preload_Set  n32g430_tim.o
-    0x08003096   0x08003096   0x00000012   Code   RO         4936    i.TIM_Output_Channel_N_Polarity_Set  n32g430_tim.o
-    0x080030a8   0x080030a8   0x00000012   Code   RO         4937    i.TIM_Output_Channel_Polarity_Set  n32g430_tim.o
-    0x080030ba   0x080030ba   0x00000002   PAD
-    0x080030bc   0x080030bc   0x00000014   Code   RO         4939    i.TIM_Output_Trigger_Select  n32g430_tim.o
-    0x080030d0   0x080030d0   0x0000000c   Code   RO         4941    i.TIM_PWM_Output_Disable  n32g430_tim.o
-    0x080030dc   0x080030dc   0x0000000c   Code   RO         4942    i.TIM_PWM_Output_Enable  n32g430_tim.o
-    0x080030e8   0x080030e8   0x0000000a   Code   RO         4943    i.TIM_Pvd_Break_Disable  n32g430_tim.o
-    0x080030f2   0x080030f2   0x0000000a   Code   RO         4944    i.TIM_Pvd_Break_Enable  n32g430_tim.o
-    0x080030fc   0x080030fc   0x00000070   Code   RO         4945    i.TIM_Reset         n32g430_tim.o
-    0x0800316c   0x0800316c   0x00000038   Code   RO          503    i.TimerTick_State   timer.o
-    0x080031a4   0x080031a4   0x0000000c   Code   RO          504    i.Timer_Init        timer.o
-    0x080031b0   0x080031b0   0x0000000e   Code   RO          505    i.Timer_Start       timer.o
-    0x080031be   0x080031be   0x00000002   PAD
-    0x080031c0   0x080031c0   0x00000044   Code   RO          506    i.Timer_State_Init  timer.o
-    0x08003204   0x08003204   0x00000022   Code   RO          507    i.Timer_Tick        timer.o
-    0x08003226   0x08003226   0x00000004   Code   RO          508    i.Timer_Timeout     timer.o
-    0x0800322a   0x0800322a   0x00000002   PAD
-    0x0800322c   0x0800322c   0x00000014   Code   RO         6358    i.TimingDelay_Decrement  bsp_config.o
-    0x08003240   0x08003240   0x00000002   Code   RO           18    i.UsageFault_Handler  n32g430_it.o
-    0x08003242   0x08003242   0x0000000e   Code   RO         6666    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08003250   0x08003250   0x00000002   Code   RO         6667    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08003252   0x08003252   0x0000000e   Code   RO         6668    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08003260   0x08003260   0x00000064   Code   RO          336    i.iParkTransform    foc.o
-    0x080032c4   0x080032c4   0x00000020   Code   RO          264    i.main              main.o
-    0x080032e4   0x080032e4   0x00000004   Code   RO         6536    i.sEE_TIMEOUT_UserCallback  i2c_eeprom.o
-    0x080032e8   0x080032e8   0x00000a00   Data   RO          475    .constdata          table.o
-    0x08003ce8   0x08003ce8   0x00000040   Data   RO         3754    .constdata          n32g430_rcc.o
-    0x08003d28   0x08003d28   0x00000020   Data   RO         6664    Region$$Table       anon$$obj.o
-
-
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003d48, Size: 0x00001668, Max: 0x00004000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003d64, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08003d48   0x00000006   Data   RW           23    .data               n32g430_it.o
-    0x20000006   0x08003d4e   0x00000002   PAD
-    0x20000008   0x08003d50   0x00000040   Data   RW          338    .data               foc.o
-    0x20000048   0x08003d90   0x00000002   Data   RW          415    .data               datacalc.o
-    0x2000004a   0x08003d92   0x00000002   PAD
-    0x2000004c   0x08003d94   0x00000004   Data   RW          479    .data               table.o
-    0x20000050   0x08003d98   0x00000004   Data   RW          620    .data               statemachine.o
-    0x20000054   0x08003d9c   0x00000004   Data   RW          684    .data               system_n32g430.o
-    0x20000058   0x08003da0   0x00000004   Data   RW         6359    .data               bsp_config.o
-    0x2000005c   0x08003da4   0x00000006   Data   RW         6471    .data               bsp_tim.o
-    0x20000062   0x08003daa   0x00000002   PAD
-    0x20000064   0x08003dac   0x00000024   Data   RW         6537    .data               i2c_eeprom.o
-    0x20000088        -       0x000000b8   Zero   RW          337    .bss                foc.o
-    0x20000140        -       0x00000054   Zero   RW          509    .bss                timer.o
-    0x20000194        -       0x0000001a   Zero   RW          589    .bss                svm.o
-    0x200001ae   0x08003dd0   0x00000002   PAD
-    0x200001b0        -       0x000000ac   Zero   RW          650    .bss                loopcontrol.o
-    0x2000025c        -       0x0000000c   Zero   RW         6470    .bss                bsp_tim.o
-    0x20000268        -       0x00001400   Zero   RW          724    STACK               startup_n32g430.o
+    0x08000000   0x08000000   0x00000114   Data   RO          802    RESET               startup_n32g430.o
+    0x08000114   0x08000114   0x00000000   Code   RO         6719  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000114   0x08000114   0x00000004   Code   RO         6724    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000118   0x08000118   0x00000004   Code   RO         6727    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x0800011c   0x0800011c   0x00000000   Code   RO         6729    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x0800011c   0x0800011c   0x00000000   Code   RO         6731    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x0800011c   0x0800011c   0x00000008   Code   RO         6732    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000124   0x08000124   0x00000000   Code   RO         6734    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000124   0x08000124   0x00000000   Code   RO         6736    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000124   0x08000124   0x00000004   Code   RO         6725    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000128   0x08000128   0x00000188   Code   RO         6541    .RamFunc            bsp_tim.o
+    0x080002b0   0x080002b0   0x00000024   Code   RO          803    .text               startup_n32g430.o
+    0x080002d4   0x080002d4   0x00000024   Code   RO         6722    .text               mc_w.l(memseta.o)
+    0x080002f8   0x080002f8   0x00000024   Code   RO         6738    .text               mc_w.l(init.o)
+    0x0800031c   0x0800031c   0x00000010   Code   RO          864    i.ADC_AHB_Clock_Mode_Config  n32g430_adc.o
+    0x0800032c   0x0800032c   0x0000003c   Code   RO          874    i.ADC_Calibration_Operation  n32g430_adc.o
+    0x08000368   0x08000368   0x00000058   Code   RO          875    i.ADC_Channel_Sample_Time_Config  n32g430_adc.o
+    0x080003c0   0x080003c0   0x0000002c   Code   RO          876    i.ADC_Clock_Mode_Config  n32g430_adc.o
+    0x080003ec   0x080003ec   0x00000010   Code   RO          877    i.ADC_Continue_Conversion_Disable  n32g430_adc.o
+    0x080003fc   0x080003fc   0x00000010   Code   RO          878    i.ADC_Continue_Conversion_Enable  n32g430_adc.o
+    0x0800040c   0x0800040c   0x00000010   Code   RO          879    i.ADC_DMA_Transfer_Disable  n32g430_adc.o
+    0x0800041c   0x0800041c   0x00000018   Code   RO          881    i.ADC_Data_Alignment_Config  n32g430_adc.o
+    0x08000434   0x08000434   0x00000048   Code   RO          889    i.ADC_Discontinuous_Mode_Config  n32g430_adc.o
+    0x0800047c   0x0800047c   0x00000048   Code   RO          890    i.ADC_External_Trigger_Conversion_Config  n32g430_adc.o
+    0x080004c4   0x080004c4   0x0000002c   Code   RO          892    i.ADC_Flag_Status_Get  n32g430_adc.o
+    0x080004f0   0x080004f0   0x00000010   Code   RO          893    i.ADC_INTFlag_Status_Clear  n32g430_adc.o
+    0x08000500   0x08000500   0x00000014   Code   RO          894    i.ADC_INTFlag_Status_Get  n32g430_adc.o
+    0x08000514   0x08000514   0x00000220   Code   RO            4    i.ADC_IRQHandler    n32g430_it.o
+    0x08000734   0x08000734   0x00000048   Code   RO          895    i.ADC_Initializes   n32g430_adc.o
+    0x0800077c   0x0800077c   0x00000018   Code   RO          899    i.ADC_Injected_Channels_Number_Config  n32g430_adc.o
+    0x08000794   0x08000794   0x00000010   Code   RO          902    i.ADC_Injected_Group_Autoconversion_Disable  n32g430_adc.o
+    0x080007a4   0x080007a4   0x00000018   Code   RO          904    i.ADC_Injected_Group_Conversion_Data_Get  n32g430_adc.o
+    0x080007bc   0x080007bc   0x00000018   Code   RO          905    i.ADC_Injected_Group_External_Trigger_Source_Config  n32g430_adc.o
+    0x080007d4   0x080007d4   0x00000020   Code   RO          906    i.ADC_Injected_Sequence_Conversion_Number_Config  n32g430_adc.o
+    0x080007f4   0x080007f4   0x00000020   Code   RO          908    i.ADC_Interrupts_Enable  n32g430_adc.o
+    0x08000814   0x08000814   0x00000010   Code   RO          909    i.ADC_Multichannels_Disable  n32g430_adc.o
+    0x08000824   0x08000824   0x00000010   Code   RO          910    i.ADC_Multichannels_Enable  n32g430_adc.o
+    0x08000834   0x08000834   0x00000010   Code   RO          912    i.ADC_ON            n32g430_adc.o
+    0x08000844   0x08000844   0x00000010   Code   RO          913    i.ADC_PLL_Clock_Mode_Config  n32g430_adc.o
+    0x08000854   0x08000854   0x00000018   Code   RO          914    i.ADC_Regular_Channels_Number_Config  n32g430_adc.o
+    0x0800086c   0x0800086c   0x0000000c   Code   RO          916    i.ADC_Regular_Group_Conversion_Data_Get  n32g430_adc.o
+    0x08000878   0x08000878   0x00000018   Code   RO          917    i.ADC_Regular_Group_External_Trigger_Source_Config  n32g430_adc.o
+    0x08000890   0x08000890   0x00000060   Code   RO          918    i.ADC_Regular_Sequence_Conversion_Number_Config  n32g430_adc.o
+    0x080008f0   0x080008f0   0x00000008   Code   RO          919    i.ADC_Reset         n32g430_adc.o
+    0x080008f8   0x080008f8   0x000000b6   Code   RO         6389    i.Adc_Init          bsp_adc.o
+    0x080009ae   0x080009ae   0x00000018   Code   RO          337    i.Angle_Given       foc.o
+    0x080009c6   0x080009c6   0x00000002   PAD
+    0x080009c8   0x080009c8   0x00000044   Code   RO          393    i.BiasDetect        datacalc.o
+    0x08000a0c   0x08000a0c   0x00000002   Code   RO            5    i.BusFault_Handler  n32g430_it.o
+    0x08000a0e   0x08000a0e   0x00000026   Code   RO          689    i.ClarkeTransform   axistransform.o
+    0x08000a34   0x08000a34   0x00000004   Code   RO         2118    i.DMA_Buffer_Size_Config  n32g430_dma.o
+    0x08000a38   0x08000a38   0x0000000a   Code   RO         2120    i.DMA_Channel_Enable  n32g430_dma.o
+    0x08000a42   0x08000a42   0x00000004   Code   RO         2121    i.DMA_Channel_Request_Remap  n32g430_dma.o
+    0x08000a46   0x08000a46   0x00000010   Code   RO         2122    i.DMA_Circular_Mode_Config  n32g430_dma.o
+    0x08000a56   0x08000a56   0x00000010   Code   RO         2125    i.DMA_Destination_Config  n32g430_dma.o
+    0x08000a66   0x08000a66   0x00000062   Code   RO         2128    i.DMA_Initializes   n32g430_dma.o
+    0x08000ac8   0x08000ac8   0x00000010   Code   RO         2133    i.DMA_Memory_2_Memory_Config  n32g430_dma.o
+    0x08000ad8   0x08000ad8   0x00000010   Code   RO         2134    i.DMA_Memory_Addr_Increment_Config  n32g430_dma.o
+    0x08000ae8   0x08000ae8   0x00000004   Code   RO         2135    i.DMA_Memory_Address_Config  n32g430_dma.o
+    0x08000aec   0x08000aec   0x00000010   Code   RO         2136    i.DMA_Memory_Data_Width_Config  n32g430_dma.o
+    0x08000afc   0x08000afc   0x00000010   Code   RO         2137    i.DMA_Peripheral_Addr_Increment_Config  n32g430_dma.o
+    0x08000b0c   0x08000b0c   0x00000004   Code   RO         2138    i.DMA_Peripheral_Address_Config  n32g430_dma.o
+    0x08000b10   0x08000b10   0x00000010   Code   RO         2139    i.DMA_Peripheral_Data_Width_Config  n32g430_dma.o
+    0x08000b20   0x08000b20   0x00000010   Code   RO         2140    i.DMA_Priority_Config  n32g430_dma.o
+    0x08000b30   0x08000b30   0x000000a8   Code   RO         2141    i.DMA_Reset         n32g430_dma.o
+    0x08000bd8   0x08000bd8   0x0000001a   Code   RO         2142    i.DMA_Structure_Initializes  n32g430_dma.o
+    0x08000bf2   0x08000bf2   0x0000001c   Code   RO          394    i.Data_Limit        datacalc.o
+    0x08000c0e   0x08000c0e   0x00000002   Code   RO            6    i.DebugMon_Handler  n32g430_it.o
+    0x08000c10   0x08000c10   0x00000012   Code   RO         6597    i.Delay_us          i2c_eeprom.o
+    0x08000c22   0x08000c22   0x00000002   PAD
+    0x08000c24   0x08000c24   0x00000134   Code   RO          660    i.EstSmo_Ctr        observer.o
+    0x08000d58   0x08000d58   0x00000228   Code   RO          339    i.Foc_Init          foc.o
+    0x08000f80   0x08000f80   0x0000002e   Code   RO         2668    i.GPIO_Alternate_Set  n32g430_gpio.o
+    0x08000fae   0x08000fae   0x00000002   PAD
+    0x08000fb0   0x08000fb0   0x000000e0   Code   RO         6428    i.GPIO_Config       bsp_config.o
+    0x08001090   0x08001090   0x00000014   Code   RO         2669    i.GPIO_Driver_Set   n32g430_gpio.o
+    0x080010a4   0x080010a4   0x0000003a   Code   RO         2673    i.GPIO_Mode_Set     n32g430_gpio.o
+    0x080010de   0x080010de   0x00000004   Code   RO         2676    i.GPIO_PBC_Pins_Reset  n32g430_gpio.o
+    0x080010e2   0x080010e2   0x00000050   Code   RO         2678    i.GPIO_Peripheral_Initialize  n32g430_gpio.o
+    0x08001132   0x08001132   0x00000004   Code   RO         2682    i.GPIO_Pins_Reset   n32g430_gpio.o
+    0x08001136   0x08001136   0x00000004   Code   RO         2683    i.GPIO_Pins_Set     n32g430_gpio.o
+    0x0800113a   0x0800113a   0x00000014   Code   RO         2684    i.GPIO_Pull_Set     n32g430_gpio.o
+    0x0800114e   0x0800114e   0x00000012   Code   RO         2686    i.GPIO_SlewRate_Set  n32g430_gpio.o
+    0x08001160   0x08001160   0x00000016   Code   RO         2687    i.GPIO_Structure_Initialize  n32g430_gpio.o
+    0x08001176   0x08001176   0x00000002   Code   RO            7    i.HardFault_Handler  n32g430_it.o
+    0x08001178   0x08001178   0x0000007c   Code   RO         6598    i.I2C1_ER_IRQHandler  i2c_eeprom.o
+    0x080011f4   0x080011f4   0x00000150   Code   RO         6599    i.I2C1_EV_IRQHandler  i2c_eeprom.o
+    0x08001344   0x08001344   0x00000012   Code   RO         2892    i.I2C_7bit_Addr_Send  n32g430_i2c.o
+    0x08001356   0x08001356   0x0000000a   Code   RO         2895    i.I2C_Acknowledg_Disable  n32g430_i2c.o
+    0x08001360   0x08001360   0x0000000c   Code   RO         2897    i.I2C_Acknowledgement_Config  n32g430_i2c.o
+    0x0800136c   0x0800136c   0x0000000c   Code   RO         2898    i.I2C_Addressing_Mode_Config  n32g430_i2c.o
+    0x08001378   0x08001378   0x0000000c   Code   RO         2899    i.I2C_Bus_Mode_Config  n32g430_i2c.o
+    0x08001384   0x08001384   0x000000d4   Code   RO         2900    i.I2C_Clock_Speed_Config  n32g430_i2c.o
+    0x08001458   0x08001458   0x00000006   Code   RO         2905    i.I2C_Data_Recv     n32g430_i2c.o
+    0x0800145e   0x0800145e   0x00000004   Code   RO         2906    i.I2C_Data_Send     n32g430_i2c.o
+    0x08001462   0x08001462   0x00000002   PAD
+    0x08001464   0x08001464   0x00000070   Code   RO         6600    i.I2C_EE_Init       i2c_eeprom.o
+    0x080014d4   0x080014d4   0x00000006   Code   RO         2913    i.I2C_Flag_Status_Clear  n32g430_i2c.o
+    0x080014da   0x080014da   0x00000032   Code   RO         2914    i.I2C_Flag_Status_Get  n32g430_i2c.o
+    0x0800150c   0x0800150c   0x0000000a   Code   RO         2918    i.I2C_Generate_Start_Enable  n32g430_i2c.o
+    0x08001516   0x08001516   0x0000000a   Code   RO         2920    i.I2C_Generate_Stop_Enable  n32g430_i2c.o
+    0x08001520   0x08001520   0x00000034   Code   RO         2921    i.I2C_Initializes   n32g430_i2c.o
+    0x08001554   0x08001554   0x00000008   Code   RO         2925    i.I2C_Interrupts_Disable  n32g430_i2c.o
+    0x0800155c   0x0800155c   0x0000000e   Code   RO         2927    i.I2C_Last_Event_Get  n32g430_i2c.o
+    0x0800156a   0x0800156a   0x0000000c   Code   RO         2931    i.I2C_Own_Addr1_Config  n32g430_i2c.o
+    0x08001576   0x08001576   0x00000002   PAD
+    0x08001578   0x08001578   0x0000001c   Code   RO         2940    i.I2C_Reset         n32g430_i2c.o
+    0x08001594   0x08001594   0x00000044   Code   RO         6608    i.IIC_RCCReset      i2c_eeprom.o
+    0x080015d8   0x080015d8   0x00000050   Code   RO         6609    i.IIC_RestoreSlaveByClock  i2c_eeprom.o
+    0x08001628   0x08001628   0x00000070   Code   RO         6610    i.IIC_SWReset       i2c_eeprom.o
+    0x08001698   0x08001698   0x00000074   Code   RO         4859    i.Input_Channel1_Config  n32g430_tim.o
+    0x0800170c   0x0800170c   0x00000078   Code   RO         4860    i.Input_Channel2_Config  n32g430_tim.o
+    0x08001784   0x08001784   0x00000078   Code   RO         4861    i.Input_Channel3_Config  n32g430_tim.o
+    0x080017fc   0x080017fc   0x0000007c   Code   RO         4862    i.Input_Channel4_Config  n32g430_tim.o
+    0x08001878   0x08001878   0x00000024   Code   RO          430    i.LPF_Ctr           lpf.o
+    0x0800189c   0x0800189c   0x00000002   Code   RO            8    i.MemManage_Handler  n32g430_it.o
+    0x0800189e   0x0800189e   0x000000be   Code   RO          599    i.MotorStateMachine  statemachine.o
+    0x0800195c   0x0800195c   0x00000002   Code   RO            9    i.NMI_Handler       n32g430_it.o
+    0x0800195e   0x0800195e   0x00000002   PAD
+    0x08001960   0x08001960   0x00000064   Code   RO          810    i.NVIC_Initializes  misc.o
+    0x080019c4   0x080019c4   0x00000014   Code   RO          811    i.NVIC_Priority_Group_Set  misc.o
+    0x080019d8   0x080019d8   0x00000018   Code   RO          341    i.OpenLoop_Init     foc.o
+    0x080019f0   0x080019f0   0x00000068   Code   RO          544    i.PID_Ctr           pi.o
+    0x08001a58   0x08001a58   0x00000070   Code   RO          755    i.PLL_TrimValueLoad  system_n32g430.o
+    0x08001ac8   0x08001ac8   0x00000058   Code   RO          690    i.ParkTransform     axistransform.o
+    0x08001b20   0x08001b20   0x00000070   Code   RO          725    i.PhaseCurr_Get     currsample.o
+    0x08001b90   0x08001b90   0x00000018   Code   RO         3771    i.RCC_ADC_1M_Clock_Config  n32g430_rcc.o
+    0x08001ba8   0x08001ba8   0x00000014   Code   RO         3772    i.RCC_ADC_Hclk_Config  n32g430_rcc.o
+    0x08001bbc   0x08001bbc   0x00000010   Code   RO         3774    i.RCC_ADC_Hclk_Enable  n32g430_rcc.o
+    0x08001bcc   0x08001bcc   0x00000010   Code   RO         3775    i.RCC_ADC_PLL_Clock_Disable  n32g430_rcc.o
+    0x08001bdc   0x08001bdc   0x00000014   Code   RO         3776    i.RCC_ADC_PLL_Clock_Prescaler_Enable  n32g430_rcc.o
+    0x08001bf0   0x08001bf0   0x00000010   Code   RO         3778    i.RCC_AHB_Peripheral_Clock_Enable  n32g430_rcc.o
+    0x08001c00   0x08001c00   0x00000014   Code   RO         3779    i.RCC_AHB_Peripheral_Reset  n32g430_rcc.o
+    0x08001c14   0x08001c14   0x00000010   Code   RO         3780    i.RCC_APB1_Peripheral_Clock_Disable  n32g430_rcc.o
+    0x08001c24   0x08001c24   0x00000010   Code   RO         3781    i.RCC_APB1_Peripheral_Clock_Enable  n32g430_rcc.o
+    0x08001c34   0x08001c34   0x00000014   Code   RO         3782    i.RCC_APB1_Peripheral_Reset  n32g430_rcc.o
+    0x08001c48   0x08001c48   0x00000010   Code   RO         3784    i.RCC_APB2_Peripheral_Clock_Enable  n32g430_rcc.o
+    0x08001c58   0x08001c58   0x00000014   Code   RO         3785    i.RCC_APB2_Peripheral_Reset  n32g430_rcc.o
+    0x08001c6c   0x08001c6c   0x000000d4   Code   RO         3789    i.RCC_Clocks_Frequencies_Value_Get  n32g430_rcc.o
+    0x08001d40   0x08001d40   0x0000006c   Code   RO         6431    i.RCC_Configuration  bsp_config.o
+    0x08001dac   0x08001dac   0x00000014   Code   RO         3820    i.RCC_Pclk1_Config  n32g430_rcc.o
+    0x08001dc0   0x08001dc0   0x00000002   Code   RO           10    i.SVC_Handler       n32g430_it.o
+    0x08001dc2   0x08001dc2   0x00000002   PAD
+    0x08001dc4   0x08001dc4   0x000000ac   Code   RO          629    i.SpdLoop_Control   loopcontrol.o
+    0x08001e70   0x08001e70   0x0000068c   Code   RO          568    i.Svm_Ctr           svm.o
+    0x080024fc   0x080024fc   0x00000004   Code   RO           11    i.SysTick_Handler   n32g430_it.o
+    0x08002500   0x08002500   0x00000100   Code   RO          757    i.System_Clock_Set  system_n32g430.o
+    0x08002600   0x08002600   0x0000002e   Code   RO         6433    i.System_Init       bsp_config.o
+    0x0800262e   0x0800262e   0x00000002   PAD
+    0x08002630   0x08002630   0x00000098   Code   RO          758    i.System_Initializes  system_n32g430.o
+    0x080026c8   0x080026c8   0x0000002c   Code   RO           12    i.TIM1_BRK_IRQHandler  n32g430_it.o
+    0x080026f4   0x080026f4   0x00000024   Code   RO           13    i.TIM1_CC_IRQHandler  n32g430_it.o
+    0x08002718   0x08002718   0x00000184   Code   RO         6542    i.TIM1_PWM_Init     bsp_tim.o
+    0x0800289c   0x0800289c   0x00000024   Code   RO           14    i.TIM1_UP_IRQHandler  n32g430_it.o
+    0x080028c0   0x080028c0   0x0000001e   Code   RO           15    i.TIM2_IRQHandler   n32g430_it.o
+    0x080028de   0x080028de   0x00000002   PAD
+    0x080028e0   0x080028e0   0x00000108   Code   RO         6543    i.TIM4_Capture_Config  bsp_tim.o
+    0x080029e8   0x080029e8   0x00000024   Code   RO           16    i.TIM4_IRQHandler   n32g430_it.o
+    0x08002a0c   0x08002a0c   0x00000084   Code   RO         6545    i.TIM6_1Khz_Init    bsp_tim.o
+    0x08002a90   0x08002a90   0x0000003c   Code   RO           17    i.TIM6_IRQHandler   n32g430_it.o
+    0x08002acc   0x08002acc   0x0000000a   Code   RO         4864    i.TIM_Asymmetric_Enable  n32g430_tim.o
+    0x08002ad6   0x08002ad6   0x00000004   Code   RO         4868    i.TIM_Base_Auto_Reload_Set  n32g430_tim.o
+    0x08002ada   0x08002ada   0x0000000c   Code   RO         4869    i.TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set  n32g430_tim.o
+    0x08002ae6   0x08002ae6   0x00000018   Code   RO         4870    i.TIM_Base_Channel1  n32g430_tim.o
+    0x08002afe   0x08002afe   0x00000018   Code   RO         4871    i.TIM_Base_Channel2  n32g430_tim.o
+    0x08002b16   0x08002b16   0x00000018   Code   RO         4872    i.TIM_Base_Channel3  n32g430_tim.o
+    0x08002b2e   0x08002b2e   0x00000018   Code   RO         4873    i.TIM_Base_Channel4  n32g430_tim.o
+    0x08002b46   0x08002b46   0x0000000c   Code   RO         4875    i.TIM_Base_Count_Mode_Set  n32g430_tim.o
+    0x08002b52   0x08002b52   0x00000002   PAD
+    0x08002b54   0x08002b54   0x000000b0   Code   RO         4877    i.TIM_Base_Initialize  n32g430_tim.o
+    0x08002c04   0x08002c04   0x00000018   Code   RO         4878    i.TIM_Base_OCrefClear  n32g430_tim.o
+    0x08002c1c   0x08002c1c   0x00000004   Code   RO         4880    i.TIM_Base_Prescaler_Set  n32g430_tim.o
+    0x08002c20   0x08002c20   0x00000004   Code   RO         4881    i.TIM_Base_Reload_Mode_Set  n32g430_tim.o
+    0x08002c24   0x08002c24   0x00000004   Code   RO         4882    i.TIM_Base_Repeat_Count_Set  n32g430_tim.o
+    0x08002c28   0x08002c28   0x0000001e   Code   RO         4883    i.TIM_Base_Struct_Initialize  n32g430_tim.o
+    0x08002c46   0x08002c46   0x00000066   Code   RO         4884    i.TIM_Break_And_Dead_Time_Set  n32g430_tim.o
+    0x08002cac   0x08002cac   0x0000000c   Code   RO         4890    i.TIM_Capture_Compare_Ch_Disable  n32g430_tim.o
+    0x08002cb8   0x08002cb8   0x0000000c   Code   RO         4891    i.TIM_Capture_Compare_Ch_Enable  n32g430_tim.o
+    0x08002cc4   0x08002cc4   0x0000000c   Code   RO         4892    i.TIM_Capture_Compare_Ch_N_Disable  n32g430_tim.o
+    0x08002cd0   0x08002cd0   0x0000000c   Code   RO         4893    i.TIM_Capture_Compare_Ch_N_Enable  n32g430_tim.o
+    0x08002cdc   0x08002cdc   0x00000010   Code   RO         4908    i.TIM_Clock_Division_Set  n32g430_tim.o
+    0x08002cec   0x08002cec   0x0000000c   Code   RO         4911    i.TIM_Compare1_D_Set  n32g430_tim.o
+    0x08002cf8   0x08002cf8   0x0000000c   Code   RO         4912    i.TIM_Compare1_Set  n32g430_tim.o
+    0x08002d04   0x08002d04   0x0000000c   Code   RO         4913    i.TIM_Compare2_D_Set  n32g430_tim.o
+    0x08002d10   0x08002d10   0x0000000c   Code   RO         4914    i.TIM_Compare2_Set  n32g430_tim.o
+    0x08002d1c   0x08002d1c   0x0000000c   Code   RO         4915    i.TIM_Compare3_D_Set  n32g430_tim.o
+    0x08002d28   0x08002d28   0x0000000c   Code   RO         4916    i.TIM_Compare3_Set  n32g430_tim.o
+    0x08002d34   0x08002d34   0x00000006   Code   RO         4921    i.TIM_Compare7_Set  n32g430_tim.o
+    0x08002d3a   0x08002d3a   0x00000006   Code   RO         4922    i.TIM_Compare8_Set  n32g430_tim.o
+    0x08002d40   0x08002d40   0x00000006   Code   RO         4923    i.TIM_Compare9_Set  n32g430_tim.o
+    0x08002d46   0x08002d46   0x00000008   Code   RO         4939    i.TIM_Dma_Enable    n32g430_tim.o
+    0x08002d4e   0x08002d4e   0x0000000e   Code   RO         4948    i.TIM_Flag_Status_Get  n32g430_tim.o
+    0x08002d5c   0x08002d5c   0x00000018   Code   RO         4957    i.TIM_IOM_Comp_Break  n32g430_tim.o
+    0x08002d74   0x08002d74   0x00000010   Code   RO         4958    i.TIM_Input_Capture1_Prescaler_Set  n32g430_tim.o
+    0x08002d84   0x08002d84   0x00000018   Code   RO         4959    i.TIM_Input_Capture2_Prescaler_Set  n32g430_tim.o
+    0x08002d9c   0x08002d9c   0x00000012   Code   RO         4960    i.TIM_Input_Capture3_Prescaler_Set  n32g430_tim.o
+    0x08002dae   0x08002dae   0x00000014   Code   RO         4961    i.TIM_Input_Capture4_Prescaler_Set  n32g430_tim.o
+    0x08002dc2   0x08002dc2   0x00000062   Code   RO         4962    i.TIM_Input_Channel_Initialize  n32g430_tim.o
+    0x08002e24   0x08002e24   0x0000000e   Code   RO         4963    i.TIM_Input_Struct_Initialize  n32g430_tim.o
+    0x08002e32   0x08002e32   0x00000008   Code   RO         4966    i.TIM_Interrupt_Disable  n32g430_tim.o
+    0x08002e3a   0x08002e3a   0x00000008   Code   RO         4967    i.TIM_Interrupt_Enable  n32g430_tim.o
+    0x08002e42   0x08002e42   0x00000006   Code   RO         4968    i.TIM_Interrupt_Status_Clear  n32g430_tim.o
+    0x08002e48   0x08002e48   0x00000016   Code   RO         4969    i.TIM_Interrupt_Status_Get  n32g430_tim.o
+    0x08002e5e   0x08002e5e   0x0000000a   Code   RO         4970    i.TIM_Lock_Up_Break_Disable  n32g430_tim.o
+    0x08002e68   0x08002e68   0x0000000a   Code   RO         4971    i.TIM_Lock_Up_Break_Enable  n32g430_tim.o
+    0x08002e72   0x08002e72   0x0000000a   Code   RO         4976    i.TIM_OC7REF_Trigger_To_ADC_Enable  n32g430_tim.o
+    0x08002e7c   0x08002e7c   0x0000000a   Code   RO         4978    i.TIM_OC8REF_Trigger_To_ADC_Enable  n32g430_tim.o
+    0x08002e86   0x08002e86   0x0000000a   Code   RO         4982    i.TIM_On            n32g430_tim.o
+    0x08002e90   0x08002e90   0x0000008c   Code   RO         4985    i.TIM_Output_Channel1_Initialize  n32g430_tim.o
+    0x08002f1c   0x08002f1c   0x0000000c   Code   RO         4986    i.TIM_Output_Channel1_Preload_Set  n32g430_tim.o
+    0x08002f28   0x08002f28   0x00000098   Code   RO         4989    i.TIM_Output_Channel2_Initialize  n32g430_tim.o
+    0x08002fc0   0x08002fc0   0x00000014   Code   RO         4990    i.TIM_Output_Channel2_Preload_Set  n32g430_tim.o
+    0x08002fd4   0x08002fd4   0x00000094   Code   RO         4993    i.TIM_Output_Channel3_Initialize  n32g430_tim.o
+    0x08003068   0x08003068   0x0000000e   Code   RO         4994    i.TIM_Output_Channel3_Preload_Set  n32g430_tim.o
+    0x08003076   0x08003076   0x0000001c   Code   RO         5008    i.TIM_Output_Channel7_Preload_Set  n32g430_tim.o
+    0x08003092   0x08003092   0x0000001c   Code   RO         5009    i.TIM_Output_Channel8_Preload_Set  n32g430_tim.o
+    0x080030ae   0x080030ae   0x00000012   Code   RO         5012    i.TIM_Output_Channel_N_Polarity_Set  n32g430_tim.o
+    0x080030c0   0x080030c0   0x00000012   Code   RO         5013    i.TIM_Output_Channel_Polarity_Set  n32g430_tim.o
+    0x080030d2   0x080030d2   0x00000002   PAD
+    0x080030d4   0x080030d4   0x00000014   Code   RO         5015    i.TIM_Output_Trigger_Select  n32g430_tim.o
+    0x080030e8   0x080030e8   0x0000000c   Code   RO         5017    i.TIM_PWM_Output_Disable  n32g430_tim.o
+    0x080030f4   0x080030f4   0x0000000c   Code   RO         5018    i.TIM_PWM_Output_Enable  n32g430_tim.o
+    0x08003100   0x08003100   0x0000000a   Code   RO         5019    i.TIM_Pvd_Break_Disable  n32g430_tim.o
+    0x0800310a   0x0800310a   0x0000000a   Code   RO         5020    i.TIM_Pvd_Break_Enable  n32g430_tim.o
+    0x08003114   0x08003114   0x00000070   Code   RO         5021    i.TIM_Reset         n32g430_tim.o
+    0x08003184   0x08003184   0x00000038   Code   RO          483    i.TimerTick_State   timer.o
+    0x080031bc   0x080031bc   0x0000000c   Code   RO          484    i.Timer_Init        timer.o
+    0x080031c8   0x080031c8   0x0000000e   Code   RO          485    i.Timer_Start       timer.o
+    0x080031d6   0x080031d6   0x00000002   PAD
+    0x080031d8   0x080031d8   0x00000048   Code   RO          486    i.Timer_State_Init  timer.o
+    0x08003220   0x08003220   0x00000022   Code   RO          487    i.Timer_Tick        timer.o
+    0x08003242   0x08003242   0x00000004   Code   RO          488    i.Timer_Timeout     timer.o
+    0x08003246   0x08003246   0x00000002   PAD
+    0x08003248   0x08003248   0x00000014   Code   RO         6434    i.TimingDelay_Decrement  bsp_config.o
+    0x0800325c   0x0800325c   0x00000002   Code   RO           18    i.UsageFault_Handler  n32g430_it.o
+    0x0800325e   0x0800325e   0x0000000e   Code   RO         6742    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800326c   0x0800326c   0x00000002   Code   RO         6743    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800326e   0x0800326e   0x0000000e   Code   RO         6744    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800327c   0x0800327c   0x00000064   Code   RO          691    i.iParkTransform    axistransform.o
+    0x080032e0   0x080032e0   0x00000020   Code   RO          274    i.main              main.o
+    0x08003300   0x08003300   0x00000004   Code   RO         6612    i.sEE_TIMEOUT_UserCallback  i2c_eeprom.o
+    0x08003304   0x08003304   0x00000a00   Data   RO          455    .constdata          table.o
+    0x08003d04   0x08003d04   0x00000040   Data   RO         3830    .constdata          n32g430_rcc.o
+    0x08003d44   0x08003d44   0x00000020   Data   RO         6740    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003d64, Size: 0x00001628, Max: 0x00004000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x08003d64   0x00000006   Data   RW           23    .data               n32g430_it.o
+    0x20000006   0x08003d6a   0x00000002   PAD
+    0x20000008   0x08003d6c   0x00000040   Data   RW          343    .data               foc.o
+    0x20000048   0x08003dac   0x00000002   Data   RW          395    .data               datacalc.o
+    0x2000004a   0x08003dae   0x00000002   PAD
+    0x2000004c   0x08003db0   0x00000004   Data   RW          459    .data               table.o
+    0x20000050   0x08003db4   0x00000004   Data   RW          600    .data               statemachine.o
+    0x20000054   0x08003db8   0x00000004   Data   RW          760    .data               system_n32g430.o
+    0x20000058   0x08003dbc   0x00000004   Data   RW         6435    .data               bsp_config.o
+    0x2000005c   0x08003dc0   0x00000006   Data   RW         6547    .data               bsp_tim.o
+    0x20000062   0x08003dc6   0x00000002   PAD
+    0x20000064   0x08003dc8   0x00000024   Data   RW         6613    .data               i2c_eeprom.o
+    0x20000088        -       0x00000098   Zero   RW          342    .bss                foc.o
+    0x20000120        -       0x00000054   Zero   RW          489    .bss                timer.o
+    0x20000174        -       0x0000001a   Zero   RW          569    .bss                svm.o
+    0x2000018e   0x08003dec   0x00000002   PAD
+    0x20000190        -       0x0000006c   Zero   RW          630    .bss                loopcontrol.o
+    0x200001fc        -       0x00000020   Zero   RW          726    .bss                currsample.o
+    0x2000021c        -       0x0000000c   Zero   RW         6546    .bss                bsp_tim.o
+    0x20000228        -       0x00001400   Zero   RW          800    STACK               startup_n32g430.o
 
 
 ==============================================================================
@@ -2557,13 +2579,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
+       226         18          0          0          0       2591   axistransform.o
        182          0          0          0          0        719   bsp_adc.o
        398         14          0          4          0       3206   bsp_config.o
       1176         60          0          6         12       5126   bsp_tim.o
-        96         14          0          2          0       1914   datacalc.o
-      1242         94          0         64        184       8539   foc.o
+       112         12          0          0         32       2114   currsample.o
+        96         14          0          2          0       1922   datacalc.o
+       600         52          0         64        152       4235   foc.o
        854         70          0         36          0       6728   i2c_eeprom.o
-       180          6          0          0        172       2285   loopcontrol.o
+       172          4          0          0        108       2277   loopcontrol.o
         36          0          0          0          0       1078   lpf.o
         32         10          0          0          0       1523   main.o
        120         14          0          0          0       2033   misc.o
@@ -2571,19 +2595,20 @@ Image component sizes
        446          4          0          0          0      11591   n32g430_dma.o
        276          0          0          0          0       7988   n32g430_gpio.o
        476         20          0          0          0      12751   n32g430_i2c.o
-       780         84          0          6          0     325556   n32g430_it.o
+       804         86          0          6          0     324600   n32g430_it.o
        452         86         64          0          0      10540   n32g430_rcc.o
       2196        164          0          0          0      49574   n32g430_tim.o
-        90          0          0          0          0       1258   pi.o
+       308         16          0          0          0       1053   observer.o
+       104          0          0          0          0       1330   pi.o
         36          8        276          0       5120        916   startup_n32g430.o
-       200         10          0          4          0       2136   statemachine.o
+       190         10          0          4          0       2132   statemachine.o
       1676         30          0          0         26       4966   svm.o
        520         80          0          4          0       3482   system_n32g430.o
          0          0       2560          4          0        937   table.o
-       188          4          0          0         84       4793   timer.o
+       192          6          0          0         84       4793   timer.o
 
     ----------------------------------------------------------------------
-     12634        906       2932        136       5600     503699   Object Totals
+     12662        912       2932        136       5536     504265   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          0          6          2          0   (incl. Padding)
 
@@ -2623,15 +2648,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12756        922       2932        136       5600     483579   Grand Totals
-     12756        922       2932        136       5600     483579   ELF Image Totals
-     12756        922       2932        136          0          0   ROM Totals
+     12784        928       2932        136       5536     484145   Grand Totals
+     12784        928       2932        136       5536     484145   ELF Image Totals
+     12784        928       2932        136          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15688 (  15.32kB)
-    Total RW  Size (RW Data + ZI Data)              5736 (   5.60kB)
-    Total ROM Size (Code + RO Data + RW Data)      15824 (  15.45kB)
+    Total RO  Size (Code + RO Data)                15716 (  15.35kB)
+    Total RW  Size (RW Data + ZI Data)              5672 (   5.54kB)
+    Total ROM Size (Code + RO Data + RW Data)      15852 (  15.48kB)
 
 ==============================================================================
 

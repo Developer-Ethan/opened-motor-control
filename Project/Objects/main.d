@@ -48,8 +48,11 @@
 .\objects\main.o: ..\User\PI.h
 .\objects\main.o: ..\User\StateMachine.h
 .\objects\main.o: ..\User\Timer.h
+.\objects\main.o: ..\User\AxisTransform.h
+.\objects\main.o: ..\User\CurrSample.h
 .\objects\main.o: ..\User\Table.h
 .\objects\main.o: ..\User\Parameter.h
 .\objects\main.o: ..\User\DataCalc.h
 .\objects\main.o: ..\User\Svm.h
 .\objects\main.o: ..\User\n32g430_it.h
+.\objects\main.o: ..\User\Observer.h

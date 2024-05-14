@@ -52,7 +52,7 @@ int main(void)
   {
     MotorStateMachine(&MotorCtrl, &Timer_State);
 		
-		if((ABS(Foc.PhaseCurr.PhaseU) > 8000) || (ABS(Foc.PhaseCurr.PhaseV) > 8000) || (ABS(Foc.PhaseCurr.PhaseW) > 8000))
+		if((ABS(Sample_Curr.PhaseCurr.PhaseU) > 8000) || (ABS(Sample_Curr.PhaseCurr.PhaseV) > 8000) || (ABS(Sample_Curr.PhaseCurr.PhaseW) > 8000))
 		{
 //				switch_pwm(INV_ALL_OFF);
 //				OcFlag = 1;

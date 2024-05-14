@@ -32,7 +32,6 @@ void MotorStateMachine(MOTORCTRL_DEF *pMotorCtrl, TIMER_STATE_DEF *pTimer_State)
 						//GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
             pMotorCtrl->OffsetFlag = 0;
 						pMotorCtrl->CalibrateOverFlag = 1;
-            Timer_Start(&pTimer_State->Timer_Idle, pTimer_State->Time_Idle);
             pMotorCtrl->State = MotorIdle;
         }
         /* code */
@@ -58,7 +57,8 @@ void MotorStateMachine(MOTORCTRL_DEF *pMotorCtrl, TIMER_STATE_DEF *pTimer_State)
     case MotorOpenLoop:
         if (Timer_Timeout(&pTimer_State->Timer_OpenLoop) && (LoopCtrl.OpenLoopCtrl.IFCurr == LoopCtrl.OpenLoopCtrl.IFCurr_Target))
         {
-            //pMotorCtrl->State = MotorClosedLoop;
+//            pMotorCtrl->State = MotorClosedLoop;
+//						ClosedLoop_Init();
         }
         /* code */
         break;

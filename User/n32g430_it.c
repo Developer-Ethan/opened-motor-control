@@ -238,26 +238,26 @@ void ADC_IRQHandler(void)
 		//GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
 
 		VoltValue_ADCReg = ADC_Regular_Group_Conversion_Data_Get();
-		Foc.Sample_Volt = Q13((VoltValue_ADCReg << 3) * COEFF_VOLT);
+		Foc.Sample_Volt = Q14((VoltValue_ADCReg << 3) * COEFF_VOLT);
 
 		for (Channel_JSEQ = Channel_First; Channel_JSEQ < Channel_First + Num_JSEQ; Channel_JSEQ++)
 		{
-			Foc.Sample_Curr.SampleCurr[Channel_JSEQ] = ADC_Injected_Group_Conversion_Data_Get(ADC_INJECTED_DATA_REG_1 + 4 * (Channel_JSEQ - Channel_First));
+			Sample_Curr.SampleCurr[Channel_JSEQ] = ADC_Injected_Group_Conversion_Data_Get(ADC_INJECTED_DATA_REG_1 + 4 * (Channel_JSEQ - Channel_First));
 		}
 
-		SampleCurr_1st = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First];
-		SampleCurr_2nd = (int16_t)Foc.Sample_Curr.SampleCurr[Channel_First + 1];
+		SampleCurr_1st = (int16_t)Sample_Curr.SampleCurr[Channel_First];
+		SampleCurr_2nd = (int16_t)Sample_Curr.SampleCurr[Channel_First + 1];
 
 		if (MotorCtrl.OffsetFlag)
 		{
-			BiasDetect(&Foc);
+			BiasDetect(&Sample_Curr);
 		}
 		else
 		{
-			SampleCurr_1st -= Foc.Sample_Curr.Offset_1st;
-			SampleCurr_2nd -= Foc.Sample_Curr.Offset_2nd;
-			Foc.Sample_Curr.Curr_SamplePoint_1st = Q14((SampleCurr_1st << 3) * COEFF_CURR);
-			Foc.Sample_Curr.Curr_SamplePoint_2nd = Q14((SampleCurr_2nd << 3) * COEFF_CURR);
+			SampleCurr_1st -= Sample_Curr.Offset_1st;
+			SampleCurr_2nd -= Sample_Curr.Offset_2nd;
+			Sample_Curr.Curr_SamplePoint_1st = Q14((SampleCurr_1st << 3) * COEFF_CURR);
+			Sample_Curr.Curr_SamplePoint_2nd = Q14((SampleCurr_2nd << 3) * COEFF_CURR);
 		}
 
 		if ((MotorCtrl.CalibrateOverFlag == 1) && (MotorCtrl.StartFlag == 1))
@@ -268,13 +268,14 @@ void ADC_IRQHandler(void)
 				Foc.Angle = Foc.Angle_Align;
 				break;
 			case MotorOpenLoop:
-				Foc.Angle = Angle_Given(&LoopCtrl.OpenLoopCtrl);
+				Foc.AngleOpen = Angle_Given(&LoopCtrl.OpenLoopCtrl);
+				Foc.Angle = Foc.AngleOpen;
 				break;
 			case MotorClosedLoop:
 				Foc.Angle = Foc.AnglePLL;
 				break;
 			}
-			Phase_Curr_Temp = PhaseCurr_Get(&Foc);
+			Phase_Curr_Temp = PhaseCurr_Get(&Sample_Curr);
 			Foc.StatCurr = ClarkeTransform(&Phase_Curr_Temp);
 			Foc.RotaCurr = ParkTransform(&Foc.StatCurr, Foc.Angle);
 			Foc.IdRef = LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.InputRef;
@@ -282,8 +283,6 @@ void ADC_IRQHandler(void)
 			Foc.RotaVolt.Imag = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q, Foc.IqRef - Foc.RotaCurr.Imag);
 			Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, Foc.IdRef - Foc.RotaCurr.Real);
 			// LimitedCircle_Voltage(&Foc.RotaVolt);
-//			Foc.RotaVolt.Imag = Q13(0.05);
-//			Foc.RotaVolt.Real = Q13(0.0);
 
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 			EstSmo_Ctr();
