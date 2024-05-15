@@ -3,7 +3,7 @@
 #include "stdint.h"
 #include "LPF.h"
 #include "LoopControl.h"
-#include "AxisTransform.h" 
+#include "AxisTransform.h"
 typedef struct
 {
   float PhaseRes;
@@ -23,6 +23,7 @@ typedef struct
   float Curr_Base;
   int16_t Speed_Base;
   float OmageBase;
+  float FluxBase;
 
   /* data */
 } MOTOR_PARAMETER_DEF;
@@ -61,6 +62,7 @@ typedef struct
   LPF_DEF Lpf_EmfEstImag;
   uint16_t FluxAngle;
   uint16_t AnglePLL;
+  uint16_t AngleEst;
   uint16_t AngleOpen;
   uint16_t Angle;
   uint16_t Angle_Align;
@@ -70,6 +72,9 @@ typedef struct
   int16_t SpeedEst;
   float TsPu;
   int16_t Ts;
+  float FluxPu;
+  int16_t Flux;
+  int16_t SvcmGain;
   float BandWidthPu_CurrLoop;
   float BandWidthPu_PllLoop;
   SMO_CTRL_DEF Smo_Ctrl;

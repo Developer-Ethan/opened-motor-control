@@ -71,7 +71,7 @@ void Adc_Init(void)
   NVIC_Initializes(&NVIC_InitStructure);
   /* Enable JEOC interrupt */
   ADC_Interrupts_Enable(ADC_INT_JENDC); // 所有注入通道中断使能
-	//ADC_Interrupts_Enable(ADC_INT_JENDCA); // 所有注入通道中断使能
+	ADC_Interrupts_Enable(ADC_INT_JENDCA); // 所有注入通道中断使能
 
   /* Enable ADC DMA */
   // ADC_DMA_Transfer_Enable();

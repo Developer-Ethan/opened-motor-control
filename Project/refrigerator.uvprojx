@@ -393,19 +393,24 @@
               <FilePath>..\User\main.c</FilePath>
             </File>
             <File>
-              <FileName>Foc.c</FileName>
+              <FileName>PI.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\Foc.c</FilePath>
+              <FilePath>..\User\PI.c</FilePath>
             </File>
             <File>
-              <FileName>DataCalc.c</FileName>
+              <FileName>Svm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\DataCalc.c</FilePath>
+              <FilePath>..\User\Svm.c</FilePath>
             </File>
             <File>
               <FileName>LPF.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\LPF.c</FilePath>
+            </File>
+            <File>
+              <FileName>Foc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Foc.c</FilePath>
             </File>
             <File>
               <FileName>Table.c</FileName>
@@ -418,24 +423,9 @@
               <FilePath>..\User\Timer.c</FilePath>
             </File>
             <File>
-              <FileName>PI.c</FileName>
+              <FileName>DataCalc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\PI.c</FilePath>
-            </File>
-            <File>
-              <FileName>Svm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\Svm.c</FilePath>
-            </File>
-            <File>
-              <FileName>StateMachine.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\StateMachine.c</FilePath>
-            </File>
-            <File>
-              <FileName>LoopControl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\LoopControl.c</FilePath>
+              <FilePath>..\User\DataCalc.c</FilePath>
             </File>
             <File>
               <FileName>Observer.c</FileName>
@@ -443,14 +433,24 @@
               <FilePath>..\User\Observer.c</FilePath>
             </File>
             <File>
-              <FileName>AxisTransform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\AxisTransform.c</FilePath>
-            </File>
-            <File>
               <FileName>CurrSample.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\CurrSample.c</FilePath>
+            </File>
+            <File>
+              <FileName>LoopControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\LoopControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>StateMachine.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\StateMachine.c</FilePath>
+            </File>
+            <File>
+              <FileName>AxisTransform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\AxisTransform.c</FilePath>
             </File>
             <File>
               <FileName>HeadFile.h</FileName>

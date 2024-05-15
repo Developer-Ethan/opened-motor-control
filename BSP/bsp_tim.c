@@ -9,6 +9,7 @@ uint16_t TimerPeriod = 0;
 /*************************************************************
  * 定时器1输出PWM配置
  *************************************************************/
+#if ONE_SHUNT_ENABLE
 void TIM1_PWM_Init(uint8_t polarity)
 {
   TIM_TimeBaseInitType TIM1_TimeBaseStructure;
@@ -98,6 +99,98 @@ void TIM1_PWM_Init(uint8_t polarity)
 //  NVIC_Initializes(&NVIC_InitStructure);
   TIM_On(TIM1);
 }
+#else
+void TIM1_PWM_Init(uint8_t polarity)
+{
+  TIM_TimeBaseInitType TIM1_TimeBaseStructure;
+  OCInitType TIM1_OCInitStructure;
+  TIM_BDTRInitType TIM1_BDTRInitStructure;
+	//NVIC_InitType NVIC_InitStructure;
+	
+  TimerPeriod = (SystemClockFrequency / (PWM_FREQ * 2) / (TIMER_CLOCK_PRESCALER_SET + 1));
+
+  TIM_Reset(TIM1);
+  TIM_Base_Struct_Initialize(&TIM1_TimeBaseStructure);
+  TIM1_TimeBaseStructure.Prescaler = TIMER_CLOCK_PRESCALER_SET;
+  TIM1_TimeBaseStructure.CntMode = TIM_CNT_MODE_CENTER_ALIGN2; // 中心对齐计数模式下，当计数器向上计数时产生比较中断
+  TIM1_TimeBaseStructure.Period = TimerPeriod;
+  TIM1_TimeBaseStructure.ClkDiv = TIM_CLK_DIV4; // 4分频
+  TIM1_TimeBaseStructure.RepetCnt = 0;
+
+  TIM_Base_Initialize(TIM1, &TIM1_TimeBaseStructure);
+
+  // Channel 1, 2,3 in PWM mode
+  // TIM_InitOcStruct(&TIM1_OCInitStructure);
+  TIM1_OCInitStructure.OcMode = TIM_OCMODE_PWM2; // Pos logic(ocref:when '<' is negative,when '>' is active)
+  TIM1_OCInitStructure.OutputState = TIM_OUTPUT_STATE_DISABLE;
+  TIM1_OCInitStructure.OutputNState = TIM_OUTPUT_NSTATE_DISABLE;
+  TIM1_OCInitStructure.Pulse = (TimerPeriod >> 1);
+  TIM1_OCInitStructure.OcPolarity = TIM_OC_POLARITY_HIGH;
+  TIM1_OCInitStructure.OcNPolarity = TIM_OCN_POLARITY_HIGH;
+  TIM1_OCInitStructure.OcIdleState = TIM_OC_IDLE_STATE_RESET;
+  TIM1_OCInitStructure.OcNIdleState = TIM_OC_IDLE_STATE_RESET;
+
+  if (polarity == SET)
+  {
+    pwm_polarity = SET;
+    TIM1_OCInitStructure.OcPolarity = TIM_OC_POLARITY_HIGH; // high lever is active,its lever is same as the ocref
+    TIM1_OCInitStructure.OcNPolarity = TIM_OCN_POLARITY_HIGH;
+    TIM1_OCInitStructure.OcIdleState = TIM_OC_IDLE_STATE_RESET;
+    TIM1_OCInitStructure.OcNIdleState = TIM_OC_IDLE_STATE_RESET;
+  }
+  else
+  {
+    pwm_polarity = RESET;
+    TIM1_OCInitStructure.OcPolarity = TIM_OC_POLARITY_LOW;
+    TIM1_OCInitStructure.OcNPolarity = TIM_OCN_POLARITY_LOW;
+    TIM1_OCInitStructure.OcIdleState = TIM_OC_IDLE_STATE_SET;
+    TIM1_OCInitStructure.OcNIdleState = TIM_OC_IDLE_STATE_SET;
+  }
+  TIM_Output_Channel1_Initialize(TIM1, &TIM1_OCInitStructure);
+  TIM_Output_Channel2_Initialize(TIM1, &TIM1_OCInitStructure);
+  TIM_Output_Channel3_Initialize(TIM1, &TIM1_OCInitStructure);
+
+//  TIM_Compare1_D_Set(TIM1, (TimerPeriod >> 1)); // the second compare point under Asymmetric mode
+//  TIM_Compare2_D_Set(TIM1, (TimerPeriod >> 1));
+//  TIM_Compare3_D_Set(TIM1, (TimerPeriod >> 1));
+
+//  TIM_Compare7_Set(TIM1, 30);
+//  TIM_Compare8_Set(TIM1, 600);
+  // Enables the TIM1 Preload on CC1,CC2,CC3,CC4 Register
+  TIM_Output_Channel1_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE); // 使能CCDAT1寄存器的预加载功能
+  TIM_Output_Channel2_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE);
+  TIM_Output_Channel3_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE);
+//  TIM_Output_Channel7_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE);
+//  TIM_Output_Channel8_Preload_Set(TIM1, TIM_OC_PRELOAD_ENABLE);
+
+//  TIM_OC7REF_Trigger_To_ADC_Enable(TIM1); // 通道7触发ADC使能
+//  TIM_OC8REF_Trigger_To_ADC_Enable(TIM1);
+//  TIM_Output_Trigger_Select(TIM1, TIM_TRGO_SRC_OC4_7_8_9REF);                                        // MMSEL3=1;只有当TIMx_CTRL2.MMSEL3=1时，TRGO输出才会有效
+//  TIM_Base_Center_Aligned_Mode_OC4_7_8_9_Trigger_Set(TIM1, TIM_UP_COUNTING_OC4_7_8_9_TRIGGER_VALID); // 向上计数，TRGO输出有效，触发ADC采样
+  TIM_Asymmetric_Disable(TIM1);                                                                       // 使能中央非对称
+
+  // Automatic Output enable, Break, dead time and lock configuration
+  TIM1_BDTRInitStructure.OssrState = TIM_OSSR_STATE_ENABLE;
+  TIM1_BDTRInitStructure.OssiState = TIM_OSSI_STATE_ENABLE;
+  TIM1_BDTRInitStructure.LockLevel = TIM_LOCK_LEVEL_OFF;
+  TIM1_BDTRInitStructure.DeadTime = 28;//1us 28
+  TIM1_BDTRInitStructure.Break = TIM_BREAK_IN_ENABLE;
+  TIM1_BDTRInitStructure.BreakPolarity = TIM_BREAK_POLARITY_HIGH;
+  TIM1_BDTRInitStructure.AutomaticOutput = TIM_AUTO_OUTPUT_DISABLE; // TIM_AUTO_OUTPUT_ENABLE;		//关闭自动输出
+  TIM1_BDTRInitStructure.IomBreakEn = false;
+  TIM_Break_And_Dead_Time_Set(TIM1, &TIM1_BDTRInitStructure);
+
+//  TIM_Interrupt_Enable(TIM1, TIM_INT_UPDATE);
+
+//  NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Initializes(&NVIC_InitStructure);
+  TIM_On(TIM1);
+}
+#endif
+
 
 /**************************************************************************************************
 * Description   : Set the output of inverter bridge arms

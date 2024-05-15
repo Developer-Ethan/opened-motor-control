@@ -59,6 +59,36 @@ inline void EstSmo_Ctr(void)
  * @return     None.
  *
  */
+inline void EstSVCM_Ctr(void)
+{
+    uint16_t Angle_temp;
+    int16_t Ed, Eq;
+    int16_t Temp;
+    AXIS_DEF RotaVolt = {0, 0};
+    AXIS_DEF RotaCurr = {0, 0};
+
+    RotaVolt = ParkTransform(&Foc.StatVolt, Foc.AngleEst);
+    RotaCurr = ParkTransform(&Foc.StatCurr, Foc.AngleEst);
+    Ed = RotaVolt.Real - ((Foc.PhaseRes * Foc.RotaCurr.Real) >> 15u) + ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Imag) >> 29u);
+    Eq = RotaVolt.Imag - ((Foc.PhaseRes * Foc.RotaCurr.Imag) >> 15u) - ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Real) >> 29u);
+
+    Temp = SIGN(Foc.SpeedEst, (-1), (1));
+    Temp = ((Eq - Temp * Ed) << 14u) / Foc.Flux;
+    Temp = (Temp - Foc.SpeedEst) * Foc.SvcmGain >> 15u;
+    Foc.SpeedEst += (Temp * Foc.Ts) >> 15u;
+    Foc.SpeedEst = SATURATE(Foc.SpeedEst, -19661, 19661);
+    Angle_temp = Foc.SpeedEst * Foc.Ts >> 15u;
+    Foc.AngleEst += (10430 * Angle_temp) >> 14u;
+}
+
+/**
+ * @brief      EstFlux_Ctr function.
+ *
+ * @param[in]  None.
+ *
+ * @return     None.
+ *
+ */
 inline void EstFlux_Ctr(void)
 {
     int16_t Temp;

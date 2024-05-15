@@ -1,7 +1,7 @@
 #ifndef _SVM_H_
 #define _SVM_H_
 #include "stdint.h"
-#include "Foc.h"
+#include "AxisTransform.h"
 typedef struct
 {
   uint16_t Sector;

@@ -20,6 +20,7 @@ MOTOR_PARAMETER_DEF Motor_Param =
         CURR_BASE,
         SPEED_BASE,
         OMEGA_BASE,
+        FLUX_BASE,
 };
 /**
  * @brief      Foc_Init function.
@@ -40,6 +41,9 @@ void Foc_Init(void)
     Foc.PhaseInd = Q15(Foc.PhaseInd_Pu);
     Foc.TsPu = PWM_PERIOD / T_BASE;
     Foc.Ts = Q15(Foc.TsPu);
+    Foc.FluxPu = FLUX_RATE / FLUX_BASE;
+    Foc.Flux = Q14(Foc.FluxPu);
+    Foc.SvcmGain = Q15(GAIN_SVCM);
     Foc.Angle_Align = ALIGN_ANGLE;
     Foc.BandWidthPu_CurrLoop = BANDWIDTH_CURRLOOP / Motor_Param.EfreqRated;
 
@@ -57,26 +61,26 @@ void Foc_Init(void)
 
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = Q15(Foc.BandWidthPu_PllLoop * Foc.BandWidthPu_PllLoop * Foc.TsPu);
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = Q15(2 * Foc.BandWidthPu_PllLoop);
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMax = IOUT_MAX_PLLLOOP;
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMin = IOUT_MIN_PLLLOOP;
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMax = OUT_MAX_PLLLOOP;
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMin = OUT_MIN_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = 0;
 
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes * Foc.TsPu); // KI_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd);            // KP_CURRLOOP;
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.OutMax = IOUT_MAX_CURRLOOP;
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.OutMin = IOUT_MIN_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.OutMax = OUT_MAX_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.OutMin = OUT_MIN_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.I_Out = 0;
 
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Ki = (Foc.BandWidthPu_CurrLoop * Foc.PhaseRes * Foc.TsPu);
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.Pid_Kp = (Foc.BandWidthPu_CurrLoop * Foc.PhaseInd);
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.OutMax = IOUT_MAX_CURRLOOP;
-    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.OutMin = IOUT_MIN_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.OutMax = OUT_MAX_CURRLOOP;
+    LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.OutMin = OUT_MIN_CURRLOOP;
     LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.I_Out = 0;
 
     LoopCtrl.ClosedLoopCtrl.SpdLoop.Pid_Ki = KI_SPDLOOP;
     LoopCtrl.ClosedLoopCtrl.SpdLoop.Pid_Kp = KP_SPDLOOP;
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.OutMax = IOUT_MAX_SPDLOOP;
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.OutMin = IOUT_MIN_SPDLOOP;
+    LoopCtrl.ClosedLoopCtrl.SpdLoop.OutMax = OUT_MAX_SPDLOOP;
+    LoopCtrl.ClosedLoopCtrl.SpdLoop.OutMin = OUT_MIN_SPDLOOP;
     LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = 0;
 
     LoopCtrl.OpenLoopCtrl.AlignCurr_Target = Q14(ALIGN_CURR_OPENLOOP / CURR_BASE);
@@ -124,7 +128,9 @@ void ClosedLoop_Init(void)
 {
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = LoopCtrl.OpenLoopCtrl.OpenLoopSpd << 15u;
     Foc.AnglePLL = Foc.AngleOpen;
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr;
+		Foc.AngleEst = Foc.AngleOpen;
+		Foc.SpeedEst = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
+    LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr << 15u;
 }
 
 /**
@@ -206,5 +212,3 @@ inline void LimitedCircle_Voltage(AXIS_DEF *pAxis)
         }
     }
 }
-
-

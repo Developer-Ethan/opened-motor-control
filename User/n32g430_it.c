@@ -222,20 +222,20 @@ void TIM6_IRQHandler(void)
  *************************************************************/
 void ADC_IRQHandler(void)
 {
-	GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
+	// GPIO_Pins_Set(GPIOB, GPIO_PIN_3);
 	uint8_t Jlen_JSEQ = ((ADC->JSEQ & ADC_JSEQ_JLEN) >> 20);
 	uint8_t Num_JSEQ = 1 + Jlen_JSEQ;
 	uint8_t Channel_First = 4 - Jlen_JSEQ;
 	uint8_t Channel_JSEQ;
 	PHASE_CURR_DEF Phase_Curr_Temp;
-//	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
-//	{
-//		GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
-//		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDCA);
-//	}
+	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
+	{
+		GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
+		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDCA);
+	}
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDC) == SET)
 	{
-		//GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
+		// GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
 
 		VoltValue_ADCReg = ADC_Regular_Group_Conversion_Data_Get();
 		Foc.Sample_Volt = Q14((VoltValue_ADCReg << 3) * COEFF_VOLT);
@@ -272,7 +272,7 @@ void ADC_IRQHandler(void)
 				Foc.Angle = Foc.AngleOpen;
 				break;
 			case MotorClosedLoop:
-				Foc.Angle = Foc.AnglePLL;
+				Foc.Angle = Foc.AngleEst;
 				break;
 			}
 			Phase_Curr_Temp = PhaseCurr_Get(&Sample_Curr);
@@ -285,7 +285,17 @@ void ADC_IRQHandler(void)
 			// LimitedCircle_Voltage(&Foc.RotaVolt);
 
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
-			EstSmo_Ctr();
+
+#if SMO_ENABLE
+			{
+				EstSmo_Ctr();
+			}
+#elif SVCM_ENABLE
+			{
+				EstSVCM_Ctr();
+			}
+#endif
+
 			Svm_Ctr(&Svm, &Foc.StatVolt);
 			switch_pwm(INV_ALL_ON);
 		}
@@ -295,7 +305,7 @@ void ADC_IRQHandler(void)
 		}
 
 		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDC);
-		GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
+		// GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
 	}
 	else
 	{
