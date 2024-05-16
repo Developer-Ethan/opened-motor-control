@@ -26,12 +26,12 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
 
     pSvm->ModulCoeff = (int16_t)(((2 * Period * SQRT_3 >> SHIFT_15BITS) << SHIFT_15BITS) / Foc.Sample_Volt);
     X = (pSvm->ModulCoeff * pAxis->Imag) >> SHIFT_15BITS;
-    Y = (pSvm->ModulCoeff * ((28378 * pAxis->Real + 16384 * pAxis->Imag) >> SHIFT_15BITS)) >> SHIFT_15BITS;
-    Z = (pSvm->ModulCoeff * ((16384 * pAxis->Imag - 28378 * pAxis->Real) >> SHIFT_15BITS)) >> SHIFT_15BITS;
+    Y = (pSvm->ModulCoeff * ((28376 * pAxis->Real + 16384 * pAxis->Imag) >> SHIFT_15BITS)) >> SHIFT_15BITS;
+    Z = (pSvm->ModulCoeff * ((16384 * pAxis->Imag - 28376 * pAxis->Real) >> SHIFT_15BITS)) >> SHIFT_15BITS;
 
     Vref1 = pAxis->Imag;
     Vref2 = (28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
-    Vref3 = -(28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
+    Vref3 = (-28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
 
     if (Vref1 > 0)
     {

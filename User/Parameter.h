@@ -53,13 +53,13 @@
 #define BANDWIDTH_PLLLOOP (100u)
 #define KP_PLLLOOP (100u)
 #define KI_PLLLOOP (100u)
-#define OUT_MAX_PLLLOOP (19660)
+#define OUT_MAX_PLLLOOP (19661)
 #define OUT_MIN_PLLLOOP (-OUT_MAX_PLLLOOP)
 
 #define BANDWIDTH_CURRLOOP (300u)
 #define KP_CURRLOOP (1000u)
 #define KI_CURRLOOP (100u)
-#define OUT_MAX_CURRLOOP (int32_t)(19660)
+#define OUT_MAX_CURRLOOP (int32_t)(19661)
 #define OUT_MIN_CURRLOOP (int32_t)(-OUT_MAX_CURRLOOP)
 
 #define KP_SPDLOOP (1000u)
@@ -73,12 +73,12 @@
 #define ALIGN_CURR_OPENLOOP (2.0f)
 #define ALIGN_CURR_SLOPE (0.02f)
 #define ALIGN_ANGLE Q16(0.25f)
-#define START_CURR_OPENLOOP (2.0f)
-#define IFCURR_TARGET (1.6f)
+#define START_CURR_OPENLOOP (4.0f)
+#define IFCURR_TARGET (4.0f)
 #define IFCURR_SLOPE (0.05f)
 
-#define UQ_LIMIT Q15(0.9f)
-#define UD_LIMIT Q15(0.43f)
+#define UQ_LIMIT Q14(0.9f)
+#define UD_LIMIT Q14(0.43f)
 #define MODULE_COEFF Q15(0.577)
 
 #define SMO_GAIN (0.85f)

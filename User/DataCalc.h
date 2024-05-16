@@ -12,7 +12,7 @@
 #define DataMult_Q15(DATA1, DATA2) (int16_t)(((int32_t)(DATA1) * (int32_t)(DATA2)) >> (SHIFT_15BITS))
 #define DataMult_Q16(DATA1, DATA2) (uint16_t)(((int32_t)(DATA1) * (int32_t)(DATA2)) >> (SHIFT_16BITS))
 
-#define ABS(dat) ((dat) < 0) ? -(dat) : (dat)
+#define ABS(dat) ((dat) < 0 ? (-(dat)) : (dat))
 #define SATURATE(input, min, max) ((input) > (max) ? max : ((input) < (min)) ? min \
                                                                              : input)
 #define SIGN(input, min, max) ((input) > 0 ? max : min)

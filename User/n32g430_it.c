@@ -228,6 +228,7 @@ void ADC_IRQHandler(void)
 	uint8_t Channel_First = 4 - Jlen_JSEQ;
 	uint8_t Channel_JSEQ;
 	PHASE_CURR_DEF Phase_Curr_Temp;
+	
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDCA) == SET)
 	{
 		GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
