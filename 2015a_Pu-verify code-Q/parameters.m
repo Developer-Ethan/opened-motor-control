@@ -47,11 +47,18 @@ TsPu = Ts/tb;%开关周期标幺值
 JPu = J_realvalue/Jb;%转动惯量标幺值
 
 %Q格式
+Q12 = 4096;
 Q13 = 8192;
 Q14 = 16384;
 Q15 = 32767;
+
+Rs_Q15 = Q15*Rs_realvalue/Rb;%电阻标幺值
+Ld_Q15 = Q15*Ld_realvalue/Lb;%电感标幺值
+Lq_Q15 = Q15*Lq_realvalue/Lb;%电感标幺值
+fluxF_Q14 = Q14*fluxF;
+
 %电流环带宽计算
-CurrentLoopBandwidth = 400*2*pi/Wb;
+CurrentLoopBandwidth = 300*2*pi/Wb;
 Id_Kp = Q15*CurrentLoopBandwidth*Ld;
 Id_Ki = Q15*CurrentLoopBandwidth*Rs;
 
@@ -74,8 +81,9 @@ PLL_OUTMax_W = Q14*1.2;
 
 %静态电压补偿
 SVCM_GAIN = 0.8;
+SVCM_GAIN_Q = Q15*SVCM_GAIN;
 EstOutMax_Speed = 2.0;
-EstOutMax_Theta = 2*pi;
+EstOutMax_Speed_Q = Q14*1.2;
 
 %磁链参数整定
 LamObserverGain = 0.8;
@@ -101,7 +109,7 @@ fieldweaken_Min = -0.5;
 %速度开环与闭环使能开关
 SpdClosedLoopEnable = 0.0;
 AngleClosedLoopEnable = 1.0;
-AngleEncoderEn = 0;
+AngleEncoderEn = 1;
 
 %开环控制
 SpeedIncreased = 0.1*Wb;
