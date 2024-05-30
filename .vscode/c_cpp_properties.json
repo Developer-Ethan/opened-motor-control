@@ -4,16 +4,49 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/Keil_v5/ARM/ARMCLANG/include"
+                "./SDK/Platform/Core/*",
+                "./SDK/Platform/Devices/*",
+                "./Solution/Z20K116M/App/*",
+                "./Solution/Z20K116M/Bsp/adc/*",
+                "./Solution/Z20K116M/Bsp/clock/*",
+                "./Solution/Z20K116M/Bsp/dma/*",
+                "./Solution/Z20K116M/Bsp/hwcfg/*",
+                "./Solution/Z20K116M/Bsp/hwdiv/*",
+                "./Solution/Z20K116M/Bsp/nvic/*",
+                "./Solution/Z20K116M/Bsp/stim/*",
+                "./Solution/Z20K116M/Bsp/timer/*",
+                "./Solution/Z20K116M/Bsp/tmu/*",
+                "./Solution/Z20K116M/Bsp/zxmath/*",
+                "./Solution/Z20K116M/Foc/MC_AxisTransform/*",
+                "./Solution/Z20K116M/Foc/MC_CurrSample/*",
+                "./Solution/Z20K116M/Foc/MC_DataCalc/*",
+                "./Solution/Z20K116M/Foc/MC_HeadFile/*",
+                "./Solution/Z20K116M/Foc/MC_Init/*",
+                "./Solution/Z20K116M/Foc/MC_LoopControl/*",
+                "./Solution/Z20K116M/Foc/MC_Lpf/*",
+                "./Solution/Z20K116M/Foc/MC_Observer/*",
+                "./Solution/Z20K116M/Foc/MC_Parameter/*",
+                "./Solution/Z20K116M/Foc/MC_Pi/*",
+                "./Solution/Z20K116M/Foc/MC_StateMachine/*",
+                "./Solution/Z20K116M/Foc/MC_Svm/*",
+                "./Solution/Z20K116M/Foc/MC_Table/*",
+                "./Solution/Z20K116M/Foc/MC_Timer/*",
+                "./Solution/Z20K116M/MidLayer/*",
+                "./SDK/StdDriver/Inc/*",
+                "./SDK/StdDriver/Src/*",
+                "./Solution/Z20A8300A/confg/*",
+                "./Solution/Z20A8300A/inc/",
+                "./Solution/Z20A8300A/src/"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
+            "compilerPath": "D:\\minGW64\\mingw64\\bin\\gcc.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

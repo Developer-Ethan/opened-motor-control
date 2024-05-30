@@ -3,6 +3,7 @@ SwitchFrequency = 16e3;
 Ts = 1/SwitchFrequency;
 SpeedloopFrequency = 1e3;
 SpeedloopTs = 1/SpeedloopFrequency;
+PWM_Period = 1000;
 
 Rs_realvalue = 0.08;%定子电阻  ou
 Ld_realvalue = 0.25e-3;% Ld  H
@@ -27,7 +28,7 @@ Vdc = 36;
 Vphase = Vdc/sqrt(3); %相电流侧最大电压
 
 %标幺基值%所有的标幺值，都是以相的幅值作为基值；
-Ib = 1.5*In;
+Ib = 16;
 Vb = Un/sqrt(3); %电压基值
 Wb = 2*pi*fn; %角频率基值
 tb = 1/Wb; %时间的基值
@@ -52,26 +53,26 @@ Q13 = 8192;
 Q14 = 16384;
 Q15 = 32767;
 
-Rs_Q15 = Q15*Rs_realvalue/Rb;%电阻标幺值
-Ld_Q15 = Q15*Ld_realvalue/Lb;%电感标幺值
-Lq_Q15 = Q15*Lq_realvalue/Lb;%电感标幺值
+Rs_Q14 = Q14*Rs_realvalue/Rb;%电阻标幺值
+Ld_Q14 = Q14*Ld_realvalue/Lb;%电感标幺值
+Lq_Q14 = Q14*Lq_realvalue/Lb;%电感标幺值
 fluxF_Q14 = Q14*fluxF;
 
 %电流环带宽计算
 CurrentLoopBandwidth = 300*2*pi/Wb;
-Id_Kp = Q15*CurrentLoopBandwidth*Ld;
-Id_Ki = Q15*CurrentLoopBandwidth*Rs;
+Id_Kp = Q14*CurrentLoopBandwidth*Ld;
+Id_Ki = Q14*CurrentLoopBandwidth*Rs;
 
-Iq_Kp = Q15*CurrentLoopBandwidth*Lq;
-Iq_Ki = Q15*CurrentLoopBandwidth*Rs;
+Iq_Kp = Q14*CurrentLoopBandwidth*Lq;
+Iq_Ki = Q14*CurrentLoopBandwidth*Rs;
 
 CurrentLoopMax = Q14*1.2;
 
 %速度环带宽计算
 SpeedLoopBandwidth = 50*2*pi/Wb;
-Speed_Kp = SpeedLoopBandwidth*JPu/fluxF;
-Speed_Ki = SpeedLoopBandwidth;
-SpeedOutmax = 1.5;
+Speed_Kp = Q14*SpeedLoopBandwidth*JPu/fluxF;
+Speed_Ki = Q14*SpeedLoopBandwidth;
+SpeedOutmax = 1.2*Q14;
 
 %锁相环
 PLL_Bandwidth = 2*pi*100/Wb;
@@ -98,18 +99,21 @@ Factor2 = Q15*Ts*Rs_realvalue/Lq_realvalue;
 LowPassFilterBandWidth_Emf = 2*pi*150/Wb;
 LowPassFilterBandWidth_Emf_Q = Q14*LowPassFilterBandWidth_Emf;
 LowPassFilterCoeff_Emf = Q15*(1/(1+LowPassFilterBandWidth_Emf*TsPu));
-LowPassFilterBandWidth_Speed = 2*pi*100/Wb;
+LowPassFilterBandWidth_Speed = 2*pi*80/Wb;
+LowPassFilterCoeff_Spd = Q15*(1/(1+LowPassFilterBandWidth_Speed*SpeedloopTs/tb));
 
 %弱磁与MTPA
-KP_fieldweaken = 1.0;
-KI_fieldweaken = 0.1;
+KP_fieldweaken = 1.0*Q14;
+KI_fieldweaken = 0.1*Q14;
 fieldweaken_Max = 0;
-fieldweaken_Min = -0.5;
+fieldweaken_Min = -0.5*Q14;
 
 %速度开环与闭环使能开关
 SpdClosedLoopEnable = 0.0;
-AngleClosedLoopEnable = 1.0;
+AngleSpdClosedLoopEnable = 0.0;
 AngleEncoderEn = 1;
+OverModulationEn = 0;
+FieldWeakenEn = 0;
 
 %开环控制
 SpeedIncreased = 0.1*Wb;
