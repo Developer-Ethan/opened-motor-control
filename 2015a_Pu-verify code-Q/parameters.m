@@ -16,7 +16,7 @@ J_realvalue = 0.69e-4;%转动惯量
 Friction = 0.003;%摩擦系数 
 Tn = 1.27;%额定力矩 NM
 fn = 500;%额定转速 Hz 
-In = 14.5;%额定线电流有效值 Arms
+In = 16;%额定线电流有效值 Arms
 Un = 36;%额定线电压有效值 Vrms
 Speedn = 60*fn/Np;%额定转速 rpm
 Telectrical = Ld_realvalue/Rs_realvalue;%电气时间常数
@@ -28,7 +28,7 @@ Vdc = 36;
 Vphase = Vdc/sqrt(3); %相电流侧最大电压
 
 %标幺基值%所有的标幺值，都是以相的幅值作为基值；
-Ib = 16;
+Ib = 2*In;
 Vb = Un/sqrt(3); %电压基值
 Wb = 2*pi*fn; %角频率基值
 tb = 1/Wb; %时间的基值
@@ -76,8 +76,8 @@ SpeedOutmax = 1.2*Q14;
 
 %锁相环
 PLL_Bandwidth = 2*pi*100/Wb;
-PLL_KP = Q15*2*PLL_Bandwidth;
-PLL_KI = Q15*PLL_Bandwidth*PLL_Bandwidth;
+PLL_KP = Q14*2*PLL_Bandwidth;
+PLL_KI = Q14*PLL_Bandwidth*PLL_Bandwidth;
 PLL_OUTMax_W = Q14*1.2;
 
 %静态电压补偿
@@ -109,8 +109,8 @@ fieldweaken_Max = 0;
 fieldweaken_Min = -0.5*Q14;
 
 %速度开环与闭环使能开关
-SpdClosedLoopEnable = 0.0;
-AngleSpdClosedLoopEnable = 0.0;
+SpdClosedLoopEnable = 1.0;
+AngleSpdClosedLoopEnable = 1.0;
 AngleEncoderEn = 1;
 OverModulationEn = 0;
 FieldWeakenEn = 0;

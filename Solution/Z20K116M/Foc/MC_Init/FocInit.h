@@ -57,14 +57,18 @@ typedef struct
   float PhaseRes_Pu;
   LPF_DEF Lpf_EmfEstReal;
   LPF_DEF Lpf_EmfEstImag;
+  LPF_DEF Lpf_SpeedEst;
   uint16_t AngleEst;
   uint16_t AngleOpen;
   uint16_t Angle;
+  uint16_t AngleUComp;
   uint16_t Angle_Align;
   int16_t IdRef;
   int16_t IqRef;
   int16_t Is;
   int16_t SpeedEst;
+  int16_t SpeedEstLpf;
+  int16_t SpeedRealtime;
   float TsPu;
   int16_t Ts;
   float FluxPu;

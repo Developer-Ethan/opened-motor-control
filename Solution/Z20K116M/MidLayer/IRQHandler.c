@@ -83,9 +83,11 @@ void Pmsm_IRQHandleCurrentLoopIsr(void)
         case MotorOpenLoop:
             Foc.AngleOpen = Angle_Given(&LoopCtrl.OpenLoopCtrl);
             Foc.Angle = Foc.AngleOpen;
+			Foc.SpeedRealtime = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
             break;
         case MotorClosedLoop:
             Foc.Angle = Foc.AngleEst;
+			Foc.SpeedRealtime = Foc.SpeedEst;
             break;
         }
         Phase_Curr_Temp = PhaseCurr_Get(&Sample_Curr);
@@ -97,6 +99,8 @@ void Pmsm_IRQHandleCurrentLoopIsr(void)
         Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, (Foc.IdRef - Foc.RotaCurr.Real));
 //		Foc.RotaVolt.Imag = 19661;
 //		Foc.RotaVolt.Real = 0;
+		Foc.AngleUComp = Foc.Angle;
+		Foc.Angle += (10430 * (Foc.SpeedRealtime * Foc.Ts >> 14) >> 14u);
         Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 #if SMO_ENABLE
         {

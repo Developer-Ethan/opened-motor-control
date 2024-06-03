@@ -51,6 +51,9 @@ void Foc_Init(void)
     Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstReal.BandWidthPu * Foc.TsPu));
     Foc.Lpf_EmfEstImag.BandWidthPu = BANDWIDTH_EMFLPF / Motor_Param.EfreqRated;
     Foc.Lpf_EmfEstImag.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstImag.BandWidthPu * Foc.TsPu));
+    Foc.Lpf_SpeedEst.BandWidthPu = BANDWIDTH_SPDLPF / Motor_Param.EfreqRated;
+    Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_SpeedEst.BandWidthPu * Foc.TsPu));
+	
     Foc.BandWidthPu_PllLoop = BANDWIDTH_PLLLOOP / Motor_Param.EfreqRated;
 
     Foc.Smo_Ctrl.Factor1 = Q15(PWM_PERIOD * Motor_Param.PhaseRes_Base / Motor_Param.PhaseInd);
@@ -61,8 +64,8 @@ void Foc_Init(void)
 
     Foc.BandWidthPu_SpdLoop = BANDWIDTH_SPDLOOP / Motor_Param.EfreqRated;
 
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = Q15(Foc.BandWidthPu_PllLoop * Foc.BandWidthPu_PllLoop * Foc.TsPu);
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = Q15(2 * Foc.BandWidthPu_PllLoop);
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = Q14(Foc.BandWidthPu_PllLoop * Foc.BandWidthPu_PllLoop * Foc.TsPu);
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = Q14(2 * Foc.BandWidthPu_PllLoop);
     LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMax = OUT_MAX_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMin = OUT_MIN_PLLLOOP;
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = 0;
@@ -115,7 +118,7 @@ void ClosedLoop_Init(void)
 {
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = LoopCtrl.OpenLoopCtrl.OpenLoopSpd << 14u;
 	Foc.AngleEst = Foc.AngleOpen;
-	Foc.SpeedEst = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
+	Foc.SpeedEstLpf = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
     LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr << 14u;
 }
 

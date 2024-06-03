@@ -11,12 +11,15 @@ LOOP_CONTROL_DEF LoopCtrl;
  */
 void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
 {
-    //MotorCtrl.StartFlag = 1;
 	TimerTick_State(&Timer_State);
 	
-	if(Foc.Sample_Volt < Q14(15.0/VOLT_BASE))
+	if(Foc.Sample_Volt < Q14(17.0/VOLT_BASE))
 	{
-			MotorCtrl.StartFlag = 0;
+		MotorCtrl.StartFlag = 0;
+	}
+	else
+	{
+		MotorCtrl.StartFlag = 1;
 	}
 	
     switch (pMotorCtrl->State)
@@ -67,7 +70,7 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         }
         break;
     case MotorClosedLoop:
-        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr; // PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEst);
+        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr;//PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEstLpf);
         pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
         break;
 

@@ -96,7 +96,7 @@ void main(void)
 		}
         if ((ABS(Sample_Curr.PhaseCurr.PhaseU) > 3000) || (ABS(Sample_Curr.PhaseCurr.PhaseV) > 3000) || (ABS(Sample_Curr.PhaseCurr.PhaseW) > 3000))
         {
-            Hal_PwmOutputDis();
+            //Hal_PwmOutputDis();
         }
     }
 }

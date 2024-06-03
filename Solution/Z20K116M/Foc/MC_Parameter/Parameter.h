@@ -8,7 +8,7 @@
 #define TIME_CALIBRATE (20u)
 #define TIME_IDLE (20u)
 #define TIME_ALIGN (200u)
-#define TIME_OPENLOOP (1000u)
+#define TIME_OPENLOOP (1500u)
 /*board parameters*/
 #define R_SHUNT (0.005f)
 #define GAIN_AMP (20.0f)
@@ -69,20 +69,21 @@
 #define OUT_MIN_CURRLOOP (int16_t)(-OUT_MAX_CURRLOOP)
 
 #define BANDWIDTH_SPDLOOP (50u)
-#define KP_SPDLOOP (20000u)
-#define KI_SPDLOOP (100u)
+#define BANDWIDTH_SPDLPF (80.0f)
+#define KP_SPDLOOP (6000u)
+#define KI_SPDLOOP (20u)
 #define OUT_MAX_SPDLOOP (int16_t)(19660)
 #define OUT_MIN_SPDLOOP (int16_t)(-OUT_MAX_SPDLOOP)
 
-#define SPEED_TARGET_OPENLOOP (94.0f)
-#define SPEED_SWITCH_OPENLOOP (80.0f)
+#define SPEED_TARGET_OPENLOOP (200.0f)
+#define SPEED_SWITCH_OPENLOOP (180.0f)
 #define SPEED_SLOPE (1.0f)
 #define ALIGN_CURR_OPENLOOP (2.0f)
 #define ALIGN_CURR_SLOPE (0.02f)
 #define ALIGN_ANGLE Q16(0.25f)
-#define START_CURR_OPENLOOP (2.0f)
-#define IFCURR_TARGET (2.0f)
-#define IFCURR_SLOPE (0.05f)
+#define START_CURR_OPENLOOP (3.5f)
+#define IFCURR_TARGET (3.0f)
+#define IFCURR_SLOPE (0.02f)
 
 #define UQ_LIMIT Q14(0.9f)
 #define UD_LIMIT Q14(0.43f)
@@ -95,6 +96,6 @@
 #define GAIN_SVCM (0.8f)
 #define ONE_SHUNT_ENABLE (1)
 
-#define SMO_ENABLE (0)
-#define SVCM_ENABLE (1)
+#define SMO_ENABLE (1)
+#define SVCM_ENABLE (0)
 #endif

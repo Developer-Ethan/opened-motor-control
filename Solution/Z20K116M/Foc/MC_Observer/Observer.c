@@ -47,6 +47,7 @@ void EstSmo_Ctr(void)
     Sin = Table_Sin[Angle_Temp];
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Error = (temp3 * Cos - temp4 * Sin) >> SHIFT_15BITS;
     Foc.SpeedEst = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.PLLLoop, LoopCtrl.ClosedLoopCtrl.PLLLoop.Error);
+	Foc.SpeedEstLpf = LPF_Ctr(&Foc.Lpf_SpeedEst,Foc.SpeedEst);
     Angle_Temp = (Foc.SpeedEst * Foc.Ts) >> 15u;
     Foc.AngleEst += (10430 * Angle_Temp) >> 14u;
 }
