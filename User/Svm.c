@@ -11,15 +11,14 @@ SVM_DEF Svm;
  */
 void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
 {
-
-    int16_t T0, T1, T2;
+    int16_t T0, T1, T2, Tsum;
     uint16_t Period;
     uint16_t Diff;
     uint16_t CompareValue_SimplePoint1;
     uint16_t CompareValue_SimplePoint2;
     int16_t X, Y, Z;
     int16_t Vref1, Vref2, Vref3;
-    uint8_t A, B, C, N;
+    uint8_t N;
     int16_t Ta, Tb, Tc;
 
     Period = TimerPeriod;
@@ -33,32 +32,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
     Vref2 = (28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
     Vref3 = (-28376 * pAxis->Real - 16384 * pAxis->Imag) >> SHIFT_15BITS;
 
-    if (Vref1 > 0)
-    {
-        A = 1;
-    }
-    else
-    {
-        A = 0;
-    }
-    if (Vref2 > 0)
-    {
-        B = 1;
-    }
-    else
-    {
-        B = 0;
-    }
-    if (Vref3 > 0)
-    {
-        C = 1;
-    }
-    else
-    {
-        C = 0;
-    }
-
-    N = 4 * C + 2 * B + A;
+    N = 4 * SIGN(Vref3,0,1) + 2 * SIGN(Vref2,0,1) + SIGN(Vref1,0,1);
 
     switch (N)
     {
@@ -100,12 +74,24 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
         break;
     }
 
+		Tsum = (T1 + T2) >> 1u;
+		if(Tsum > Period)
+		{
+				T1 = T1 * Period / Tsum;
+				T2 = T2 * Period / Tsum;
+		}
+		
     T1 = T1 >> 1;
     T2 = T2 >> 1;
     T0 = Period - T1 - T2;
+		
     pSvm->T1 = T1;
     pSvm->T2 = T2;
     pSvm->T0 = T0 >> 1;
+		pSvm->T0 = SATURATE(pSvm->T0,0,Period);
+		pSvm->T1 = SATURATE(pSvm->T1,0,Period);
+		pSvm->T2 = SATURATE(pSvm->T2,0,Period);
+		
     Ta = pSvm->T0;
     Tb = Ta + pSvm->T1;
     Tc = Tb + pSvm->T2;
@@ -127,6 +113,10 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
+						if(pSvm->ComparePoint_1st_Up < 0)
+						{
+								pSvm->ComparePoint_1st_Up = 0;
+						}
 
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
@@ -145,7 +135,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_1st_Up = 0;
                 pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
@@ -169,7 +159,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_3th_Up = Period;
                 pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
@@ -179,7 +169,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 {
                 }
             }
-        }
+        }			
 #endif
         CompareValue_SimplePoint1 = pSvm->ComparePoint_1st_Up + pSvm->ShiftScale;
         CompareValue_SimplePoint2 = pSvm->ComparePoint_2nd_Up + pSvm->ShiftScale;
@@ -200,7 +190,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-
+						if(pSvm->ComparePoint_2nd_Up < 0)
+						{
+								pSvm->ComparePoint_2nd_Up = 0;
+						}
+						
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
@@ -218,7 +212,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_2nd_Up = 0;
                 pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
@@ -242,7 +236,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_3th_Up = Period;
                 pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
@@ -273,7 +267,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-
+						if(pSvm->ComparePoint_2nd_Up < 0)
+						{
+								pSvm->ComparePoint_2nd_Up = 0;
+						}
+						
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
@@ -291,7 +289,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_2nd_Up = 0;
                 pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
@@ -315,7 +313,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_1st_Up = Period;
                 pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
@@ -346,7 +344,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-
+						if(pSvm->ComparePoint_3th_Up < 0)
+						{
+								pSvm->ComparePoint_3th_Up = 0;
+						}
+						
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
@@ -364,7 +366,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_3th_Up = 0;
                 pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
@@ -388,7 +390,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_1st_Up = Period;
                 pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up - Diff;
@@ -419,7 +421,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;
             pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-
+						if(pSvm->ComparePoint_3th_Up < 0)
+						{
+								pSvm->ComparePoint_3th_Up = 0;
+						}
+						
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
@@ -437,7 +443,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_3th_Up = 0;
                 pSvm->ComparePoint_3th_Down = pSvm->ComparePoint_3th_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up + Diff;
@@ -461,7 +467,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_2nd_Up = Period;
                 pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
@@ -492,7 +498,11 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
             Diff = pSvm->StableScale - pSvm->T1;
             pSvm->ComparePoint_1st_Up = pSvm->ComparePoint_1st_Up - Diff;
             pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
-
+						if(pSvm->ComparePoint_1st_Up < 0)
+						{
+								pSvm->ComparePoint_1st_Up = 0;
+						}
+						
             Diff = pSvm->StableScale - pSvm->T2;
             pSvm->ComparePoint_2nd_Up = pSvm->ComparePoint_2nd_Up + Diff;
             pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
@@ -510,7 +520,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_1st_Up = 0;
                 pSvm->ComparePoint_1st_Down = pSvm->ComparePoint_1st_Down + Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T1 + pSvm->T0);
                     pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up + Diff;
@@ -534,7 +544,7 @@ void Svm_Ctr(SVM_DEF *pSvm, AXIS_DEF *pAxis)
                 Diff = pSvm->T0;
                 pSvm->ComparePoint_2nd_Up = Period;
                 pSvm->ComparePoint_2nd_Down = pSvm->ComparePoint_2nd_Down - Diff;
-                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >> 2 * pSvm->StableScale) // saturation of phase shifting
+                if ((pSvm->T0 + pSvm->T1 + pSvm->T2) >= 2 * pSvm->StableScale) // saturation of phase shifting
                 {
                     Diff = pSvm->StableScale - (pSvm->T2 + pSvm->T0);
                     pSvm->ComparePoint_3th_Up = pSvm->ComparePoint_3th_Up - Diff;

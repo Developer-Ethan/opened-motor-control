@@ -214,6 +214,11 @@ void TIM6_IRQHandler(void)
 		TimerTick_State(&Timer_State);
 
 		SpdLoop_Control(&MotorCtrl, &LoopCtrl);
+		
+		if(Foc.Sample_Volt < Q14(15.0/VOLT_BASE))
+		{
+				MotorCtrl.StartFlag = 0;
+		}
 	}
 }
 
@@ -237,9 +242,8 @@ void ADC_IRQHandler(void)
 	if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_JENDC) == SET)
 	{
 		// GPIO_Pin_Toggle(GPIOB, GPIO_PIN_3);
-
 		VoltValue_ADCReg = ADC_Regular_Group_Conversion_Data_Get();
-		Foc.Sample_Volt = Q14((VoltValue_ADCReg << 3) * COEFF_VOLT);
+		Foc.Sample_Volt = DataMult_Q15((VoltValue_ADCReg << 4),COEFF_VOLT);
 
 		for (Channel_JSEQ = Channel_First; Channel_JSEQ < Channel_First + Num_JSEQ; Channel_JSEQ++)
 		{
@@ -257,8 +261,8 @@ void ADC_IRQHandler(void)
 		{
 			SampleCurr_1st -= Sample_Curr.Offset_1st;
 			SampleCurr_2nd -= Sample_Curr.Offset_2nd;
-			Sample_Curr.Curr_SamplePoint_1st = Q14((SampleCurr_1st << 3) * COEFF_CURR);
-			Sample_Curr.Curr_SamplePoint_2nd = Q14((SampleCurr_2nd << 3) * COEFF_CURR);
+			Sample_Curr.Curr_SamplePoint_1st = DataMult_Q15((SampleCurr_1st << 4),COEFF_CURR);
+			Sample_Curr.Curr_SamplePoint_2nd = DataMult_Q15((SampleCurr_2nd << 4),COEFF_CURR);
 		}
 
 		if ((MotorCtrl.CalibrateOverFlag == 1) && (MotorCtrl.StartFlag == 1))
@@ -281,10 +285,10 @@ void ADC_IRQHandler(void)
 			Foc.RotaCurr = ParkTransform(&Foc.StatCurr, Foc.Angle);
 			Foc.IdRef = LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D.InputRef;
 			Foc.IqRef = LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef;
-			Foc.RotaVolt.Imag = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q, Foc.IqRef - Foc.RotaCurr.Imag);
-			Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, Foc.IdRef - Foc.RotaCurr.Real);
-			// LimitedCircle_Voltage(&Foc.RotaVolt);
-
+			Foc.RotaVolt.Imag = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q, (Foc.IqRef - Foc.RotaCurr.Imag));
+			Foc.RotaVolt.Real = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_D, (Foc.IdRef - Foc.RotaCurr.Real));
+//			Foc.RotaVolt.Imag = Q14(0.3);
+//			Foc.RotaVolt.Real = Q14(0.0);
 			Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 
 #if SMO_ENABLE
@@ -307,11 +311,6 @@ void ADC_IRQHandler(void)
 
 		ADC_INTFlag_Status_Clear(ADC_INT_FLAG_JENDC);
 		// GPIO_Pins_Reset(GPIOB, GPIO_PIN_3);
-	}
-	else
-	{
-		if (ADC_INTFlag_Status_Get(ADC_INT_FLAG_AWDG) == SET)
-			ADC_INTFlag_Status_Clear(ADC_INT_FLAG_AWDG);
 	}
 }
 

@@ -11,6 +11,7 @@ LOOP_CONTROL_DEF LoopCtrl;
  */
 void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
 {
+		MotorCtrl.StartFlag = 1;
     switch (pMotorCtrl->State)
     {
     case MotorAlign:

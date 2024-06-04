@@ -50,18 +50,13 @@ typedef struct
   AXIS_DEF StatVolt;
   AXIS_DEF RotaCurr;
   AXIS_DEF RotaVolt;
-  uint16_t Sample_Volt;
+  int16_t Sample_Volt;
   uint16_t PhaseInd;
   uint16_t PhaseRes;
   float PhaseInd_Pu;
   float PhaseRes_Pu;
-  LPF_DEF RealFluxLPF;
-  LPF_DEF ImagFluxLPF;
-  LPF_DEF FluxAmpLPF;
   LPF_DEF Lpf_EmfEstReal;
   LPF_DEF Lpf_EmfEstImag;
-  uint16_t FluxAngle;
-  uint16_t AnglePLL;
   uint16_t AngleEst;
   uint16_t AngleOpen;
   uint16_t Angle;
@@ -77,6 +72,7 @@ typedef struct
   int16_t SvcmGain;
   float BandWidthPu_CurrLoop;
   float BandWidthPu_PllLoop;
+	float BandWidthPu_SpdLoop;
   SMO_CTRL_DEF Smo_Ctrl;
   /* data */
 } FOC_DEF;

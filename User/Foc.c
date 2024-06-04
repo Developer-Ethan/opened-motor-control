@@ -37,8 +37,8 @@ void Foc_Init(void)
 
     Foc.PhaseRes_Pu = Motor_Param.PhaseRes / Motor_Param.PhaseRes_Base;
     Foc.PhaseInd_Pu = Motor_Param.PhaseInd / Motor_Param.PhaseInd_Base;
-    Foc.PhaseRes = Q15(Foc.PhaseRes_Pu);
-    Foc.PhaseInd = Q15(Foc.PhaseInd_Pu);
+    Foc.PhaseRes = Q14(Foc.PhaseRes_Pu);
+    Foc.PhaseInd = Q14(Foc.PhaseInd_Pu);
     Foc.TsPu = PWM_PERIOD / T_BASE;
     Foc.Ts = Q15(Foc.TsPu);
     Foc.FluxPu = FLUX_RATE / FLUX_BASE;
@@ -59,6 +59,8 @@ void Foc_Init(void)
     Foc.Smo_Ctrl.SmoErrWidth = Q14(SMO_ERRWIDTH);
     Foc.Smo_Ctrl.SmoSlope = (SMO_GAIN / SMO_ERRWIDTH);
 
+		Foc.BandWidthPu_SpdLoop = BANDWIDTH_SPDLOOP / Motor_Param.EfreqRated;
+		
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Ki = Q15(Foc.BandWidthPu_PllLoop * Foc.BandWidthPu_PllLoop * Foc.TsPu);
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Pid_Kp = Q15(2 * Foc.BandWidthPu_PllLoop);
     LoopCtrl.ClosedLoopCtrl.PLLLoop.OutMax = OUT_MAX_PLLLOOP;
@@ -95,6 +97,8 @@ void Foc_Init(void)
 
     Svm.ShiftScale = SHIFT_SCALE;
     Svm.StableScale = STABLE_SCALE;
+		
+		LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef = Q14(600.0f / SPEED_BASE);
 }
 
 /**
@@ -126,11 +130,10 @@ uint16_t Angle_Given(OPENLOOP_DEF *pOpenLoop)
  */
 void ClosedLoop_Init(void)
 {
-    LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = LoopCtrl.OpenLoopCtrl.OpenLoopSpd << 15u;
-    Foc.AnglePLL = Foc.AngleOpen;
-		Foc.AngleEst = Foc.AngleOpen;
-		Foc.SpeedEst = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr << 15u;
+    LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = LoopCtrl.OpenLoopCtrl.OpenLoopSpd << 14u;
+//		Foc.AngleEst = Foc.AngleOpen;
+//		Foc.SpeedEst = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
+    LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr << 14u;
 }
 
 /**
@@ -144,6 +147,7 @@ void ClosedLoop_Init(void)
 void OpenLoop_Init(void)
 {
     LoopCtrl.OpenLoopCtrl.OpenLoopAngle = Foc.Angle_Align;
+		LoopCtrl.ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = LoopCtrl.OpenLoopCtrl.StartCurr;
 }
 /**
  * @brief      EstFlux_Ctr function.

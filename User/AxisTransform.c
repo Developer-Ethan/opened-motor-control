@@ -8,7 +8,7 @@
  * @return     None.
  *
  */
-inline AXIS_DEF ClarkeTransform(PHASE_CURR_DEF *pPhaseCurr)
+AXIS_DEF ClarkeTransform(PHASE_CURR_DEF *pPhaseCurr)
 {
     AXIS_DEF StatCurr = {0, 0};
 
@@ -26,7 +26,7 @@ inline AXIS_DEF ClarkeTransform(PHASE_CURR_DEF *pPhaseCurr)
  * @return     None.
  *
  */
-inline AXIS_DEF ParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle)
+AXIS_DEF ParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle)
 {
     AXIS_DEF RotaCurr = {0, 0};
     int32_t Cos;
@@ -52,7 +52,7 @@ inline AXIS_DEF ParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle)
  * @return     None.
  *
  */
-inline AXIS_DEF iParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle)
+AXIS_DEF iParkTransform(AXIS_DEF *pAxis, uint16_t ElecAngle)
 {
     AXIS_DEF StatVolt = {0, 0};
     int32_t Cos;

@@ -16,7 +16,6 @@ typedef struct
     int16_t SpeedSlope;
     int16_t OpenLoopSpd;
     int16_t OpenLoopSpdTarget;
-    int16_t OmegaSlope;
 		int16_t AngleSlope;
     int16_t SwitchSpd;
     uint16_t OpenLoopAngle;

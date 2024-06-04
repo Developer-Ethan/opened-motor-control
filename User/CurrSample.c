@@ -51,7 +51,7 @@ PHASE_CURR_DEF PhaseCurr_Get(SAMPLE_CURR_DEF *pCurrSample)
 
         break;
 
-    default:
+    case 5:
         pCurrSample->PhaseCurr.PhaseU = pCurrSample->Curr_SamplePoint_1st;
         pCurrSample->PhaseCurr.PhaseV = -pCurrSample->Curr_SamplePoint_2nd;
         pCurrSample->PhaseCurr.PhaseW = -(pCurrSample->PhaseCurr.PhaseU + pCurrSample->PhaseCurr.PhaseV);

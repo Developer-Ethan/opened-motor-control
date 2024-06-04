@@ -17,8 +17,8 @@ typedef struct
     int16_t Offset_1st;
     int16_t Offset_2nd;
     uint16_t SampleCurr[5];
-    uint32_t SampleCurrSum_1st;
-    uint32_t SampleCurrSum_2nd;
+    int32_t SampleCurrSum_1st;
+    int32_t SampleCurrSum_2nd;
     /* data */
 } SAMPLE_CURR_DEF;
 

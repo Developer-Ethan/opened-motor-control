@@ -8,7 +8,7 @@
  * @return     None.
  *
  */
-inline void EstSmo_Ctr(void)
+void EstSmo_Ctr(void)
 {
     int16_t temp1, temp2, temp3, temp4;
     int32_t Cos;
@@ -41,14 +41,14 @@ inline void EstSmo_Ctr(void)
     Foc.Smo_Ctrl.EmfEstLpf_Imag = temp2;
     temp4 = temp2;
 
-    Angle_Temp = Foc.AnglePLL >> 6u;
+    Angle_Temp = Foc.AngleEst >> 6u;
 
     Cos = pTable_Cos[Angle_Temp];
     Sin = Table_Sin[Angle_Temp];
     LoopCtrl.ClosedLoopCtrl.PLLLoop.Error = (temp3 * Cos - temp4 * Sin) >> SHIFT_15BITS;
     Foc.SpeedEst = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.PLLLoop, LoopCtrl.ClosedLoopCtrl.PLLLoop.Error);
     Angle_Temp = (Foc.SpeedEst * Foc.Ts) >> 15u;
-    Foc.AnglePLL += (10430 * Angle_Temp) >> 14u;
+    Foc.AngleEst += (10430 * Angle_Temp) >> 14u;
 }
 
 /**
@@ -59,7 +59,7 @@ inline void EstSmo_Ctr(void)
  * @return     None.
  *
  */
-inline void EstSVCM_Ctr(void)
+void EstSVCM_Ctr(void)
 {
     uint16_t Angle_temp;
     int16_t Ed, Eq;
@@ -69,8 +69,8 @@ inline void EstSVCM_Ctr(void)
 
     RotaVolt = ParkTransform(&Foc.StatVolt, Foc.AngleEst);
     RotaCurr = ParkTransform(&Foc.StatCurr, Foc.AngleEst);
-    Ed = RotaVolt.Real - ((Foc.PhaseRes * Foc.RotaCurr.Real) >> 15u) + ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Imag) >> 29u);
-    Eq = RotaVolt.Imag - ((Foc.PhaseRes * Foc.RotaCurr.Imag) >> 15u) - ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Real) >> 29u);
+    Ed = RotaVolt.Real - ((Foc.PhaseRes * Foc.RotaCurr.Real) >> 14u) + ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Imag) >> 28u);
+    Eq = RotaVolt.Imag - ((Foc.PhaseRes * Foc.RotaCurr.Imag) >> 14u) - ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr.Real) >> 28u);
 
     Temp = SIGN(Foc.SpeedEst, (-1), (1));
     Temp = ((Eq - Temp * Ed) << 14u) / Foc.Flux;
@@ -79,65 +79,4 @@ inline void EstSVCM_Ctr(void)
     Foc.SpeedEst = SATURATE(Foc.SpeedEst, -19661, 19661);
     Angle_temp = Foc.SpeedEst * Foc.Ts >> 15u;
     Foc.AngleEst += (10430 * Angle_temp) >> 14u;
-}
-
-/**
- * @brief      EstFlux_Ctr function.
- *
- * @param[in]  None.
- *
- * @return     None.
- *
- */
-inline void EstFlux_Ctr(void)
-{
-    int16_t Temp;
-    uint16_t Temp1;
-    uint16_t FluxAbsValue;
-    AXIS_DEF FluxSum_Axis = {0, 0};
-    AXIS_DEF Flux;
-    AXIS_DEF Flux_Corr; // Corrective item
-
-    Temp = Data_Limit(Flux_Corr.Real + Foc.StatVolt.Real - (DataMult_Q15(Foc.StatCurr.Real, Foc.PhaseRes_Pu)), BIT_MAX);
-    FluxSum_Axis.Real = LPF_Ctr(&Foc.RealFluxLPF, Temp);
-    Flux.Real = Data_Limit(FluxSum_Axis.Real - (DataMult_Q15(Foc.StatCurr.Real, Foc.PhaseInd_Pu)), BIT_MAX);
-
-    Temp = Data_Limit(Flux_Corr.Imag + Foc.StatVolt.Imag - (DataMult_Q15(Foc.StatCurr.Imag, Foc.PhaseRes_Pu)), BIT_MAX);
-    FluxSum_Axis.Imag = LPF_Ctr(&Foc.ImagFluxLPF, Temp);
-    Flux.Imag = Data_Limit(FluxSum_Axis.Imag - (DataMult_Q15(Foc.StatCurr.Imag, Foc.PhaseInd_Pu)), BIT_MAX);
-
-    Foc.FluxAngle = AngleAmp_Get(Flux, &Temp1);
-    FluxAbsValue = Data_Limit(DataMult_Q15(Temp1, 32000), (BIT_MAX + 1));
-    Temp = LPF_Ctr(&Foc.FluxAmpLPF, FluxAbsValue);
-
-    if (Flux.Real > Temp)
-    {
-        Flux_Corr.Real -= 400;
-    }
-    else
-    {
-        if (Flux.Real < -Temp)
-        {
-            Flux_Corr.Real += 400;
-        }
-        else
-        {
-            Flux_Corr.Real = 0;
-        }
-    }
-    if (Flux.Imag > Temp)
-    {
-        Flux_Corr.Imag -= 400;
-    }
-    else
-    {
-        if (Flux.Imag < -Temp)
-        {
-            Flux_Corr.Imag += 400;
-        }
-        else
-        {
-            Flux_Corr.Imag = 0;
-        }
-    }
 }

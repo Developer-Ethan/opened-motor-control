@@ -41,7 +41,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\User\Svm.h)(0x6643380C)
@@ -99,7 +99,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\User\Svm.h)(0x6643380C)
 I (..\User\n32g430_it.h)(0x6629F762)
@@ -116,7 +116,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -152,7 +152,7 @@ I (..\User\Svm.h)(0x6643380C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\User\n32g430_it.h)(0x6629F762)
 I (..\User\Observer.h)(0x664494FD)
-F (..\User\Svm.c)(0x6645B435)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\svm.o --omf_browse .\objects\svm.crf --depend .\objects\svm.d)
+F (..\User\Svm.c)(0x66470308)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\svm.o --omf_browse .\objects\svm.crf --depend .\objects\svm.d)
 I (..\User\HeadFile.h)(0x664300CA)
 I (..\User\Foc.h)(0x664493E1)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -164,7 +164,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -212,7 +212,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -248,7 +248,7 @@ I (..\User\Svm.h)(0x6643380C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\User\n32g430_it.h)(0x6629F762)
 I (..\User\Observer.h)(0x664494FD)
-F (..\User\Foc.c)(0x6645CDC7)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\foc.o --omf_browse .\objects\foc.crf --depend .\objects\foc.d)
+F (..\User\Foc.c)(0x6646B4CE)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\foc.o --omf_browse .\objects\foc.crf --depend .\objects\foc.d)
 I (..\User\HeadFile.h)(0x664300CA)
 I (..\User\Foc.h)(0x664493E1)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -260,7 +260,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -308,7 +308,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -356,7 +356,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -404,7 +404,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -440,7 +440,7 @@ I (..\User\Svm.h)(0x6643380C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\User\n32g430_it.h)(0x6629F762)
 I (..\User\Observer.h)(0x664494FD)
-F (..\User\Observer.c)(0x664494F1)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\observer.o --omf_browse .\objects\observer.crf --depend .\objects\observer.d)
+F (..\User\Observer.c)(0x6646B4AD)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\observer.o --omf_browse .\objects\observer.crf --depend .\objects\observer.d)
 I (..\User\HeadFile.h)(0x664300CA)
 I (..\User\Foc.h)(0x664493E1)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -452,7 +452,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -500,7 +500,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -548,7 +548,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -584,7 +584,7 @@ I (..\User\Svm.h)(0x6643380C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\User\n32g430_it.h)(0x6629F762)
 I (..\User\Observer.h)(0x664494FD)
-F (..\User\StateMachine.c)(0x6645CF99)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\statemachine.o --omf_browse .\objects\statemachine.crf --depend .\objects\statemachine.d)
+F (..\User\StateMachine.c)(0x6647047C)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\statemachine.o --omf_browse .\objects\statemachine.crf --depend .\objects\statemachine.d)
 I (..\User\HeadFile.h)(0x664300CA)
 I (..\User\Foc.h)(0x664493E1)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -596,7 +596,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -644,7 +644,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\BSP\bsp_tim.h)(0x6629F762)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
@@ -681,7 +681,7 @@ I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\User\n32g430_it.h)(0x6629F762)
 I (..\User\Observer.h)(0x664494FD)
 F (..\User\HeadFile.h)(0x664300CA)()
-F (..\User\Parameter.h)(0x6645CF6B)()
+F (..\User\Parameter.h)(0x6647039D)()
 F (..\firmware\CMSIS\device\system_n32g430.c)(0x6629F762)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\system_n32g430.o --omf_browse .\objects\system_n32g430.crf --depend .\objects\system_n32g430.d)
 I (..\firmware\CMSIS\device\n32g430.h)(0x6629F762)
 I (..\firmware\CMSIS\core\core_cm4.h)(0x6629F762)
@@ -713,7 +713,7 @@ I (..\firmware\n32g430_std_periph_driver\inc\n32g430_usart.h)(0x6629F762)
 I (..\firmware\n32g430_std_periph_driver\inc\n32g430_wwdg.h)(0x6629F762)
 I (..\firmware\n32g430_std_periph_driver\inc\n32g430_beeper.h)(0x6629F762)
 I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x6629F762)
-F (..\firmware\CMSIS\device\startup\startup_n32g430.s)(0x6629F762)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 526" --pd "N32G430 SETA 1" --pd "USE_STDPERIPH_DRIVER SETA 1"--list .\listings\startup_n32g430.lst --xref -o .\objects\startup_n32g430.o --depend .\objects\startup_n32g430.d)
+F (..\firmware\CMSIS\device\startup\startup_n32g430.s)(0x66470349)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 526" --pd "N32G430 SETA 1" --pd "USE_STDPERIPH_DRIVER SETA 1"--list .\listings\startup_n32g430.lst --xref -o .\objects\startup_n32g430.o --depend .\objects\startup_n32g430.d)
 F (..\Doc\ReadMe.txt)(0x6629F762)()
 F (..\firmware\n32g430_std_periph_driver\src\misc.c)(0x6629F762)(--gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\firmware\CMSIS\core -I ..\firmware\CMSIS\device -I ..\firmware\n32g430_std_periph_driver\inc -I ..\User -I ..\BSP -I ..\DSP-I.\RTE\_Foc_example-ID:\Keil_v5\ARM\PACK\Nationstech\N32G430_DFP\1.1.0\firmware\CMSIS\device-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DN32G430 -DUSE_STDPERIPH_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__FPU_PRESENT="1"-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
 I (..\firmware\n32g430_std_periph_driver\inc\misc.h)(0x6629F762)
@@ -1565,7 +1565,7 @@ I (..\User\Timer.h)(0x6629F762)
 I (..\User\AxisTransform.h)(0x66430636)
 I (..\User\CurrSample.h)(0x66430636)
 I (..\User\Table.h)(0x6629F762)
-I (..\User\Parameter.h)(0x6645CF6B)
+I (..\User\Parameter.h)(0x6647039D)
 I (..\User\DataCalc.h)(0x6645CD8D)
 I (..\User\Svm.h)(0x6643380C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
