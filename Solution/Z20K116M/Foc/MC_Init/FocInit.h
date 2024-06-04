@@ -46,10 +46,13 @@ typedef struct
 
 typedef struct
 {
+  uint8_t ExecuteCycle;
   AXIS_DEF StatCurr;
   AXIS_DEF StatVolt;
   AXIS_DEF RotaCurr;
   AXIS_DEF RotaVolt;
+  AXIS_DEF RotaCurr_Old;
+  AXIS_DEF RotaVolt_Old;
   int16_t Sample_Volt;
   uint16_t PhaseInd;
   uint16_t PhaseRes;

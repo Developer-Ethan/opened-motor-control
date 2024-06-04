@@ -24,6 +24,11 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
 	
     switch (pMotorCtrl->State)
     {
+	case MotorIdle:
+		pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.StartCurr;
+		pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
+		
+		break;
     case MotorAlign:
         if (pLoopCtrl->OpenLoopCtrl.AlignCurr < pLoopCtrl->OpenLoopCtrl.AlignCurr_Target)
         {
@@ -47,8 +52,6 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         {
             pLoopCtrl->OpenLoopCtrl.OpenLoopSpd = pLoopCtrl->OpenLoopCtrl.OpenLoopSpdTarget;
         }
-
-        pLoopCtrl->OpenLoopCtrl.AngleSlope = DataMult_Q15(pLoopCtrl->OpenLoopCtrl.OpenLoopSpd, Foc.Ts);
 
         if (pLoopCtrl->OpenLoopCtrl.OpenLoopSpd < pLoopCtrl->OpenLoopCtrl.SwitchSpd)
         {
@@ -92,8 +95,8 @@ uint16_t Angle_Given(OPENLOOP_DEF *pOpenLoop)
     uint16_t Angle_Temp;
     uint16_t AngleSlope_Temp;
 
-    AngleSlope_Temp = (pOpenLoop->AngleSlope * 10430) >> 14u; // anglepu:32767 = PI*10430,65535 = 2PI*10430
+	Angle_Temp = (pOpenLoop->OpenLoopSpd * Foc.Ts) >> 15u;
+    AngleSlope_Temp = (Angle_Temp * 10430) >> 14u; // anglepu:32767 = PI*10430,65535 = 2PI*10430
     pOpenLoop->OpenLoopAngle += AngleSlope_Temp;
-    Angle_Temp = pOpenLoop->OpenLoopAngle;
-    return Angle_Temp;
+    return (pOpenLoop->OpenLoopAngle);
 }

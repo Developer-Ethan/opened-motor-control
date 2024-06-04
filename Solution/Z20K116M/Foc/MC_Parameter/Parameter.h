@@ -7,8 +7,8 @@
 #define TIME_STABLE (40u)
 #define TIME_CALIBRATE (20u)
 #define TIME_IDLE (20u)
-#define TIME_ALIGN (200u)
-#define TIME_OPENLOOP (1500u)
+#define TIME_ALIGN (100u)
+#define TIME_OPENLOOP (500u)
 /*board parameters*/
 #define R_SHUNT (0.005f)
 #define GAIN_AMP (20.0f)
@@ -22,6 +22,8 @@
 #define PWM_FREQ (16000u)
 #define PWM_MOD (int16_t)(SYSTEM_FREQ * 1000 / (PWM_FREQ / 1000))
 #define PWM_PERIOD (1.0f / PWM_FREQ) // 50us
+#define SPDLOOP_FREQ (1000u)
+#define SPDLOOP_PERIOD (1.0f / SPDLOOP_FREQ)
 #define TIMER_CLOCK_PRESCALER_SET (0)
 #define DEADTIME (1.0f)      // us
 #define PWM_DELAY (0.5f)
@@ -43,7 +45,7 @@
 #define EFREQ_RATE (500.0f)
 
 #define VOLT_BASE (float)(VOLT_RATE / 1.732f)    // 17.96
-#define CURR_BASE (2*CURR_RATE)                    // 14.14
+#define CURR_BASE (1.5*CURR_RATE)                    // 14.14
 #define OMEGA_BASE (float)(2 * _PI * EFREQ_RATE) // 1884
 #define T_BASE (float)(1 / OMEGA_BASE)
 #define RS_BASE (float)(VOLT_BASE / CURR_BASE)
@@ -70,8 +72,8 @@
 
 #define BANDWIDTH_SPDLOOP (50u)
 #define BANDWIDTH_SPDLPF (80.0f)
-#define KP_SPDLOOP (6000u)
-#define KI_SPDLOOP (20u)
+#define KP_SPDLOOP (15000u)
+#define KI_SPDLOOP (50u)
 #define OUT_MAX_SPDLOOP (int16_t)(19660)
 #define OUT_MIN_SPDLOOP (int16_t)(-OUT_MAX_SPDLOOP)
 
@@ -81,8 +83,8 @@
 #define ALIGN_CURR_OPENLOOP (2.0f)
 #define ALIGN_CURR_SLOPE (0.02f)
 #define ALIGN_ANGLE Q16(0.25f)
-#define START_CURR_OPENLOOP (3.5f)
-#define IFCURR_TARGET (3.0f)
+#define START_CURR_OPENLOOP (1.5f)
+#define IFCURR_TARGET (1.5f)
 #define IFCURR_SLOPE (0.02f)
 
 #define UQ_LIMIT Q14(0.9f)
@@ -96,6 +98,8 @@
 #define GAIN_SVCM (0.8f)
 #define ONE_SHUNT_ENABLE (1)
 
-#define SMO_ENABLE (1)
-#define SVCM_ENABLE (0)
+#define SMO_ENABLE (0)
+#define SVCM_ENABLE (1)
+
+#define FOC_EXECUTE_CYCLE (2)
 #endif

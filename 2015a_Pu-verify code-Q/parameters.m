@@ -28,7 +28,7 @@ Vdc = 36;
 Vphase = Vdc/sqrt(3); %相电流侧最大电压
 
 %标幺基值%所有的标幺值，都是以相的幅值作为基值；
-Ib = 2*In;
+Ib = 1.5*In;
 Vb = Un/sqrt(3); %电压基值
 Wb = 2*pi*fn; %角频率基值
 tb = 1/Wb; %时间的基值
@@ -69,7 +69,7 @@ Iq_Ki = Q14*CurrentLoopBandwidth*Rs;
 CurrentLoopMax = Q14*1.2;
 
 %速度环带宽计算
-SpeedLoopBandwidth = 50*2*pi/Wb;
+SpeedLoopBandwidth = 10*2*pi/Wb;
 Speed_Kp = Q14*SpeedLoopBandwidth*JPu/fluxF;
 Speed_Ki = Q14*SpeedLoopBandwidth;
 SpeedOutmax = 1.2*Q14;
@@ -99,7 +99,7 @@ Factor2 = Q15*Ts*Rs_realvalue/Lq_realvalue;
 LowPassFilterBandWidth_Emf = 2*pi*150/Wb;
 LowPassFilterBandWidth_Emf_Q = Q14*LowPassFilterBandWidth_Emf;
 LowPassFilterCoeff_Emf = Q15*(1/(1+LowPassFilterBandWidth_Emf*TsPu));
-LowPassFilterBandWidth_Speed = 2*pi*80/Wb;
+LowPassFilterBandWidth_Speed = 2*pi*100/Wb;
 LowPassFilterCoeff_Spd = Q15*(1/(1+LowPassFilterBandWidth_Speed*SpeedloopTs/tb));
 
 %弱磁与MTPA

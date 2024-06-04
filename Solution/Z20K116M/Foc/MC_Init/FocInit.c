@@ -35,11 +35,12 @@ void Foc_Init(void)
     memset(&LoopCtrl, 0, sizeof(LOOP_CONTROL_DEF));
     memset(&Foc, 0, sizeof(FOC_DEF));
 
+	Foc.ExecuteCycle = FOC_EXECUTE_CYCLE;
     Foc.PhaseRes_Pu = Motor_Param.PhaseRes / Motor_Param.PhaseRes_Base;
     Foc.PhaseInd_Pu = Motor_Param.PhaseInd / Motor_Param.PhaseInd_Base;
     Foc.PhaseRes = Q14(Foc.PhaseRes_Pu);
     Foc.PhaseInd = Q14(Foc.PhaseInd_Pu);
-    Foc.TsPu = PWM_PERIOD / T_BASE;
+    Foc.TsPu = Foc.ExecuteCycle * PWM_PERIOD / T_BASE;
     Foc.Ts = Q15(Foc.TsPu);
     Foc.FluxPu = FLUX_RATE / FLUX_BASE;
     Foc.Flux = Q14(Foc.FluxPu);
@@ -103,7 +104,7 @@ void Foc_Init(void)
 	Svm.CompareValue_SimplePoint1 = PWM_MOD >> 3;
 	Svm.CompareValue_SimplePoint2 = PWM_MOD >> 2;
 
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef = Q14(600.0f / SPEED_BASE);
+    LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef = Q14(1000.0f / SPEED_BASE);
 }
 
 /**

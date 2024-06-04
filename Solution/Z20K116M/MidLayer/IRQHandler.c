@@ -100,7 +100,7 @@ void Pmsm_IRQHandleCurrentLoopIsr(void)
 //		Foc.RotaVolt.Imag = 19661;
 //		Foc.RotaVolt.Real = 0;
 		Foc.AngleUComp = Foc.Angle;
-		Foc.Angle += (10430 * (Foc.SpeedRealtime * Foc.Ts >> 14) >> 14u);
+		Foc.Angle += (10430 * (Foc.SpeedRealtime * Foc.Ts >> 15) >> 14u);
         Foc.StatVolt = iParkTransform(&Foc.RotaVolt, Foc.Angle);
 #if SMO_ENABLE
         {

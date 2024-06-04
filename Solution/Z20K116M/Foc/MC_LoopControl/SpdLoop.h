@@ -13,6 +13,7 @@ typedef struct
 
 typedef struct
 {
+  int16_t Ts;
   int16_t SpeedSlope;
   int16_t OpenLoopSpd;
   int16_t OpenLoopSpdTarget;
