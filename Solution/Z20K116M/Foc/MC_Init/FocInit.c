@@ -46,15 +46,14 @@ void Foc_Init(void)
     Foc.Flux = Q14(Foc.FluxPu);
     Foc.SvcmGain = Q15(GAIN_SVCM);
     Foc.Angle_Align = ALIGN_ANGLE;
+	
     Foc.BandWidthPu_CurrLoop = BANDWIDTH_CURRLOOP / Motor_Param.EfreqRated;
-
     Foc.Lpf_EmfEstReal.BandWidthPu = BANDWIDTH_EMFLPF / Motor_Param.EfreqRated;
     Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstReal.BandWidthPu * Foc.TsPu));
     Foc.Lpf_EmfEstImag.BandWidthPu = BANDWIDTH_EMFLPF / Motor_Param.EfreqRated;
     Foc.Lpf_EmfEstImag.Coeff = Q15(1 / (1 + Foc.Lpf_EmfEstImag.BandWidthPu * Foc.TsPu));
     Foc.Lpf_SpeedEst.BandWidthPu = BANDWIDTH_SPDLPF / Motor_Param.EfreqRated;
-    Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_SpeedEst.BandWidthPu * Foc.TsPu));
-	
+    Foc.Lpf_EmfEstReal.Coeff = Q15(1 / (1 + Foc.Lpf_SpeedEst.BandWidthPu * Foc.TsPu));	
     Foc.BandWidthPu_PllLoop = BANDWIDTH_PLLLOOP / Motor_Param.EfreqRated;
 
     Foc.Smo_Ctrl.Factor1 = Q15(PWM_PERIOD * Motor_Param.PhaseRes_Base / Motor_Param.PhaseInd);
@@ -98,13 +97,12 @@ void Foc_Init(void)
     LoopCtrl.OpenLoopCtrl.SwitchSpd = Q14(SPEED_SWITCH_OPENLOOP / SPEED_BASE);
     LoopCtrl.OpenLoopCtrl.OpenLoopSpdTarget = Q14(SPEED_TARGET_OPENLOOP / SPEED_BASE);
     LoopCtrl.OpenLoopCtrl.SpeedSlope = Q14(SPEED_SLOPE / SPEED_BASE);
+	LoopCtrl.ClosedLoopCtrl.SpeedRef = Q14(SPEED_CLOSEDLOOP / SPEED_BASE);
 
     Svm.ShiftScale = SHIFT_SCALE;
     Svm.StableScale = STABLE_SCALE;
 	Svm.CompareValue_SimplePoint1 = PWM_MOD >> 3;
 	Svm.CompareValue_SimplePoint2 = PWM_MOD >> 2;
-
-    LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef = Q14(1000.0f / SPEED_BASE);
 }
 
 /**
@@ -120,6 +118,8 @@ void ClosedLoop_Init(void)
     LoopCtrl.ClosedLoopCtrl.PLLLoop.I_Out = LoopCtrl.OpenLoopCtrl.OpenLoopSpd << 14u;
 	Foc.AngleEst = Foc.AngleOpen;
 	Foc.SpeedEstLpf = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
+	Foc.SpeedEst = LoopCtrl.OpenLoopCtrl.OpenLoopSpd;
+	LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef = LoopCtrl.ClosedLoopCtrl.SpeedRef;
     LoopCtrl.ClosedLoopCtrl.SpdLoop.I_Out = LoopCtrl.OpenLoopCtrl.IFCurr << 14u;
 }
 

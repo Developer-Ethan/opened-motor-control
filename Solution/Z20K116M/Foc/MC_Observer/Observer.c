@@ -70,8 +70,8 @@ void EstSVCM_Ctr(void)
 	
     RotaVolt = ParkTransform(&Foc.StatVolt, Foc.AngleEst);
     RotaCurr = ParkTransform(&Foc.StatCurr, Foc.AngleEst);
-    Ed = Foc.RotaVolt_Old.Real - ((Foc.PhaseRes * Foc.RotaCurr_Old.Real) >> 14u) + ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr_Old.Imag) >> 28u);
-    Eq = Foc.RotaVolt_Old.Imag - ((Foc.PhaseRes * Foc.RotaCurr_Old.Imag) >> 14u) - ((Foc.SpeedEst * Foc.PhaseInd * Foc.RotaCurr_Old.Real) >> 28u);
+    Ed = RotaVolt.Real - ((Foc.PhaseRes * RotaCurr.Real) >> 14u) + ((Foc.SpeedEst * Foc.PhaseInd * RotaCurr.Imag) >> 28u);
+    Eq = RotaVolt.Imag - ((Foc.PhaseRes * RotaCurr.Imag) >> 14u) - ((Foc.SpeedEst * Foc.PhaseInd * RotaCurr.Real) >> 28u);
 
     Temp = SIGN(Foc.SpeedEst, (-1), (1));
     Temp = ((Eq - Temp * Ed) << 14u) / Foc.Flux;
@@ -82,7 +82,7 @@ void EstSVCM_Ctr(void)
     Angle_temp = Foc.SpeedEst * Foc.Ts >> 15u;
     Foc.AngleEst += (10430 * Angle_temp) >> 14u;
 	
-	Foc.RotaVolt_Old = RotaVolt;
-	Foc.RotaCurr_Old = RotaCurr;
+//	Foc.RotaVolt_Old = RotaVolt;
+//	Foc.RotaCurr_Old = RotaCurr;
 	//(void)RotaCurr;
 }

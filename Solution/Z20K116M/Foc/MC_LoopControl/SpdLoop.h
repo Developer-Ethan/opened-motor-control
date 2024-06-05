@@ -8,6 +8,7 @@ typedef struct
   PI_DEF SpdLoop;
   PI_DEF PLLLoop;
   PI_DQ_DEF CurrLoop;
+  int16_t SpeedRef;
   /* data */
 } CLOSEDLOOP_DEF;
 

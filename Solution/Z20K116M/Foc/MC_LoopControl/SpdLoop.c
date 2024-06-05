@@ -73,7 +73,7 @@ void SpdLoop_Control(MOTORCTRL_DEF *pMotorCtrl, LOOP_CONTROL_DEF *pLoopCtrl)
         }
         break;
     case MotorClosedLoop:
-        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = pLoopCtrl->OpenLoopCtrl.IFCurr;//PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEstLpf);
+        pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_Q.InputRef = PID_Ctr(&LoopCtrl.ClosedLoopCtrl.SpdLoop, LoopCtrl.ClosedLoopCtrl.SpdLoop.InputRef - Foc.SpeedEstLpf);
         pLoopCtrl->ClosedLoopCtrl.CurrLoop.Pi_D.InputRef = 0;
         break;
 
