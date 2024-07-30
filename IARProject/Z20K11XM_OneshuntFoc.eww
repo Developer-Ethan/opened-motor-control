@@ -3,5 +3,8 @@
     <project>
         <path>$WS_DIR$\Z20K11XM_OneshuntFoc.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\..\..\Based on Z20K118M-Git-demo-2\IARProject\Z20K11XM_OneshuntFoc.ewp</path>
+    </project>
     <batchBuild />
 </workspace>

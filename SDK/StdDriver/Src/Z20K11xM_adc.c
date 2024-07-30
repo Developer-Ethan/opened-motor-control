@@ -1,17 +1,18 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_adc.c
- * @brief     : ADC module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_adc.c
+ * @brief    ADC module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #include "Z20K11xM_adc.h"
-#include "AppHeadFile.h"
+
 /** @addtogroup  Z20K11X_Peripheral_Driver
  *  @{
  */
@@ -32,6 +33,7 @@
  */
 
 #define ADC_NUM                   0x1U
+#define ADC_CALIBRATION_CHANNEL   22U
 
 /** @} end of group ADC_Private_Defines */
 
@@ -105,7 +107,7 @@ static void ADC_IntHandler(ADC_ID_t adcId);
 static void ADC_IntHandler(ADC_ID_t adcId)
 {
     uint32_t intStatus;
-	//GPIO_WritePinOutput(PORT_C,GPIO_8,GPIO_HIGH);
+
     adc_reg_t * ADCx = (adc_reg_t *)(adcRegPtr[adcId]);
     adc_reg_w_t * ADCWx = (adc_reg_w_t *) (adcRegWPtr[adcId]);
 
@@ -209,13 +211,7 @@ static void ADC_IntHandler(ADC_ID_t adcId)
  */
 void ADC0_DriverIRQHandler(void)
 {
-//	adc_reg_w_t * ADCWx = (adc_reg_w_t *) (adcRegWPtr[0]);
     ADC_IntHandler(ADC0_ID);
-//	if(ADCWx->ADC_STAT & 0x0001)
-//	{
-//		ADCWx->ADC_STAT |= 0x0001;
-//		Pmsm_IRQHandleCurrentLoopIsr();
-//	}
 }
 
 /** @} end of group ADC_Private_Functions */
@@ -363,6 +359,41 @@ void ADC_Disable(ADC_ID_t adcId)
     adc_reg_t * ADCx = (adc_reg_t *)(adcRegPtr[adcId]);
     
     ADCx->ADC_CTRL.ADC_EN = 0U;
+}
+
+/**
+ * @brief      Adc Self Calibration Function
+ *
+ * @param[in]  adcId: Select the ADC ID: ADC0_ID,....
+ *
+ * @return     status: SUCC, ERR
+ *
+ */
+ResultStatus_t ADC_SelfCalibration(ADC_ID_t adcId)
+{
+    adc_reg_t * ADCx = (adc_reg_t *)(adcRegPtr[adcId]);
+    volatile uint32_t i = 0U;
+    ResultStatus_t ret = ERR;
+    
+    ADCx->ADC_CFG.CHSELP = ADC_CALIBRATION_CHANNEL;
+    ADC_Enable(adcId);
+    ADCx->ADC_CTRL.CAL_REQ = (uint32_t)SET;
+    
+    while(i < ADC_TIMEOUT_WAIT_CNT_CALIBRATION)
+    {
+        if((uint32_t)SET == ADCx->ADC_STAT.CAL_RDY)
+        {
+            ADCx->ADC_CTRL.CAL_REQ = (uint32_t)RESET;
+            ret = SUCC;
+            break;
+        }
+        i = i + 1U;
+    }
+    
+    ADC_Disable(adcId);
+    ADCx->ADC_CFG.CHSELP = 0U;
+    
+    return ret;
 }
 
 /**
@@ -532,6 +563,21 @@ uint32_t ADC_GetConversionResult(ADC_ID_t adcId)
     adc_reg_t const volatile * ADCx = (adc_reg_t *)(adcRegPtr[adcId]);
     
     return (uint32_t) ADCx->ADC_DATA_RD.ADC_DATA_RD;
+}
+
+/**
+ * @brief      Adc Get Calibration Value Function
+ *
+ * @param[in]  adcId: Select the ADC ID
+ *
+ * @return     Calibration Value.
+ *
+ */
+int32_t ADC_GetCalibrationValue(ADC_ID_t adcId)
+{
+    adc_reg_t const volatile * ADCx = (adc_reg_t *)(adcRegPtr[adcId]);
+    
+    return (int32_t) ADCx->ADC_CAL_VAL.ADC_CAL_VAL;
 }
 
 /**

@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_ewdt.h
- * @brief     : EWDT driver module header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_ewdt.h
+ * @brief    EWDT driver module header file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 #ifndef Z20K11XM_EWDT_H
 #define Z20K11XM_EWDT_H

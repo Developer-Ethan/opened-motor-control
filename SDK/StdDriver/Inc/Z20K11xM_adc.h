@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_adc.h
- * @brief     : ADC module driver header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_adc.h
+ * @brief    ADC driver module header file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #ifndef Z20K11XM_ADC_H
@@ -116,7 +117,8 @@ typedef enum
     ADC_P_CH15,                      /*!< Single mode, channel[15] and vss */
     ADC_P_CH16,                      /*!< Single mode, channel[16] and vss */
     ADC_P_CH17,                      /*!< Single mode, channel[17] and vss */
-    ADC_P_CH20 = 20U                 /*!< internal channel bandgap */
+    ADC_P_CH18,                      /*!< Single mode, channel[18] and vss */
+    ADC_P_CH19                       /*!< Single mode, channel[19] and vss */
 } ADC_P_Channel_t;
 
 /**  
@@ -237,8 +239,8 @@ typedef struct
      */
 
     uint32_t      adcSampleTime;            
-    /*!< Set the time interval between two samples when average is enabled or in continues mode.
-         Please refer to STS definition in RM to see the constraint */
+    /*!< Configure ADC sample time(clock cycles) in continuous mode, 
+         SampleTime*Function_CLK>500ns */
 } ADC_Config_t;
 
 /**  
@@ -255,7 +257,7 @@ typedef struct
     /*!< Configure ADC positive channel
         - ADC_P_CH0 (0):   ADC Positive channel 0
         - ......
-        - ADC_P_CH20 (20): ADC Positive channel 20 */
+        - ADC_P_CH21 (21): ADC Positive channel 21 */
 
     ADC_N_Channel_t    adcChannelN;          
     /*!< Configure ADC negtive channel
@@ -315,7 +317,7 @@ typedef struct
     /*!< Configure ADC CMD 0 buff, which is P_channel value:
         - ADC_P_CH0 (0):   ADC Positive channel 0
         - ......
-        - ADC_P_CH20 (20): ADC Positive channel 20
+        - ADC_P_CH19 (19): ADC Positive channel 19 
      */ 
 
     ADC_P_Channel_t       adcCmd1;           
@@ -398,6 +400,16 @@ void ADC_Enable(ADC_ID_t adcId);
  *
  */
 void ADC_Disable(ADC_ID_t adcId);
+
+/**
+ * @brief      Adc Self Calibration Function
+ *
+ * @param[in]  adcId: Select the ADC ID: ADC0_ID,....
+ *
+ * @return     status: SUCC, ERR
+ *
+ */
+ResultStatus_t ADC_SelfCalibration(ADC_ID_t adcId);
 
 /**
  * @brief      Adc Channel Configurate Function
@@ -546,6 +558,16 @@ void ADC_SoftwareTrigger(ADC_ID_t adcId);
  *
  */
 uint32_t ADC_GetConversionResult(ADC_ID_t adcId);
+
+/**
+ * @brief      Adc Get Calibration Value Function
+ *
+ * @param[in]  adcId: Select the ADC ID: ADC0_ID,....
+ *
+ * @return     Calibration Value.
+ *
+ */
+int32_t ADC_GetCalibrationValue(ADC_ID_t adcId);
 
 /**
  * @brief      Adc Get Status Function

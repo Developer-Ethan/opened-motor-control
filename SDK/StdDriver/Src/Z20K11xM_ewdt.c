@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_ewdt.c
- * @brief     : EWDT module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_ewdt.c
+ * @brief    EWDT module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #include "Z20K11xM_ewdt.h"
@@ -86,10 +87,10 @@ END_FUNCTION_DECLARATION_RAMSECTION /* PRQA S 0605*/
 /**
  *  @brief EWDT Register address array
  */
-/*PRQA S 0303 ++*/
+/*PRQA S 0303,0306 ++*/
 static ewdt_reg_t *const ewdtRegPtr = (ewdt_reg_t *)EWDT_BASE_ADDR;
 static ewdt_reg_w_t *const ewdtRegWPtr = (ewdt_reg_w_t *)EWDT_BASE_ADDR;
-/*PRQA S 0303 --*/
+/*PRQA S 0303,0306 --*/
 /*! @brief ewdt int status mask array */
 static const uint32_t ewdtIntMask[] = {EWDT_CS_INTE_MASK, EWDT_CS_INTE_MASK};
 

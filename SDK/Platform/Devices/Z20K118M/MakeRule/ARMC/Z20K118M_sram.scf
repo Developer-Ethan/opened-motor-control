@@ -18,7 +18,7 @@ LR_IROM1 ram0_start ram0_size  {    ; load region size_region
    .ANY (+RO)
   }
   
-  RAM_START ram1_start ram1_size  {  ; RW data
+  RW_IRAM1 ram1_start ram1_size  {  ; RW data
    .ANY (+RW +ZI)
   }
   

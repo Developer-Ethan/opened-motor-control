@@ -20,7 +20,7 @@ LR_IROM1 pflash_start pflash_size  {    ; load region size_region
    .ANY (+RO)
   }
   
-  RAM_START ram0_start ram0_size  {  ; code execution in ram
+  RW_IRAM0 ram0_start ram0_size  {  ; code execution in ram
    .ANY (.code_ram)
    .ANY (+RW +ZI)
   }

@@ -82,19 +82,20 @@ SECTIONS
         __HeapLimit = .;
     } > RAM1
 
-    /* Initializes stack on the end of block */
-    __StackTop   = ORIGIN(RAM1) + LENGTH(RAM1);
-    __StackLimit = __StackTop - CSTACK_SIZE;
-    PROVIDE(CSTACK = __StackTop);
-
-    .stack __StackLimit :
+    .stack :
     {
         . = ALIGN(8);
         __stack_start__ = .;
         . += CSTACK_SIZE;
         __stack_end__ = .;
     } > RAM1
+    
+    /* Initializes stack on the end of block */
+    __StackTop   = ORIGIN(RAM1) + LENGTH(RAM1);
+    __StackLimit = __StackTop - CSTACK_SIZE;
+    PROVIDE(CSTACK = __StackTop);
 
     __RAM_START = ORIGIN(RAM1);
-    __RAM_END = __StackTop - 1; 
+    __RAM_END = __StackTop - 1;
+    
 }

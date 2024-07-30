@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Diag.c
  * @brief     : Z20A8300A DPS and DIAG Register API Source File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 /** @addtogroup Z20A8300A_Driver
  *  @{
@@ -83,19 +83,19 @@ extern "C" {
 Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadAllDPSData(Z20A8300A_IfType *IfPtr,
                                                       Z20A8300A_AllDpsType *AllDpsPtr)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_DPS0_ADDRESS);
     
     if(Z20A8300A_ERR_OK == Rst)
     {
         Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-        AllDpsPtr->WORD = Data;
+        AllDpsPtr->WORD = (uint32_t)Data;
         
         Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_DPS1_ADDRESS);
         if(Z20A8300A_ERR_OK == Rst)
         {
             Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-            AllDpsPtr->WORD |= (Data << 9U);
+            AllDpsPtr->WORD |= (uint32_t)((uint32_t)Data << 9U);
         }
     }
     else
@@ -135,7 +135,7 @@ Z20A8300A_ContorlStateType Z20A8300A_Diag_GetFaultEnableStatus(Z20A8300A_AllDpsT
 {
     Z20A8300A_ContorlStateType Enable;
 
-    if(1U == ((AllDpsPtr->WORD >> ((uint8_t)FaultType)) & 0x0001U))
+    if(1U == ((AllDpsPtr->WORD >> ((uint16_t)FaultType)) & 0x0001U))
     {
         Enable = Z20A8300A_ENABLE;
     }
@@ -165,24 +165,24 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetAllFaultEnableStatus(Z20A8300A_IfType 
                         const Z20A8300A_DpsConfigType *DpsConfigPtr)
 {
     Z20A8300A_SpiStatusType Rst;
-    uint32_t Data;
+    uint16_t Data;
 
-    Data  = Z20A8300A_DPS0_FCPU_SET(DpsConfigPtr->EnableFCPU);
-    Data |= Z20A8300A_DPS0_FVDO_SET(DpsConfigPtr->EnableFVDO);
-    Data |= Z20A8300A_DPS0_FSE_SET(DpsConfigPtr->EnableFSE);
-    Data |= Z20A8300A_DPS0_FOT_SET(DpsConfigPtr->EnableFOT);
+    Data  = Z20A8300A_DPS0_FCPU_SET((uint16_t)DpsConfigPtr->EnableFCPU);
+    Data |= Z20A8300A_DPS0_FVDO_SET((uint16_t)DpsConfigPtr->EnableFVDO);
+    Data |= Z20A8300A_DPS0_FSE_SET((uint16_t)DpsConfigPtr->EnableFSE);
+    Data |= Z20A8300A_DPS0_FOT_SET((uint16_t)DpsConfigPtr->EnableFOT);
 
     Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_DPS0_ADDRESS,Data);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data  = Z20A8300A_DPS1_FVSU_SET(DpsConfigPtr->EnableFVSU);
-        Data |= Z20A8300A_DPS1_FVSO_SET(DpsConfigPtr->EnableFVSO);
-        Data |= Z20A8300A_DPS1_FVRU_SET(DpsConfigPtr->EnableFVRU);
-        Data |= Z20A8300A_DPS1_FVRO_SET(DpsConfigPtr->EnableFVRO);
-        Data |= Z20A8300A_DPS1_FVBU_SET(DpsConfigPtr->EnableFVBU);
-        Data |= Z20A8300A_DPS1_FGSU_SET(DpsConfigPtr->EnableFGSU);
-        Data |= Z20A8300A_DPS1_FDSO_SET(DpsConfigPtr->EnableFDSO);
-        Data |= Z20A8300A_DPS1_FOC_SET(DpsConfigPtr->EnableFOC);
+        Data  = Z20A8300A_DPS1_FVSU_SET((uint16_t)DpsConfigPtr->EnableFVSU);
+        Data |= Z20A8300A_DPS1_FVSO_SET((uint16_t)DpsConfigPtr->EnableFVSO);
+        Data |= Z20A8300A_DPS1_FVRU_SET((uint16_t)DpsConfigPtr->EnableFVRU);
+        Data |= Z20A8300A_DPS1_FVRO_SET((uint16_t)DpsConfigPtr->EnableFVRO);
+        Data |= Z20A8300A_DPS1_FVBU_SET((uint16_t)DpsConfigPtr->EnableFVBU);
+        Data |= Z20A8300A_DPS1_FGSU_SET((uint16_t)DpsConfigPtr->EnableFGSU);
+        Data |= Z20A8300A_DPS1_FDSO_SET((uint16_t)DpsConfigPtr->EnableFDSO);
+        Data |= Z20A8300A_DPS1_FOC_SET((uint16_t)DpsConfigPtr->EnableFOC);
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_DPS1_ADDRESS,Data);
     }
@@ -224,18 +224,18 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetFaultEnableStatus(Z20A8300A_IfType *If
                                                             Z20A8300A_ContorlStateType En)
 {
     Z20A8300A_SpiStatusType Rst;
-    uint32_t Data,FaultBits;
+    uint16_t Data,FaultBits;
     Z20A8300A_RegisterAddressType Address;
 
-    if((uint32_t)FaultType < 9U)
+    if((uint16_t)FaultType < 9U)
     {
         Address = Z20A8300A_DPS0_ADDRESS;
-        FaultBits = (uint32_t)FaultType;
+        FaultBits = (uint16_t)FaultType;
     }
     else
     {
         Address = Z20A8300A_DPS1_ADDRESS;
-        FaultBits = (uint32_t)FaultType - 9U;
+        FaultBits = (uint16_t)FaultType - 9U;
     }
 
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Address);
@@ -243,11 +243,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetFaultEnableStatus(Z20A8300A_IfType *If
     {
         if(En == Z20A8300A_DISABLE)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA & (~((uint32_t)0x0001U << FaultBits)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (uint16_t)(~((uint16_t)0x0001U << (uint16_t)FaultBits))));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA | (((uint32_t)0x0001U << FaultBits)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA | 
+                              (uint16_t)(((uint16_t)0x0001U << (uint16_t)FaultBits))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Address,Data);
@@ -276,25 +278,25 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetFaultEnableStatus(Z20A8300A_IfType *If
 Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadAllMaskData(Z20A8300A_IfType *IfPtr,
                                                        Z20A8300A_AllMaskType *AllMaskPtr)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_MASK0_ADDRESS);
     
     if(Z20A8300A_ERR_OK == Rst)
     {
         Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-        AllMaskPtr->WORD = Data;
+        AllMaskPtr->WORD = (uint32_t)Data;
         
         Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_MASK1_ADDRESS);
         if(Z20A8300A_ERR_OK == Rst)
         {
             Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-            AllMaskPtr->WORD |= (Data << 9U);
+            AllMaskPtr->WORD |= (uint32_t)((uint32_t)Data << 9U);
             
             Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_MASK2_ADDRESS);
             if(Z20A8300A_ERR_OK == Rst)
             {
                 Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-                AllMaskPtr->WORD |= (Data << 18U);
+                AllMaskPtr->WORD |= (uint32_t)((uint32_t)Data << 18U);
             }
         }
     }
@@ -348,7 +350,7 @@ Z20A8300A_MaskType Z20A8300A_Diag_GetDiagMaskStatus(Z20A8300A_AllMaskType *AllMa
 {
     Z20A8300A_MaskType Mask;
 
-    if(1U == ((AllMaskPtr->WORD >> ((uint8_t)MaskType)) & 0x0001U))
+    if(1U == ((AllMaskPtr->WORD >> ((uint16_t)MaskType)) & 0x0001U))
     {
         Mask = Z20A8300A_MASK;
     }
@@ -378,43 +380,43 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetAllDiagMaskStatus(Z20A8300A_IfType *If
                                                       const Z20A8300A_MaskConfigType *MaskCfgPtr)
 {
     Z20A8300A_SpiStatusType Rst;
-    uint32_t Data;
+    uint16_t Data;
 
-    Data  = Z20A8300A_MASK0_ALU_SET(MaskCfgPtr->MaskEnableALU);
-    Data |= Z20A8300A_MASK0_AHU_SET(MaskCfgPtr->MaskEnableAHU);
-    Data |= Z20A8300A_MASK0_BLU_SET(MaskCfgPtr->MaskEnableBLU);
-    Data |= Z20A8300A_MASK0_BHU_SET(MaskCfgPtr->MaskEnableBHU);
-    Data |= Z20A8300A_MASK0_CLU_SET(MaskCfgPtr->MaskEnableCLU);
-    Data |= Z20A8300A_MASK0_CHU_SET(MaskCfgPtr->MaskEnableCHU);
-    Data |= Z20A8300A_MASK0_BSUA_SET(MaskCfgPtr->MaskEnableBSUA);
-    Data |= Z20A8300A_MASK0_BSUB_SET(MaskCfgPtr->MaskEnableBSUB);
-    Data |= Z20A8300A_MASK0_BSUC_SET(MaskCfgPtr->MaskEnableBSUC);
+    Data  = Z20A8300A_MASK0_ALU_SET((uint16_t)MaskCfgPtr->MaskEnableALU);
+    Data |= Z20A8300A_MASK0_AHU_SET((uint16_t)MaskCfgPtr->MaskEnableAHU);
+    Data |= Z20A8300A_MASK0_BLU_SET((uint16_t)MaskCfgPtr->MaskEnableBLU);
+    Data |= Z20A8300A_MASK0_BHU_SET((uint16_t)MaskCfgPtr->MaskEnableBHU);
+    Data |= Z20A8300A_MASK0_CLU_SET((uint16_t)MaskCfgPtr->MaskEnableCLU);
+    Data |= Z20A8300A_MASK0_CHU_SET((uint16_t)MaskCfgPtr->MaskEnableCHU);
+    Data |= Z20A8300A_MASK0_BSUA_SET((uint16_t)MaskCfgPtr->MaskEnableBSUA);
+    Data |= Z20A8300A_MASK0_BSUB_SET((uint16_t)MaskCfgPtr->MaskEnableBSUB);
+    Data |= Z20A8300A_MASK0_BSUC_SET((uint16_t)MaskCfgPtr->MaskEnableBSUC);
     
     Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_MASK0_ADDRESS,Data);
     
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data  = Z20A8300A_MASK1_ALO_SET(MaskCfgPtr->MaskEnableALO);
-        Data |= Z20A8300A_MASK1_AHO_SET(MaskCfgPtr->MaskEnableAHO);
-        Data |= Z20A8300A_MASK1_BLO_SET(MaskCfgPtr->MaskEnableBLO);
-        Data |= Z20A8300A_MASK1_BHO_SET(MaskCfgPtr->MaskEnableBHO);
-        Data |= Z20A8300A_MASK1_CLO_SET(MaskCfgPtr->MaskEnableCLO);
-        Data |= Z20A8300A_MASK1_CHO_SET(MaskCfgPtr->MaskEnableCHO);
-        Data |= Z20A8300A_MASK1_AOC_SET(MaskCfgPtr->MaskEnableAOC);
-        Data |= Z20A8300A_MASK1_BOC_SET(MaskCfgPtr->MaskEnableBOC);
-        Data |= Z20A8300A_MASK1_COC_SET(MaskCfgPtr->MaskEnableCOC);
+        Data  = Z20A8300A_MASK1_ALO_SET((uint16_t)MaskCfgPtr->MaskEnableALO);
+        Data |= Z20A8300A_MASK1_AHO_SET((uint16_t)MaskCfgPtr->MaskEnableAHO);
+        Data |= Z20A8300A_MASK1_BLO_SET((uint16_t)MaskCfgPtr->MaskEnableBLO);
+        Data |= Z20A8300A_MASK1_BHO_SET((uint16_t)MaskCfgPtr->MaskEnableBHO);
+        Data |= Z20A8300A_MASK1_CLO_SET((uint16_t)MaskCfgPtr->MaskEnableCLO);
+        Data |= Z20A8300A_MASK1_CHO_SET((uint16_t)MaskCfgPtr->MaskEnableCHO);
+        Data |= Z20A8300A_MASK1_AOC_SET((uint16_t)MaskCfgPtr->MaskEnableAOC);
+        Data |= Z20A8300A_MASK1_BOC_SET((uint16_t)MaskCfgPtr->MaskEnableBOC);
+        Data |= Z20A8300A_MASK1_COC_SET((uint16_t)MaskCfgPtr->MaskEnableCOC);
         
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_MASK1_ADDRESS,Data);
         
         if(Z20A8300A_ERR_OK == Rst)
         {
-            Data  = Z20A8300A_MASK2_OT_SET(MaskCfgPtr->MaskEnableOT);
-            Data |= Z20A8300A_MASK2_VDO_SET(MaskCfgPtr->MaskEnableVDO);
-            Data |= Z20A8300A_MASK2_VRU_SET(MaskCfgPtr->MaskEnableVRU);
-            Data |= Z20A8300A_MASK2_VRO_SET(MaskCfgPtr->MaskEnableVRO);
-            Data |= Z20A8300A_MASK2_VCPU_SET(MaskCfgPtr->MaskEnableVCPU);
-            Data |= Z20A8300A_MASK2_VSU_SET(MaskCfgPtr->MaskEnableVSU);
-            Data |= Z20A8300A_MASK2_VSO_SET(MaskCfgPtr->MaskEnableVSO);
+            Data  = Z20A8300A_MASK2_OT_SET((uint16_t)MaskCfgPtr->MaskEnableOT);
+            Data |= Z20A8300A_MASK2_VDO_SET((uint16_t)MaskCfgPtr->MaskEnableVDO);
+            Data |= Z20A8300A_MASK2_VRU_SET((uint16_t)MaskCfgPtr->MaskEnableVRU);
+            Data |= Z20A8300A_MASK2_VRO_SET((uint16_t)MaskCfgPtr->MaskEnableVRO);
+            Data |= Z20A8300A_MASK2_VCPU_SET((uint16_t)MaskCfgPtr->MaskEnableVCPU);
+            Data |= Z20A8300A_MASK2_VSU_SET((uint16_t)MaskCfgPtr->MaskEnableVSU);
+            Data |= Z20A8300A_MASK2_VSO_SET((uint16_t)MaskCfgPtr->MaskEnableVSO);
 
             Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_MASK2_ADDRESS,Data);
         }
@@ -470,23 +472,23 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetDiagMaskStatus(Z20A8300A_IfType *IfPtr
                                                          Z20A8300A_MaskType Mask)
 {
     Z20A8300A_SpiStatusType Rst;
-    uint32_t Data,MaskBits;
+    uint16_t Data,MaskBits;
     Z20A8300A_RegisterAddressType Address;
 
-    if((uint32_t)MaskType >= 18U)
+    if((uint16_t)MaskType >= 18U)
     {
         Address = Z20A8300A_MASK2_ADDRESS;
-        MaskBits = (uint32_t)MaskType - 18U;
+        MaskBits = (uint16_t)MaskType - 18U;
     }
-    else if((uint32_t)MaskType >= 9U)
+    else if((uint16_t)MaskType >= 9U)
     {
         Address = Z20A8300A_MASK1_ADDRESS;
-        MaskBits = (uint32_t)MaskType - 9U;
+        MaskBits = (uint16_t)MaskType - 9U;
     }
     else
     {
         Address = Z20A8300A_MASK0_ADDRESS;
-        MaskBits = (uint32_t)MaskType;
+        MaskBits = (uint16_t)MaskType;
     }
 
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Address);
@@ -494,11 +496,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_SetDiagMaskStatus(Z20A8300A_IfType *IfPtr
     {
         if(Mask == Z20A8300A_UNMASK)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA & (~((uint32_t)0x0001U << MaskBits)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (uint16_t)(~((uint16_t)0x0001U << (uint16_t)MaskBits))));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA | (((uint32_t)0x0001U << MaskBits)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA | 
+                              (uint16_t)(((uint16_t)0x0001U << (uint16_t)MaskBits))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Address,Data);
@@ -529,7 +533,7 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadClearDiag(Z20A8300A_IfType *IfPtr,
                                                      Z20A8300A_StatusRegType *StatusRegPtr,
                                                      Z20A8300A_AllDiagType *AllDiagPtr)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst0;
     Z20A8300A_SpiStatusType Rst1 = Z20A8300A_ERR_OK;
     Z20A8300A_SpiStatusType Rst2 = Z20A8300A_ERR_OK;
@@ -548,7 +552,7 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadClearDiag(Z20A8300A_IfType *IfPtr,
             if(Z20A8300A_ERR_OK == Rst0)
             {
                 Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-                AllDiagPtr->WORD = Data;
+                AllDiagPtr->WORD = (uint32_t)Data;
             }
         }
         
@@ -559,7 +563,7 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadClearDiag(Z20A8300A_IfType *IfPtr,
             if(Z20A8300A_ERR_OK == Rst1)
             {
                 Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-                AllDiagPtr->WORD |= (Data << 9U);
+                AllDiagPtr->WORD |= (uint32_t)((uint32_t)Data << 9U);
             }
         }
         
@@ -571,7 +575,7 @@ Z20A8300A_SpiStatusType Z20A8300A_Diag_ReadClearDiag(Z20A8300A_IfType *IfPtr,
             if(Z20A8300A_ERR_OK == Rst2)
             {
                 Data = Z20A8300A_FRAME_DATA_GET(IfPtr->RxFrame.DB);
-                AllDiagPtr->WORD |= (Data << 18U);
+                AllDiagPtr->WORD |= (uint32_t)((uint32_t)Data << 18U);
             }
         }
 

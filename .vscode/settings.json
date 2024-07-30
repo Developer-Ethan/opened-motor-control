@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "appheadfile.h": "c",
-        "adc.h": "c",
-        "clock.h": "c",
-        "midlayer.h": "c"
-    }
-}

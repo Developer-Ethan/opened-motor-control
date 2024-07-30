@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Spi.c
  * @brief     : Z20A8300A Spi Communication Source File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 /** @addtogroup Z20A8300A_Driver
  *  @{
@@ -24,14 +24,10 @@ extern "C" {
 #endif
 
 #include "Z20A8300A_Spi.h"
-#include "Z20K11xM_gpio.h"
-#include "Z20A8300A_Hal.h"
 
 /** @defgroup Spi_Private_MacroDefinition
  *  @{
  */
-
-#define Z20A8300A_UNLOCK_PROTECTION_ADDRESS                  0x001BU
 
 /** @} end of Spi_Private_MacroDefinition */
 
@@ -88,7 +84,7 @@ extern "C" {
 Z20A8300A_SpiStatusType Z20A8300A_SendFrameAtomic(Z20A8300A_IfType *IfPtr,
                                                   Z20A8300A_RegisterAddressType Address,
                                                   Z20A8300A_ReadWriteBitType WR,
-                                                  uint32_t Data)
+                                                  uint16_t Data)
 {
     Z20A8300A_SpiStatusType SpiStatus;
     Z20A8300A_Assert(IfPtr->SpiSendCallBack == NULL);
@@ -96,19 +92,19 @@ Z20A8300A_SpiStatusType Z20A8300A_SendFrameAtomic(Z20A8300A_IfType *IfPtr,
     /* clear buff */
     IfPtr->TxFrame.DB             = 0U;        
     /* set send address */
-    IfPtr->TxFrame.BITS.ADDRESS  = (uint32_t)Address;
+    IfPtr->TxFrame.BITS.ADDRESS  = (uint16_t)Address;
     /* read data */
-    IfPtr->TxFrame.BITS.WR       = (uint32_t)WR;
+    IfPtr->TxFrame.BITS.WR       = (uint16_t)WR;
     /* calc parity */
     IfPtr->TxFrame.BITS.DATA     = Data;
     
-    if(0U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == Z20A8300A_ParityCheck16(IfPtr->TxFrame.DB))
     {
         IfPtr->TxFrame.BITS.PARITY = 1U;
     }
     
     /* spi send */
-    if(0U == IfPtr->SpiSendCallBack((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == IfPtr->SpiSendCallBack(IfPtr->TxFrame.DB))    
     {
         SpiStatus = Z20A8300A_ERR_SEND;
     }
@@ -157,7 +153,7 @@ Z20A8300A_SpiStatusType Z20A8300A_ReceiveFrameAtomic(Z20A8300A_IfType *IfPtr)
     /* get receive data */
     IfPtr->RxFrame.DB = IfPtr->SpiReceiveCallBack();   
     /* calc parity */
-    if(1U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->RxFrame.DB))
+    if(1U == Z20A8300A_ParityCheck16(IfPtr->RxFrame.DB))
     {
         SpiStatus = Z20A8300A_ERR_OK;
     }
@@ -194,19 +190,19 @@ Z20A8300A_SpiStatusType Z20A8300A_ReadDataRegister(Z20A8300A_IfType *IfPtr,
     /* clear buff */
     IfPtr->TxFrame.DB            = 0U;
     /* set send address */
-    IfPtr->TxFrame.BITS.ADDRESS  = (uint32_t)Address;
+    IfPtr->TxFrame.BITS.ADDRESS  = (uint16_t)Address;
     /*!< read data */
-    IfPtr->TxFrame.BITS.WR       = (uint32_t)Z20A8300A_WR_READ;
+    IfPtr->TxFrame.BITS.WR       = (uint16_t)Z20A8300A_WR_READ;        
     IfPtr->TxFrame.BITS.DATA     = 0U;
     
     /* calc parity */
-    if(0U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == Z20A8300A_ParityCheck16(IfPtr->TxFrame.DB))
     {
         IfPtr->TxFrame.BITS.PARITY = 1U;
     }
     
     /* spi send */
-    if(0U == IfPtr->SpiSendCallBack((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == IfPtr->SpiSendCallBack(IfPtr->TxFrame.DB))    
     {
         SpiStatus = Z20A8300A_ERR_SEND;
     }
@@ -218,10 +214,8 @@ Z20A8300A_SpiStatusType Z20A8300A_ReadDataRegister(Z20A8300A_IfType *IfPtr,
             /* get receive data */
             IfPtr->RxFrame.DB = IfPtr->SpiReceiveCallBack();   
             
-			Z20A8300A_SPI_PCS_ANALOG_HIGH;
-			
             /* calc parity */
-            if(1U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->RxFrame.DB))
+            if(1U == Z20A8300A_ParityCheck16(IfPtr->RxFrame.DB))
             {
                 SpiStatus = Z20A8300A_ERR_OK;
             }
@@ -256,7 +250,7 @@ Z20A8300A_SpiStatusType Z20A8300A_ReadDataRegister(Z20A8300A_IfType *IfPtr,
  */
 Z20A8300A_SpiStatusType Z20A8300A_WriteDataRegister(Z20A8300A_IfType *IfPtr,
                                                     Z20A8300A_RegisterAddressType Address,
-                                                    uint32_t Data)
+                                                    uint16_t Data)
 {
     Z20A8300A_SpiStatusType SpiStatus;
     Z20A8300A_Assert(IfPtr->SpiSendCallBack == NULL);
@@ -266,19 +260,19 @@ Z20A8300A_SpiStatusType Z20A8300A_WriteDataRegister(Z20A8300A_IfType *IfPtr,
     /* clear buff */
     IfPtr->TxFrame.DB           = 0U;            
     /* set send address */
-    IfPtr->TxFrame.BITS.ADDRESS = (uint32_t)Address;
+    IfPtr->TxFrame.BITS.ADDRESS = (uint16_t)Address;
     /* write data */
-    IfPtr->TxFrame.BITS.WR      = (uint32_t)Z20A8300A_WR_WRITE;
+    IfPtr->TxFrame.BITS.WR      = (uint16_t)Z20A8300A_WR_WRITE;
     /* set send data */
     IfPtr->TxFrame.BITS.DATA    = Data;
     
     /* calc parity */
-    if(0U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == Z20A8300A_ParityCheck16(IfPtr->TxFrame.DB))
     {
         IfPtr->TxFrame.BITS.PARITY = 1U;
     }
     /* spi send */
-    if(0U == IfPtr->SpiSendCallBack((uint16_t)IfPtr->TxFrame.DB))
+    if(0U == IfPtr->SpiSendCallBack(IfPtr->TxFrame.DB))    
     {
         SpiStatus = Z20A8300A_ERR_SEND;
     }
@@ -288,17 +282,12 @@ Z20A8300A_SpiStatusType Z20A8300A_WriteDataRegister(Z20A8300A_IfType *IfPtr,
         if(1U == IfPtr->SpiWaitingForReceptionCallBack())    
         {
             IfPtr->RxFrame.DB = IfPtr->SpiReceiveCallBack();
-			
-			Z20A8300A_SPI_PCS_ANALOG_HIGH;
-				
             /* calc parity */
-            if(1U == Z20A8300A_ParityCheck16((uint16_t)IfPtr->RxFrame.DB))
+            if(1U == Z20A8300A_ParityCheck16(IfPtr->RxFrame.DB))
             {
-                if((Address >= Z20A8300A_DIAG0_ADDRESS && Address <= Z20A8300A_DIAG2_ADDRESS) || 
-                   (Address == (Z20A8300A_RegisterAddressType)Z20A8300A_UNLOCK_PROTECTION_ADDRESS))
+                if(Address >= Z20A8300A_DIAG0_ADDRESS && Address <= Z20A8300A_DIAG2_ADDRESS)
                 {
                     /* read only register return*/
-                    /* Specific instructions return */
                     SpiStatus =  Z20A8300A_ERR_OK;            
                 }
                 else

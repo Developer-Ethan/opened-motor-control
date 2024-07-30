@@ -1,0 +1,662 @@
+14:39:08 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:39:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:39:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:39:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:40:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:40:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:40:35 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:40:35 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:41:29 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:41:29 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:43:55 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:43:55 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:04 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:04 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:05 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:06 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:08 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:08 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:09 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:44:09 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:14 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:44:14 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:16 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:16 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:19 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:19 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:20 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:20 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:21 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:21 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:21 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:21 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:22 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:22 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:22 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:22 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:22 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:23 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:23 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:44:24 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:29 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:44:30 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:31 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:44:31 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:31 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:44:32 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:35 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:44:35 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:44 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:44:44 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:44 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:44:44 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:47 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:47 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:49 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:49 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:44:49 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:44:49 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_EIM/TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_ESM/TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:49:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: initial project load
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:49:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:49:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:09 **** Updating project TLE9879_2QXA40_SDADC_TMR: Configuration file [TLE9879_2QXA40_SDADC_TMR.rteconfig] is saved
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:49:09 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:44 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: Configuration file [TLE9879QXA40_ADC1_POTI_EIM.rteconfig] is saved
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:44 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:49:44 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:52 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: Configuration file [TLE9879QXA40_ADC1_POTI_ESM.rteconfig] is saved
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:49:52 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:49:52 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:04 **** Updating project TLE9879QXA40_BLDC_BEMF: project created
+Project updated successfully
+
+14:50:05 **** Updating project TLE9879QXA40_BLDC_BEMF: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:50:37 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:50:37 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:39 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:50:39 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:39 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:50:40 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:41 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:50:41 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:42 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:50:42 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:42 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:50:42 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:44 **** Updating project TLE9879QXA40_BLDC_BEMF: project created
+Project updated successfully
+
+14:50:44 **** Updating project TLE9879QXA40_BLDC_BEMF: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:45 **** Updating project TLE9879QXA40_BLDC_BEMF: project created
+Project updated successfully
+
+14:50:45 **** Updating project TLE9879QXA40_BLDC_BEMF: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:50:45 **** Updating project TLE9879QXA40_BLDC_BEMF: project created
+Project updated successfully
+
+14:50:45 **** Updating project TLE9879QXA40_BLDC_BEMF: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:52:08 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:52:08 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:52:08 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:52:08 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:53:24 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:53:24 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:53:24 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:53:24 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:54:01 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:54:01 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:54:01 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:54:01 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:55:28 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_EIM/TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_EIM/TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:55:28 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_ESM/TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_ESM/TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:55:28 **** Updating project TLE9879QXA40_BLDC_BEMF: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_BLDC_BEMF/TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_BLDC_BEMF/TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:55:28 **** Updating project TLE9879_2QXA40_SDADC_TMR: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879_2QXA40_SDADC_TMR/TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879_2QXA40_SDADC_TMR/TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:56:12 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:56:12 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+TLE9879-2QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:56:12 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:56:12 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+TLE9879QXA40 - Device is missing. Pack is not installed: Infineon.TLE987x_DFP
+
+14:56:39 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:56:39 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:56:39 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:56:40 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:57:50 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:57:50 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:57:50 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:57:50 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:17 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:17 **** Updating project TLE9879_2QXA40_SDADC_TMR: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:17 **** Updating project TLE9879QXA40_BLDC_BEMF: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:17 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: CMSIS-Pack(s) are installed or removed
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:53 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_EIM/TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:59:54 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_ESM/TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:59:54 **** Updating project TLE9879QXA40_BLDC_BEMF: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_BLDC_BEMF/TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:59:54 **** Updating project TLE9879_2QXA40_SDADC_TMR: initial project load
+Project update failed
+Error updating RTE project: Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR.rteconfig' parsing failed 
+
+14:59:54 **** Updating project TLE9879_2QXA40_SDADC_TMR: project created
+Project updated successfully
+
+14:59:54 **** Updating project TLE9879_2QXA40_SDADC_TMR: project refresh
+Error loading RTE configuration file 'TLE9879_2QXA40_SDADC_TMR':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+14:59:54 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project created
+Project updated successfully
+
+14:59:54 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_EIM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:54 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project created
+Project updated successfully
+
+14:59:54 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_ADC1_POTI_ESM':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+14:59:54 **** Updating project TLE9879QXA40_BLDC_BEMF: project created
+Project updated successfully
+
+14:59:54 **** Updating project TLE9879QXA40_BLDC_BEMF: project refresh
+Error loading RTE configuration file 'TLE9879QXA40_BLDC_BEMF':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+
+15:01:11 **** Updating project TLE9879QXA40_ADC1_POTI_EIM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_EIM/TLE9879QXA40_ADC1_POTI_EIM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+15:01:11 **** Updating project TLE9879QXA40_ADC1_POTI_ESM: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_ADC1_POTI_ESM/TLE9879QXA40_ADC1_POTI_ESM.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+15:01:11 **** Updating project TLE9879QXA40_BLDC_BEMF: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879QXA40_BLDC_BEMF/TLE9879QXA40_BLDC_BEMF.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+
+15:01:11 **** Updating project TLE9879_2QXA40_SDADC_TMR: initial project load
+Error loading RTE configuration file 'E:/Project/Blower/Based on Z20K118M-Git-demo-1/IARProject/TLE9879_2QXA40_SDADC_TMR/TLE9879_2QXA40_SDADC_TMR.rteconfig':
+ARM::CMSIS.CORE - Component is missing. Pack is not installed: ARM.CMSIS
+Project update failed
+Error updating RTE project
+

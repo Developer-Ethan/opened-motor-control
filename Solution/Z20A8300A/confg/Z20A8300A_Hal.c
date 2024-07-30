@@ -23,7 +23,7 @@
 extern "C" {
 #endif
 
-#include "Z20k116M.h"
+#include "Z20k118M.h"
 #include "Z20k11xM_drv.h"
 #include "Z20k11xM_spi.h"
 #include "Z20k11xM_wdog.h"
@@ -102,11 +102,8 @@ void MCU_Z20A8300A_SpiInit(void)
     /* spi master tx */
     PORT_PinmuxConfig(Z20A8300A_SPI_MOSI_PORT, Z20A8300A_SPI_MOSI_PIN, Z20A8300A_SPI_MOSI_PINMUX);
     /* spi pcs0 */
-    PORT_PinmuxConfig(Z20A8300A_SPI_PCS_PORT, Z20A8300A_SPI_PCS_PIN, PTC9_GPIO);
+    PORT_PinmuxConfig(Z20A8300A_SPI_PCS_PORT, Z20A8300A_SPI_PCS_PIN, Z20A8300A_SPI_PCS_PINMUX);
     
-    GPIO_SetPinDir(Z20A8300A_SPI_PCS_PORT,Z20A8300A_SPI_PCS_PIN,GPIO_OUTPUT);
-    
-    GPIO_WritePinOutput(Z20A8300A_SPI_PCS_PORT,Z20A8300A_SPI_PCS_PIN,GPIO_HIGH);
     /* choose osc clock as function clock of spi */
     while(ERR == CLK_ModuleSrc(Z20A8300A_SPI_CLOCK_MODULE, CLK_SRC_OSC40M))
     {}
@@ -121,8 +118,6 @@ void MCU_Z20A8300A_SpiInit(void)
     SPI_SelectSlave(Z20A8300A_SPI_ID, Z20A8300A_SPI_PCS);
     /* enable spi */
     SPI_Enable(Z20A8300A_SPI_ID);
-    
-    
 }
 
 /**
@@ -138,8 +133,7 @@ void MCU_Z20A8300A_GpioInit(void)
     PORT_PinmuxConfig(Z20A8300A_ENABLE_PORT, Z20A8300A_ENABLE_PIN, Z20A8300A_ENABLE_PINMUX);
     GPIO_SetPinDir(Z20A8300A_ENABLE_PORT, Z20A8300A_ENABLE_PIN, GPIO_OUTPUT);
     GPIO_WritePinOutput(Z20A8300A_ENABLE_PORT, Z20A8300A_ENABLE_PIN, GPIO_HIGH);
-	PORT_PullConfig(Z20A8300A_ENABLE_PORT,Z20A8300A_ENABLE_PIN,PORT_PULL_UP);
-	
+
     PORT_PinmuxConfig(Z20A8300A_RST_PORT, Z20A8300A_RST_PIN, Z20A8300A_RST_PINMUX);
     GPIO_SetPinDir(Z20A8300A_RST_PORT, Z20A8300A_RST_PIN, GPIO_OUTPUT);
     GPIO_WritePinOutput(Z20A8300A_RST_PORT, Z20A8300A_RST_PIN, GPIO_HIGH);
@@ -158,18 +152,12 @@ void MCU_Z20A8300A_GpioInit(void)
 uint16_t MCU_SPI_SendToZ20A8300A(uint16_t Data)
 {
     uint16_t Status = 1U;
-    
     if(RESET == SPI_GetStatus(Z20A8300A_SPI_ID, SPI_STATUS_TFNF))
     {
         Status = 0U;
     }
-    else
-    {
-        Z20A8300A_SPI_PCS_ANALOG_LOW;
-    }
-    
     SPI_SendData(Z20A8300A_SPI_ID, Data);
-    
+
     return Status;
 }
 /**

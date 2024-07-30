@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : platform_cfg.h
- * @brief     : Z20K11xM Platform Config Header File.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     platform_cfg.h
+ * @brief    Z20K11xM Platform Config Header File.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #ifndef PLATFORM_CFG_H
@@ -22,6 +23,7 @@
 #define DRV_DELAY_FUNC_IN_RAM      1   /* DRV_Delay function is RAM function */
 
 #define ADC_TIMEOUT_WAIT_CNT_SWRST          10U      /* ADC software reset timeout value*/
+#define ADC_TIMEOUT_WAIT_CNT_CALIBRATION    10000U   /* ADC calibration reset timeout value*/
 
 #define CAN_TIMEOUT_WAIT_CNT_1              5000000U /* CAN timeout value1*/
 #define CAN_TIMEOUT_WAIT_CNT_2              10000U   /* CAN timeout value2*/

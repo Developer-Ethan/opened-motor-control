@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Spi.h
  * @brief     : Z20A8300A Spi Communication Header File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 #ifndef Z20A8300A_SPI_H
 #define Z20A8300A_SPI_H
@@ -74,7 +74,7 @@ extern "C" {
 Z20A8300A_SpiStatusType Z20A8300A_SendFrameAtomic(Z20A8300A_IfType *IfPtr,
                                                  Z20A8300A_RegisterAddressType Address,
                                                  Z20A8300A_ReadWriteBitType WR,
-                                                 uint32_t Data);
+                                                 uint16_t Data);
 
 /**
  * @brief      Z20A8300A Waiting For Reception Atomic
@@ -137,7 +137,7 @@ Z20A8300A_SpiStatusType Z20A8300A_ReadDataRegister(Z20A8300A_IfType *IfPtr,
  */
 Z20A8300A_SpiStatusType Z20A8300A_WriteDataRegister(Z20A8300A_IfType *IfPtr,
                                                     Z20A8300A_RegisterAddressType Address,
-                                                    uint32_t Data);
+                                                    uint16_t Data);
 
 /** @} end of group Spi_Public_FunctionDeclaration */
 

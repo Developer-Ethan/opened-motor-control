@@ -8,7 +8,7 @@
 #define ram0_end                   ram0_start + ram0_size
 
 LR_IROM1 ram0_start ram0_size  {    ; load region size_region
-  RAM_START ram0_start ram0_size  {  ; load address = execution address
+  RW_IRAM0 ram0_start ram0_size  {  ; load address = execution address
    *.o (.intvec, +First)
    *(InRoot$$Sections)
    .ANY (+RO +RW +ZI)

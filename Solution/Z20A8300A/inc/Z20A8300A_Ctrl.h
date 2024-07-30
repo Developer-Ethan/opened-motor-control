@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Ctrl.h
  * @brief     : Z20A8300A Control Register API Header File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 #ifndef Z20A8300A_CTRL_H
 #define Z20A8300A_CTRL_H

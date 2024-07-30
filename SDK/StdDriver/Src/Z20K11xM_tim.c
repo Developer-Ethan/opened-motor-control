@@ -1,17 +1,18 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_tim.c
- * @brief     : TIM module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_tim.c
+ * @brief    TIM module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #include "Z20K11xM_tim.h"
-#include "AppHeadFile.h"
+
 /** @addtogroup  Z20K11X_Peripheral_Driver
  *  @{
  */
@@ -226,13 +227,9 @@ static void TIM_IntHandler(TIM_ID_t timId)
  * @return    none
  *
  */
-//#define reg *(volatile uint32_t*)(0x400FF08C)
-//#define reg1 *(volatile uint32_t*)(0x40038014)
 void TIM0_DriverIRQHandler(void)
 {
     TIM_IntHandler(TIM0_ID);
-//	reg = (1<<8);
-//	reg1 &= (~(TIM_TOF_INT_MASK));
 }
 
 /**
@@ -256,28 +253,9 @@ void TIM1_DriverIRQHandler(void)
  * @return    none
  *
  */
-uint8_t Flag_TO_CH3Int = 0;
 void TIM2_DriverIRQHandler(void)
 {
     TIM_IntHandler(TIM2_ID);
-	
-//	if((SET == TIM_GetIntStatus(TIM2_ID,TIM_INT_TO)) \
-//		&& (SET == TIM_GetIntStatus(TIM2_ID,TIM_INT_CH3)))
-//	{
-//		Flag_TO_CH3Int = 1;
-//	}
-//	
-//	if(SET == TIM_GetIntStatus(TIM2_ID,TIM_INT_TO))
-//	{		
-//		TIM_ToIsr();
-//		TIM_IntClear(TIM2_ID, TIM_INT_TO);
-//	}
-//	
-//	if(SET == TIM_GetIntStatus(TIM2_ID,TIM_INT_CH3))
-//	{
-//		PWM_Capture();
-//		TIM_IntClear(TIM2_ID, TIM_INT_CH3);
-//	}
 }
 
 

@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_wdog.c
- * @brief     : WDOG module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_wdog.c
+ * @brief    WDOG module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #include "Z20K11xM_wdog.h"
@@ -99,10 +100,10 @@ END_FUNCTION_DECLARATION_RAMSECTION /* PRQA S 0605*/
 /**
  *  @brief WDOG Register address array
  */
-/*PRQA S 0303 ++*/
+/*PRQA S 0303,0306 ++*/
 static wdog_reg_t *const wdogRegPtr = (wdog_reg_t *)WDOG_BASE_ADDR;
 static wdog_reg_w_t *const wdogRegWPtr = (wdog_reg_w_t *)WDOG_BASE_ADDR;
-/*PRQA S 0303 --*/
+/*PRQA S 0303,0306 --*/
 /*! @brief wdog int status mask array */
 static const uint32_t wdogIntMask[] = {WDOG_CS_INTE_MASK, WDOG_CS_INTE_MASK};
 
@@ -171,11 +172,7 @@ static inline ResultStatus_t WDOG_WaitConfigCompleted(void)
  */
 static void WDOG_REFRESH_COUNT(void)
 {
-    uint32_t Primask = __get_PRIMASK();
-    if (0U == Primask)
-    {
-        __disable_irq();
-    }
+    __disable_irq();
     __asm("PUSH  {R0, R1, R2}\n"
           "LDR   R0, =0x40052014\n"
           "LDR   R1, =0xA0C4B1D6\n"
@@ -184,10 +181,7 @@ static void WDOG_REFRESH_COUNT(void)
           "STR   R1, [R0]\n"
           "STR   R2, [R0]\n"
           "POP  {R0, R1, R2}\n");
-    if (0U == Primask)
-    {
-        __enable_irq();
-    }
+    __enable_irq();
 }
 
 /**
@@ -203,11 +197,7 @@ static void WDOG_REFRESH_COUNT(void)
  */
 static inline void WDOG_UNLOCK_CONFIG(void)
 {
-    uint32_t Primask = __get_PRIMASK();
-    if (0U == Primask)
-    {
-        __disable_irq();
-    }
+    __disable_irq();
     __asm("PUSH  {R0, R1, R2}\n"
           "LDR   R0, =0x40052014\n"
           "LDR   R1, =0xB0D9A1C4\n"
@@ -216,10 +206,7 @@ static inline void WDOG_UNLOCK_CONFIG(void)
           "STR   R1, [R0]\n"
           "STR   R2, [R0]\n"
           "POP  {R0, R1, R2}\n");
-    if (0U == Primask)
-    {
-        __enable_irq();
-    }
+    __enable_irq();
 }
 
 /** @} end of group WDOG_Private_Functions */
@@ -244,7 +231,7 @@ ResultStatus_t WDOG_Init(const WDOG_Config_t *ptWDOGInitConfig)
     wdog_reg_t    *WDOGx = (wdog_reg_t *)(wdogRegPtr);
     wdog_reg_w_t  *WDOGxw = (wdog_reg_w_t *)(wdogRegWPtr);
     ResultStatus_t retVal = SUCC;
-    uint32_t wdog_cs = WDOGxw->WDOG_CS;
+    uint32_t       wdog_cs = WDOGxw->WDOG_CS;
 
     if (0U == WDOGx->WDOG_CS.CFGUA)
     {
@@ -269,22 +256,17 @@ ResultStatus_t WDOG_Init(const WDOG_Config_t *ptWDOGInitConfig)
         /* unlock config update */
         WDOG_UNLOCK_CONFIG();
         WDOGxw->WDOG_CS = wdog_cs;
-        retVal = WDOG_WaitConfigCompleted();
-        if (SUCC == retVal)
-        {  
+
+        WDOG_UNLOCK_CONFIG();
+        WDOGxw->WDOG_TMO = ptWDOGInitConfig->timeoutValue;
+
+        if (ENABLE == ptWDOGInitConfig->winEnable)
+        {
             WDOG_UNLOCK_CONFIG();
-            WDOGxw->WDOG_TMO = ptWDOGInitConfig->timeoutValue;
-            retVal = WDOG_WaitConfigCompleted();
-            if (SUCC == retVal)
-            {
-                if (ENABLE == ptWDOGInitConfig->winEnable)
-                {
-                    WDOG_UNLOCK_CONFIG();
-                    WDOGxw->WDOG_WIN = ptWDOGInitConfig->windowValue;
-                    retVal = WDOG_WaitConfigCompleted();
-                }
-            }
+            WDOGxw->WDOG_WIN = ptWDOGInitConfig->windowValue;
         }
+
+        retVal = WDOG_WaitConfigCompleted();
     }
 
     return retVal;
@@ -478,19 +460,10 @@ ResultStatus_t WDOG_SetClockSource(WDOG_ClkSource_t clkSource)
 ResultStatus_t WDOG_SetTimeoutValue(uint32_t timeoutValue)
 {
     wdog_reg_w_t *WDOGxw = (wdog_reg_w_t *)(wdogRegWPtr);
-    uint32_t Primask = __get_PRIMASK();
-    if (0U == Primask)
-    {
-        __disable_irq();
-    }
     /* unlock config update */
-    WDOGxw->WDOG_CNT = 0xB0D9A1C4U;
-    WDOGxw->WDOG_CNT = 0x1A1E3B0FU;
+    WDOG_UNLOCK_CONFIG();
     WDOGxw->WDOG_TMO = timeoutValue;
-    if (0U == Primask)
-    {
-        __enable_irq();
-    }
+
     return (WDOG_WaitConfigCompleted());
 }
 

@@ -1,13 +1,14 @@
-/****************************************************************************************/
-/* @file      : Z20K116M_startup.s                                                      */
-/* @brief     : Z20K116M Device Vector Table Source File.                               */
-/* @version   : V1.8.0                                                                  */
-/* @date      : May-2020                                                                */
-/* @author    : Zhixin Semiconductor                                                    */
-/*                                                                                      */
-/* @note                                                                                */
-/* @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.  */
-/****************************************************************************************/
+/* -------------------------------------------------------------------------*/
+/* @file     Z20K116M_startup.s                                             */
+/* @brief    Z20K116M Device Vector Table Source File.                      */
+/* @version  V1.7.0                                                         */
+/* @date     May-2020                                                       */
+/* @author   Zhixin Semiconductor                                           */
+/*                                                                          */
+/* @note                                                                    */
+/* Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.   */
+/*                                                                          */
+/****************************************************************************/
     .syntax unified
     .arch armv6-m
 

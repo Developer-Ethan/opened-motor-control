@@ -1,0 +1,8 @@
+/********************************************************************************/
+/** ADC1: Display Poti position with LEDs, running ADC1 in EIM                 **/
+/********************************************************************************/
+/** Read Poti voltage with ADC1-Ch4, measuring Ch4 in EIM.                     **/
+/** The EIM is triggered by Timer13 (CCU6) with a 1ms rate.                    **/
+/** The voltage measured on Ch4 is divided in 8 intervals and displayed        **/
+/** accordingly on the 8 LEDs.                                                 **/
+/********************************************************************************/

@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Config.c
  * @brief     : Z20A8300A Config Register API Source File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 /** @addtogroup Z20A8300A_Driver
  *  @{
@@ -29,9 +29,6 @@ extern "C" {
 /** @defgroup Config_Private_MacroDefinition
  *  @{
  */
-
-#define Z20A8300A_TRICKLE_CHARGE_PUMP_CONFIG_ADDRESS         0x0018U
-#define Z20A8300A_UNLOCK_PROTECTION_ADDRESS                  0x001BU
 
 /** @} end of Config_Private_MacroDefinition */
 
@@ -146,13 +143,13 @@ Z20A8300A_Config0_VbbOverVoltageThresholdType Z20A8300A_Config_GetVbbOverVoltage
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetDeadTime(Z20A8300A_IfType *IfPtr,
                                                      Z20A8300A_Config0_DeadTimeType DeadTime)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG0_DT_MASK)) |
-               Z20A8300A_CONFIG0_DT_SET(DeadTime);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG0_DT_MASK))) | 
+               (uint16_t)(Z20A8300A_CONFIG0_DT_SET(DeadTime));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS,Data);
     }
@@ -184,13 +181,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetDeadTime(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetOverTempeThreshold(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config0_OverTempeThresholdType Ots)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG0_OTS_MASK)) |
-               Z20A8300A_CONFIG0_OTS_SET(Ots);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG0_OTS_MASK))) | 
+               (uint16_t)(Z20A8300A_CONFIG0_OTS_SET(Ots));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS,Data);
     }
@@ -220,13 +217,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetOverTempeThreshold(Z20A8300A_IfType 
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetVbbOverVoltageThreshold(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config0_VbbOverVoltageThresholdType Vbov)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG0_VBOV_MASK)) |
-               Z20A8300A_CONFIG0_VBOV_SET(Vbov);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG0_VBOV_MASK))) | 
+               (uint16_t)(Z20A8300A_CONFIG0_VBOV_SET(Vbov));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG0_ADDRESS,Data);
     }
@@ -292,13 +289,13 @@ Z20A8300A_Config1_OverCurrentThresholdType Z20A8300A_Config_GetOverCurrentThresh
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetOverCurrentBlankingTime(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config1_OverCurrentBlankingTimeType Tcb)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG1_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG1_TCB_MASK)) |
-                Z20A8300A_CONFIG1_TCB_SET(Tcb);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG1_TCB_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG1_TCB_SET(Tcb));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG1_ADDRESS,Data);
     }
@@ -326,13 +323,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetOverCurrentBlankingTime(Z20A8300A_If
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetOverCurrentThreshold(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config1_OverCurrentThresholdType Oct)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG1_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG1_OCT_MASK)) |
-                Z20A8300A_CONFIG1_OCT_SET(Oct);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG1_OCT_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG1_OCT_SET(Oct));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG1_ADDRESS,Data);
     }
@@ -418,13 +415,13 @@ Z20A8300A_Config2_ChargePumpModeType Z20A8300A_Config_GetChargePumpMode(
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetVgsVdsBlankingTime(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config2_VgsVdsBlankingTimeType Tvb)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG2_TVB_MASK)) |
-                Z20A8300A_CONFIG2_TVB_SET(Tvb);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG2_TVB_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG2_TVB_SET(Tvb));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS,Data);
     }
@@ -452,13 +449,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetVgsVdsBlankingTime(Z20A8300A_IfType 
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetChargePumpFrequency(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config2_ChargePumpFrequencyType Fcp)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG2_FCP_MASK)) |
-                Z20A8300A_CONFIG2_FCP_SET(Fcp);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG2_FCP_MASK))) | 
+                          (uint16_t)(Z20A8300A_CONFIG2_FCP_SET(Fcp));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS,Data);
     }
@@ -488,13 +485,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetChargePumpFrequency(Z20A8300A_IfType
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetChargePumpMode(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config2_ChargePumpModeType Cpm)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG2_CPM_MASK)) |
-                Z20A8300A_CONFIG2_CPM_SET(Cpm);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG2_CPM_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG2_CPM_SET(Cpm));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG2_ADDRESS,Data);
     }
@@ -579,13 +576,13 @@ Z20A8300A_Config3_SourcePeakCurrentType Z20A8300A_Config_GetSourcePeakCurrent(
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetVdsLowSideThreshold(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config_VdsThresholdType VdsLs)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG3_VDS_LS_MASK)) |
-                Z20A8300A_CONFIG3_VDS_LS_SET(VdsLs);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG3_VDS_LS_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG3_VDS_LS_SET(VdsLs));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS,Data);
     }
@@ -615,13 +612,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetVdsLowSideThreshold(Z20A8300A_IfType
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetBootstrapManagementEnable(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_ContorlStateType Ebm)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG3_EBM_MASK)) |
-                Z20A8300A_CONFIG3_EBM_SET(Ebm);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG3_EBM_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG3_EBM_SET(Ebm));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS,Data);
     }
@@ -649,13 +646,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetBootstrapManagementEnable(Z20A8300A_
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSourcePeakCurrent(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config3_SourcePeakCurrentType SR)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG3_SR_MASK)) |
-                Z20A8300A_CONFIG3_SR_SET(SR);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG3_SR_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG3_SR_SET(SR));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG3_ADDRESS,Data);
     }
@@ -720,13 +717,13 @@ Z20A8300A_Config4_SensorAmplifierOffsetType Z20A8300A_Config_GetSensorAmplifierO
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetVdsHighSideThreshold(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config_VdsThresholdType VdsHs)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG4_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG4_VDS_HS_MASK)) |
-                Z20A8300A_CONFIG4_VDS_HS_SET(VdsHs);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG4_VDS_HS_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG4_VDS_HS_SET(VdsHs));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG4_ADDRESS,Data);
     }
@@ -755,13 +752,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetVdsHighSideThreshold(Z20A8300A_IfTyp
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorAmplifierOffset(Z20A8300A_IfType *IfPtr,
                         Z20A8300A_Config4_SensorAmplifierOffsetType Sao)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG4_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG4_SAO_MASK)) |
-                Z20A8300A_CONFIG4_SAO_SET(Sao);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG4_SAO_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG4_SAO_SET(Sao));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG4_ADDRESS,Data);
     }
@@ -843,13 +840,13 @@ Z20A8300A_Config5_SensorGainType Z20A8300A_Config_GetSensorCGain(Z20A8300A_IfTyp
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorAGain(Z20A8300A_IfType *IfPtr,
                                                         Z20A8300A_Config5_SensorGainType Sag)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG5_SAG_MASK)) |
-                Z20A8300A_CONFIG5_SAG_SET(Sag);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG5_SAG_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG5_SAG_SET(Sag));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS,Data);
     }
@@ -877,13 +874,13 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorAGain(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorBGain(Z20A8300A_IfType *IfPtr,
                                                         Z20A8300A_Config5_SensorGainType Sbg)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG5_SBG_MASK)) |
-                Z20A8300A_CONFIG5_SBG_SET(Sbg);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG5_SBG_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG5_SBG_SET(Sbg));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS,Data);
     }
@@ -911,80 +908,20 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorBGain(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorCGain(Z20A8300A_IfType *IfPtr,
                                                         Z20A8300A_Config5_SensorGainType Scg)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
 
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = (IfPtr->RxFrame.BITS.DATA & (~(uint32_t)Z20A8300A_CONFIG5_SCG_MASK)) |
-                Z20A8300A_CONFIG5_SCG_SET(Scg);
+        Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & (~Z20A8300A_CONFIG5_SCG_MASK))) | 
+                         (uint16_t)(Z20A8300A_CONFIG5_SCG_SET(Scg));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONFIG5_ADDRESS,Data);
     }
     else
     {
     }
-
-    return Rst;
-}
-
-/**
- * @brief      Disable Trickle Charge Pump
- *
- * @param[in]  IfPtr: Z20A8300A Interface struct pointer
- *
- * @return     SPI communication status
- * @retval     Z20A8300A_ERR_OK
- * @retval     Z20A8300A_ERR_SEND
- * @retval     Z20A8300A_ERR_OVER_TIME
- * @retval     Z20A8300A_ERR_PARITY
- * @retval     Z20A8300A_ERR_WRITE
- *
- */
-Z20A8300A_SpiStatusType Z20A8300A_Config_DisableTrickleChargePump(Z20A8300A_IfType *IfPtr)
-{
-    Z20A8300A_SpiStatusType Rst;
-
-    /* Unlock write protection */
-    Rst = Z20A8300A_WriteDataRegister(IfPtr,
-        (Z20A8300A_RegisterAddressType)Z20A8300A_UNLOCK_PROTECTION_ADDRESS, 0xB9U);
-    if (Z20A8300A_ERR_OK == Rst)
-    {
-        /* Read Unlock Flag */
-        Rst = Z20A8300A_ReadDataRegister(IfPtr,
-            (Z20A8300A_RegisterAddressType)Z20A8300A_UNLOCK_PROTECTION_ADDRESS);
-        if (0U == (IfPtr->RxFrame.DB & 0x200U))
-        {
-            /* Unlock failed */
-            Rst = Z20A8300A_ERR_WRITE;
-        }
-
-        if (Z20A8300A_ERR_OK == Rst)
-        {
-            /* Disable Trickle Charge Pump */
-            Rst = Z20A8300A_WriteDataRegister(IfPtr,
-                (Z20A8300A_RegisterAddressType)Z20A8300A_TRICKLE_CHARGE_PUMP_CONFIG_ADDRESS, 0x40U);
-            if (Z20A8300A_ERR_OK == Rst)
-            {
-                /* Lock write protection */
-                Rst = Z20A8300A_WriteDataRegister(IfPtr,
-                    (Z20A8300A_RegisterAddressType)Z20A8300A_UNLOCK_PROTECTION_ADDRESS, 0xB6U);
-                if (Z20A8300A_ERR_OK == Rst)
-                {
-                    /* Read Unlock Flag */
-                    Rst = Z20A8300A_ReadDataRegister(IfPtr,
-                        (Z20A8300A_RegisterAddressType)Z20A8300A_UNLOCK_PROTECTION_ADDRESS);
-                    if (0x0U != (IfPtr->RxFrame.DB & 0x200U))
-                    {
-                        /* Lock failed */
-                        Rst = Z20A8300A_ERR_WRITE;
-                    }
-                }
-            }
-        }
-    }
-
 
     return Rst;
 }

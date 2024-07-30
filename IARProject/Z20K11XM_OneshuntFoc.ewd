@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\debugger\ZhiXin\Z20K114M.ddf</state>
+                    <state>$TOOLKIT_DIR$\CONFIG\debugger\ZhiXin\Z20K118M.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>FlashLoadersV3</name>
-                    <state>$TOOLKIT_DIR$/config/flashloader/ZhiXin/Z20K11xM/Z20K114M.board</state>
+                    <state>$TOOLKIT_DIR$/config/flashloader/ZhiXin/Z20K11xM/Z20K118M.board</state>
                 </option>
                 <option>
                     <name>OCImagesSuppressCheck1</name>
@@ -437,7 +437,7 @@
                 </option>
                 <option>
                     <name>CMSISDAPSelectedCPUBehaviour</name>
-                    <state></state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>ICpuName</name>
@@ -686,7 +686,7 @@
                 </option>
                 <option>
                     <name>IjetSelectedCPUBehaviour</name>
-                    <state></state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>ICpuName</name>
@@ -1201,7 +1201,7 @@
                 <debug>1</debug>
                 <option>
                     <name>CThirdPartyDriverDll</name>
-                    <state>Browse to your third-party driver</state>
+                    <state>###Uninitialized###</state>
                 </option>
                 <option>
                     <name>CThirdPartyLogFileCheck</name>
@@ -1247,7 +1247,7 @@
                 </option>
                 <option>
                     <name>CCMSPFetTargetVoltage</name>
-                    <state>3.0</state>
+                    <state>###Uninitialized###</state>
                 </option>
                 <option>
                     <name>CCMSPFetVCCDefault</name>
@@ -1305,11 +1305,11 @@
                 </option>
                 <option>
                     <name>TIPackage</name>
-                    <state>C:\ti\iar\ccs_base</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>BoardFile</name>
-                    <state>$TOOLKIT_DIR$\config\debugger\TexasInstruments\xds\UNKNOWN_XDS110_CJTAG.dat</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>DoLogfile</name>
@@ -1460,7 +1460,7 @@
                 </option>
                 <option>
                     <name>CCXDSTargetVoltage</name>
-                    <state>3.3</state>
+                    <state>###Uninitialized###</state>
                 </option>
                 <option>
                     <name>OCXDSDigitalStatesConfigFile</name>

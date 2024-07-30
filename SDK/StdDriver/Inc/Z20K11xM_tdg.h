@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_TDG.h
- * @brief     : TDG driver module header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_TDG.h
+ * @brief    TDG driver module header file.
+ * @version  V1.0.0
+ * @date     1-Nov-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #ifndef Z20K11XM_TDG_H

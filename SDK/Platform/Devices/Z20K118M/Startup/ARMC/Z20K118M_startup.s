@@ -1,12 +1,12 @@
 ; ---------------------------------------------------------------------------
-;  @file:     : Z20K118M_startup.s
-;  @brief:    : Z20K118M startup and Vector Table Source File for ARM Compiler
-;  @version   : V1.8.0
-;  @date      : May-2020
-;  @author    : Zhixin Semiconductor
+;  @file:    Z20K118M_startup.s
+;  @brief:   Z20K118M startup and Vector Table Source File for ARM Compiler
+;  @version  V1.7.0
+;  @date     May-2020
+;  @author   Zhixin Semiconductor
 ;
 ;  @note
-;  @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+;  Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
 ; ---------------------------------------------------------------------------
 
 
@@ -25,8 +25,8 @@
                 
                     
                 IF :LNOT: :DEF:START_FROM_SRAM
-                IMPORT  |Image$$RAM_START$$Base|
-__RAM_START DCD |Image$$RAM_START$$Base|
+                IMPORT  |Image$$RW_IRAM0$$Base|
+__RAM_START DCD |Image$$RW_IRAM0$$Base|
 __RAM_END   DCD |Image$$ARM_LIB_STACK$$ZI$$Limit|
                 ENDIF
 

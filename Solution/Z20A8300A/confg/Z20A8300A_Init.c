@@ -57,10 +57,10 @@ static const Z20A8300A_ControlConfigType CtrlConfigStruct =
 };
 static const Z20A8300A_ParamsConfigType ParamsConfigStruct =
 {
-    Z20A8300A_DT_1000nS,                 /*!< Dead Time */
+    Z20A8300A_DT_600nS,                    /*!< Dead Time */
     Z20A8300A_OTS_165_DEG,                  /*!< Over Temperature Threshold */
     Z20A8300A_VBOV_35V,                     /*!< Vbb Over Voltage Threshold */
-    Z20A8300A_TCB_400nS,                  /*!< Over Current Blanking Time */
+    Z20A8300A_TCB_1550nS,                  /*!< Over Current Blanking Time */
     Z20A8300A_OCT_4800mV,                   /*!< Over Current Threshold */
     Z20A8300A_TVB_3150nS,                   /*!< Vgs Vds Blanking Time */
     Z20A8300A_FCP_200KHz,                   /*!< Charge Pump Frequency */
@@ -70,9 +70,9 @@ static const Z20A8300A_ParamsConfigType ParamsConfigStruct =
     Z20A8300A_SR_DISABLE,                   /*!< Source Peak Current */
     Z20A8300A_VDS_THRESHOLD_1920mV,         /*!< Vds High Side Threshold */
     Z20A8300A_SAO_2500mV,                   /*!< Sensor Amplifier Offset */
-    Z20A8300A_SENSOR_GAIN_20,               /*!< SensorA Gain */
-    Z20A8300A_SENSOR_GAIN_20,               /*!< SensorB Gain */
-    Z20A8300A_SENSOR_GAIN_20                /*!< SensorC Gain */
+    Z20A8300A_SENSOR_GAIN_10,               /*!< SensorA Gain */
+    Z20A8300A_SENSOR_GAIN_10,               /*!< SensorB Gain */
+    Z20A8300A_SENSOR_GAIN_10                /*!< SensorC Gain */
 };
 
 static const Z20A8300A_DpsConfigType DpsConfigStruct =

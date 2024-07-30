@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Config.h
  * @brief     : Z20A8300A Config Register API Header File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 #ifndef Z20A8300A_CONFIG_H
 #define Z20A8300A_CONFIG_H
@@ -556,21 +556,6 @@ Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorBGain(Z20A8300A_IfType *IfPtr,
  */
 Z20A8300A_SpiStatusType Z20A8300A_Config_SetSensorCGain(Z20A8300A_IfType *IfPtr,
                                                         Z20A8300A_Config5_SensorGainType Scg);
-
-/**
- * @brief      Disable Trickle Charge Pump
- *
- * @param[in]  IfPtr: Z20A8300A Interface struct pointer
- *
- * @return     SPI communication status
- * @retval     Z20A8300A_ERR_OK
- * @retval     Z20A8300A_ERR_SEND
- * @retval     Z20A8300A_ERR_OVER_TIME
- * @retval     Z20A8300A_ERR_PARITY
- * @retval     Z20A8300A_ERR_WRITE
- *
- */
-Z20A8300A_SpiStatusType Z20A8300A_Config_DisableTrickleChargePump(Z20A8300A_IfType *IfPtr);
 
 /** @} end of group Config_Public_FunctionDeclaration */
 

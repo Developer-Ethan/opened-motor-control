@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_gpio.c
- * @brief     : GPIO module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_gpio.c
+ * @brief    GPIO module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #include "Z20K11xM_gpio.h"
@@ -128,8 +129,8 @@ static gpio_reg_w_t *const rgpioRegWPtr[RGPIO_TOTAL_NUM] = {
  *  @{
  */
 static void PORT_IntHandler(PORT_ID_t portId);
-void        PORTABC_DriverIRQHandler(void);
-void        PORTDE_DriverIRQHandler(void);
+void        PORTABC_IRQHandler(void);
+void        PORTDE_IRQHandler(void);
 
 /** @} end of group PORT_Private_FunctionDeclaration */
 
@@ -178,7 +179,7 @@ static void PORT_IntHandler(PORT_ID_t portId)
  * @return none.
  *
  */
-void PORTABC_DriverIRQHandler(void)
+void PORTABC_IRQHandler(void)
 {
     if (((parccRegPtr->PARCC_PORTA.PCKMD) & 0x1U) != 0U)  /*PRQA S 0303*/
     {
@@ -213,7 +214,7 @@ void PORTABC_DriverIRQHandler(void)
  * @return none.
  *
  */
-void PORTDE_DriverIRQHandler(void)
+void PORTDE_IRQHandler(void)
 {
     if (((parccRegPtr->PARCC_PORTD.PCKMD) & 0x1U) != 0U) /*PRQA S 0303*/
     {

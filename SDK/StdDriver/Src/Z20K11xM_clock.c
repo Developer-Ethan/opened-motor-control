@@ -1,13 +1,13 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_clock.c
- * @brief     : CLOCK module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_clock.c
+ * @brief    CLOCK module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
  * 
  **************************************************************************************************/
 
@@ -89,7 +89,7 @@ static pmu_reg_w_t * const pmuRegWPtr = (pmu_reg_w_t *)PMU_BASE_ADDR;
  *  @brief PARCC Register address array
  */
 /*PRQA S 0303,0306 ++*/
-static ModuleClk_t * const parccRegPtr[]=
+static ModuleClk_t *parccRegPtr[]=
 {   
     (ModuleClk_t *)(PARCC_BASE_ADDR+0u),
     (ModuleClk_t *)(PARCC_BASE_ADDR + (uint32_t)CLK_EWDT),
@@ -331,7 +331,7 @@ ResultStatus_t CLK_OSC40MEnable(uint32_t freq, ControlState_t stopModeEn,
 }
 
 /**
- * @brief      Config and enable OSC40M clock
+ * @brief      Config and enable  OSC40M clock
  *
  * @param[in]  freqMode:  It selects the frequency mode of OSC40M
  * @param[in]  stopModeEn:  Enable/Disable OSC40M in stop mode.
@@ -708,13 +708,13 @@ void CLK_OSC32KDisable(void)
 /**
  * @brief      Set clock divider
  *
- * @param[in]  module: select which module clock to set divider. 
- *                     It selects from CLK_EWDT, CLK_STIM, CLK_TIM0, 
- *                     CLK_TIM1, CLK_TIM2, CLK_TDG0, CLK_CAN0, CLK_CAN1, 
- *                     CLK_UART0, CLK_UART1, CLK_UART2, CLK_UART3, 
- *                     CLK_SPI0, CLK_SPI1, CLK_SPI2, CLK_I2C0, CLK_I2C1, 
- *                     CLK_ADC0, CLK_PORTA,CLK_PORTB, CLK_PORTC, CLK_PORTD, 
- *                     CLK_PORTE CLK_CORE, CLK_BUS, CLK_SLOW
+ * @param[in]  module: select which module clock to enable.It selects from
+ *                     CLK_EWDT, CLK_STIM, CLK_TIM0, CLK_TIM1, CLK_TIM2,
+ *                     CLK_TDG0, CLK_CAN0, CLK_CAN1, CLK_UART0, CLK_UART1, 
+ *                     CLK_UART2, CLK_UART3, CLK_SPI0, CLK_SPI1, CLK_SPI2, 
+ *                     CLK_I2C0, CLK_I2C1, CLK_ADC0, CLK_PORTA,CLK_PORTB, 
+ *                     CLK_PORTC, CLK_PORTD, CLK_PORTE CLK_CORE, CLK_BUS,
+ *                     CLK_SLOW
  *                     
  * @param[in] divider: clock divider
  * @return     none
@@ -815,8 +815,8 @@ void CLK_SetClkDivider(CLK_Module_t module, CLK_Divider_t divider)
 /**
  * @brief      Select clock source for module
  *
- * @param[in]  module: select which module to set clock source.
- *                     It selects from CLK_EWDT, CLK_STIM, CLK_TIM0, CLK_TIM1,
+ * @param[in]  module: select which module clock to enable.It selects from
+ *                     CLK_EWDT, CLK_STIM, CLK_TIM0, CLK_TIM1,
  *                     CLK_TIM2, CLK_TDG0, CLK_CAN0, CLK_CAN1, CLK_UART0, 
  *                     CLK_UART1, CLK_UART2, CLK_UART3, CLK_SPI0, CLK_SPI1, 
  *                     CLK_SPI2, CLK_I2C0, CLK_I2C1, CLK_ADC0, CLK_PORTA,

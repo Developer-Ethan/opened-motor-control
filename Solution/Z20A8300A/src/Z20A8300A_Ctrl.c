@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Ctrl.c
  * @brief     : Z20A8300A Control Register API Source File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 /** @addtogroup Z20A8300A_Driver
  *  @{
@@ -90,7 +90,7 @@ Z20A8300A_Ctrl_GateStatesType Z20A8300A_Ctrl_GetGateStates(Z20A8300A_IfType *IfP
 {
     Z20A8300A_Ctrl_GateStatesType GateStates;
 
-    if(1U == ((IfPtr->RxFrame.BITS.DATA >> (uint32_t)(Gate)) & 0x01U))
+    if(1U == ((IfPtr->RxFrame.BITS.DATA >> (uint16_t)(Gate)) & 0x01U))
     {
         GateStates = Z20A8300A_GATE_HIGH;
     }
@@ -124,7 +124,7 @@ Z20A8300A_Ctrl_PhaseStatesType Z20A8300A_Ctrl_GetPhaseAStates(Z20A8300A_IfType *
     {
         PhaseStates = Z20A8300A_PHASE_DISABLE;
     }
-    else if((uint32_t)Z20A8300A_GATE_HIGH == Z20A8300A_CONTROL_AH_GET(IfPtr->RxFrame.BITS.DATA))
+    else if((uint16_t)Z20A8300A_GATE_HIGH == (Z20A8300A_CONTROL_AH_GET(IfPtr->RxFrame.BITS.DATA)))
     {
         PhaseStates = Z20A8300A_PHASE_SOURCING;
     }
@@ -158,7 +158,7 @@ Z20A8300A_Ctrl_PhaseStatesType Z20A8300A_Ctrl_GetPhaseBStates(Z20A8300A_IfType *
     {
         PhaseStates = Z20A8300A_PHASE_DISABLE;
     }
-    else if((uint32_t)Z20A8300A_GATE_HIGH == Z20A8300A_CONTROL_BH_GET(IfPtr->RxFrame.BITS.DATA))
+    else if((uint16_t)Z20A8300A_GATE_HIGH == (Z20A8300A_CONTROL_BH_GET(IfPtr->RxFrame.BITS.DATA)))
     {
         PhaseStates = Z20A8300A_PHASE_SOURCING;
     }
@@ -192,7 +192,7 @@ Z20A8300A_Ctrl_PhaseStatesType Z20A8300A_Ctrl_GetPhaseCStates(Z20A8300A_IfType *
     {
         PhaseStates = Z20A8300A_PHASE_DISABLE;
     }
-    else if((uint32_t)Z20A8300A_GATE_HIGH == Z20A8300A_CONTROL_CH_GET(IfPtr->RxFrame.BITS.DATA))
+    else if((uint16_t)Z20A8300A_GATE_HIGH == (Z20A8300A_CONTROL_CH_GET(IfPtr->RxFrame.BITS.DATA)))
     {
         PhaseStates = Z20A8300A_PHASE_SOURCING;
     }
@@ -221,11 +221,11 @@ Z20A8300A_Ctrl_DiagModeType Z20A8300A_Ctrl_GetDiagMode(Z20A8300A_IfType *IfPtr)
 {
     Z20A8300A_Ctrl_DiagModeType DiagMode;
     
-    if(Z20A8300A_CONTROL_DG_GET(IfPtr->RxFrame.BITS.DATA) == (uint32_t)MODE_TEMPERATURE)
+    if(Z20A8300A_CONTROL_DG_GET(IfPtr->RxFrame.BITS.DATA) == (uint16_t)MODE_TEMPERATURE)
     {
         DiagMode = MODE_TEMPERATURE;
     }
-    else if(Z20A8300A_CONTROL_DG_GET(IfPtr->RxFrame.BITS.DATA) == (uint32_t)MODE_SYSTEM_OUT)
+    else if(Z20A8300A_CONTROL_DG_GET(IfPtr->RxFrame.BITS.DATA) == (uint16_t)MODE_SYSTEM_OUT)
     {
         DiagMode = MODE_SYSTEM_OUT;
     }
@@ -264,18 +264,20 @@ Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetGateStates(Z20A8300A_IfType *IfPtr,
                                                      Z20A8300A_Ctrl_GateType Gate,
                                                      Z20A8300A_Ctrl_GateStatesType States)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
         if(States == Z20A8300A_GATE_LOW)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA & (~((uint32_t)0x0001U << (uint32_t)Gate)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (uint16_t)(~((uint16_t)0x0001U << (uint16_t)Gate))));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA | ((uint32_t)0x0001U << (uint32_t)Gate));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA | 
+                              (uint16_t)(((uint16_t)0x0001U << (uint16_t)Gate))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS,Data);
@@ -307,27 +309,27 @@ Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetGateStates(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseAStates(Z20A8300A_IfType *IfPtr,
                                                        Z20A8300A_Ctrl_PhaseStatesType Psa)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
         if(Psa == Z20A8300A_PHASE_SOURCING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK))) |
-                   Z20A8300A_CONTROL_AH_SET(Z20A8300A_GATE_HIGH);
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_AH_SET(Z20A8300A_GATE_HIGH));
         }
         else if(Psa == Z20A8300A_PHASE_SINKING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK))) |
-                   Z20A8300A_CONTROL_AL_SET(Z20A8300A_GATE_HIGH);
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_AL_SET(Z20A8300A_GATE_HIGH));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_AH_MASK | Z20A8300A_CONTROL_AL_MASK))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS,Data);
@@ -359,27 +361,27 @@ Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseAStates(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseBStates(Z20A8300A_IfType *IfPtr,
                                                        Z20A8300A_Ctrl_PhaseStatesType Psb)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
         if(Psb == Z20A8300A_PHASE_SOURCING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK))) |
-                   (Z20A8300A_CONTROL_BH_SET(Z20A8300A_GATE_HIGH));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_BH_SET(Z20A8300A_GATE_HIGH));
         }
         else if(Psb == Z20A8300A_PHASE_SINKING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK))) |
-                   (Z20A8300A_CONTROL_BL_SET(Z20A8300A_GATE_HIGH));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_BL_SET(Z20A8300A_GATE_HIGH));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_BH_MASK | Z20A8300A_CONTROL_BL_MASK))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS,Data);
@@ -411,27 +413,27 @@ Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseBStates(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseCStates(Z20A8300A_IfType *IfPtr,
                                                        Z20A8300A_Ctrl_PhaseStatesType Psc)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
         if(Psc == Z20A8300A_PHASE_SOURCING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK))) |
-                   (Z20A8300A_CONTROL_CH_SET(Z20A8300A_GATE_HIGH));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_CH_SET(Z20A8300A_GATE_HIGH));
         }
         else if(Psc == Z20A8300A_PHASE_SINKING)
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK))) |
-                   (Z20A8300A_CONTROL_CL_SET(Z20A8300A_GATE_HIGH));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK)))) |
+                   (uint16_t)(Z20A8300A_CONTROL_CL_SET(Z20A8300A_GATE_HIGH));
         }
         else
         {
-            Data = (IfPtr->RxFrame.BITS.DATA &
-                    (uint32_t)(~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK)));
+            Data = (uint16_t)((IfPtr->RxFrame.BITS.DATA & 
+                              (~(Z20A8300A_CONTROL_CH_MASK | Z20A8300A_CONTROL_CL_MASK))));
         }
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS,Data);
@@ -463,12 +465,12 @@ Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetPhaseCStates(Z20A8300A_IfType *IfPtr,
 Z20A8300A_SpiStatusType Z20A8300A_Ctrl_SetDiagMode(Z20A8300A_IfType *IfPtr,
                                                    Z20A8300A_Ctrl_DiagModeType DiagMode)
 {
-    uint32_t Data;
+    uint16_t Data;
     Z20A8300A_SpiStatusType Rst;
     Rst = Z20A8300A_ReadDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS);
     if(Z20A8300A_ERR_OK == Rst)
     {
-        Data = Z20A8300A_CONTROL_DG_SET(DiagMode);
+        Data = (uint16_t)(Z20A8300A_CONTROL_DG_SET(DiagMode));
 
         Rst = Z20A8300A_WriteDataRegister(IfPtr,Z20A8300A_CONTROL_ADDRESS,Data);
     }

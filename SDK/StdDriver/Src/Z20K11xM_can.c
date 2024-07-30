@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_can.c
- * @brief     : CAN module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_can.c
+ * @brief    CAN module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #include "Z20K11xM_can.h"
@@ -184,7 +185,7 @@ typedef struct
 #define CAN_CAL_RX_MB_STD_MASK(mask)    (((mask) << CAN_ID_STD_SHIFT) & \
                                            CAN_ID_STD_MASK)
 #define CAN_CAL_RX_MB_EXT_MASK(mask)    ((mask) & CAN_ID_EXT_MASK)
-#define CAN_RX_FIFO_OCUP_LAST_MB_NUM(x) (5U + ((((x) + 1U) * 8U) >> 2U))
+#define CAN_RX_FIFO_OCUP_LAST_MB_NUM(x) (5U + ((((x) + 1U) * 8U) / 4U))
 
 #define CAN_SWAP_BYTES_IN_WORD_INDEX(index)    (((index) & ~3U) + \
                                                  (3U - ((index) & 3U)))
@@ -287,13 +288,7 @@ static uint32_t canESR1Buf[CAN_INSTANCE_NUM] =
 #endif
 };
 
-static uint32_t canIntMaskStatus1[CAN_INSTANCE_NUM] = 
-{
-    0U,
-#if ( 2U == CAN_INSTANCE_NUM ) 
-    0U
-#endif
-};
+static uint32_t canIntMaskStatus1 = 0;
 
 /** @} end of group CAN_Private_Variables */
 
@@ -633,7 +628,7 @@ static ResultStatus_t CAN_EnterFreezeMode(CAN_Id_t id)
             if(1U == CANx->CAN_MCR.FRZACK )
             {
                 retVal = SUCC;
-                break;
+				break;
             }
         }
     }
@@ -664,7 +659,6 @@ static ResultStatus_t CAN_ExitFreezeMode(CAN_Id_t id)
         if(0U == CANx->CAN_MCR.FRZACK )
         {
             retVal = SUCC;
-            break;
         }
     }
     
@@ -672,7 +666,7 @@ static ResultStatus_t CAN_ExitFreezeMode(CAN_Id_t id)
 }
 
 /**
- * @brief      Disable memory error detection
+ * @brief      exit freeze mode.
  *
  * @param[in]  id: select the CAN ID
  *
@@ -840,9 +834,6 @@ static ResultStatus_t CAN_GetMbAddr(CAN_Id_t id,uint8_t mbIdx,
  * @param[in]  code: code command
  * @param[in]  localPrio: priority
  *
- * @return 
- *        -SUCC: set tx MB successfully
- *        -ERR:  fail to tx MB 
  */
 static ResultStatus_t CAN_SetTxMb(CAN_Id_t id, uint8_t mbIdx,
                                       const CAN_MessageInfo_t *messInfo, 
@@ -1115,7 +1106,6 @@ static void CAN_ClearRam(CAN_Id_t id)
     {
         RAM[databyte] = 0U;
     }    
-    CANx->CAN_CTRL2.WRMFRZ = 0U;
 }
 
 /**
@@ -1145,7 +1135,7 @@ static void CAN_IntHandler(CAN_Id_t id)
     
     status1 = canESR1Buf[id];
     /* only check enabled interrupts */
-    status1 = status1 & canIntMaskStatus1[id];
+    status1 = status1 & canIntMaskStatus1;
     /* clear int status */
     CANxw->CAN_ESR1 = status1;
     
@@ -1324,7 +1314,7 @@ static void CAN_IntHandler(CAN_Id_t id)
 
 /**
  * @brief      Initializes the CAN peripheral. This function will do soft reset
- *             for CAN module, and initialize CAN with provided parameters. This
+ *             for CAN module, and initialze CAN with provided parameters. This
  *             function needs to be called first before other config functions.
  *
  * @param[in]  id: select the CAN ID
@@ -1353,7 +1343,7 @@ ResultStatus_t CAN_Init(CAN_Id_t id, const CAN_Config_t *config)
         }
         else
         {
-            /*nothing to do */
+            /*nothong to do */
         }
     }
     if(SUCC == retVal)
@@ -1511,10 +1501,21 @@ ResultStatus_t CAN_Init(CAN_Id_t id, const CAN_Config_t *config)
         {
             retVal = ERR;
         }        
+        else if (config->mode != CAN_MODE_FREEZE)
+        {
+            if(CAN_ExitFreezeMode(id) != SUCC)
+            {
+                retVal = ERR;
+            }
+        }
         else
         {
-            CAN_DisableMemErrorDetection(id);
+            /*noting to do */
         }
+    }
+    if(SUCC == retVal)
+    {
+        CAN_DisableMemErrorDetection(id);
     }
 
     return retVal;
@@ -1578,52 +1579,37 @@ ResultStatus_t CAN_SetOperationMode(CAN_Id_t id, CAN_Mode_t mode)
 {
     can_reg_t * CANx = (can_reg_t *)(canRegPtr[id]);
     ResultStatus_t retVal = SUCC;
-    uint32_t freeze = CANx->CAN_MCR.FRZACK;    
-    if (0U == freeze)
+    switch(mode)
     {
-        if(CAN_EnterFreezeMode(id) != SUCC)
-        {
-            retVal = ERR;
-        }
-    }
-    if(SUCC == retVal)
-    {
-        switch(mode)
-        {
-            case CAN_MODE_NORMAL:
-                CANx->CAN_CTRL1.LOM = 0;
-                CANx->CAN_CTRL1.LPB = 0;            
-                CANx->CAN_MCR.SUPV = 0;    
-                break;
-            case CAN_MODE_LISTEN_ONLY:
-                CANx->CAN_CTRL1.LOM = 1;
-                CANx->CAN_CTRL1.LPB = 0;
-                break;
-            case CAN_MODE_LOOPBACK:
-                CANx->CAN_CTRL1.LOM = 0;
-                CANx->CAN_CTRL1.LPB = 1;
-                CANx->CAN_MCR.SRXDIS = 0;
-                CANx->CAN_FDCTRL.TDCEN = 0;
-                break;
-            case CAN_MODE_FREEZE:
-                break;
-                
-            case CAN_MODE_DISABLE:
-                CANx->CAN_MCR.MDIS = 1;
-                break;
-            default:
-                /*nothing to do*/
-                break;
-        }
-        if(CAN_MODE_FREEZE != mode)
-        {            
-            if(CAN_ExitFreezeMode(id) != SUCC)
+        case CAN_MODE_NORMAL:
+            CANx->CAN_CTRL1.LOM = 0U;
+            CANx->CAN_CTRL1.LPB = 0U;
+            CANx->CAN_MCR.SUPV = 0U;
+            break;
+        case CAN_MODE_LISTEN_ONLY:
+            CANx->CAN_CTRL1.LOM = 1U;
+            break;
+        case CAN_MODE_LOOPBACK:
+            CANx->CAN_CTRL1.LOM = 0U;
+            CANx->CAN_CTRL1.LPB = 1U;
+            CANx->CAN_MCR.SRXDIS = 0U;
+            CANx->CAN_FDCTRL.TDCEN = 0U;
+            break;
+        case CAN_MODE_FREEZE:
+            if(CAN_EnterFreezeMode(id) != SUCC)
             {
                 retVal = ERR;
-            }            
-        }
+            }
+            break;
+            
+        case CAN_MODE_DISABLE:
+            CANx->CAN_MCR.MDIS = 1U;
+            break;
+        default:
+            /* nothing to do */
+            break;
     }
-
+    
     return retVal;
 }
 
@@ -2156,7 +2142,7 @@ ResultStatus_t CAN_SetRxMb15Mask(CAN_Id_t id, CAN_MsgId_t idType, uint32_t mask)
  * @param[in]  id: select the CAN ID
  * @param[in]  idType: Standard ID or extended ID
  * @param[in]  mbIdx: MB index. The MB should not be occupied by RX FIFO if RX
- *                    FIFO is enabled, otherwise, it will return ERR.
+ *                    FIFO is enabled, othersise, it will return ERR.
  * @param[in]  mask:Mask Value. 11-bit standard mask or 29-bit extended mask
  *
  * @return     ResultStatus_t
@@ -2292,13 +2278,13 @@ ResultStatus_t CAN_SetRxFifoGlobalMask(CAN_Id_t id, uint32_t mask)
    bit31 | bit30 |       bit29 ... 16           | bit 15 | bit 14 | bit13 ... 0
    RTR   | IDE   | IDmask0(std:29-19, ext:29-16)| RTR    | IDE    | IDmask1
                                                             (std:13-3, ext:13-0)
-   In the extended frame format B, IDmask0/IDmask1 corresponds to 
+   In the extended frame format B, IDmask0/IDmask1 coresponse to 
    the 14 most significant bits of the received ID
 
    Format C ID mask: 
    bit31...bit 24 | bit23...bit16 |  bit15 ...bit8 | bit7 ... bit0
    IDmask0        | IDmask1       |    IDmask2     |    IDmask3
-   For format C IDmask corresponds to the 8 most significant bits of the 
+   For format C IDmask coresponse to the 8 most significant bits of the 
     received ID
  *
  * @return     status
@@ -2344,13 +2330,13 @@ ResultStatus_t CAN_SetRxFifoIndividualMask(CAN_Id_t id, uint32_t elementIdx,
 }
 
 /**
- * @brief      Configure transmit message buffer.
+ * @brief      Confgure transmit message buffer.
  *
  * @param[in]  id: select the CAN ID
  * @param[in]  mbIdx: MB index
  * @param[in]  txInfo: TX MB info
  * @param[in]  msgId: message ID
- * @param[in]  localPrio: the local priority field, if the TX priority mode is
+ * @param[in]  localPrio: the local priority field, if the TX priortiy mode is
  *                        CAN_TX_PRI_LOCAL_PRI_EN, this parameter indicates the
  *                        local priority
  *
@@ -2374,7 +2360,7 @@ ResultStatus_t CAN_ConfigTxMb(CAN_Id_t id, uint8_t mbIdx,
  * @param[in]  txInfo: TX MB info
  * @param[in]  msgId: message ID
  * @param[in]  msgData:  data of the message
- * @param[in]  localPrio: the local priority field, if the TX priority mode is
+ * @param[in]  localPrio: the local priority field, if the TX priortiy mode is
  *                        CAN_TX_PRI_LOCAL_PRI_EN, this parameter indicates the
  *                        local priority
  *
@@ -2493,7 +2479,7 @@ ResultStatus_t CAN_Send(CAN_Id_t id, uint8_t mbIdx,
 }
 
 /**
- * @brief     Sends a CAN frame when the TX priority mode is CAN_TX_PRI_LOCAL_PRI_EN
+ * @brief     Sends a CAN frame when the TX priortiy mode is CAN_TX_PRI_LOCAL_PRI_EN
  *             This function sends a CAN frame using a configured message buffer.
  *             It also configures the local priority. Before calling this 
  *             function, user needs to make sure that the MB to be configured 
@@ -2605,7 +2591,7 @@ ResultStatus_t CAN_MbReceive(CAN_Id_t id, uint8_t mbIdx,
 }
 
 /**
- * @brief      Configure RX FIFO ID filter table elements
+ * @brief      Confgure RX FIFO ID filter table elements
  *
  * @param[in]  id: select the CAN ID
  * @param[in]  format: the ID filter format
@@ -3096,7 +3082,7 @@ ResultStatus_t CAN_InactiveMb(CAN_Id_t id, uint8_t mbIdx)
  * @note this function shall be called before entering bus off state. If CAN 
  *       recovers from bus off manually through CAN_RecoverFromBusOffManually(),
  *       and user need to select CAN_BUS_OFF_RECOV_MANUAL for the next time,
- *       this function shall be called again. 
+ *       this function shall be called agained. 
  *
  * @return     none
  *
@@ -3311,7 +3297,7 @@ ResultStatus_t CAN_SetMbCode(CAN_Id_t id, uint32_t mbIdx, CAN_MbCode_t code)
  * @brief  Writes the abort code into the CODE field of the requested Tx message
  *         buffer to abort transmission. User needs to check if MB transmission
  *         is aborted or not after this function. It is suggested to use 
- *         CAN_InactiveMb() to abort MB transmission instead of this function.
+ *         CAN_InactiveMb() to abort MB transmision instead of this function.
  *
  * @param[in]  id: select the CAN ID
  * @param[in]  mbIdx: Index of the message buffer.It should not be occupied by
@@ -3436,7 +3422,7 @@ ResultStatus_t CAN_GetMbCode(CAN_Id_t id, uint32_t mbIdx, uint32_t *code)
 }
 
 /**
- * @brief  Enable timeout to be a wakeup source for Pretended Networking.
+ * @brief  enble timeout to be a wakeup source for Pretended Networking.
  *
  * @param[in]  id: select the CAN ID
  * @param[in]  timeout: timeout value.
@@ -3500,7 +3486,7 @@ ResultStatus_t CAN_DisablePnTimeoutWakeup(CAN_Id_t id)
 }
 
 /**
- * @brief  Enable and config the wakeup source of receiving matched messages 
+ * @brief  enble and config the wakeup source of receiving matched messages 
  *         for Pretended Networking.
  *
  * @param[in]  id: select the CAN ID
@@ -4000,7 +3986,7 @@ ResultStatus_t CAN_RemoteFrameConfig(CAN_Id_t id, ControlState_t autoResponse)
                CAN_INT_COR_MEM_ERR
  *
  * @param[in]  id: select the CAN ID
- * @param[in]  intType: select interrupt type
+ * @param[in]  intType: select interrrupt type
  * @param[in]  cbFun: indicate callback function
  *
  * @return    none
@@ -4040,13 +4026,13 @@ void CAN_InstallMbCallBackFunc(CAN_Id_t id, can_mb_cb_t mbCbf)
  * @param[in]  intType: interrupt to be masked/unmasked
  * @param[in]  intMask: MASK/UNMASK
  * @param[in]  mb0t31: if intType is CAN_INT_MB, this parameter selects the MBs
- *                     (MB0-MB31) to be configured. Each bit corresponds a MB
+ *                     (MB0-MB31) to be configured. Each bit coresponses a MB
  *                     (bit0 - MB0, bit1 - MB1, ... ,bit31 - MB31). If a bit 
- *                     is 1,it means the corresponding MB to be configured.
+ *                     is 1,it means the coresponding MB to be configured.
  * @param[in]  mb32t63: if intType is CAN_INT_MB, this parameter selects the MBs
- *                     (MB32-MB63) to be configured. Each bit corresponds a MB
+ *                     (MB32-MB63) to be configured. Each bit coresponses a MB
  *                     (bit0 - MB32, bit1 - MB33, ... ,bit31 - MB63). If a bit 
- *                     is 1,it means the corresponding MB to be configured.
+ *                     is 1,it means the coresponding MB to be configured.
  *
  * @return     status
  *             - SUCC -- successful
@@ -4091,12 +4077,12 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                 if(UNMASK == intMask)
                 {
                     CANxw->CAN_CTRL1 |= canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] |= canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 |= canInterruptFlagMaskTable[intType];
                 }
                 else
                 {
                     CANxw->CAN_CTRL1 &= ~canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] &= ~canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 &= ~canInterruptFlagMaskTable[intType];
                 }
                 break;
             
@@ -4106,13 +4092,13 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                 {
                     CANx->CAN_MCR.WRNEN = 1U;
                     CANxw->CAN_CTRL1 |= canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] |= canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 |= canInterruptFlagMaskTable[intType];
                 }
                 else
                 {
                     CANx->CAN_MCR.WRNEN = 0U;
                     CANxw->CAN_CTRL1 &= ~canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id]&= ~canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 &= ~canInterruptFlagMaskTable[intType];
                 }
                 break;
             
@@ -4121,12 +4107,12 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                 if(UNMASK == intMask)
                 {
                     CANxw->CAN_CTRL2 |= canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] |= canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 |= canInterruptFlagMaskTable[intType];
                 }
                 else
                 {
                     CANxw->CAN_CTRL2 &= ~canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] &= ~canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 &= ~canInterruptFlagMaskTable[intType];
                 }
                 break;
                 
@@ -4134,12 +4120,12 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                 if(UNMASK == intMask)
                 {
                     CANxw->CAN_MCR |= canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] |= canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 |= canInterruptFlagMaskTable[intType];
                 }
                 else
                 {
                     CANxw->CAN_MCR &= ~canInterruptMaskTable[intType];
-                    canIntMaskStatus1[id] &= ~canInterruptFlagMaskTable[intType];
+                    canIntMaskStatus1 &= ~canInterruptFlagMaskTable[intType];
                 }
                 break;
             
@@ -4196,7 +4182,7 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                     CANx->CAN_MCR.WAKMSK = 1U;
                     CANx->CAN_MCR.WRNEN = 1U;
                     CANxw->CAN_CTRL1_PN |= CAN_INT_MSK_MULTI_4;
-                    canIntMaskStatus1[id] = CAN_INT_MSK_FLAG_ALL_1;
+                    canIntMaskStatus1 = CAN_INT_MSK_FLAG_ALL_1;
                 }
                 else
                 {
@@ -4210,7 +4196,7 @@ ResultStatus_t CAN_IntMask(CAN_Id_t id, CAN_Int_t intType, IntMask_t intMask,
                     CANx->CAN_MCR.WAKMSK = 0U;
                     CANx->CAN_MCR.WRNEN = 0U;
                     CANxw->CAN_CTRL1_PN &= ~CAN_INT_MSK_MULTI_4;
-                    canIntMaskStatus1[id] = 0U;
+                    canIntMaskStatus1 = 0U;
                 }
                 break;
                 
@@ -4279,16 +4265,16 @@ ResultStatus_t CAN_MbIntMask(CAN_Id_t id, uint32_t mbIdx,IntMask_t intMask)
  * @brief      Clear interrupt
  *
  * @param[in]  id: select the CAN ID
- * @param[in]  intType: select interrupt type
+ * @param[in]  intType: select interrrupt type
 * @param[in]  mb0t31: if intType is CAN_INT_MB, this parameter selects the MBs
- *                     (MB0-MB31) to be configured. Each bit corresponds a MB
+ *                     (MB0-MB31) to be configured. Each bit coresponses a MB
  *                     (bit0 - MB0, bit1 - MB1, ... ,bit31 - MB31). If a bit 
- *                     is 1,it means the corresponding MB to be configured.
+ *                     is 1,it means the coresponding MB to be configured.
  *                     For other interrupt type, this parameter can be ignored.
  * @param[in]  mb32t63: if intType is CAN_INT_MB, this parameter selects the MBs
- *                     (MB0-MB31) to be configured. Each bit corresponds a MB
+ *                     (MB0-MB31) to be configured. Each bit coresponses a MB
  *                     (bit0 - MB32, bit1 - MB33, ... ,bit31 - MB63). If a bit 
- *                     is 1,it means the corresponding MB to be configured.
+ *                     is 1,it means the coresponding MB to be configured.
  *                     For other interrupt type, this parameter can be ignored.
  *
  * @return    none
@@ -4352,7 +4338,7 @@ void CAN_IntClear(CAN_Id_t id, CAN_Int_t intType, uint32_t mb0t31,
  * @brief      Get interrupt status
  *
  * @param[in]  id: select the CAN ID
- * @param[in]  intType: select interrupt type
+ * @param[in]  intType: select interrrupt type
  * @param[in]  mbId: if intType is CAN_INT_MB, this parameter selects the MB
  *                     (MB0-MB63) status to be get
  *

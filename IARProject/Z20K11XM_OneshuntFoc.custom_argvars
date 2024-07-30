@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iarUserArgVars>
+    <group name="Device" active="true">
+        <variable>
+            <name>D</name>
+            <value>TLE9879QXA40</value>
+        </variable>
+    </group>
+</iarUserArgVars>

@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_uart.h
- * @brief     : UART driver module header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_uart.h
+ * @brief    UART driver module header file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #ifndef Z20K11XM_UART_H
@@ -108,21 +109,21 @@ typedef enum
 typedef enum
 {
     UART_IDLE_DETECT_LENGTH_1 = 0U,         /*!< UART idle detection length: 
-                                              1-bit character  */
+                                              1 16-bit character  */
     UART_IDLE_DETECT_LENGTH_2,              /*!< UART idle detection length: 
-                                              2-bit characters   */
+                                              2 16-bit characters   */
     UART_IDLE_DETECT_LENGTH_4,              /*!< UART idle detection length: 
-                                              4-bit characters  */
+                                              4 16-bit characters  */
     UART_IDLE_DETECT_LENGTH_8,              /*!< UART idle detection length: 
-                                              8-bit characters  */
+                                              8 16-bit characters  */
     UART_IDLE_DETECT_LENGTH_16,             /*!< UART idle detection length: 
-                                              16-bit characters */
+                                             16 16-bit characters */
     UART_IDLE_DETECT_LENGTH_32,             /*!< UART idle detection length: 
-                                              32-bit characters */
+                                             32 16-bit characters */
     UART_IDLE_DETECT_LENGTH_64,             /*!< UART idle detection length: 
-                                              64-bit characters */
+                                             64 16-bit characters */
     UART_IDLE_DETECT_LENGTH_128             /*!< UART idle detection length: 
-                                              128-bit characters */
+                                             128 16-bit characters */
 } UART_IdleDetectLength_t;
 
 /**

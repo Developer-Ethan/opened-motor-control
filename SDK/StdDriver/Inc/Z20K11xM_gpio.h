@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_gpio.h
- * @brief     : GPIO driver module header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_gpio.h
+ * @brief    GPIO driver module header file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #ifndef Z20K11XM_GPIO_H
@@ -600,6 +601,7 @@ typedef enum
 #define PTD16_SPI2_SIN PINMUX_FUNCTION_5
 
 /* PTD17 pinmux function */
+#define PTD17_ADC0_CH18 PINMUX_FUNCTION_0
 #define PTD17_GPIO      PINMUX_FUNCTION_1
 #define PTD17_UART2_RX  PINMUX_FUNCTION_3
 #define PTD17_SPI2_SCK  PINMUX_FUNCTION_5
@@ -682,6 +684,7 @@ typedef enum
 #define PTE11_TMU_OUT5   PINMUX_FUNCTION_7
 
 /* PTE12 pinmux function */
+#define PTE12_ADC0_CH19 PINMUX_FUNCTION_0
 #define PTE12_GPIO      PINMUX_FUNCTION_1
 #define PTE12_UART2_TX  PINMUX_FUNCTION_3
 #define PTE12_SPI2_SIN  PINMUX_FUNCTION_5

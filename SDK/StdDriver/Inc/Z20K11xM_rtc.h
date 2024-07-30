@@ -1,14 +1,15 @@
-/**************************************************************************************************/
+/**************************************************************************/
 /**
- * @file      : Z20K11xM_rtc.h
- * @brief     : RTC module driver header file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_RTC.h
+ * @brief    RTC module header file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
- **************************************************************************************************/
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
+ **************************************************************************/
 
 #ifndef Z20K11XM_RTC_H__
 #define Z20K11XM_RTC_H__

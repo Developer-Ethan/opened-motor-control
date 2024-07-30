@@ -1,0 +1,145 @@
+function CodeDefine() { 
+this.def = new Array();
+this.def["rt_OneStep"] = {file: "ert_main_c.html",line:36,type:"fcn"};
+this.def["main"] = {file: "ert_main_c.html",line:72,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_DW"] = {file: "FOC_Ctrl_CodeModel_c.html",line:38,type:"var"};
+this.def["FOC_Ctrl_CodeModel_U"] = {file: "FOC_Ctrl_CodeModel_c.html",line:41,type:"var"};
+this.def["FOC_Ctrl_CodeModel_Y"] = {file: "FOC_Ctrl_CodeModel_c.html",line:44,type:"var"};
+this.def["FOC_Ctrl_CodeModel.c:FOC_Ctrl_CodeModel_M_"] = {file: "FOC_Ctrl_CodeModel_c.html",line:47,type:"var"};
+this.def["FOC_Ctrl_CodeModel_M"] = {file: "FOC_Ctrl_CodeModel_c.html",line:48,type:"var"};
+this.def["FOC_Ctrl_CodeMode_InitFunc_Init"] = {file: "FOC_Ctrl_CodeModel_c.html",line:52,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_InitFunc"] = {file: "FOC_Ctrl_CodeModel_c.html",line:75,type:"fcn"};
+this.def["FOC_Ctrl_CodeMod_FaultFunc_Init"] = {file: "FOC_Ctrl_CodeModel_c.html",line:151,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_FaultFunc"] = {file: "FOC_Ctrl_CodeModel_c.html",line:174,type:"fcn"};
+this.def["FOC_Ctrl_CodeMod_ReadyFunc_Init"] = {file: "FOC_Ctrl_CodeModel_c.html",line:197,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_ReadyFunc"] = {file: "FOC_Ctrl_CodeModel_c.html",line:220,type:"fcn"};
+this.def["FOC_Ctrl_Cod_NormalRunFunc_Init"] = {file: "FOC_Ctrl_CodeModel_c.html",line:243,type:"fcn"};
+this.def["FOC_Ctrl_C_NormalRunFunc_Enable"] = {file: "FOC_Ctrl_CodeModel_c.html",line:252,type:"fcn"};
+this.def["FOC_Ctrl_CodeMode_NormalRunFunc"] = {file: "FOC_Ctrl_CodeModel_c.html",line:269,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_step"] = {file: "FOC_Ctrl_CodeModel_c.html",line:758,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_initialize"] = {file: "FOC_Ctrl_CodeModel_c.html",line:1077,type:"fcn"};
+this.def["DW_NormalRunFunc_FOC_Ctrl_Cod_T"] = {file: "FOC_Ctrl_CodeModel_h.html",line:55,type:"type"};
+this.def["DW_FOC_Ctrl_CodeModel_T"] = {file: "FOC_Ctrl_CodeModel_h.html",line:71,type:"type"};
+this.def["ExtU_FOC_Ctrl_CodeModel_T"] = {file: "FOC_Ctrl_CodeModel_h.html",line:84,type:"type"};
+this.def["ExtY_FOC_Ctrl_CodeModel_T"] = {file: "FOC_Ctrl_CodeModel_h.html",line:93,type:"type"};
+this.def["structAxis"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:30,type:"type"};
+this.def["structCurrentABC"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:41,type:"type"};
+this.def["structOffset"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:52,type:"type"};
+this.def["structCurrent"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:64,type:"type"};
+this.def["structVoltageADC"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:75,type:"type"};
+this.def["structVoltage"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:86,type:"type"};
+this.def["structDCbus"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:96,type:"type"};
+this.def["structHallSignal"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:107,type:"type"};
+this.def["structHallCalc"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:118,type:"type"};
+this.def["structHallSpd"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:129,type:"type"};
+this.def["structHall"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:140,type:"type"};
+this.def["structSnls"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:152,type:"type"};
+this.def["structSignals"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:167,type:"type"};
+this.def["structPI"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:178,type:"type"};
+this.def["structRegulator"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:189,type:"type"};
+this.def["structCntrlReq"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:202,type:"type"};
+this.def["structLED"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:213,type:"type"};
+this.def["structMotorCtrl"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:225,type:"type"};
+this.def["structMeasRaw"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:238,type:"type"};
+this.def["structDuty"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:249,type:"type"};
+this.def["structFOC"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:262,type:"type"};
+this.def["structRst"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:273,type:"type"};
+this.def["structFocSpd"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:283,type:"type"};
+this.def["structFocTheta"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:294,type:"type"};
+this.def["strcutFocInternalPara"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:305,type:"type"};
+this.def["RT_MODEL_FOC_Ctrl_CodeModel_T"] = {file: "FOC_Ctrl_CodeModel_types_h.html",line:310,type:"type"};
+this.def["FOC_Ctrl_CodeModel_PLLObserver"] = {file: "PLLObserver_c.html",line:27,type:"fcn"};
+this.def["DW_PLLObserver_FOC_Ctrl_CodeM_T"] = {file: "PLLObserver_h.html",line:35,type:"type"};
+this.def["FOC_Ctrl_Co_PLLObserver1_Enable"] = {file: "PLLObserver1_c.html",line:27,type:"fcn"};
+this.def["FOC_Ctrl_CodeModel_PLLObserver1"] = {file: "PLLObserver1_c.html",line:40,type:"fcn"};
+this.def["DW_PLLObserver1_FOC_Ctrl_Code_T"] = {file: "PLLObserver1_h.html",line:40,type:"type"};
+this.def["FOC_Ctrl_CodeModel_SVCM"] = {file: "SVCM_c.html",line:27,type:"fcn"};
+this.def["DW_SVCM_FOC_Ctrl_CodeModel_T"] = {file: "SVCM_h.html",line:35,type:"type"};
+this.def["rt_remf"] = {file: "../../slprj/ert/_sharedutils/html/rt_remf_c.html",line:16,type:"fcn"};
+this.def["int8_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:42,type:"type"};
+this.def["uint8_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:43,type:"type"};
+this.def["int16_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:44,type:"type"};
+this.def["uint16_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:45,type:"type"};
+this.def["int32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:46,type:"type"};
+this.def["uint32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:47,type:"type"};
+this.def["int64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:48,type:"type"};
+this.def["uint64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:49,type:"type"};
+this.def["real32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:50,type:"type"};
+this.def["real64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:51,type:"type"};
+this.def["real_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:57,type:"type"};
+this.def["time_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:58,type:"type"};
+this.def["boolean_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:59,type:"type"};
+this.def["int_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:60,type:"type"};
+this.def["uint_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:61,type:"type"};
+this.def["ulong_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:62,type:"type"};
+this.def["ulonglong_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:63,type:"type"};
+this.def["char_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:64,type:"type"};
+this.def["uchar_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:65,type:"type"};
+this.def["byte_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:66,type:"type"};
+this.def["creal32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:76,type:"type"};
+this.def["creal64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:81,type:"type"};
+this.def["creal_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:86,type:"type"};
+this.def["cint8_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:93,type:"type"};
+this.def["cuint8_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:100,type:"type"};
+this.def["cint16_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:107,type:"type"};
+this.def["cuint16_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:114,type:"type"};
+this.def["cint32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:121,type:"type"};
+this.def["cuint32_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:128,type:"type"};
+this.def["cint64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:135,type:"type"};
+this.def["cuint64_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:142,type:"type"};
+this.def["pointer_T"] = {file: "../../slprj/ert/_sharedutils/html/rtwtypes_h.html",line:163,type:"type"};
+}
+CodeDefine.instance = new CodeDefine();
+var testHarnessInfo = {OwnerFileName: "", HarnessOwner: "", HarnessName: "", IsTestHarness: "0"};
+var relPathToBuildDir = "../ert_main.c";
+var fileSep = "\\";
+var isPC = true;
+function Html2SrcLink() {
+	this.html2SrcPath = new Array;
+	this.html2Root = new Array;
+	this.html2SrcPath["ert_main_c.html"] = "../ert_main.c";
+	this.html2Root["ert_main_c.html"] = "ert_main_c.html";
+	this.html2SrcPath["FOC_Ctrl_CodeModel_c.html"] = "../FOC_Ctrl_CodeModel.c";
+	this.html2Root["FOC_Ctrl_CodeModel_c.html"] = "FOC_Ctrl_CodeModel_c.html";
+	this.html2SrcPath["FOC_Ctrl_CodeModel_h.html"] = "../FOC_Ctrl_CodeModel.h";
+	this.html2Root["FOC_Ctrl_CodeModel_h.html"] = "FOC_Ctrl_CodeModel_h.html";
+	this.html2SrcPath["FOC_Ctrl_CodeModel_private_h.html"] = "../FOC_Ctrl_CodeModel_private.h";
+	this.html2Root["FOC_Ctrl_CodeModel_private_h.html"] = "FOC_Ctrl_CodeModel_private_h.html";
+	this.html2SrcPath["FOC_Ctrl_CodeModel_types_h.html"] = "../FOC_Ctrl_CodeModel_types.h";
+	this.html2Root["FOC_Ctrl_CodeModel_types_h.html"] = "FOC_Ctrl_CodeModel_types_h.html";
+	this.html2SrcPath["PLLObserver_c.html"] = "../PLLObserver.c";
+	this.html2Root["PLLObserver_c.html"] = "PLLObserver_c.html";
+	this.html2SrcPath["PLLObserver_h.html"] = "../PLLObserver.h";
+	this.html2Root["PLLObserver_h.html"] = "PLLObserver_h.html";
+	this.html2SrcPath["PLLObserver1_c.html"] = "../PLLObserver1.c";
+	this.html2Root["PLLObserver1_c.html"] = "PLLObserver1_c.html";
+	this.html2SrcPath["PLLObserver1_h.html"] = "../PLLObserver1.h";
+	this.html2Root["PLLObserver1_h.html"] = "PLLObserver1_h.html";
+	this.html2SrcPath["SVCM_c.html"] = "../SVCM.c";
+	this.html2Root["SVCM_c.html"] = "SVCM_c.html";
+	this.html2SrcPath["SVCM_h.html"] = "../SVCM.h";
+	this.html2Root["SVCM_h.html"] = "SVCM_h.html";
+	this.html2SrcPath["Parameter_h.html"] = "../Parameter.h";
+	this.html2Root["Parameter_h.html"] = "../../slprj/ert/_sharedutils/html/Parameter_h.html";
+	this.html2SrcPath["rt_remf_c.html"] = "../rt_remf.c";
+	this.html2Root["rt_remf_c.html"] = "../../slprj/ert/_sharedutils/html/rt_remf_c.html";
+	this.html2SrcPath["rt_remf_h.html"] = "../rt_remf.h";
+	this.html2Root["rt_remf_h.html"] = "../../slprj/ert/_sharedutils/html/rt_remf_h.html";
+	this.html2SrcPath["rtwtypes_h.html"] = "../rtwtypes.h";
+	this.html2Root["rtwtypes_h.html"] = "../../slprj/ert/_sharedutils/html/rtwtypes_h.html";
+	this.getLink2Src = function (htmlFileName) {
+		 if (this.html2SrcPath[htmlFileName])
+			 return this.html2SrcPath[htmlFileName];
+		 else
+			 return null;
+	}
+	this.getLinkFromRoot = function (htmlFileName) {
+		 if (this.html2Root[htmlFileName])
+			 return this.html2Root[htmlFileName];
+		 else
+			 return null;
+	}
+}
+Html2SrcLink.instance = new Html2SrcLink();
+var fileList = [
+"ert_main_c.html","FOC_Ctrl_CodeModel_c.html","FOC_Ctrl_CodeModel_h.html","FOC_Ctrl_CodeModel_private_h.html","FOC_Ctrl_CodeModel_types_h.html","PLLObserver_c.html","PLLObserver_h.html","PLLObserver1_c.html","PLLObserver1_h.html","SVCM_c.html","SVCM_h.html","Parameter_h.html","rt_remf_c.html","rt_remf_h.html","rtwtypes_h.html"];

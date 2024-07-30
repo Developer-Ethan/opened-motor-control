@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_Type.h
  * @brief     : Z20A8300A Params Type Define Header File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 #ifndef Z20A8300A_TYPE_H
 #define Z20A8300A_TYPE_H
@@ -115,8 +115,8 @@ typedef enum
 typedef enum
 {
     Z20A8300A_OTS_165_DEG = 0U,            /*!< 165 deg*/
-    Z20A8300A_OTS_155_DEG,                 /*!< 155 deg*/
-    Z20A8300A_OTS_145_DEG,                 /*!< 145 deg*/
+    Z20A8300A_OTS_155_DEG,                  /*!< 155 deg*/
+    Z20A8300A_OTS_145_DEG,                  /*!< 145 deg*/
     Z20A8300A_OTS_135_DEG                  /*!< 135 deg*/
 } Z20A8300A_Config0_OverTempeThresholdType;
 
@@ -135,37 +135,37 @@ typedef enum
 typedef enum
 {
     Z20A8300A_TCB_0ns = 0U,
+    Z20A8300A_TCB_50nS,
+    Z20A8300A_TCB_100nS,
+    Z20A8300A_TCB_150nS,
     Z20A8300A_TCB_200nS,
+    Z20A8300A_TCB_250nS,
+    Z20A8300A_TCB_300nS,
+    Z20A8300A_TCB_350nS,
     Z20A8300A_TCB_400nS,
+    Z20A8300A_TCB_450nS,
+    Z20A8300A_TCB_500nS,
+    Z20A8300A_TCB_550nS,
     Z20A8300A_TCB_600nS,
+    Z20A8300A_TCB_650nS,
+    Z20A8300A_TCB_700nS,
+    Z20A8300A_TCB_750nS,
     Z20A8300A_TCB_800nS,
+    Z20A8300A_TCB_850nS,
+    Z20A8300A_TCB_900nS,
+    Z20A8300A_TCB_950nS,
     Z20A8300A_TCB_1000nS,
+    Z20A8300A_TCB_1050nS,
+    Z20A8300A_TCB_1100nS,
+    Z20A8300A_TCB_1150nS,
     Z20A8300A_TCB_1200nS,
+    Z20A8300A_TCB_1250nS,
+    Z20A8300A_TCB_1300nS,
+    Z20A8300A_TCB_1350nS,
     Z20A8300A_TCB_1400nS,
-    Z20A8300A_TCB_1600nS,
-    Z20A8300A_TCB_1800nS,
-    Z20A8300A_TCB_2000nS,
-    Z20A8300A_TCB_2200nS,
-    Z20A8300A_TCB_2400nS,
-    Z20A8300A_TCB_2600nS,
-    Z20A8300A_TCB_2800nS,
-    Z20A8300A_TCB_3000nS,
-    Z20A8300A_TCB_3200nS,
-    Z20A8300A_TCB_3400nS,
-    Z20A8300A_TCB_3600nS,
-    Z20A8300A_TCB_3800nS,
-    Z20A8300A_TCB_4000nS,
-    Z20A8300A_TCB_4200nS,
-    Z20A8300A_TCB_4400nS,
-    Z20A8300A_TCB_4600nS,
-    Z20A8300A_TCB_4800nS,
-    Z20A8300A_TCB_5000nS,
-    Z20A8300A_TCB_5200nS,
-    Z20A8300A_TCB_5400nS,
-    Z20A8300A_TCB_5600nS,
-    Z20A8300A_TCB_5800nS,
-    Z20A8300A_TCB_6000nS,
-    Z20A8300A_TCB_6200nS
+    Z20A8300A_TCB_1450nS,
+    Z20A8300A_TCB_1500nS,
+    Z20A8300A_TCB_1550nS
 } Z20A8300A_Config1_OverCurrentBlankingTimeType;
 
 /**  
@@ -361,7 +361,6 @@ typedef enum
 
 /**  
  *  @brief Z20A8300A current sensor A/B/C gain type definition
- *  @note  Actual value reference datasheet
  */
 typedef enum
 {

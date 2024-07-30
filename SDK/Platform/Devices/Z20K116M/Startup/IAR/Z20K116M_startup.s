@@ -1,12 +1,13 @@
 ; -----------------------------------------------------------------------------
-; @file      : Z20K116M_startup.s
-; @brief     : Z20K116M startup and Vector Table Source File for IAR.
-; @version   : V1.8.0
-; @date      : May-2020
-; @author    : Zhixin Semiconductor
+; @file     Z20K116M_startup.s
+; @brief    Z20K116M startup and Vector Table Source File for IAR.
+; @version  V1.7.0
+; @date     May-2020
+; @author   Zhixin Semiconductor
 ;
 ; @note
-; @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+; Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+; 
 ; -----------------------------------------------------------------------------
 
 

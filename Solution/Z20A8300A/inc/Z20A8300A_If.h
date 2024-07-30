@@ -3,12 +3,12 @@
  * @file      : Z20A8300A_If.h
  * @brief     : Z20A8300A Spi Interface Header File.
  *                 - Platform: Z20A8300A
- * @version   : V0.7.0
- * @date      : September-2022
+ * @version   : V0.1
+ * @date      : 2022-08-15
  * @author    : Zhixin Semiconductor
  * @note      : None
  *
- * @Copyright : Copyright (c) 2022-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * @Copyright : Copyright (C) 2022 Zhixin Semiconductor Ltd. All rights reserved.
  **************************************************************************************************/
 #ifndef Z20A8300A_IF_H
 #define Z20A8300A_IF_H
@@ -36,24 +36,25 @@ extern "C" {
 /*!< @name Frame - Z20A8300A Spi frame field */
 /*!< @{ */
 #define Z20A8300A_FRAME_PARITY_MASK               0x0001u
+#define Z20A8300A_FRAME_PARITY_SHIFT              0u
 #define Z20A8300A_FRAME_PARITY_WIDTH              1u
-#define Z20A8300A_FRAME_PARITY_SET(x)             (((uint32_t)((uint32_t)(x)))&Z20A8300A_FRAME_PARITY_MASK)
-#define Z20A8300A_FRAME_PARITY_GET(x)             ((uint32_t)(((uint32_t)(x))&Z20A8300A_FRAME_PARITY_MASK))
+#define Z20A8300A_FRAME_PARITY_SET(x)             (((uint16_t)(((uint16_t)(x))<<Z20A8300A_FRAME_PARITY_SHIFT))&Z20A8300A_FRAME_PARITY_MASK)
+#define Z20A8300A_FRAME_PARITY_GET(x)             (((uint16_t)(((uint16_t)(x))&Z20A8300A_FRAME_PARITY_MASK))>>Z20A8300A_FRAME_PARITY_SHIFT)
 #define Z20A8300A_FRAME_DATA_MASK                 0x03FEu
 #define Z20A8300A_FRAME_DATA_SHIFT                1u
 #define Z20A8300A_FRAME_DATA_WIDTH                9u
-#define Z20A8300A_FRAME_DATA_SET(x)               (((uint32_t)(((uint32_t)(x))<<Z20A8300A_FRAME_DATA_SHIFT))&Z20A8300A_FRAME_DATA_MASK)
-#define Z20A8300A_FRAME_DATA_GET(x)               (((uint32_t)(((uint32_t)(x))&Z20A8300A_FRAME_DATA_MASK))>>Z20A8300A_FRAME_DATA_SHIFT)
+#define Z20A8300A_FRAME_DATA_SET(x)               (((uint16_t)(((uint16_t)(x))<<Z20A8300A_FRAME_DATA_SHIFT))&Z20A8300A_FRAME_DATA_MASK)
+#define Z20A8300A_FRAME_DATA_GET(x)               (((uint16_t)(((uint16_t)(x))&Z20A8300A_FRAME_DATA_MASK))>>Z20A8300A_FRAME_DATA_SHIFT)
 #define Z20A8300A_FRAME_WR_MASK                   0x0400u
 #define Z20A8300A_FRAME_WR_SHIFT                  10u
 #define Z20A8300A_FRAME_WR_WIDTH                  1u
-#define Z20A8300A_FRAME_WR_SET(x)                 (((uint32_t)(((uint32_t)(x))<<Z20A8300A_FRAME_WR_SHIFT))&Z20A8300A_FRAME_WR_MASK)
-#define Z20A8300A_FRAME_WR_GET(x)                 (((uint32_t)(((uint32_t)(x))&Z20A8300A_FRAME_WR_MASK))>>Z20A8300A_FRAME_WR_SHIFT)
+#define Z20A8300A_FRAME_WR_SET(x)                 (((uint16_t)(((uint16_t)(x))<<Z20A8300A_FRAME_WR_SHIFT))&Z20A8300A_FRAME_WR_MASK)
+#define Z20A8300A_FRAME_WR_GET(x)                 (((uint16_t)(((uint16_t)(x))&Z20A8300A_FRAME_WR_MASK))>>Z20A8300A_FRAME_WR_SHIFT)
 #define Z20A8300A_FRAME_ADDRESS_MASK              0xF800u
 #define Z20A8300A_FRAME_ADDRESS_SHIFT             11u
 #define Z20A8300A_FRAME_ADDRESS_WIDTH             5u
-#define Z20A8300A_FRAME_ADDRESS_SET(x)            (((uint32_t)(((uint32_t)(x))<<Z20A8300A_FRAME_ADDRESS_SHIFT))&Z20A8300A_FRAME_ADDRESS_MASK)
-#define Z20A8300A_FRAME_ADDRESS_GET(x)            (((uint32_t)(((uint32_t)(x))&Z20A8300A_FRAME_ADDRESS_MASK))>>Z20A8300A_FRAME_ADDRESS_SHIFT)
+#define Z20A8300A_FRAME_ADDRESS_SET(x)            (((uint16_t)(((uint16_t)(x))<<Z20A8300A_FRAME_ADDRESS_SHIFT))&Z20A8300A_FRAME_ADDRESS_MASK)
+#define Z20A8300A_FRAME_ADDRESS_GET(x)            (((uint16_t)(((uint16_t)(x))&Z20A8300A_FRAME_ADDRESS_MASK))>>Z20A8300A_FRAME_ADDRESS_SHIFT)
 /*!< @} */
 
 /** @} end of If_Public_MacroDefinition */
@@ -82,14 +83,13 @@ typedef uint16_t (*WaitingForReceptionCallBackPtr)(void);
  */
 typedef union
 {
-    uint32_t DB;
+    uint16_t DB;
     struct
     {
-        uint32_t PARITY                :1;  /* [0]          r/w        */
-        uint32_t DATA                  :9;  /* [9:1]        r/w        */
-        uint32_t WR                    :1;  /* [10]         r/w        */
-        uint32_t ADDRESS               :5;  /* [15:11]      r/w        */
-        uint32_t RSVD                  :16; /* [31:16]      r        */
+        uint16_t PARITY                :1;  /* [0]          r/w        */
+        uint16_t DATA                  :9;  /* [9:1]        r/w        */
+        uint16_t WR                    :1;  /* [10]         r/w        */
+        uint16_t ADDRESS               :5;  /* [15:11]      r/w        */
     } BITS;
 } Z20A8300A_SpiFrameType;
 

@@ -74,7 +74,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>Z20K116M	ZhiXin Z20K116M</state>
+                    <state>Z20K118M	ZhiXin Z20K118M</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -120,7 +120,7 @@
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>Z20K116M	ZhiXin Z20K116M</state>
+                    <state>Z20K118M	ZhiXin Z20K118M</state>
                 </option>
                 <option>
                     <name>FPU2</name>
@@ -226,7 +226,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state>DEV_Z20K116M</state>
+                    <state>DEV_Z20K118M</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -350,36 +350,37 @@
                     <state>$PROJ_DIR$\..\SDK\Platform</state>
                     <state>$PROJ_DIR$\..\SDK\Platform\Core</state>
                     <state>$PROJ_DIR$\..\SDK\Platform\Devices</state>
-                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Inc</state>
+                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Inc</state>
                     <state>$PROJ_DIR$\..\SDK\StdDriver\Inc</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20A8300A\inc</state>
                     <state>$PROJ_DIR$\..\Solution\Z20A8300A\confg</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_AxisTransform</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_CurrSample</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_DataCalc</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_HeadFile</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Init</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_LoopControl</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Lpf</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Observer</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Parameter</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Pi</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_StateMachine</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Svm</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Table</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Timer</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\App</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\MidLayer</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\timer</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\adc</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\clock</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\dma</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\hwdiv</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\nvic</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\stim</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\tmu</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\zxmath</state>
-                    <state>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\hwcfg</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20A8300A\inc</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20A8300A\src</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\App</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\adc</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\clock</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\dma</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\hwcfg</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\hwdiv</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\nvic</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\stim</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\timer</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\tmu</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\zxmath</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_AxisTransform</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_CurrSample</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_DataCalc</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_HeadFile</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Init</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_LoopControl</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Lpf</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Observer</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Parameter</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Pi</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_StateMachine</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Svm</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Table</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Timer</state>
+                    <state>$PROJ_DIR$\..\Solution\Z20K11xM\MidLayer</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -695,7 +696,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>16</hasPrio>
+                <hasPrio>0</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>
@@ -788,7 +789,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>E:\Project\Yuntu\Indepentent research\Based on Z20K116M-Git\SDK\Platform\Devices\Z20K116M\MakeRule\IAR\Z20K116M_flash.icf</state>
+                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\MakeRule\IAR\Z20K118M_flash.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1098,7 +1099,7 @@
                 </option>
                 <option>
                     <name>IarchiveOutput</name>
-                    <state>C:\work\2023\oneshuntM0\Z20K11XM_OneshuntPumpsmo20kLib\IARProject\Debug\Exe\Z20K11XM_OneshuntFoc.a</state>
+                    <state>C:\Users\user\Desktop\Z20K11XM_OneshuntSmo20kADC\Z20K11XM_OneshuntSmo20kADC\IARProject\Debug\Exe\Z20K11XM_OneshuntFoc.a</state>
                 </option>
             </data>
         </settings>
@@ -2210,13 +2211,13 @@
             <group>
                 <name>Inc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Inc\Z20K116M.h</name>
+                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Inc\Z20K118M.h</name>
                 </file>
             </group>
             <group>
                 <name>Startup</name>
                 <file>
-                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Startup\IAR\Z20K116M_startup.s</name>
+                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Startup\IAR\Z20K118M_startup.s</name>
                 </file>
             </group>
         </group>
@@ -2226,7 +2227,7 @@
         <group>
             <name>Z20A8300A</name>
             <group>
-                <name>confg</name>
+                <name>config</name>
                 <file>
                     <name>$PROJ_DIR$\..\Solution\Z20A8300A\confg\Z20A8300A_Hal.c</name>
                 </file>
@@ -2275,17 +2276,17 @@
             </group>
         </group>
         <group>
-            <name>Z20K116M</name>
+            <name>Z20K11xM</name>
             <group>
                 <name>App</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\App\AppHeadFile.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\App\AppHeadFile.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\App\AppParameter.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\App\AppParameter.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\App\main.c</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\App\main.c</name>
                 </file>
             </group>
             <group>
@@ -2293,86 +2294,86 @@
                 <group>
                     <name>adc</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\adc\adc.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\adc\adc.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\adc\adc.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\adc\adc.h</name>
                     </file>
                 </group>
                 <group>
                     <name>clock</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\clock\clock.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\clock\clock.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\clock\clock.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\clock\clock.h</name>
                     </file>
                 </group>
                 <group>
                     <name>dma</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\dma\dma.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\dma\dma.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\dma\dma.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\dma\dma.h</name>
                     </file>
                 </group>
                 <group>
                     <name>hwdiv</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\hwdiv\hwdiv.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\hwdiv\hwdiv.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\hwdiv\hwdiv.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\hwdiv\hwdiv.h</name>
                     </file>
                 </group>
                 <group>
                     <name>nvic</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\nvic\nvic.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\nvic\nvic.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\nvic\nvic.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\nvic\nvic.h</name>
                     </file>
                 </group>
                 <group>
                     <name>stim</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\stim\stim.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\stim\stim.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\stim\stim.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\stim\stim.h</name>
                     </file>
                 </group>
                 <group>
                     <name>timer</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\timer\timer.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\timer\timer.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\timer\timer.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\timer\timer.h</name>
                     </file>
                 </group>
                 <group>
                     <name>tmu</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\tmu\tmu.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\tmu\tmu.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\tmu\tmu.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\tmu\tmu.h</name>
                     </file>
                 </group>
                 <group>
                     <name>zxmath</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\zxmath\zxmathfp.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\zxmath\zxmathfp.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\zxmath\zxmathfp.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\zxmath\zxmathfp.h</name>
                     </file>
                 </group>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\Bsp\hwcfg\hal_cfg.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\Bsp\hwcfg\hal_cfg.h</name>
                 </file>
             </group>
             <group>
@@ -2380,122 +2381,125 @@
                 <group>
                     <name>MC_AxisTransform</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_AxisTransform\AxisTransform.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_AxisTransform\AxisTransform.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_AxisTransform\AxisTransform.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_AxisTransform\AxisTransform.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_CurrSample</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_CurrSample\CurrSample.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_CurrSample\CurrSample.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_CurrSample\CurrSample.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_CurrSample\CurrSample.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_DataCalc</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_DataCalc\DataCalc.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_DataCalc\DataCalc.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_DataCalc\DataCalc.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_DataCalc\DataCalc.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Init</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Init\FocInit.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Init\FocInit.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Init\FocInit.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Init\FocInit.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_LoopControl</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_LoopControl\SpdLoop.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_LoopControl\SpdLoop.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_LoopControl\SpdLoop.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_LoopControl\SpdLoop.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Lpf</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Lpf\LPF.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Lpf\LPF.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Lpf\LPF.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Lpf\LPF.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Observer</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Observer\Observer.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Observer\Observer.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Observer\Observer.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Observer\Observer.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Pi</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Pi\PI.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Pi\PI.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Pi\PI.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Pi\PI.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_StateMachine</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_StateMachine\StateMachine.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_StateMachine\StateMachine.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_StateMachine\StateMachine.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_StateMachine\StateMachine.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Svm</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Svm\Svm.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Svm\Svm.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Svm\Svm.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Svm\Svm.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Table</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Table\Table.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Table\Table.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Table\Table.h</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Table\Table.h</name>
                     </file>
                 </group>
                 <group>
                     <name>MC_Timer</name>
                     <file>
-                        <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Timer\AiTimer.c</name>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Timer\AiTimer.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Timer\AiTimer.h</name>
                     </file>
                 </group>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_HeadFile\HeadFile.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_HeadFile\HeadFile.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\Foc\MC_Parameter\Parameter.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\Foc\MC_Parameter\Parameter.h</name>
                 </file>
             </group>
             <group>
                 <name>MidLayer</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\MidLayer\IRQHandler.c</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\MidLayer\IRQHandler.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Z20K116M\MidLayer\Midlayer.h</name>
+                    <name>$PROJ_DIR$\..\Solution\Z20K11xM\MidLayer\Midlayer.h</name>
                 </file>
             </group>
         </group>
@@ -2511,7 +2515,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_can.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_clock.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_clock.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_cmp.h</name>
@@ -2523,7 +2527,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_dma.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_drv.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_drv.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_ewdt.h</name>
@@ -2532,7 +2536,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_flash.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_gpio.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_gpio.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_hwdiv.h</name>
@@ -2550,7 +2554,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_rtc.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_spi.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_spi.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_srmc.h</name>
@@ -2559,7 +2563,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_stim.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_sysctrl.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_sysctrl.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_tdg.h</name>
@@ -2574,7 +2578,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_uart.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_wdog.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_wdog.h</name>
             </file>
         </group>
         <group>

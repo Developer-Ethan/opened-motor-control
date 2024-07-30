@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_uart.c
- * @brief     : UART module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_uart.c
+ * @brief    UART module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #include "Z20K11xM_uart.h"
@@ -221,7 +222,7 @@ static void UART_IntHandler(UART_ID_t uartId)
     if(1U == UARTx->UART_DLH_IER.UART_IER.HEADER_DONE_INT_EN)
     {
         /* LIN header done interrupt */
-        if( (UART_LIN_HEADER_DONE_FLG & uartLineStatusBuf[uartId] ) != 0U )
+        if( (UART_LIN_HEADER_DONE_INT_FLAG & uartLineStatusBuf[uartId] ) != 0U )
         {
             if(uartIsrCb[uartId][UART_INT_HEADER_DONE] != NULL)
             {
@@ -239,7 +240,7 @@ static void UART_IntHandler(UART_ID_t uartId)
     if(1U == UARTx->UART_DLH_IER.UART_IER.RSP_DONE_INT_EN)
     {
         /* LIN respnse done interrupt*/
-        if(0U != (UART_LIN_RSP_DONE_FLAG  & uartLineStatusBuf[uartId]))
+        if(0U != (UART_LIN_RSP_DONE_INT_FLAG  & uartLineStatusBuf[uartId]))
         {
             if(uartIsrCb[uartId][UART_INT_RSP_DONE] != NULL)
             {
@@ -340,6 +341,8 @@ static void UART_IntHandler(UART_ID_t uartId)
        
         /* Character timeout indication */
         case UART_INTSTA_IID_RCVRTO:
+            /* Clear it by reading the UART receive register */
+            dummyData = UARTxw ->UART_RBR_THR_DLL.UART_RBR;
             if(uartIsrCb[uartId][UART_INT_RCVRTO] != NULL)
             {
                 /* call the callback function */
@@ -349,9 +352,7 @@ static void UART_IntHandler(UART_ID_t uartId)
             else
             {
                 UARTx->UART_DLH_IER.UART_IER.ERBFI = 0U;
-            }
-            /* Clear it by reading the UART receive register */
-            dummyData = UARTxw ->UART_RBR_THR_DLL.UART_RBR;
+            }            
             break;
 
         default:

@@ -58,7 +58,7 @@
                 </option>
                 <option>
                     <name>RTDescription</name>
-                    <state>Use the full configuration of the C/C++ runtime library. Full locale interface, C locale, file descriptor support, multibytes in printf and scanf, and hex floats in strtod.</state>
+                    <state>To be used with the full configuration of the C/C++ runtime library. Full locale interface, C locale, file descriptor support, multibytes in printf and scanf, and hex floats in strtod.</state>
                 </option>
                 <option>
                     <name>OGProductVersion</name>
@@ -78,7 +78,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>Z20K116M	ZhiXin Z20K116M</state>
+                    <state>Z20K118M	ZhiXin Z20K118M</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -138,7 +138,7 @@
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>Z20K116M	ZhiXin Z20K116M</state>
+                    <state>Z20K118M	ZhiXin Z20K118M</state>
                 </option>
                 <option>
                     <name>FPU2</name>
@@ -224,7 +224,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state>DEV_Z20K116M</state>
+                    <state>DEV_Z20K118M</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -352,7 +352,7 @@
                     <state>$PROJ_DIR$\..\SDK\Platform</state>
                     <state>$PROJ_DIR$\..\SDK\Platform\Core</state>
                     <state>$PROJ_DIR$\..\SDK\Platform\Devices</state>
-                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Inc</state>
+                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Inc</state>
                     <state>$PROJ_DIR$\..\SDK\StdDriver\Inc</state>
                     <state>$PROJ_DIR$\..\Solution\Motorcontrol\Modules\ctrl</state>
                     <state>$PROJ_DIR$\..\Solution\Motorcontrol\Modules\curve</state>
@@ -787,7 +787,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\MakeRule\IAR\Z20K116M_flash.icf</state>
+                    <state>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\MakeRule\IAR\Z20K118M_flash.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1045,7 +1045,7 @@
                 </option>
                 <option>
                     <name>IarchiveOutput</name>
-                    <state>C:\work\2023\oneshuntM0\Z20K11XM_OneshuntPumpsmo20kLib\IARProject\Debug\Exe\Z20K11XM_OneshuntFoc.a</state>
+                    <state>C:\Users\user\Desktop\Z20K11XM_OneshuntSmo20kADC\Z20K11XM_OneshuntSmo20kADC\IARProject\Debug\Exe\Z20K11XM_OneshuntFoc.a</state>
                 </option>
             </data>
         </settings>
@@ -2127,13 +2127,13 @@
             <group>
                 <name>Inc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Inc\Z20K116M.h</name>
+                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Inc\Z20K118M.h</name>
                 </file>
             </group>
             <group>
                 <name>Startup</name>
                 <file>
-                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K116M\Startup\IAR\Z20K116M_startup.s</name>
+                    <name>$PROJ_DIR$\..\SDK\Platform\Devices\Z20K118M\Startup\IAR\Z20K118M_startup.s</name>
                 </file>
             </group>
         </group>
@@ -2145,25 +2145,7 @@
             <group>
                 <name>App</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\communication.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\EventHandle.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\Global_Structure.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\Motor_Protection.c</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\pmsm.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\user_coeff.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Solution\Motorcontrol\App\user_pmsm.h</name>
                 </file>
             </group>
             <group>
@@ -2187,6 +2169,9 @@
                     </file>
                 </group>
                 <group>
+                    <name>est</name>
+                </group>
+                <group>
                     <name>filter</name>
                     <file>
                         <name>$PROJ_DIR$\..\Solution\Motorcontrol\Modules\filter\iir_fo.c</name>
@@ -2194,9 +2179,6 @@
                 </group>
                 <group>
                     <name>foc</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\Solution\Motorcontrol\Modules\foc\Oneshunt.c</name>
-                    </file>
                 </group>
                 <group>
                     <name>hal</name>
@@ -2308,7 +2290,7 @@
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_dma.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20k11xM_drv.h</name>
+                <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_drv.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\SDK\StdDriver\Inc\Z20K11xM_ewdt.h</name>

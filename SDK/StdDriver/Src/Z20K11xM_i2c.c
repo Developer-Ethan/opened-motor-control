@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_i2c.c
- * @brief     : I2C module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_i2c.c
+ * @brief    I2C module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * 
  **************************************************************************************************/
 
 #include "Z20K11xM_i2c.h"
@@ -30,18 +31,18 @@
 /** @defgroup I2C_Private_Defines
  *  @{
  */
-#define I2C_STD_SPEED_SPKLEN       (0x01U)       /*!< I2C standard speed spike suppression limit */
-#define I2C_FAST_SPEED_SPKLEN      (0x01U)       /*!< I2C fast speed spike suppression limit */
-#define I2C_FAST_PLUS_SPEED_SPKLEN (0x02U)       /*!< I2C fast plus speed spike suppression limit */
-#define I2C_HIGH_SPEED_SPKLEN      (0x01U)       /*!< I2C high speed spike suppression limit */
-#define I2C_STD_SPEED_SCL_HC       (0x000000C0U) /*!< Standard speed I2C Clock SCL High Count */
-#define I2C_STD_SPEED_SCL_LC       (0x000000C7U) /*!< Standard speed I2C Clock SCL Low Count */
-#define I2C_FAST_SPEED_SCL_HC      (0x00000028U) /*!< Fast Mode I2C Clock SCL High Count */
-#define I2C_FAST_SPEED_SCL_LC      (0x0000002FU) /*!< Fast Mode I2C Clock SCL Low Count */
-#define I2C_FAST_PLUS_SPEED_SCL_HC (0x00000009U) /*!< Fast Plus Mode I2C Clock SCL High Count */
-#define I2C_FAST_PLUS_SPEED_SCL_LC (0x00000011U) /*!< Fast Plus Mode I2C Clock SCL Low Count */
-#define I2C_HIGH_SPEED_SCL_HC      (0x00000006U) /*!< High speed I2C Clock SCL High Count  */
-#define I2C_HIGH_SPEED_SCL_LC      (0x00000010U) /*!< High speed I2C Clock SCL Low Count  */
+#define I2C_STD_SPEED_SPKLEN           (0x01U)            /*!< I2C standrd speed spike suppression limit */
+#define I2C_FAST_SPEED_SPKLEN          (0x01U)            /*!< I2C fast speed spike suppression limit */
+#define I2C_FAST_PLUS_SPEED_SPKLEN     (0x02U)            /*!< I2C fast plus speed spike suppression limit */
+#define I2C_HIGH_SPEED_SPKLEN          (0x01U)            /*!< I2C high speed spike suppression limit */
+#define I2C_STD_SPEED_SCL_HC           (0x000000C0U)      /*!< Standard speed I2C Clock SCL High Count */
+#define I2C_STD_SPEED_SCL_LC           (0x000000C7U)      /*!< Standard speed I2C Clock SCL Low Count */
+#define I2C_FAST_SPEED_SCL_HC          (0x00000028U)      /*!< Fast Mode I2C Clock SCL High Count */
+#define I2C_FAST_SPEED_SCL_LC          (0x0000002FU)      /*!< Fast Mode I2C Clock SCL Low Count */
+#define I2C_FAST_PLUS_SPEED_SCL_HC     (0x00000009U)      /*!< Fast Plus Mode I2C Clock SCL High Count */
+#define I2C_FAST_PLUS_SPEED_SCL_LC     (0x00000011U)      /*!< Fast Plus Mode I2C Clock SCL Low Count */
+#define I2C_HIGH_SPEED_SCL_HC          (0x00000006U)      /*!< High speed I2C Clock SCL High Count  */
+#define I2C_HIGH_SPEED_SCL_LC          (0x00000010U)      /*!< High speed I2C Clock SCL Low Count  */
 
 /** @} end of group I2C_Private_Defines */
 
@@ -75,9 +76,9 @@ static i2c_reg_w_t * const i2cRegWPtr[I2C_INSTANCE_NUM] =
  */
 static isr_cb_t * i2cIsrCb[I2C_INSTANCE_NUM][I2C_INT_ALL]=
 {
-    {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+    {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
 #if (2U == I2C_INSTANCE_NUM)
-    {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
+    {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL}
 #endif
 };
 
@@ -118,7 +119,7 @@ void I2C0_DriverIRQHandler(void);
 #if (2U == I2C_INSTANCE_NUM)
 void I2C1_DriverIRQHandler(void);
 #endif
-static void I2C_IntHandler(I2C_Id_t i2cId);
+static void I2C_IntHandler(I2C_Id_t i2cNo);
 
 /** @} end of group I2C_Private_FunctionDeclaration */
 
@@ -128,16 +129,16 @@ static void I2C_IntHandler(I2C_Id_t i2cId);
 /**
  * @brief      I2C interrupt handle
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return none
  *
  */
-static void I2C_IntHandler(I2C_Id_t i2cId)
+static void I2C_IntHandler(I2C_Id_t i2cNo)
 {
     uint32_t intStatus;
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     /* Read the interrupt status */
     intStatus = I2Cxw->I2C_STATUS0;
@@ -148,9 +149,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
 
     if((intStatus & i2cIntEnableTable[I2C_INT_GEN_CALL]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_GEN_CALL]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_GEN_CALL]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_GEN_CALL]();
+            i2cIsrCb[i2cNo][I2C_INT_GEN_CALL]();
         }
         /* Disable the interrupt */
         else
@@ -160,9 +161,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_TX_OVER]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_TX_OVER]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_TX_OVER]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_TX_OVER]();
+            i2cIsrCb[i2cNo][I2C_INT_TX_OVER]();
         }
         /* Disable the interrupt */
         else
@@ -172,9 +173,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_ERROR_ABORT]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_ERROR_ABORT]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_ERROR_ABORT]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_ERROR_ABORT]();
+            i2cIsrCb[i2cNo][I2C_INT_ERROR_ABORT]();
         }
         /* Disable the interrupt */
         else
@@ -184,9 +185,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_ACTIVITY]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_ACTIVITY]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_ACTIVITY]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_ACTIVITY]();
+            i2cIsrCb[i2cNo][I2C_INT_ACTIVITY]();
         }
         /* Disable the interrupt */
         else
@@ -196,9 +197,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_STOP_DET]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_STOP_DET]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_STOP_DET]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_STOP_DET]();
+            i2cIsrCb[i2cNo][I2C_INT_STOP_DET]();
         }
         /* Disable the interrupt */
         else
@@ -208,9 +209,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_START_DET]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_START_DET]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_START_DET]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_START_DET]();
+            i2cIsrCb[i2cNo][I2C_INT_START_DET]();
         }
         /* Disable the interrupt */
         else
@@ -220,9 +221,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_RD_REQ]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RD_REQ]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RD_REQ]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RD_REQ]();
+            i2cIsrCb[i2cNo][I2C_INT_RD_REQ]();
         }
         /* Disable the interrupt */
         else
@@ -232,9 +233,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_RX_DONE]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RX_DONE]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RX_DONE]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RX_DONE]();
+            i2cIsrCb[i2cNo][I2C_INT_RX_DONE]();
         }
         /* Disable the interrupt */
         else
@@ -244,9 +245,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_RX_UNDER]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RX_UNDER]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RX_UNDER]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RX_UNDER]();
+            i2cIsrCb[i2cNo][I2C_INT_RX_UNDER]();
         }
         /* Disable the interrupt */
         else
@@ -256,9 +257,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_RX_OVER]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RX_OVER]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RX_OVER]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RX_OVER]();
+            i2cIsrCb[i2cNo][I2C_INT_RX_OVER]();
         }
         /* Disable the interrupt */
         else
@@ -268,9 +269,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_RESTART_DET]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RESTART_DET]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RESTART_DET]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RESTART_DET]();
+            i2cIsrCb[i2cNo][I2C_INT_RESTART_DET]();
         }
         /* Disable the interrupt */
         else
@@ -280,9 +281,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_SCL_STUCK_AT_LOW]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_SCL_STUCK_AT_LOW]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_SCL_STUCK_AT_LOW]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_SCL_STUCK_AT_LOW]();
+            i2cIsrCb[i2cNo][I2C_SCL_STUCK_AT_LOW]();
         }
         /* Disable the interrupt */
         else
@@ -292,9 +293,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
      if((intStatus & i2cIntEnableTable[I2C_INT_RX_FULL]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_RX_FULL]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_RX_FULL]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_RX_FULL]();
+            i2cIsrCb[i2cNo][I2C_INT_RX_FULL]();
         }
         /* Disable the interrupt */
         else
@@ -304,9 +305,9 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
     }
     if((intStatus & i2cIntEnableTable[I2C_INT_TX_EMPTY]) != 0U)
     {
-        if(i2cIsrCb[i2cId][I2C_INT_TX_EMPTY]!= NULL)
+        if(i2cIsrCb[i2cNo][I2C_INT_TX_EMPTY]!= NULL)
         {
-            i2cIsrCb[i2cId][I2C_INT_TX_EMPTY]();
+            i2cIsrCb[i2cNo][I2C_INT_TX_EMPTY]();
         }
         /* Disable the interrupt */
         else
@@ -326,7 +327,7 @@ static void I2C_IntHandler(I2C_Id_t i2cId)
  */
 void I2C0_DriverIRQHandler(void)
 {
-    I2C_IntHandler(I2C0_ID);
+   I2C_IntHandler(I2C0_ID);
 }
 
 #if (2U == I2C_INSTANCE_NUM)
@@ -340,7 +341,7 @@ void I2C0_DriverIRQHandler(void)
  */
 void I2C1_DriverIRQHandler(void)
 {
-    I2C_IntHandler(I2C1_ID);
+   I2C_IntHandler(I2C1_ID);
 }
 #endif
 
@@ -352,7 +353,7 @@ void I2C1_DriverIRQHandler(void)
 /**
  * @brief      Install call back function
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C0_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C0_ID.
  * @param[in]  intId:  Specified interrupt type.
  *             - I2C_INT_GEN_CALL
  *             - I2C_INT_TX_OVER
@@ -375,10 +376,11 @@ void I2C1_DriverIRQHandler(void)
  * @return none
  *
  */
-void I2C_InstallCallBackFunc(I2C_Id_t i2cId, I2C_INT_t intId,
+void I2C_InstallCallBackFunc(I2C_Id_t i2cNo, I2C_INT_t intId,
                               isr_cb_t * cbFun)
 {
-    i2cIsrCb[i2cId][intId] = cbFun;
+    i2cIsrCb[i2cNo][intId] = cbFun;
+
 }
 
 /**
@@ -392,15 +394,15 @@ void I2C_InstallCallBackFunc(I2C_Id_t i2cId, I2C_INT_t intId,
  * Under the premise that the crystal oscillator is FIRC64M,speed mode selects
  * high speed and the default data transfer rate is 1.6 Mb/s.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  i2cConfigStruct: Pointer to a I2C configuration structure.
  *
  * @return none
  *
  */
-void I2C_Init(I2C_Id_t i2cId, const I2C_Config_t* i2cConfigStruct)
+void I2C_Init(I2C_Id_t i2cNo, const I2C_Config_t* i2cConfigStruct)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
   /* Set the I2C speed mode */
     I2Cx->I2C_CONFIG1.SPEED_SEL = ((uint32_t)(i2cConfigStruct->speedMode))&0x3U;
 
@@ -466,7 +468,7 @@ void I2C_Init(I2C_Id_t i2cId, const I2C_Config_t* i2cConfigStruct)
 /**
  * @brief      Configure SCL High Count
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  speedMode: Speed mode types.
  *             - I2C_SPEED_STANDARD:I2C standard speed define.(0 to 100 Kb/s)
  *             - I2C_SPEED_FAST:I2C fast speed define.(up to 400 Kb/s)
@@ -476,9 +478,9 @@ void I2C_Init(I2C_Id_t i2cId, const I2C_Config_t* i2cConfigStruct)
  * @return none
  *
  */
-void I2C_SclHighCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
+void I2C_SclHighCount(I2C_Id_t i2cNo, I2C_Speed_t speedMode)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
     I2Cx->I2C_CONFIG1.SPEED_SEL = (uint32_t)speedMode&0x3U;
     switch(speedMode)
     {
@@ -507,7 +509,7 @@ void I2C_SclHighCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
 /**
  * @brief      Configure SCL Low Count
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  speedMode: Speed mode types.
  *             - I2C_SPEED_STANDARD:I2C standard speed define.(0 to 100 Kb/s)
  *             - I2C_SPEED_FAST:I2C fast speed define.(up to 400 Kb/s)
@@ -517,9 +519,9 @@ void I2C_SclHighCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
  * @return none
  *
  */
-void I2C_SclLowCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
+void I2C_SclLowCount(I2C_Id_t i2cNo, I2C_Speed_t speedMode)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
     I2Cx->I2C_CONFIG1.SPEED_SEL = (uint32_t)speedMode&0x3U;
     switch(speedMode)
     {
@@ -548,7 +550,7 @@ void I2C_SclLowCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
 /**
  * @brief      Configure  Spike Suppression Limit
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  speedMode: Speed mode types.
  *             - I2C_SPEED_STANDARD:I2C standard speed define.(0 to 100 Kb/s)
  *             - I2C_SPEED_FAST:I2C fast speed define.(up to 400 Kb/s)
@@ -558,9 +560,9 @@ void I2C_SclLowCount(I2C_Id_t i2cId, I2C_Speed_t speedMode)
  * @return none
  *
  */
-void I2C_LimitSpikeSuppression(I2C_Id_t i2cId, I2C_Speed_t speedMode)
+void I2C_LimitSpikeSuppression(I2C_Id_t i2cNo, I2C_Speed_t speedMode)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
     I2Cx->I2C_CONFIG1.SPEED_SEL = (uint32_t)speedMode&0x3U;
     switch(speedMode)
     {
@@ -588,15 +590,15 @@ void I2C_LimitSpikeSuppression(I2C_Id_t i2cId, I2C_Speed_t speedMode)
 /**
  * @brief      Set the target address .
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  targetAddr: The target address for any master transaction.
  *
  * @return none
  *
  */
-void I2C_SetTargetAddr(I2C_Id_t i2cId, uint32_t targetAddr)
+void I2C_SetTargetAddr(I2C_Id_t i2cNo, uint32_t targetAddr)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Set the target address */
     I2Cx->I2C_DEST_ADDR.DEST_ADDR = targetAddr;
@@ -605,15 +607,15 @@ void I2C_SetTargetAddr(I2C_Id_t i2cId, uint32_t targetAddr)
 /**
  * @brief      Set the value of the I2C high speed mode master code
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  value: High speed master mode code .
  *
  * @return none
  *
  */
-void I2C_SetMasterModeCodeAddr(I2C_Id_t i2cId, uint32_t value)
+void I2C_SetMasterModeCodeAddr(I2C_Id_t i2cNo, uint32_t value)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Set the value of the I2C high speed mode master code */
     I2Cx->I2C_CONFIG0.H_MCODE = value;
@@ -622,7 +624,7 @@ void I2C_SetMasterModeCodeAddr(I2C_Id_t i2cId, uint32_t value)
 /**
  * @brief      Issues the STOP_DETECT interrupt if addressed in slave mode
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  stopDetAddressedType: Specified types.
  *             - I2C_SLV_STOP_DET_WHE_ADDRESSED:I2C issues the STOP_DETECT
  *               irrespective of whether it is addressed or not.
@@ -632,10 +634,10 @@ void I2C_SetMasterModeCodeAddr(I2C_Id_t i2cId, uint32_t value)
  * @return none
  *
  */
-void I2C_StopDetIfAddressed(I2C_Id_t i2cId,
+void I2C_StopDetIfAddressed(I2C_Id_t i2cNo,
                             I2C_StopDetAddressed_t stopDetAddressedType)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG1.SLAVE_STOP_DET_EN = (uint32_t)stopDetAddressedType;
 }
@@ -643,7 +645,7 @@ void I2C_StopDetIfAddressed(I2C_Id_t i2cId,
 /**
  * @brief      Issues the STOP_DETECT interrupt if master active
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  stopDetMstActiveType: Specified types.
  *             - I2C_MST_STOP_DET_WHE_ACTIVE: I2C issues the STOP_DETECT
  *               irrespective of whether the master is active.
@@ -653,10 +655,10 @@ void I2C_StopDetIfAddressed(I2C_Id_t i2cId,
  * @return none
  *
  */
-void I2C_StopDetIfMstActive(I2C_Id_t i2cId,
+void I2C_StopDetIfMstActive(I2C_Id_t i2cNo,
                             I2C_StopDetActive_t stopDetMstActiveType)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG1.MASTER_STOP_DET_EN = (uint32_t)stopDetMstActiveType;
 }
@@ -664,7 +666,7 @@ void I2C_StopDetIfMstActive(I2C_Id_t i2cId,
 /**
  * @brief      Control the generation of the TXFIFO_EMPTY interrupt,
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  txEmptyType: Specified tx empty type.
  *            - I2C_TX_BUFFER: transmit buffer is at or below the threshold 
  *              value set in the TXFIFO_WATER_MARK register.
@@ -676,9 +678,9 @@ void I2C_StopDetIfMstActive(I2C_Id_t i2cId,
  * @return none
  *
  */
-void I2C_TxEmptyCtrl(I2C_Id_t i2cId, I2C_TxEmptyCtrl_t txEmptyType)
+void I2C_TxEmptyCtrl(I2C_Id_t i2cNo, I2C_TxEmptyCtrl_t txEmptyType)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG1.TXFIFO_EMPTY_EN = (uint32_t)txEmptyType;
 }
@@ -687,7 +689,7 @@ void I2C_TxEmptyCtrl(I2C_Id_t i2cId, I2C_TxEmptyCtrl_t txEmptyType)
  * @brief      Control whether I2C module should hold the bus when the Rx FIFO
  *             is physically full to its RXFIFO_DEPTH
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *             - ENABLE: Hold the bus when the Rx FIFO is physically full to its
  *               RXFIFO_DEPTH.
@@ -697,9 +699,9 @@ void I2C_TxEmptyCtrl(I2C_Id_t i2cId, I2C_TxEmptyCtrl_t txEmptyType)
  * @return none
  *
  */
-void I2C_HoldBusCmd(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_HoldBusCmd(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG1.HOLD_EN_RXFIFO_FULL = (uint32_t)newState;
 }
@@ -707,15 +709,15 @@ void I2C_HoldBusCmd(I2C_Id_t i2cId, ControlState_t newState)
 /**
  * @brief      Initializes the I2C DMA
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  i2cDmaConfig: Pointer to a I2C DMA configuration structure.
  *
  * @return none
  *
  */
-void I2C_DmaConfig(I2C_Id_t i2cId, const I2C_DmaConfig_t* i2cDmaConfig)
+void I2C_DmaConfig(I2C_Id_t i2cNo, const I2C_DmaConfig_t* i2cDmaConfig)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
     /* Set Transmit data level */
     I2Cx->I2C_DMA_CTRL.DMA_TXFIFO_WATERMARK = 
                                         i2cDmaConfig->I2C_DMA_TransmitReqLevel;
@@ -727,17 +729,17 @@ void I2C_DmaConfig(I2C_Id_t i2cId, const I2C_DmaConfig_t* i2cDmaConfig)
 /**
  * @brief      Enable/disable I2C DMA function.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  transmitDmaCtrl: Transmit DMA Enable/Disable function state.
  * @param[in]  rcvDmaCtrl: Receive DMA Enable/Disable function state.
  *
  * @return none
  *
  */
-void I2C_DmaCmd(I2C_Id_t i2cId, ControlState_t transmitDmaCtrl,
+void I2C_DmaCmd(I2C_Id_t i2cNo, ControlState_t transmitDmaCtrl,
                 ControlState_t rcvDmaCtrl)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
     /* Enable/Disable the I2C DMA transmit function */
     I2Cx->I2C_DMA_CTRL.TXFIFO_DMA_EN = (uint32_t)transmitDmaCtrl;
     /* Enable/Disable the I2C DMA receive function */
@@ -747,16 +749,16 @@ void I2C_DmaCmd(I2C_Id_t i2cId, ControlState_t transmitDmaCtrl,
 /**
  * @brief      Set I2C SDA Transmit hold time
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  i2cSdaTxHoldTime: Pointer to a I2C SDA Tx hold time structure.
  *
  * @return none
  *
  */
-void I2C_SetSdaTxHoldTime(I2C_Id_t i2cId,
+void I2C_SetSdaTxHoldTime(I2C_Id_t i2cNo,
                           const I2C_SdaHoldTime_t* i2cSdaTxHoldTime)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_SDA_HOLD_TIMING.SDA_TX_HOLD_TIMING =
           i2cSdaTxHoldTime->sdaTransmitHoldTime;
@@ -765,16 +767,16 @@ void I2C_SetSdaTxHoldTime(I2C_Id_t i2cId,
 /**
  * @brief      Set I2C SDA Receive hold time
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  i2cSdaRxHoldTime: Pointer to a I2C SDA Rx hold time structure.
  *
  * @return none
  *
  */
-void I2C_SetSdaRxHoldTime(I2C_Id_t i2cId,
+void I2C_SetSdaRxHoldTime(I2C_Id_t i2cNo,
                           const I2C_SdaHoldTime_t* i2cSdaRxHoldTime)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_SDA_HOLD_TIMING.SDA_RX_HOLD_TIMING = 
                              i2cSdaRxHoldTime->sdaReceiveHoldTime;
@@ -783,7 +785,7 @@ void I2C_SetSdaRxHoldTime(I2C_Id_t i2cId,
 /**
  * @brief      SCL stuck at low timeout
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  time: SCL stuck at low time of duration.
  *             I2C module generates the SCL_STUCK_AT_LOW interrupt to indicate
  *             SCL stuck at low if it detects the SCL stuck at low for the
@@ -792,9 +794,9 @@ void I2C_SetSdaRxHoldTime(I2C_Id_t i2cId,
  * @return none
  *
  */
-void I2C_SetSclHoldLowTimeout(I2C_Id_t i2cId, uint32_t timeOut)
+void I2C_SetSclHoldLowTimeout(I2C_Id_t i2cNo, uint32_t timeOut)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_SCL_LOW_TIMEOUT.SCL_LOW_TIMEOUT = timeOut;
 }
@@ -802,7 +804,7 @@ void I2C_SetSclHoldLowTimeout(I2C_Id_t i2cId, uint32_t timeOut)
 /**
  * @brief      SDA stuck at low timeout
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  time: SDA stuck at low time of duration.
  *             I2C module initiates the recovery of SDA line through enabling 
  *             the SDA_RECOVER_EN bit if it detects the SDA stuck at low for the 
@@ -811,9 +813,9 @@ void I2C_SetSclHoldLowTimeout(I2C_Id_t i2cId, uint32_t timeOut)
  * @return none
  *
  */
-void I2C_SetSdaHoldLowTimeout(I2C_Id_t i2cId, uint32_t timeOut)
+void I2C_SetSdaHoldLowTimeout(I2C_Id_t i2cNo, uint32_t timeOut)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_SDA_LOW_TIMEOUT.SDA_LOW_TIMEOUT = timeOut;
 }
@@ -821,14 +823,14 @@ void I2C_SetSdaHoldLowTimeout(I2C_Id_t i2cId, uint32_t timeOut)
 /**
  * @brief      Enable I2C .
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return none
  *
  */
-void I2C_Enable(I2C_Id_t i2cId)
+void I2C_Enable(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Enable the I2C */
     I2Cx->I2C_CONFIG0.MODULE_EN = 1U;
@@ -837,14 +839,14 @@ void I2C_Enable(I2C_Id_t i2cId)
 /**
  * @brief      Disable I2C .
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return none
  *
  */
-void I2C_Disable(I2C_Id_t i2cId)
+void I2C_Disable(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Disable the I2C */
     I2Cx->I2C_CONFIG0.MODULE_EN = 0U;
@@ -853,7 +855,7 @@ void I2C_Disable(I2C_Id_t i2cId)
 /**
  * @brief      I2C bus recover feature in master mode
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *            - ENABLE: Means bus recover feature is enable.
  *            - DISABLE: Means bus recover feature is disabled.
@@ -861,9 +863,9 @@ void I2C_Disable(I2C_Id_t i2cId)
  * @return none
  *
  */
-void I2C_MstBusRecover(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_MstBusRecover(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG0.MASTER_BUS_RECOVER_EN = (uint32_t)newState;
 }
@@ -871,7 +873,7 @@ void I2C_MstBusRecover(I2C_Id_t i2cId, ControlState_t newState)
 /**
  * @brief      I2C SDA recover feature
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *            - ENABLE: Means SDA recover feature is enable.
  *            - DISABLE: Means SDA recover feature is disabled.
@@ -879,9 +881,9 @@ void I2C_MstBusRecover(I2C_Id_t i2cId, ControlState_t newState)
  * @return none
  *
  */
-void I2C_SdaRecover(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_SdaRecover(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG0.SDA_RECOVER_EN = (uint32_t)newState;
 }
@@ -889,7 +891,7 @@ void I2C_SdaRecover(I2C_Id_t i2cId, ControlState_t newState)
 /**
  * @brief       Block or not block the transmission of data on I2C bus
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *          - ENABLE: Blocks the transmission of data on I2C bus even if
  *                    Tx FIFO has data to transmit.
@@ -899,9 +901,9 @@ void I2C_SdaRecover(I2C_Id_t i2cId, ControlState_t newState)
  * @return none
  *
  */
-void I2C_TxCmdBlock(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_TxCmdBlock(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG0.MASTER_BLK_TXFIFO = (uint32_t)newState;
 }
@@ -909,7 +911,7 @@ void I2C_TxCmdBlock(I2C_Id_t i2cId, ControlState_t newState)
 /**
  * @brief      Enable/Disable transfer abort.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *             - ENABLE: ABORT operation in progress.
  *             - DISABLE: ABORT not initiated or ABORT done.
@@ -917,9 +919,9 @@ void I2C_TxCmdBlock(I2C_Id_t i2cId, ControlState_t newState)
  * @return none
  *
  */
-void I2C_TxAbortCmd(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_TxAbortCmd(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_CONFIG0.MASTER_ABORT = (uint32_t)newState;
 }
@@ -927,15 +929,15 @@ void I2C_TxAbortCmd(I2C_Id_t i2cId, ControlState_t newState)
 /**
  * @brief      Configurate the FIFO threshold level.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  fifoConfig: Pointer to FIFO type structure.
  *
  * @return none
  *
  */
-void I2C_FIFOConfig(I2C_Id_t i2cId, const I2C_FifoConfig_t* fifoConfig)
+void I2C_FIFOConfig(I2C_Id_t i2cNo, const I2C_FifoConfig_t* fifoConfig)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Set Receive FIFO threshold level */
     I2Cx->I2C_RXFIFO_WATER_MARK.RXFIFO_WATER_MARK = fifoConfig->recvFifoThr;
@@ -946,14 +948,14 @@ void I2C_FIFOConfig(I2C_Id_t i2cId, const I2C_FifoConfig_t* fifoConfig)
 /**
  * @brief      Get transmit FIFO level
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return     The number of valid data entries in the transmit FIFO memory.
  *
  */
-uint32_t I2C_GetTxFifoLevel(I2C_Id_t i2cId)
+uint32_t I2C_GetTxFifoLevel(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     return (I2Cx->I2C_TX_FIFO_CNT.TX_FIFO_CNT);
 }
@@ -961,14 +963,14 @@ uint32_t I2C_GetTxFifoLevel(I2C_Id_t i2cId)
 /**
  * @brief      Get receive FIFO level
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return     The number of valid data entries in the receive FIFO memory.
  *
  */
-uint32_t I2C_GetRxFifoLevel(I2C_Id_t i2cId)
+uint32_t I2C_GetRxFifoLevel(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     return (I2Cx->I2C_RX_FIFO_CNT.RX_FIFO_CNT);
 }
@@ -976,7 +978,7 @@ uint32_t I2C_GetRxFifoLevel(I2C_Id_t i2cId)
 /**
  * @brief      I2C master selects transfer address function.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  transAddrType:transfer address types
  *             - I2C_DEST_ADDR
  *             - I2C_GEN_CALL_ADDR
@@ -985,9 +987,9 @@ uint32_t I2C_GetRxFifoLevel(I2C_Id_t i2cId)
  * @return none
  *
  */
-void I2C_MstCmdSelect(I2C_Id_t i2cId, I2C_MstCmdSelect_t transAddrType)
+void I2C_MstCmdSelect(I2C_Id_t i2cNo, I2C_MstCmdSelect_t transAddrType)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     I2Cx->I2C_DEST_ADDR.MASTER_CMD_SEL = (uint32_t)transAddrType;
 }
@@ -995,7 +997,7 @@ void I2C_MstCmdSelect(I2C_Id_t i2cId, I2C_MstCmdSelect_t transAddrType)
 /**
  * @brief      Enable/disable I2C general call ack function.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  newState: Enable/Disable function state.
  *           - ENABLE: I2C responses with a ACK when it receives a general call.
  *           - Disable: No ACK the general call and doesn't generate general
@@ -1004,9 +1006,9 @@ void I2C_MstCmdSelect(I2C_Id_t i2cId, I2C_MstCmdSelect_t transAddrType)
  * @return none
  *
  */
-void I2C_GeneralCallAckCmd(I2C_Id_t i2cId, ControlState_t newState)
+void I2C_GeneralCallAckCmd(I2C_Id_t i2cNo, ControlState_t newState)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Set general call ACK function */
     I2Cx->I2C_CONFIG0.SLAVE_ACK_GENCALL = (uint32_t)newState;
@@ -1016,7 +1018,7 @@ void I2C_GeneralCallAckCmd(I2C_Id_t i2cId, ControlState_t newState)
  * @brief      Generate a NACK for the data part of a transfer when i2c is
  *             acting as a slave receiver
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  genNack: general call ACK/NACK type.
  *         - I2C_GEN_NACK_AFTER_RCV:I2C generates NACK after data byte received.
  *         - I2C_GEN_NACK_OR_ACK_NORMAL:I2C generates NACK/ACK normally.
@@ -1024,9 +1026,9 @@ void I2C_GeneralCallAckCmd(I2C_Id_t i2cId, ControlState_t newState)
  * @return none
  *
  */
-void I2C_SlvDataNackGen(I2C_Id_t i2cId, I2C_GenSlvDataNack_t genNack)
+void I2C_SlvDataNackGen(I2C_Id_t i2cNo, I2C_GenSlvDataNack_t genNack)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* Generate a NACK for the data part of a transfer */
     I2Cx->I2C_CONFIG0.SLAVE_NACK = (uint32_t)genNack;
@@ -1035,7 +1037,7 @@ void I2C_SlvDataNackGen(I2C_Id_t i2cId, I2C_GenSlvDataNack_t genNack)
 /**
  * @brief      Send one byte when i2c as a master.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  restartStopType: Specified restart,Stop type.
  *             - I2C_RESTART_AND_STOP_DISABLE
  *             - I2C_STOP_EN
@@ -1045,10 +1047,10 @@ void I2C_SlvDataNackGen(I2C_Id_t i2cId, I2C_GenSlvDataNack_t genNack)
  * @return none
  *
  */
-void I2C_MasterSendByte(I2C_Id_t i2cId, I2C_RestartStop_t restartStopType,
+void I2C_MasterSendByte(I2C_Id_t i2cNo, I2C_RestartStop_t restartStopType,
                         uint8_t data)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     /* Send one byte */
     I2Cxw->I2C_COMMAND_DATA = (((uint32_t)(restartStopType) << 0x9UL) |
@@ -1058,16 +1060,16 @@ void I2C_MasterSendByte(I2C_Id_t i2cId, I2C_RestartStop_t restartStopType,
 /**
  * @brief      Send one byte when i2c as a slave.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @param[in]  data: The data to be send.
  *
  * @return none
  *
  */
-void I2C_SlaveSendByte(I2C_Id_t i2cId, uint8_t data)
+void I2C_SlaveSendByte(I2C_Id_t i2cNo, uint8_t data)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     /* Send one byte */
     I2Cxw->I2C_COMMAND_DATA = ((uint32_t)data);
@@ -1076,7 +1078,7 @@ void I2C_SlaveSendByte(I2C_Id_t i2cId, uint8_t data)
 /**
  * @brief     Master read/write request.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  restartStopType: Specified restart,Stop type.
  *             - I2C_RESTART_AND_STOP_DISABLE
  *             - I2C_STOP_EN
@@ -1085,9 +1087,9 @@ void I2C_SlaveSendByte(I2C_Id_t i2cId, uint8_t data)
  * @return none
  *
  */
-void I2C_MasterReadCmd(I2C_Id_t i2cId, I2C_RestartStop_t restartStopType)
+void I2C_MasterReadCmd(I2C_Id_t i2cNo, I2C_RestartStop_t restartStopType)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     /* Set read command */
     I2Cxw->I2C_COMMAND_DATA = 
@@ -1097,32 +1099,32 @@ void I2C_MasterReadCmd(I2C_Id_t i2cId, I2C_RestartStop_t restartStopType)
 /**
  * @brief     I2C read one byte .
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return  The received data
  *
  */
-uint8_t I2C_ReceiveByte(I2C_Id_t i2cId)
+uint16_t I2C_ReceiveByte(I2C_Id_t i2cNo)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     /* Read one byte */
-    return ((uint8_t)(I2Cxw->I2C_COMMAND_DATA & 0xFFUL));
+    return ((uint16_t)(I2Cxw->I2C_COMMAND_DATA & 0xFFUL));
 }
 
 /**
  * @brief      Set sda setup time when i2c is acting as a slave receiver.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  length: The length of setup time is calculated using
  *                     [(SDA_SETUP_TIMING - 1) * (i2c function clock period)].
  *
  * @return none
  *
  */
-void I2C_SetSdaSetupTime(I2C_Id_t i2cId, uint8_t length)
+void I2C_SetSdaSetupTime(I2C_Id_t i2cNo, uint8_t length)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     /* SDA steup time */
     I2Cx->I2C_SDA_SETUP_TIMING.SDA_SETUP_TIMING = ((uint32_t)length);
@@ -1131,7 +1133,7 @@ void I2C_SetSdaSetupTime(I2C_Id_t i2cId, uint8_t length)
 /**
  * @brief      Enable/Disable specified interrupt type
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  intType:  Specified interrupt type.
  *             - I2C_INT_GEN_CALL
  *             - I2C_INT_TX_OVER
@@ -1156,9 +1158,9 @@ void I2C_SetSdaSetupTime(I2C_Id_t i2cId, uint8_t length)
  * @return  none
  *
  */
-void I2C_IntCmd(I2C_Id_t i2cId, I2C_INT_t intType, ControlState_t newState)
+void I2C_IntCmd(I2C_Id_t i2cNo, I2C_INT_t intType, ControlState_t newState)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     if(DISABLE == newState )
     {
@@ -1174,7 +1176,7 @@ void I2C_IntCmd(I2C_Id_t i2cId, I2C_INT_t intType, ControlState_t newState)
  * @brief      Check whether interrupt status flag is set or not for given
  *             interrupt type
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  intType:  Specified interrupt type.
  *             - I2C_INT_GEN_CALL
  *             - I2C_INT_TX_OVER
@@ -1196,14 +1198,14 @@ void I2C_IntCmd(I2C_Id_t i2cId, I2C_INT_t intType, ControlState_t newState)
  *             - RESET
  *
  */
-FlagStatus_t I2C_GetIntStatus(I2C_Id_t i2cId, I2C_INT_t intType)
+FlagStatus_t I2C_GetIntStatus(I2C_Id_t i2cNo, I2C_INT_t intType)
 {
     uint32_t intBitStatus;
     const uint32_t i2cIntTable[]=
     {
-        0U, 1U, 2U, 3U, 4U, 5U, 22U, 23U, 24U, 25U, 26U, 27U, 30U, 31U
+        0U,1U,2U,3U,4U,5U,22U,23U,24U,25U,26U,27U,30U,31U
     };
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     intBitStatus = (((I2Cxw->I2C_STATUS0) &
                    (0x01UL << (uint32_t)i2cIntTable[intType])) >> 
@@ -1215,7 +1217,7 @@ FlagStatus_t I2C_GetIntStatus(I2C_Id_t i2cId, I2C_INT_t intType)
 /**
  * @brief      Check whether error status flag is set or not
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  errorType:  Specified abort type.
  *             - ERR_GEN_CALL_NO_ACK
  *             - ERR_GEN_CALL_READ
@@ -1241,10 +1243,10 @@ FlagStatus_t I2C_GetIntStatus(I2C_Id_t i2cId, I2C_INT_t intType)
  *             - RESET
  *
  */
-FlagStatus_t I2C_GetErrorStatus(I2C_Id_t i2cId, I2C_ErrorStatus_t errorType)
+FlagStatus_t I2C_GetErrorStatus(I2C_Id_t i2cNo, I2C_ErrorStatus_t errorType)
 {
     uint32_t bitStatus;
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
     bitStatus = (((I2Cxw->I2C_ERROR_STATUS) &
                         (0x01UL <<(uint32_t)errorType)) >> (uint32_t)errorType);
     return (FlagStatus_t)bitStatus;
@@ -1253,7 +1255,7 @@ FlagStatus_t I2C_GetErrorStatus(I2C_Id_t i2cId, I2C_ErrorStatus_t errorType)
 /**
  * @brief      Clear specified interrupt type
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  intType:  Specified interrupt type.
  *             - I2C_INT_GEN_CALL
  *             - I2C_INT_TX_OVER
@@ -1267,14 +1269,13 @@ FlagStatus_t I2C_GetErrorStatus(I2C_Id_t i2cId, I2C_ErrorStatus_t errorType)
  *             - I2C_INT_RX_OVER
  *             - I2C_INT_RESTART_DET
  *             - I2C_SCL_STUCK_AT_LOW
- *             - I2C_INT_ALL
  *
  * @return none
  *
  */
-void I2C_ClearInt(I2C_Id_t i2cId, I2C_INT_t intType)
+void I2C_ClearInt(I2C_Id_t i2cNo, I2C_INT_t intType)
 {
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
 
     I2Cxw->I2C_STATUS0 = i2cIntEnableTable[intType];
 }
@@ -1282,14 +1283,14 @@ void I2C_ClearInt(I2C_Id_t i2cId, I2C_INT_t intType)
 /**
  * @brief     Clear all error status .
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return none
  *
  */
-void I2C_ClearErrorStatusAll(I2C_Id_t i2cId)
+void I2C_ClearErrorStatusAll(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     volatile uint32_t dummyData;
     /* Dummy read to clear all error status */
@@ -1300,14 +1301,14 @@ void I2C_ClearErrorStatusAll(I2C_Id_t i2cId)
  * @brief     The number of Tx FIFO data Master-Transmitter commands that
  *            are flushed due to ERROR_ABORT or SlaveTransmitter interrupt.
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  *
  * @return     The error flush count.
  *
  */
-uint32_t I2C_ErrorFlushCount(I2C_Id_t i2cId)
+uint32_t I2C_ErrorFlushCount(I2C_Id_t i2cNo)
 {
-    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cId]);
+    i2c_reg_t * I2Cx = (i2c_reg_t *)(i2cRegPtr[i2cNo]);
 
     return I2Cx->I2C_ERROR_STATUS.ERR_TXFIFO_FLUSH_CNT;
 }
@@ -1315,7 +1316,7 @@ uint32_t I2C_ErrorFlushCount(I2C_Id_t i2cId)
 /**
  * @brief      Check whether status flag is set or not for given status type
  *
- * @param[in]  i2cId: Select the I2C id, should be I2C0_ID, I2C1_ID.
+ * @param[in]  i2cNo: Select the I2C port, should be I2C0_ID, I2C1_ID.
  * @param[in]  statusType:  Specified status type.
  *             - I2C_MST_ACTIVITY
  *             - I2C_SLV_ACTIVITY
@@ -1337,10 +1338,10 @@ uint32_t I2C_ErrorFlushCount(I2C_Id_t i2cId)
  *             - RESET
  *
  */
-FlagStatus_t I2C_GetStatus(I2C_Id_t i2cId, I2C_Status_t statusType)
+FlagStatus_t I2C_GetStatus(I2C_Id_t i2cNo, I2C_Status_t statusType)
 {
     uint32_t bitStatus;
-    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cId]);
+    i2c_reg_w_t * I2Cxw = (i2c_reg_w_t *)(i2cRegWPtr[i2cNo]);
     bitStatus = (((I2Cxw->I2C_STATUS1) &
                      (0x01UL << (uint32_t)statusType)) >> (uint32_t)statusType);
     return (FlagStatus_t)bitStatus;

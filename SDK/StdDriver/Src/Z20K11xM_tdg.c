@@ -1,13 +1,14 @@
 /**************************************************************************************************/
 /**
- * @file      : Z20K11xM_tdg.c
- * @brief     : TDG module driver file.
- * @version   : V1.8.0
- * @date      : May-2020
- * @author    : Zhixin Semiconductor
+ * @file     Z20K11xM_tdg.c
+ * @brief    TDG module driver file.
+ * @version  V1.7.0
+ * @date     May-2020
+ * @author   Zhixin Semiconductor
  *
  * @note
- * @copyright : Copyright (c) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ * Copyright (C) 2020-2023 Zhixin Semiconductor Ltd. All rights reserved.
+ *
  **************************************************************************************************/
 
 #include "Z20K11xM_tdg.h"
@@ -44,7 +45,7 @@ static isr_cb_t *tdgIsrCbFunc[TDG_NUM][TDG_INT_ALL] = {
 /**
  *  @brief TDG address array
  */
-/*PRQA S 0303 ++*/
+/*PRQA S 0303,0306 ++*/
 static tdg_reg_t *const tdgRegPtr[TDG_NUM] = {
     (tdg_reg_t *)TDG0_BASE_ADDR,          
 };
@@ -52,7 +53,7 @@ static tdg_reg_t *const tdgRegPtr[TDG_NUM] = {
 static tdg_reg_w_t *const tdgRegWPtr[TDG_NUM] = {
     (tdg_reg_w_t *)TDG0_BASE_ADDR,         
 };
-/*PRQA S 0303 --*/
+/*PRQA S 0303,0306 --*/
 static const uint32_t TDG_IntMaskTable[] = {
     0x00000001U, /*!< Channel 0 complete delay output interrupt */
     0x00000002U, /*!< Channel 1 complete delay output interrupt*/
@@ -219,13 +220,13 @@ static void TDG_IntHandler(TDG_ID_t tdgId)
  * @return    none
  *
  */
-#define reg *(volatile uint32_t*)(0x400FF08C)
+#define reg *(volatile uint32_t*)(0x400FF00C)
 #define reg1 *(volatile uint32_t*)(0x40035010)
 void TDG0_DriverIRQHandler(void)
 {
-	reg = (1<<8);
+	reg = (1<<11);
 	reg1 = 0xff;
-//    TDG_IntHandler(TDG0_ID);
+    //TDG_IntHandler(TDG0_ID);
 }
 /** @} end of group TDG_Private_Functions */
 
@@ -749,7 +750,7 @@ void TDG_DelayOuputConfig(TDG_ID_t tdgId, TDG_ChannelId_t channelId,
     else
     {
 	TDGxw->TDG_CHCFG[channelId].TDG_CHCTRL  = doEnable & 
-                                (~((1UL) << (8U + doId)));
+                                (~(1UL << (8UL+doId)));
     }
     
     TDGxw->TDG_CHCFG[channelId].TDG_CHDOOFS[doId] = (uint32_t)doConfig->offset;
